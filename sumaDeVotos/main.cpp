@@ -6,6 +6,11 @@ using namespace std;
 
 #define kVel 15
 
+/* Entregable: sumaDeVotos
+ * Durante la partida se comprobará que los votos aparecen, 
+ * se suman al contador de votos y desaparecen de la pantalla una vez cogidos.
+ */
+
 string toString(int integer){
     char numstr[10]; // enough to hold all numbers up to 32-bits
     sprintf(numstr, "%i", integer);
@@ -16,7 +21,7 @@ int main()
 {
  
     //Creamos una ventana 
-    sf::RenderWindow window(sf::VideoMode(1280, 600), "Entregable: sumaDeVotos");
+    sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: sumaDeVotos");
 
      // Texto
     sf::Font font;  
@@ -55,11 +60,9 @@ int main()
     
     //Y creo el spritesheet a partir de la imagen anterior
     sf::Sprite sprite(tex);
-    sf::Sprite voto(texvoto);
       
     //Le pongo el centroide donde corresponde
     sprite.setOrigin(64/2,32/2);
-    voto.setOrigin(64/2,32/2);
 
     //Cojo el sprite que me interesa por defecto del sheet
     sprite.setTextureRect(sf::IntRect(0*64, 0*32, 64, 32));
@@ -74,6 +77,7 @@ int main()
         
         votos.push_back(new sf::Sprite(texvoto));                   //SE AÑADE &Sprite AL VECTOR
         votos[i]->setTextureRect(sf::IntRect(0*44, 0*50, 44, 50));  //A CADA OBJETO DEL VECTOR SE LE CORRIGE LA TEXTURA
+        votos[i]->setOrigin(64/2,32/2);                             //AJUSTE DEL ORIGEN DEL SPRITE
         
     }
  
