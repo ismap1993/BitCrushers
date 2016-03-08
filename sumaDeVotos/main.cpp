@@ -6,15 +6,37 @@ using namespace std;
 
 #define kVel 15
 
+
 string toString(int integer){
     char numstr[10]; // enough to hold all numbers up to 32-bits
     sprintf(numstr, "%i", integer);
     return numstr;
 }
  
+
 int main()
 {
- 
+    ////////////////////////////////////////////
+        
+    int numero = 2;
+    int* puntero_a_numero = &numero;
+    
+    int** puntero_segundo_nivel = &puntero_a_numero;
+    
+    
+    std::cout<< "> puntero_a_numero: " << puntero_a_numero << std::endl;
+    std::cout<< "> &puntero_a_numero: " << &puntero_a_numero << std::endl;
+    std::cout<< "> *puntero_a_numero: " << *puntero_a_numero << std::endl;
+    std::cout<< "> &puntero_a_numero: " << &puntero_a_numero << std::endl;
+    std::cout<< "> *puntero_segundo_nivel: " << *puntero_segundo_nivel << std::endl;
+    std::cout<< "> numero: " << numero << std::endl;
+    
+    
+    /////////////////////////////////////////////
+    
+    std::cout<<std::endl;
+    std::cout<< "Entregable: sumaDeVotos (Carlos)" << std::endl;
+
     //Creamos una ventana 
     sf::RenderWindow window(sf::VideoMode(1280, 600), "Entregable: sumaDeVotos");
 
@@ -36,6 +58,7 @@ int main()
     hudVotosValue.setPosition(565,-2);
     hudVotosValue.setCharacterSize(30);
     hudVotosValue.setColor(sf::Color::Black);
+
     
     //Cargo la imagen donde reside la textura del sprite
     sf::Texture tex;
@@ -67,13 +90,15 @@ int main()
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(300, 482);
 
+    
     //ARRAY DE VOTOS  
     vector<sf::Sprite*> votos; //DEFINICOIN DEL VECTOR DE PUNTEROS A SPRITE
     
     for(int i=0;i<6;i++){
+        //voto.setTextureRect(sf::IntRect(0*44, 0*50, 44, 50));
         
-        votos.push_back(new sf::Sprite(texvoto));                   //SE AÑADE &Sprite AL VECTOR
-        votos[i]->setTextureRect(sf::IntRect(0*44, 0*50, 44, 50));  //A CADA OBJETO DEL VECTOR SE LE CORRIGE LA TEXTURA
+        votos.push_back(new sf::Sprite(texvoto)); //SE AÑADE &Sprite AL VECTOR
+        votos[i]->setTextureRect(sf::IntRect(0*44, 0*50, 44, 50));
         
     }
  
@@ -85,8 +110,7 @@ int main()
     votos[4]->setPosition(957, 287); 
     votos[5]->setPosition(1187, 290);
     
-    //INICIALIZACION DE LA VARIABLE DE CONTEO DE VOTOS
-    int votosValue = 0; 
+    int votosValue = 0;
     
     sf::RectangleShape suelo(sf::Vector2f(1280, 500));
     suelo.setPosition(0,500);
@@ -94,30 +118,39 @@ int main()
     suelo.setFillColor(sf::Color(120,66,0));
     suelo.setOutlineColor(sf::Color::Black);
   
+    
+    
     while (window.isOpen()){  
         
         int i=0;
         while(i < votos.size()){
             
-            //SE COMPRUEBA LA COLISION DEL SPRITE CON TODOS LOS VOTOS PRESENTES
-            if(sprite.getGlobalBounds().intersects(votos[i]->getGlobalBounds())){ 
+            if(sprite.getGlobalBounds().intersects(votos[i]->getGlobalBounds())){
               
-                delete votos[i];                                     //LIBERA LA MEMORIA RESERVADA A ESE VOTO
-                votos.erase(votos.begin() + i);                      //ELIMINA LA POSICION DEL VECTOR DONDE ESTABA EL VOTO
-                votosValue++;                                        //AUMENTA EN 1 EL CONTEO DE VOTOS
-                std::cout << "Voto conseguido.." << std::endl;       
-                std::cout << "Votos restates:  " << votos.size() << std::endl;
-                break;  
+                delete votos[i];
+                votos.erase(votos.begin() + i);
+                votosValue++;
+                std::cout << "Voto conseguido.." << std::endl;
+                break;
+                
             }
-             i++;   //NO HUBO COLISION ENTRE LOS DOS SPRITES COMPARADOS
+             std::cout << "size: " << votos.size() << std::endl;
+             i++;
+            
         }
+        
+        
 
-      hudVotosValue.setString(toString(votosValue)); //PARSEA Y ENVIA LOS VOTOS OBTENIDOS AL HUD
+      hudVotosValue.setString(toString(votosValue));
+        //std::cout << std::size(votos_old) << std::endl;
+        
+
         
         //Bucle de obtención de eventos
         sf::Event event;
         while (window.pollEvent(event))
         {
+          
             
             switch(event.type){
                 
@@ -184,7 +217,7 @@ int main()
         
         window.clear(sf::Color(sf::Color::White));
         
-        for(sf::Sprite* i : votos)window.draw(*i);        //RECORRE EL VECTOR DE VOTOS
+        for(sf::Sprite* n : votos)window.draw(*n); //VOTOS
         window.draw(hudVotosValue);
         window.draw(sprite);
         window.draw(hudVotos);
