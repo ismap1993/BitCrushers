@@ -182,13 +182,13 @@ int main()
             
         }    
         
-        window.clear(sf::Color(sf::Color::White));
+        window.clear(sf::Color(sf::Color::White)); //FONDO EN BLANCO
         
         for(sf::Sprite* i : votos)window.draw(*i);        //RECORRE EL VECTOR DE VOTOS
-        window.draw(hudVotosValue);
-        window.draw(sprite);
-        window.draw(hudVotos);
-        window.draw(suelo);
+        window.draw(hudVotosValue); //VALOR NUMERICO DE LOS VOTOS
+        window.draw(sprite);        //PERSONAJE
+        window.draw(hudVotos);      //CARTEL DE VOTOS
+        window.draw(suelo);         //SUELO
         
         window.display();
        
