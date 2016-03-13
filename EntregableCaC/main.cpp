@@ -223,6 +223,7 @@ int main()
                         
                         //Mapeo del cursor
                         case sf::Keyboard::Right:
+                            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                             sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
                             //Variables para comprobar si esta mirando a izquierda o derecha
                             der=true;
@@ -231,6 +232,7 @@ int main()
                         break;
 
                         case sf::Keyboard::Left:
+                            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                             sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
                             //Variables para comprobar si esta mirando a izquierda o derecha
                             der=false;
