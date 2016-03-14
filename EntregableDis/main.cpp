@@ -1,7 +1,7 @@
-/* ENTREGABLE: GOLPEAR CON PERSONAJE PRINCIPAL
- Al pulsar la barra espaciadora el personaje usará su golpeo cuerpo a 
- cuerpo para poder matar a los enemigos que habrán en pantalla para comprobar el
- funcionamiento de su habilidad.*/
+/* ENTREGABLE: DISPARAR CON PERSONAJE PRINCIPAL
+ Al pulsar la barra espaciadora el personaje usará su ataque a distancia
+ para poder matar a los enemigos que habrán en pantalla para comprobar el 
+ funcionamiento del arma. */
 
 #include <vector>
 #include <string> 
@@ -40,7 +40,7 @@ int main()
     
 
   ifstream fin;
-  fin.open("resources/pedrospritesheet.xml"); // abrir el xml que se va a leer
+  fin.open("resources/marianospritesheet.xml"); // abrir el xml que se va a leer
   if (!fin.good()) 
     return 1; // si el fichero no existe...
   
@@ -118,58 +118,78 @@ int main()
   bool der=true;//direccion del personaje
   bool izq=false;//direccion del personaje
   
-  //Para golpear cada cierto tiempo
-  sf::Clock golpeosSegundo;
-  float golpeoXseg=0;
+  //Tiempo en el que se van desplazando los proyectiles
+  sf::Clock proyectilTime;
+  float disparoTime=0;
+  
+  //Tiempo de aparicion de los proyectiles del personaje principal
+  sf::Clock aparicionProyectil;
+  float disparoAparicion=0;
   
   //Creamos una ventana 
-    sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Golpear con personaje principal");
+    sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Disparar con personaje principal");
     
     //Cargo la imagen donde reside la textura del sprite
     sf::Texture tex;
-    if (!tex.loadFromFile("resources/pedrospritesheet.png"))
+    if (!tex.loadFromFile("resources/marianospritesheet.png"))
     {
-        std::cerr << "Error cargando la imagen caracol.png";
+        std::cerr << "Error cargando la imagen";
+        exit(0);
+    }
+    
+    //Cargo la imagen donde reside la textura del proyectil
+    sf::Texture texproyectil;
+    if (!texproyectil.loadFromFile("resources/marianospritesheet.png"))
+    {
+        std::cerr << "Error cargando la imagen";
         exit(0);
     }
 
     
     //Y creo el spritesheet a partir de la imagen anterior
     sf::Sprite sprite(tex);
+    sf::Sprite proyectil(texproyectil);
     
     //Le pongo el centroide donde corresponde
     // w=78 h=148 en todos los sprites menos en los de ataque
     sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-
+    proyectil.setOrigin(matriz[11][2]/2, matriz[11][2]/2);
+    
     //Cojo el sprite que me interesa por defecto del sheet
     sprite.setTextureRect(sf::IntRect(matriz[8][0], matriz[8][1], matriz[8][2], matriz[8][3]));
+    proyectil.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
     
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(500, 432);
+    proyectil.setPosition(600,432); //PRUEBA
     
     sf::RectangleShape suelo(sf::Vector2f(1280, 500));
     suelo.setPosition(0,500);
     suelo.setOutlineThickness(1.0f);
     suelo.setFillColor(sf::Color(120,66,0));
     suelo.setOutlineColor(sf::Color::Black);
-
     
-     //ARRAY DE ENEMIGOS
+    //ARRAY DE PROYECTILES  
+    vector<sf::Sprite*> proyectiles; //VECTOR DE PUNTEROS A SPRITE
+    
+    //ARRAY DE ENEMIGOS
     vector<sf::RectangleShape*> enemigos;
-    for(int i=0;i<2;i++){
+    int nuevapos=0;
+    for(int i=0;i<6;i++){
 
         enemigos.push_back(new sf::RectangleShape(sf::Vector2f(50, 50)));
-        if(i==0){
-            enemigos[i]->setPosition(400,432);
+        if(i>=0 && i<=2){
+            enemigos[i]->setPosition(200-nuevapos,432);
         }
-        if(i==1){
-            enemigos[i]->setPosition(550,432);
+        if(i>=3 && i<=5){
+            enemigos[i]->setPosition(600+nuevapos,432);
         }
+        nuevapos+=80;
         enemigos[i]->setOutlineThickness(1.0f);
         enemigos[i]->setFillColor(sf::Color(120,66,0));
         enemigos[i]->setOutlineColor(sf::Color::Black);
     }
-  
+    
     while (window.isOpen()){  
         
         //Bucle de obtención de eventos
@@ -237,7 +257,7 @@ int main()
                         break;
 
                         case sf::Keyboard::Left:
-                            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+                            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);//Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                             sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
                             //Variables para comprobar si esta mirando a izquierda o derecha
                             der=false;
@@ -246,28 +266,39 @@ int main()
                         break;
                         
                         case sf::Keyboard::Space:
-                             golpeoXseg=golpeosSegundo.getElapsedTime().asSeconds();
-                            
-                             //Dependiendo de la direccion hacia donde este mirando, se aplica un sprite u otro
+                             disparoAparicion=aparicionProyectil.getElapsedTime().asSeconds();
+                            //Dependiendo de la direccion hacia donde este mirando, se aplica un sprite u otro
                              if(der==true){
-                                 if(golpeoXseg>0.5){
-                                     //IMPORTANTE cambiar el centroide a la hora de atacar!
-                                        sprite.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
-                                        sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
-                                        golpeosSegundo.restart();
-                                 }
-                             }
-                             if(izq==true){
-                                 if(golpeoXseg>0.5){
-                                      //IMPORTANTE cambiar el centroide a la hora de atacar!
-                                        sprite.setOrigin(matriz[1][2]/1.325,matriz[1][3]/2);
-                                        sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));   
-                                        golpeosSegundo.restart();
-                                 }
-
+                                 
+                                 if(disparoAparicion>0.35){
+                                    //IMPORTANTE cambiar el centroide a la hora de atacar!
+                                    sprite.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
+                                    sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+                                    //Al disparar, se genera un proyectil y se inserta en el vector
+                                    proyectiles.push_back(new sf::Sprite(texproyectil));
+                                    proyectiles.back()->setPosition(sprite.getPosition().x+60,420); 
+                                    
+                                    aparicionProyectil.restart();
+                                 }    
                              }
                              
-
+                             if(izq==true){
+                                 
+                                 if(disparoAparicion>0.35){
+                                    //IMPORTANTE cambiar el centroide a la hora de atacar!
+                                    sprite.setOrigin(matriz[1][2]/1.325,matriz[1][3]/2);
+                                    sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                                    //Al disparar, se genera un proyectil y se inserta en el vector
+                                    proyectiles.push_back(new sf::Sprite(texproyectil));
+                                    proyectiles.back()->setPosition(sprite.getPosition().x-90,420);
+                                    
+                                    aparicionProyectil.restart();
+                                }
+                             }
+                             
+                             //Se le aplica la textura correspondiente al proyectil que se acaba de crear (usar back() para el ultimo proyectil)
+                             proyectiles.back()->setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+                            
                         break;
                         
                         //Tecla ESC para salir
@@ -286,44 +317,64 @@ int main()
             
         }    
         
-        //Despues de golpear, a los 0,65s, el personaje vuelve a su posicion original (izquierda o derecha)
+        //Despues de disparar, a los 0,5s, el personaje vuelve a su posicion original (izquierda o derecha)
         golpeo= golpeoTime.getElapsedTime().asSeconds();
-        if(golpeo>0.65 && der==true){
+        if(golpeo>0.5 && der==true){
            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
            sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
            golpeoTime.restart();
         }
         
-        if(golpeo>0.65 && izq==true){
+        if(golpeo>0.5 && izq==true){
            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
            sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
            golpeoTime.restart();
         }
         
         //Muerte a los enemigos!
-        for(int j=0; j<enemigos.size(); j++){
-            //Si el golpe alcanza a cualquier enemigo...
-            if(sprite.getGlobalBounds().intersects(enemigos[j]->getGlobalBounds())){
-                //Se destruye el enemigo
-                delete enemigos[j];
-                enemigos.erase(enemigos.begin() + j); //Se elimina la posicion del vector donde estaba
+        for(int i=0; i<proyectiles.size();i++){
+            for(int j=0; j<enemigos.size(); j++){
+                //Si cualquier proyectil choca con cualquier enemigo...
+                if(proyectiles[i]->getGlobalBounds().intersects(enemigos[j]->getGlobalBounds())){
+                    //Se destruye el proyectil
+                    delete proyectiles[i];
+                    proyectiles.erase(proyectiles.begin() + i); //Se elimina la posicion del vector donde estaba
+                    //Se destruye el enemigo
+                    delete enemigos[j];
+                    enemigos.erase(enemigos.begin() + j); //Se elimina la posicion del vector donde estaba
+                }
             }
         }
         
+        //Destruccion de proyectiles si se salen de cierto rango
+        /*ESTO FALTA POR HACER... RANGO CON UN MARCO?*/
+       
         window.clear(sf::Color(sf::Color::White));
 
         window.draw(sprite);
-        for(sf::RectangleShape* i : enemigos)window.draw(*i); //Bucle para dibujar todos los enemigos vivos del vector
+       
+            for(int i=0;i<proyectiles.size();i++){           
+                window.draw(*proyectiles[i]);
+
+                disparoTime= proyectilTime.getElapsedTime().asSeconds(); //Tiempo que determina la velocidad del proyectil
+                if(disparoTime>0.015){ //Cuanto mayor sea, mas lento ira el proyectil
+                    for(int i=0;i<proyectiles.size();i++){   
+                        //Si el proyectil se encuentra a la derecha del personaje, ira a la derecha, y sino a la izquierda
+                        if(proyectiles[i]->getPosition().x>sprite.getPosition().x){ 
+                            proyectiles[i]->move(5,0);
+                        }else{
+                            proyectiles[i]->move(-5,0);
+                        }  
+                    }
+                    proyectilTime.restart(); 
+                }
+            }
+        
+        
+        
+
         window.draw(suelo);
-        
-//        if(enemigo1vive==true){
-//            window.draw(enemigo1);
-//        }
-//        
-//        if(enemigo2vive==true){
-//            window.draw(enemigo2);
-//        }
-        
+        for(sf::RectangleShape* i : enemigos)window.draw(*i); //Bucle para dibujar todos los enemigos vivos del vector
         window.display();
         
     }
