@@ -52,23 +52,23 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Llib /C/SFML-2.3.2/lib/libsfml-graphics-d.a /C/SFML-2.3.2/lib/libsfml-window-d.a /C/SFML-2.3.2/lib/libsfml-system-d.a /C/SFML-2.3.2/lib/libsfml-audio-d.a /C/SFML-2.3.2/lib/libsfml-main-d.a /C/SFML-2.3.2/lib/libsfml-network-d.a
+LDLIBSOPTIONS=-Llib /C/SFML/lib/libsfml-graphics-d.a /C/SFML/lib/libsfml-window-d.a /C/SFML/lib/libsfml-system-d.a /C/SFML/lib/libsfml-audio-d.a /C/SFML/lib/libsfml-main-d.a /C/SFML/lib/libsfml-network-d.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML-2.3.2/lib/libsfml-graphics-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML/lib/libsfml-graphics-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML-2.3.2/lib/libsfml-window-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML/lib/libsfml-window-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML-2.3.2/lib/libsfml-system-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML/lib/libsfml-system-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML-2.3.2/lib/libsfml-audio-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML/lib/libsfml-audio-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML-2.3.2/lib/libsfml-main-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML/lib/libsfml-main-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML-2.3.2/lib/libsfml-network-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: /C/SFML/lib/libsfml-network-d.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -77,7 +77,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sumadevotos.exe: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML-2.3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
