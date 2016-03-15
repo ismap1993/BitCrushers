@@ -38,18 +38,18 @@
         <ccTool>
           <standard>8</standard>
           <incDir>
-            <pElem>../../../../../SFML-GCC-4.8.1-MinGW-master/include</pElem>
+            <pElem>../../../../../SFML/include</pElem>
           </incDir>
           <commandLine>-std=c++11</commandLine>
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio-d.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics-d.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main-d.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network-d.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system-d.a</linkerLibFileItem>
-            <linkerLibFileItem>../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window-d.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../SFML/lib/libsfml-graphics-d.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../SFML/lib/libsfml-window-d.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../SFML/lib/libsfml-system-d.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../SFML/lib/libsfml-audio-d.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../SFML/lib/libsfml-main-d.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../SFML/lib/libsfml-network-d.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
