@@ -48,11 +48,24 @@ int main()
         exit(0);
     }
     
+    //Cargo la imagen donde reside la textura del sprite
+    sf::Texture tex_rompible;
+    if (!tex_rompible.loadFromFile("resources/rompible.png"))
+    {
+        std::cerr << "Error cargando la imagen plataformasmoviles.png";
+        exit(0);
+    }
+    
     
     //Y creo el spritesheet a partir de la imagen anterior
     sf::Sprite sprite(tex);
     sf::Sprite ascensor1(tex_asc);
     sf::Sprite ascensor2(tex_asc);
+    sf::Sprite rompible1(tex_rompible);
+    sf::Sprite rompible2(tex_rompible);
+    sf::Sprite rompible3(tex_rompible);
+    sf::Sprite rompible4(tex_rompible);
+    
       
     //Le pongo el centroide donde corresponde
     sprite.setOrigin(46/2,139);
@@ -80,15 +93,17 @@ int main()
     suelo2.setOutlineColor(sf::Color::Black);
     
     //SUELO3
-    sf::RectangleShape suelo3(sf::Vector2f(150, 500));
-    suelo3.setPosition(950,500);
+    sf::RectangleShape suelo3(sf::Vector2f(200, 500));
+    suelo3.setPosition(900,500);
     suelo3.setFillColor(sf::Color(120,66,0));
     suelo3.setOutlineColor(sf::Color::Black);
 
-    //BREAKABLE GROUND
-    sf::RectangleShape rompible1(sf::Vector2f(100, 30));
+    //ROMPIBLES
     rompible1.setPosition(500,500);
-    rompible1.setFillColor(sf::Color::Red);
+    rompible2.setPosition(600,500);
+    rompible3.setPosition(700,500);
+    rompible4.setPosition(800,500);
+
   
     
     while (window.isOpen()){  
@@ -165,6 +180,10 @@ int main()
         window.draw(rompible1);      //ROMPIBLE 1
         window.draw(ascensor1);      //ASCENSOR 1
         window.draw(ascensor2);      //ASCENSOR 2
+        window.draw(rompible1);      //ROMPIBLE 1
+        window.draw(rompible2);      //ROMPIBLE 2
+        window.draw(rompible3);      //ROMPIBLE 3
+        window.draw(rompible4);      //ROMPIBLE 4
         window.display();
        
         
