@@ -17,10 +17,10 @@ int main(){
     //Creamos la ventana de juego con unas dimensiones de 1280x600
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Hacer Menu!");
     
-  
-    Menu menu(window.getSize().x, window.getSize().y);
+    Menu *menu = new Menu(window.getSize().x, window.getSize().y);
     
-    menu.run(window);
+    
+    menu->run(window);
     
     return 0;
 }
