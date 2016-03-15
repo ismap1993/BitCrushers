@@ -15,7 +15,7 @@ int main(){
     
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Cargar mapa!");
     
-    
+    /**a ver si se ve este comentario**/
     /***Shapes***/
     
     sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
