@@ -27,7 +27,7 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>"${OUTPUT_PATH}"</runcommand>
-        <rundir>D:\OneDrive\UA\Fundamentos de los videojuegos\Prácticas\PresidentumProject\sumaDeVotos\.</rundir>
+        <rundir>.</rundir>
         <buildfirst>true</buildfirst>
         <console-type>1</console-type>
         <terminal-type>0</terminal-type>
