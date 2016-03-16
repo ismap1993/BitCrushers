@@ -117,6 +117,8 @@ private:
     sf::Text *personaje3;
     sf::Text *textocreditos;
     sf::Text *textoCargarPartida;
+    sf::Text *valorsonido;
+    sf::Text *valormusica;
   
      
 };

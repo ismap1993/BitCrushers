@@ -13,7 +13,7 @@
 
 #include "Menu.h"
 #include <iostream>
-
+#include <sstream>
 
 Menu::Menu(float width, float height) {
     
@@ -100,10 +100,10 @@ Menu::Menu(float width, float height) {
     
     opcionesMenu[0]->setColor(sf::Color::Red);
     opcionesMenu[0]->setString("Control de sonido");
-    opcionesMenu[0]->setPosition(sf::Vector2f(300,200));
+    opcionesMenu[0]->setPosition(sf::Vector2f(280,200));
     
     opcionesMenu[1]->setString("Control de musica");
-    opcionesMenu[1]->setPosition(sf::Vector2f(300, 300));
+    opcionesMenu[1]->setPosition(sf::Vector2f(280, 300));
     
     opcionesMenu[2]->setString("Volver");
     opcionesMenu[2]->setPosition(menuInGame[4]->getPosition().x, menuInGame[4]->getPosition().y);
@@ -155,7 +155,7 @@ Menu::Menu(float width, float height) {
             
             
     //para los metodos submenu y guardar
-    FondomenuInPausa = new sf::RectangleShape(sf::Vector2f(500, 400));
+    FondomenuInPausa = new sf::RectangleShape(sf::Vector2f(550, 400));
     fondo = new sf::RectangleShape(sf::Vector2f(width, height));
     transparente= new sf::Color(255,255,255,128);
     FondomenuInPausa->setFillColor(sf::Color::Black);
@@ -216,17 +216,24 @@ Menu::Menu(float width, float height) {
     textoCargarPartida->setCharacterSize(50);
     
     //opciones
-    barrasonido=new sf::RectangleShape(sf::Vector2f(200, 10));
-    barrasonido->setPosition(550, 235);
-    barramusica=new sf::RectangleShape(sf::Vector2f(200, 10));
-    barramusica->setPosition(550, 335);
+    barrasonido=new sf::RectangleShape(sf::Vector2f(210, 10));
+    barrasonido->setPosition(520, 235);
+    barramusica=new sf::RectangleShape(sf::Vector2f(210, 10));
+    barramusica->setPosition(520, 335);
     tiradorsonido=new sf::RectangleShape(sf::Vector2f(10, 25));
-    tiradorsonido->setPosition(650, 228);
+    tiradorsonido->setPosition(620, 228);
     tiradorsonido->setFillColor(sf::Color::Blue);
     tiradormusica=new sf::RectangleShape(sf::Vector2f(10, 25));
-    tiradormusica->setPosition(650, 328);
+    tiradormusica->setPosition(620, 328);
     tiradormusica->setFillColor(sf::Color::Blue);
-    
+    valorsonido = new sf::Text("50", fuente);
+    valorsonido->setPosition(745, 210);
+    valorsonido->setCharacterSize(40);
+       
+    valormusica = new sf::Text("50", fuente);
+    valormusica->setPosition(745, 310);
+    valormusica->setCharacterSize(40);
+        
     
 }
 
@@ -327,6 +334,7 @@ void Menu::draw(sf::RenderWindow& window, std::vector<sf::Text*> menu){
 }
 
 void Menu::teclas(sf::RenderWindow& window, sf::Event event){
+    int sonido=520;
     switch(event.type){        
         //Si se recibe el evento de cerrar la ventana la cierro
         case sf::Event::Closed:
@@ -348,11 +356,21 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                     }
                     if(enOpciones){
                        
-                        if(GetPressedItemOpciones()==0 && tiradorsonido->getPosition().x<=735){
+                        if(GetPressedItemOpciones()==0 && tiradorsonido->getPosition().x<=715){
                             tiradorsonido->move(5,0);
+                            int valordelonido=tiradorsonido->getPosition().x-sonido;
+                            std::stringstream po;
+                            valordelonido=valordelonido/2;
+                            po<<valordelonido;
+                            valorsonido->setString(po.str());
                         }
-                        if(GetPressedItemOpciones()==1 && tiradormusica->getPosition().x<=735){
+                        if(GetPressedItemOpciones()==1 && tiradormusica->getPosition().x<=715){
                             tiradormusica->move(5,0);
+                            int valordelonido=tiradormusica->getPosition().x-sonido;
+                            std::stringstream po;
+                            valordelonido=valordelonido/2;
+                            po<<valordelonido;
+                            valormusica->setString(po.str());
                         }
                     }
                 break;
@@ -368,11 +386,22 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                     }
                     if(enOpciones){
                         
-                        if(GetPressedItemOpciones()==0 && tiradorsonido->getPosition().x>=555){
+                        if(GetPressedItemOpciones()==0 && tiradorsonido->getPosition().x>=525){
                             tiradorsonido->move(-5,0);
+                            
+                            int valordelonido=(sonido-tiradorsonido->getPosition().x)*(-1);
+                            std::stringstream po;
+                            valordelonido=valordelonido/2;
+                            po<<valordelonido;
+                            valorsonido->setString(po.str());
                         }
-                        if(GetPressedItemOpciones()==1 && tiradormusica->getPosition().x>=555){
+                        if(GetPressedItemOpciones()==1 && tiradormusica->getPosition().x>=525){
                             tiradormusica->move(-5,0);
+                            int valordelonido=(sonido-tiradormusica->getPosition().x)*(-1);
+                            std::stringstream po;
+                            valordelonido=valordelonido/2;
+                            po<<valordelonido;
+                            valormusica->setString(po.str());
                         }
                     }
                 break;
@@ -731,7 +760,8 @@ void Menu::opciones(sf::RenderWindow& window){
         window.draw(*FondomenuInPausa);
     }
     draw(window, opcionesMenu);
-    
+    window.draw(*valorsonido);
+    window.draw(*valormusica);
     window.draw(*barrasonido);
     window.draw(*barramusica);
     window.draw(*tiradorsonido);
