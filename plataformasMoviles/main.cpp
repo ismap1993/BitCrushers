@@ -2,6 +2,7 @@
 #include <vector>
 #include <string> 
 #include <SFML/Graphics.hpp>
+#include "Plataforma.h"
 using namespace std;
 
 #define kVel 15
@@ -104,7 +105,9 @@ int main()
     rompible3.setPosition(700,500);
     rompible4.setPosition(800,500);
 
-  
+    plataforma* plat1 = new plataforma(tex_asc);
+    
+    std::cout << plat1 << std::endl;
     
     while (window.isOpen()){  
         
@@ -178,12 +181,15 @@ int main()
         window.draw(suelo2);         //SUELO 2
         window.draw(suelo3);         //SUELO 3
         window.draw(rompible1);      //ROMPIBLE 1
-        window.draw(ascensor1);      //ASCENSOR 1
-        window.draw(ascensor2);      //ASCENSOR 2
+        //window.draw(ascensor1);      //ASCENSOR 1
+       //window.draw(ascensor2);      //ASCENSOR 2
         window.draw(rompible1);      //ROMPIBLE 1
         window.draw(rompible2);      //ROMPIBLE 2
         window.draw(rompible3);      //ROMPIBLE 3
         window.draw(rompible4);      //ROMPIBLE 4
+        
+        window.draw(*plat1->sprite);
+        
         window.display();
        
         
