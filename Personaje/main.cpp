@@ -66,7 +66,7 @@ int main()
         token[n] = strtok(0, DELIMITER);
         
         if (linea<=2) break; // si no hay mas, se termina el bucle
-        //SOLO nos interesa a partir de la linea 22 del XML
+        //SOLO nos interesa a partir de la linea 2 del XML
         if(linea>2){
             //Vamos almacenando en la matriz segun el parametro que nos interesa en el orden correcto
            if(n==3){ //El tercer elemento corresponde a x

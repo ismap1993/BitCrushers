@@ -52,33 +52,23 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../../../../SFML/lib/libsfml-graphics-d.a ../../../../../SFML/lib/libsfml-graphics-s-d.a ../../../../../SFML/lib/libsfml-window-d.a ../../../../../SFML/lib/libsfml-window-s-d.a ../../../../../SFML/lib/libsfml-system-d.a ../../../../../SFML/lib/libsfml-system-s-d.a ../../../../../SFML/lib/libsfml-audio-d.a ../../../../../SFML/lib/libsfml-audio-s-d.a ../../../../../SFML/lib/libsfml-main-d.a ../../../../../SFML/lib/libsfml-network-d.a ../../../../../SFML/lib/libsfml-network-s-d.a
+LDLIBSOPTIONS=/C/SFML/lib/libsfml-graphics-d.a /C/SFML/lib/libsfml-window-d.a /C/SFML/lib/libsfml-system-d.a /C/SFML/lib/libsfml-main-d.a /C/SFML/lib/libsfml-network-d.a /C/SFML/lib/libsfml-audio-d.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-graphics-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: /C/SFML/lib/libsfml-graphics-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-graphics-s-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: /C/SFML/lib/libsfml-window-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-window-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: /C/SFML/lib/libsfml-system-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-window-s-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: /C/SFML/lib/libsfml-main-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-system-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: /C/SFML/lib/libsfml-network-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-system-s-d.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-audio-d.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-audio-s-d.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-main-d.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-network-d.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ../../../../../SFML/lib/libsfml-network-s-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: /C/SFML/lib/libsfml-audio-d.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -87,7 +77,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personaje.exe: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../../../../../SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/C/SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
