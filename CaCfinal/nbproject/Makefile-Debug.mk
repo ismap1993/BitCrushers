@@ -56,23 +56,23 @@ LDLIBSOPTIONS=/C/SFML/lib/libsfml-graphics-d.a /C/SFML/lib/libsfml-window-d.a /C
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: /C/SFML/lib/libsfml-graphics-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: /C/SFML/lib/libsfml-graphics-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: /C/SFML/lib/libsfml-window-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: /C/SFML/lib/libsfml-window-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: /C/SFML/lib/libsfml-system-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: /C/SFML/lib/libsfml-system-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: /C/SFML/lib/libsfml-audio-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: /C/SFML/lib/libsfml-audio-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: /C/SFML/lib/libsfml-main-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: /C/SFML/lib/libsfml-main-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: /C/SFML/lib/libsfml-network-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: /C/SFML/lib/libsfml-network-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -85,7 +85,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe
 
 # Subprojects
 .clean-subprojects:

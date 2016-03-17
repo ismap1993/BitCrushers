@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=entregablecac
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/entregablecac
+CND_ARTIFACT_NAME_Debug=cacfinal
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/cacfinal
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=entregablecac.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/entregablecac.tar
+CND_PACKAGE_NAME_Debug=cacfinal.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/cacfinal.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=entregablecac
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/entregablecac
+CND_ARTIFACT_NAME_Release=cacfinal
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/cacfinal
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=entregablecac.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/entregablecac.tar
+CND_PACKAGE_NAME_Release=cacfinal.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/cacfinal.tar
 #
 # include compiler specific variables
 #

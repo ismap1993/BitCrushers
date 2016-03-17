@@ -3,8 +3,6 @@
  cuerpo para poder matar a los enemigos que habrán en pantalla para comprobar el
  funcionamiento de su habilidad.*/
 
-//Alfonso sexy ;D
-
 #include <vector>
 #include <string> 
 #include <SFML/Graphics.hpp>
@@ -49,6 +47,7 @@ int main()
   // comenzamos a leer cada una de las lineas
   while (!fin.eof())
   {
+ 
     // esto es para controlar el tamanyo maximo de cada linea
     char buf[MAX_CHARS_PER_LINE];
     fin.getline(buf, MAX_CHARS_PER_LINE);
@@ -66,8 +65,9 @@ int main()
       {
         token[n] = strtok(0, DELIMITER);
         
-        //SOLO nos interesa a partir de la linea 22 del XML
-        if(linea>22){
+        if (linea<=2) break; // si no hay mas, se termina el bucle
+        //SOLO nos interesa a partir de la linea 2 del XML
+        if(linea>2){
             //Vamos almacenando en la matriz segun el parametro que nos interesa en el orden correcto
            if(n==3){ //El tercer elemento corresponde a x
                matriz[posX][0]=atoi(token[n]);
@@ -84,28 +84,18 @@ int main()
            if(n==9){ //El noveno elemento corresponde a h
                matriz[posX][3]=atoi(token[n]);
                posX++;
+               break;
            }
-        }
-
-        if (!token[n]) break; // si no hay mas, se termina el bucle
+        }        
       }
     }
 
-    // imprime los 4 parametros(x,y,w,h) obtenidos de cada linea en la consola
-//    for (int i = 0; i < n; i++){// n = #of tokens
-//        if(linea>22){
-//            if(i==3 || i==5 || i==7 || i==9){
-//                cout << "Token[" << i << "] = " << token[i] << endl;
-//                
-//            }  
-//        }    
-//    } 
-   
     linea++;
+    if(linea==14){break;}
   }
   
   //Esto es para imprimir la matriz obtenida en consola
-    if(linea>22){
+    if(linea>2){
         for(int i=0; i<11;i++){
             for (int j=0;j<4;j++){
                 cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;

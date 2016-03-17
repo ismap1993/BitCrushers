@@ -56,23 +56,23 @@ LDLIBSOPTIONS=../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio.a ../
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -85,7 +85,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregablecac.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cacfinal.exe
 
 # Subprojects
 .clean-subprojects:
