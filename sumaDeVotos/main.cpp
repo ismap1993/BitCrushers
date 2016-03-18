@@ -71,23 +71,23 @@ int main()
     sprite.setPosition(300, 482);
 
     //ARRAY DE VOTOS  
-    vector<sf::Sprite*> votos; //DEFINICOIN DEL VECTOR DE PUNTEROS A SPRITE
+    vector<sf::Sprite*>* votos = new vector<sf::Sprite*>(); //DEFINICOIN DEL VECTOR DE PUNTEROS A SPRITE
     
     for(int i=0;i<6;i++){
         
-        votos.push_back(new sf::Sprite(texvoto));                   //SE AÑADE &Sprite AL VECTOR
-        votos[i]->setTextureRect(sf::IntRect(0*44, 0*50, 44, 50));  //A CADA OBJETO DEL VECTOR SE LE CORRIGE LA TEXTURA
-        votos[i]->setOrigin(64/2,32/2);                             //AJUSTE DEL ORIGEN DEL SPRITE
+        votos->push_back(new sf::Sprite(texvoto));                   //SE AÑADE &Sprite AL VECTOR
+        (*votos)[i]->setTextureRect(sf::IntRect(0*44, 0*50, 44, 50));  //A CADA OBJETO DEL VECTOR SE LE CORRIGE LA TEXTURA
+        (*votos)[i]->setOrigin(64/2,32/2);                             //AJUSTE DEL ORIGEN DEL SPRITE
         
     }
  
     //POSICIONAMIENTO DE LOS MUROS
-    votos[0]->setPosition(200, 382); 
-    votos[1]->setPosition(459, 254);
-    votos[2]->setPosition(724, 320); 
-    votos[3]->setPosition(849, 384);
-    votos[4]->setPosition(957, 287); 
-    votos[5]->setPosition(1187, 290);
+    (*votos)[0]->setPosition(200, 382); 
+    (*votos)[1]->setPosition(459, 254);
+    (*votos)[2]->setPosition(724, 320); 
+    (*votos)[3]->setPosition(849, 384);
+    (*votos)[4]->setPosition(957, 287); 
+    (*votos)[5]->setPosition(100, 290);
     
     //INICIALIZACION DE LA VARIABLE DE CONTEO DE VOTOS
     int votosValue = 0; 
@@ -97,25 +97,31 @@ int main()
     suelo.setOutlineThickness(1.0f);
     suelo.setFillColor(sf::Color(120,66,0));
     suelo.setOutlineColor(sf::Color::Black);
-  
+
     while (window.isOpen()){  
-        
         int i=0;
-        while(i < votos.size()){
+        while(votos!=NULL && i < votos->size()){
             
             //SE COMPRUEBA LA COLISION DEL SPRITE CON TODOS LOS VOTOS PRESENTES
-            if(sprite.getGlobalBounds().intersects(votos[i]->getGlobalBounds())){ 
+            if(sprite.getGlobalBounds().intersects((*votos)[i]->getGlobalBounds())){ 
               
-                delete votos[i];                                     //LIBERA LA MEMORIA RESERVADA A ESE VOTO
-                votos.erase(votos.begin() + i);                      //ELIMINA LA POSICION DEL VECTOR DONDE ESTABA EL VOTO
+                delete (*votos)[i];                                     //LIBERA LA MEMORIA RESERVADA A ESE VOTO
+                votos->erase(votos->begin() + i);                      //ELIMINA LA POSICION DEL VECTOR DONDE ESTABA EL VOTO
                 votosValue++;                                        //AUMENTA EN 1 EL CONTEO DE VOTOS
+                
                 std::cout << "Voto conseguido.." << std::endl;       
-                std::cout << "Votos restates:  " << votos.size() << std::endl;
+                std::cout << "Votos restates:  " << votos->size() << std::endl;
                 break;  
             }
              i++;   //NO HUBO COLISION ENTRE LOS DOS SPRITES COMPARADOS
         }
-
+        if(votos!=NULL)
+        if(votos->empty()){
+            delete votos;
+            votos = NULL;
+        }
+    
+        //std::cout << event.key.code << std::endl;
       hudVotosValue.setString(toString(votosValue)); //PARSEA Y ENVIA LOS VOTOS OBTENIDOS AL HUD
         
         //Bucle de obtención de eventos
@@ -188,7 +194,7 @@ int main()
         
         window.clear(sf::Color(sf::Color::White)); //FONDO EN BLANCO
         
-        for(sf::Sprite* i : votos)window.draw(*i);        //RECORRE EL VECTOR DE VOTOS
+        if(votos!=NULL)for(sf::Sprite* i : *votos)window.draw(*i);        //RECORRE EL VECTOR DE VOTOS
         window.draw(hudVotosValue); //VALOR NUMERICO DE LOS VOTOS
         window.draw(sprite);        //PERSONAJE
         window.draw(hudVotos);      //CARTEL DE VOTOS
