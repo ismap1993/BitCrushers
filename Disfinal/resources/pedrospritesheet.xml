@@ -1,24 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:32c74cb0d6d86752f41babc76f66f3da:1293d1ea8af067ed937861fd308bf98a:c3fabd0705aa1a5dd888c22976f4d39e$ -->
-<!--Format:
-n  => name of the sprite
-x  => sprite x pos in texture
-y  => sprite y pos in texture
-w  => sprite width (may be trimmed)
-h  => sprite height (may be trimmed)
-pX => x pos of the pivot point (relative to sprite width)
-pY => y pos of the pivot point (relative to sprite height)
-oX => sprite's x-corner offset (only available if trimmed)
-oY => sprite's y-corner offset (only available if trimmed)
-oW => sprite's original width (only available if trimmed)
-oH => sprite's original height (only available if trimmed)
-r => 'y' only set if sprite is rotated
-with polygon mode enabled:
-vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
-verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
-triangles  => sprite triangulation, 3 vertex indices per triangle
--->
 <TextureAtlas imagePath="pedrospritesheet.png" width="468" height="296">
     <sprite n="PedroSánchez.png" x="0" y="0" w="78" h="148" pX="0.5" pY="0.5"/>
     <sprite n="PedroSánchezAttDer.png" x="78" y="0" w="114" h="148" pX="0.5" pY="0.5"/>

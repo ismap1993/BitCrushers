@@ -52,23 +52,23 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window-d.a
+LDLIBSOPTIONS=/C/SFML/lib/libsfml-graphics-d.a /C/SFML/lib/libsfml-window-d.a /C/SFML/lib/libsfml-system-d.a /C/SFML/lib/libsfml-audio-d.a /C/SFML/lib/libsfml-main-d.a /C/SFML/lib/libsfml-network-d.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: /C/SFML/lib/libsfml-graphics-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: /C/SFML/lib/libsfml-window-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: /C/SFML/lib/libsfml-system-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: /C/SFML/lib/libsfml-audio-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: /C/SFML/lib/libsfml-main-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: /C/SFML/lib/libsfml-network-d.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -77,7 +77,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/entregabledis.exe: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../../../../../SFML-GCC-4.8.1-MinGW-master/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/C/SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

@@ -40,13 +40,14 @@ int main()
     
 
   ifstream fin;
-  fin.open("resources/marianospritesheet.xml"); // abrir el xml que se va a leer
+  fin.open("resources/albertspritesheet.xml"); // abrir el xml que se va a leer
   if (!fin.good()) 
     return 1; // si el fichero no existe...
   
   // comenzamos a leer cada una de las lineas
   while (!fin.eof())
   {
+ 
     // esto es para controlar el tamanyo maximo de cada linea
     char buf[MAX_CHARS_PER_LINE];
     fin.getline(buf, MAX_CHARS_PER_LINE);
@@ -64,8 +65,9 @@ int main()
       {
         token[n] = strtok(0, DELIMITER);
         
-        //SOLO nos interesa a partir de la linea 22 del XML
-        if(linea>22){
+        if (linea<=2) break; // si no hay mas, se termina el bucle
+        //SOLO nos interesa a partir de la linea 2 del XML
+        if(linea>2){
             //Vamos almacenando en la matriz segun el parametro que nos interesa en el orden correcto
            if(n==3){ //El tercer elemento corresponde a x
                matriz[posX][0]=atoi(token[n]);
@@ -82,28 +84,18 @@ int main()
            if(n==9){ //El noveno elemento corresponde a h
                matriz[posX][3]=atoi(token[n]);
                posX++;
+               break;
            }
-        }
-
-        if (!token[n]) break; // si no hay mas, se termina el bucle
+        }        
       }
     }
 
-    // imprime los 4 parametros(x,y,w,h) obtenidos de cada linea en la consola
-//    for (int i = 0; i < n; i++){// n = #of tokens
-//        if(linea>22){
-//            if(i==3 || i==5 || i==7 || i==9){
-//                cout << "Token[" << i << "] = " << token[i] << endl;
-//                
-//            }  
-//        }    
-//    } 
-   
     linea++;
+    if(linea==15){break;}
   }
   
   //Esto es para imprimir la matriz obtenida en consola
-    if(linea>22){
+    if(linea>2){
         for(int i=0; i<11;i++){
             for (int j=0;j<4;j++){
                 cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
@@ -131,7 +123,7 @@ int main()
     
     //Cargo la imagen donde reside la textura del sprite
     sf::Texture tex;
-    if (!tex.loadFromFile("resources/marianospritesheet.png"))
+    if (!tex.loadFromFile("resources/albertspritesheet.png"))
     {
         std::cerr << "Error cargando la imagen";
         exit(0);
@@ -139,7 +131,7 @@ int main()
     
     //Cargo la imagen donde reside la textura del proyectil
     sf::Texture texproyectil;
-    if (!texproyectil.loadFromFile("resources/marianospritesheet.png"))
+    if (!texproyectil.loadFromFile("resources/albertspritesheet.png"))
     {
         std::cerr << "Error cargando la imagen";
         exit(0);
@@ -347,7 +339,7 @@ int main()
         }
         
         //Destruccion de proyectiles si se salen de cierto rango
-        /*ESTO FALTA POR HACER... RANGO CON UN MARCO?*/
+        /*EL RANGO DE LOS PROYECTILES SERA DEFINIDO MEDIANTE CLASES MAS ADELANTE*/
        
         window.clear(sf::Color(sf::Color::White));
 
@@ -360,6 +352,7 @@ int main()
                 if(disparoTime>0.015){ //Cuanto mayor sea, mas lento ira el proyectil
                     for(int i=0;i<proyectiles.size();i++){   
                         //Si el proyectil se encuentra a la derecha del personaje, ira a la derecha, y sino a la izquierda
+                        //LA DIRECCION DEL PROYECTIL SE DEFINIRA MAS TARDE CON CLASES
                         if(proyectiles[i]->getPosition().x>sprite.getPosition().x){ 
                             proyectiles[i]->move(5,0);
                         }else{
