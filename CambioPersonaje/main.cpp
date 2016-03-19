@@ -1,14 +1,12 @@
-/* ENTREGABLE: Movimiento con personaje principal y cambio de personajes
+/* ENTREGABLE: Cambio de personajes
  * Se moverá el personaje principal con las teclas de desplazamiento
- * en cualquier dirección incluyendo el salto del personaje. Además
+ * en cualquier dirección excepto el salto del personaje. Además
  * se hace el cambio de personaje seleccionandolo con los numeros del
  * teclado 1,2 y 3 respectivamente. En este caso en concreto al pulsar 
  * el 1 aparecerá Pedro Sánchez, el 2 Pablo Iglesias y el 3 Albert
  * Rivera. 
- * Además se ha juntado con el entregable golpeo personaje cuaerpo a 
- * cuerpo:
- Al pulsar la barra espaciadora el personaje usará su golpeo cuerpo a 
- cuerpo para poder matar al enemigo que habrá en pantalla para comprobar el
+ Al pulsar la barra espaciadora cualquier personaje usará su golpeo
+  para poder matar al enemigo que habrá en pantalla para comprobar el
  funcionamiento de su habilidad.*/
 
 #include <vector>
@@ -122,7 +120,7 @@ int main()
   
   
   //Creamos una ventana 
-    sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Movimiento con personaje principal y cambio de personajes");
+    sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Cambio de personajes con movimientos derecha e izquierda con cambio de spritesheet en cada caso");
     
     const float grav=1;
     sf::Vector2f velocity(sf::Vector2f(0,0));
@@ -150,7 +148,7 @@ int main()
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(500, 432);
     
-    bool personaje1=true;
+   
     
     
     sf::Texture tex2;
@@ -174,7 +172,7 @@ int main()
     // Lo dispongo en el centro de la pantalla
     sprite2.setPosition(800, 432);
     
-    bool personaje2=true;
+    
     
     
     sf::Texture tex3;
@@ -198,7 +196,7 @@ int main()
     // Lo dispongo en el centro de la pantalla
     sprite3.setPosition(600, 432);
     
-    bool personaje3=true;
+    
     
     
     sf::RectangleShape suelo(sf::Vector2f(1280, 500));
@@ -228,7 +226,7 @@ int main()
     sf::Clock saltoTime;
     float salto=0;
     
-    float GRAVITY = 0.f;//variable gravity
+    
     
   
     while (window.isOpen()){  
@@ -374,48 +372,29 @@ int main()
                                 sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                                 sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
                                 
-                                /*if(sprite.getPosition().y > suelo.getPosition().y){
-                                    velocity.y+=gravity;
-                                }*/
+                                
                                 
                                 sprite.move(0,-jumpspeed * salto);
-                                /*if(salto>1)
-                                    sprite.setPosition(0,jumpspeed);
-                                */
-                                /*if(jumpspeed){
-                                    
-                                }*/
+                                
                                 
                                 saltoTime.restart();
-                                /*if((sf::Keyboard::Left)){
-                                    sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                    sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
-                                    sprite.move(-10,0);
-                                }*/
+                                
                             }
                             
                             if(p==2){
                                 sprite2.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                                 sprite2.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
                                 sprite2.move(0,-2);
-                                /*if((sf::Keyboard::Left)){
-                                    sprite2.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                    sprite2.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
-                                    sprite2.move(-10,0);
-                                }*/
+                                
                             }
                             
                             if(p==3){
                                 sprite3.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                                 sprite3.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
                                 sprite3.move(0,-2);
-                                /*if((sf::Keyboard::Left)){
-                                    sprite3.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                    sprite3.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
-                                    sprite3.move(-10,0);
-                                }*/
+                                
                             }
-                            //Variables para comprobar si esta mirando a izquierda o derecha
+                            
                             
                         
                             
@@ -478,8 +457,7 @@ int main()
                                     i=2;
                                 }
                             }
-                            //personaje2=false;
-                            //personaje3=false;
+                            
                             p=1;
                             
                         break;
@@ -487,7 +465,7 @@ int main()
                         
                         case sf::Keyboard::Num2:
                             
-                            //personaje2=true;
+                            
                             if(p==1 || p!=2 || p!=3){
                                 sprite2.setPosition(sprite.getPosition().x, sprite.getPosition().y);
                                 if(sprite2.getGlobalBounds().intersects(sprite.getGlobalBounds())){
@@ -501,8 +479,7 @@ int main()
                                 }
                             }
                             
-                            //personaje1=false;
-                            //personaje3=false;
+                           
                             p=2;
                             
                         break;
@@ -510,7 +487,7 @@ int main()
                         
                         case sf::Keyboard::Num3:
                             
-                            //personaje3=true;
+                           
                             if(p==1 || p!=2 || p!=3){
                                 sprite3.setPosition(sprite.getPosition().x, sprite.getPosition().y);
                                 sprite.setPosition(15000000,15000000);
@@ -537,8 +514,7 @@ int main()
                                     i=6;
                             }
                             
-                            //personaje2=false;
-                            //personaje1=false;
+                           
                             p=3;
                             
                         break;
@@ -611,14 +587,7 @@ int main()
        
         window.clear(sf::Color(sf::Color::White));
 
-        //window.draw(sprite);
-//        if(sf::Keyboard::Num2){
-//            window.draw(sprite2);
-//        }
-//        
-//        if(sf::Keyboard::Num3){
-//            window.draw(sprite3);
-//        }
+       
         if(p==1 || p!=2 || p!=3 && (i!=3 && i !=5)){
             window.draw(sprite);
         }
@@ -632,8 +601,7 @@ int main()
         
         
                
-        //window.draw(sprite2);
-        //window.draw(sprite3);
+        
         window.draw(suelo);
         
         if(enemigo1vive==true){
