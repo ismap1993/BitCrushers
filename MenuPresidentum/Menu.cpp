@@ -245,53 +245,58 @@ Menu::~Menu() {
 
 int Menu::run(sf::RenderWindow &window){
     
-      
+    //buclue principal del juego  
     while(window.isOpen()){
-        
-       
+    
         sf::Event event;
         while(window.pollEvent(event)){ 
             
-            teclas(window, event);
+            teclas(window, event); //llamamos a la funcion teclas
+        
         }
         
-        
-        render(window);
+        render(window); //llamamos a la funcion render
 
     }
-    
-    
   
     return 0;
+    
 }
 
 void Menu::render(sf::RenderWindow &window){
+    
+    //aqui mostramos en la ventana las diferentes opciones
     window.clear();
     if(mostrarMenuppal){
+        //aqui estamos en el menu principal
         reinicio();
-        
+        //dibujamos el menu principal
         draw(window, menu);
         if(opcionMenuppal!=6){
-            //actualizamos el valor de mostrar menuppal para que no se muestre
+            //actualizamos el valor de mostrar menuppal para que no se muestre ya que hemos pulsado la tecla enter/espacio para poder seleccionar una opcion
             mostrarMenuppal=false;
         } 
     }else{
         if(opcionMenuppal==0){
-            //dibujamos el juego
+            //dibujamos el juego porque hemos pulsado nueva partida
             enPartida=true;
             nuevaPartida(window);
             if(enPausa){
                 //si estoy pausado me pinta el menuingame
                 submenu(window); 
                 if(opcionMenuInGame==0){
+                    //entramos aqui si hemos pulsado continuar en el menu de pausa
                     enPausa=false;
                     opcionMenuInGame=5;
                 }if(opcionMenuInGame==1){
+                    //estamos en el layout de guardar partida
                     enPausa=true;
                     guardar(window);
                     if(guardando){
+                        //ahora nos pregunta si queremos sobreescribir la partida en caso de que haya una partda guardad
                         sobreescribir(window);
                         if(sobreescrito){
+                            //se ha sobreeescrito correctamente la partida
                             sobreescritocorrectamente(window);
                         }
                     }
@@ -300,40 +305,49 @@ void Menu::render(sf::RenderWindow &window){
             
         }
         if(opcionMenuppal==1){
+            //mostramos la partida cargada
             cargarPartida(window);
         }
         if(opcionMenuppal==2 || enControles){
-            //dibujamos el juego
+            //dibujamos los controles
             enControles=true;
             controles(window);
             
         }
         if(opcionMenuppal==3 || enOpciones){
+            //dibuamos las copiones tanto inGame como desde el menu principal
             opciones(window);
             enOpciones=true;
             /*std::cout<<"estoy o no en pausa en el if"<<std::endl;
             std::cout<<enPausa<<std::endl;*/
         }
         if(opcionMenuppal==4 || enCreditos){
+            //dibujamos los creditos
             creditos(window);
             enCreditos=true;
         }
         if(opcionMenuppal==5){
+            //cerramos la ventana
             window.close();
         }   
     }
-    //estoy mostrando la opcion seleccionada en el menu principal
+    
     window.display();
+
 }
 
 void Menu::draw(sf::RenderWindow& window, std::vector<sf::Text*> menu){
 
+    //con esto dibujamos en pantalla los diferentes menus
     for(sf::Text* i : menu){
         window.draw(*i);
     }
+    
 }
 
 void Menu::teclas(sf::RenderWindow& window, sf::Event event){
+    
+    //con este metodo controlamos los eventos de las teclas pulsadsa
     int sonido=520;
     switch(event.type){        
         //Si se recibe el evento de cerrar la ventana la cierro
@@ -349,14 +363,17 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                     if(opcionMenuInGame==1){
                         //estoy guardando la partida
                         if(!guardando){
+                            //muevo el cursor en el vector de si o no mientras estoy guardando
                             moveDown(guardarsino, selectedItemIndexGuardar);
                         }else{
+                            //estoy sobreescribiendo la partida y me muevo para la siguiente posicion
                             moveDown(sobreescribirsino, selectedItemIndexSobreescribir);
                         }
                     }
                     if(enOpciones){
-                       
+                        //estoy en el menu opciones tanto del menu principal como la del menu pausa
                         if(GetPressedItemOpciones()==0 && tiradorsonido->getPosition().x<=715){
+                            //controlo que el tiradorsonido no se salga de su posicion, muevo el tirador y setteo su valor numero para mostrarlo por pantalla
                             tiradorsonido->move(5,0);
                             int valordelonido=tiradorsonido->getPosition().x-sonido;
                             std::stringstream po;
@@ -365,6 +382,7 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                             valorsonido->setString(po.str());
                         }
                         if(GetPressedItemOpciones()==1 && tiradormusica->getPosition().x<=715){
+                            //controlo que el tiraormusica no se salga de su posicion, muevo el tirador y setteo su valor numero para mostrarlo por pantalla
                             tiradormusica->move(5,0);
                             int valordelonido=tiradormusica->getPosition().x-sonido;
                             std::stringstream po;
@@ -379,13 +397,15 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                     if(opcionMenuInGame==1){
                         //estoy guardando la partida
                         if(!guardando){
+                            //muevo el cursor en el vector de si o no mientras estoy guardando
                             moveUp(guardarsino, selectedItemIndexGuardar);
                         }else{
+                            //estoy sobreescribiendo la partida y me muevo para la siguiente posicion
                             moveUp(sobreescribirsino, selectedItemIndexSobreescribir);
                         }
                     }
                     if(enOpciones){
-                        
+                        //estoy en el menu opciones tanto del menu principal como la del menu pausa
                         if(GetPressedItemOpciones()==0 && tiradorsonido->getPosition().x>=525){
                             tiradorsonido->move(-5,0);
                             
@@ -407,6 +427,7 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                 break;
 
                 case sf::Keyboard::Up:
+                    //nos movemos hcia arriba segun en el menu en el que estemos
                     if(mostrarMenuppal){
                         moveUp(menu, selectedItemIndex);
                     }
@@ -419,6 +440,7 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                 break;
 
                 case sf::Keyboard::Down:
+                    //nos movemos hacia abajo segun en el menu en el qe nos encontremos
                     if(mostrarMenuppal){
                         moveDown(menu, selectedItemIndex);
                     }
@@ -441,11 +463,15 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                         }
                     }
                     if(enPausa){
+                        //estamos en pausa
                         if(opcionMenuInGame!=1){
+                            //NO hemos presionado 'continuar'
                             if(GetPressedItemInPausa()==2){
+                                //estamos en controles
                                 enControles=true;
                                 selectedItemIndexInPausa=0;
                                 int i=0;
+                                //reseteamos los colores del menu
                                 for(i=0; i<menuInGame.size(); i++){
                                     if(GetPressedItem()==i){
                                         menuInGame[i]->setColor(sf::Color::Red);
@@ -461,28 +487,22 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                                 pausaopciones=true;
                                 std::cout<<"Estoy en el menu opciones"<<std::endl;
                                 selectedItemIndexInPausa=0;
-                                std::cout<<GetPressedItemOpciones()<<std::endl;
-                                std::cout<<enPausa<<std::endl;
-                                std::cout<<enOpciones<<std::endl;
-                                
                                 if(GetPressedItemOpciones()==2 && pausaopciones){
+                                    //salimos al menu de pausa
                                     mostrarMenuppal=false;
                                     enOpciones=false;
                                     pausaopciones=false;
-                                    std::cout<<"debo salir al menu de pausa"<<std::endl;
                                 }
-                                
-                                
-                                
                             }
                             if(GetPressedItemInPausa()==4){
-                                std::cout<<"he presionado salir al menu principal"<<std::endl;
+                                ///he presionado salir al menu principal
                                 reinicio();
                                 mostrarMenuppal=true;
                                 enPausa=false;
                                 enPartida=false;
                                 opcionMenuppal=6;
                                 selectedItemIndexInPausa=0;
+                                //setteamos el menu para que los colores se muestren correctamente
                                 int i=0;
                                     for(i=0; i<menuInGame.size(); i++){
                                         if(GetPressedItem()==i){
@@ -492,6 +512,7 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                                         }   
                                     }
                             }
+                            //setteo de diferentes varaibles para poder volver al menu
                             opcionMenuInGame=GetPressedItemInPausa();
                             selectedItemIndexInPausa=0;
                             selectedItemIndexGuardar=0;
@@ -501,30 +522,37 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                             sobreescribirsino[0]->setColor(sf::Color::Red);
                             sobreescribirsino[1]->setColor(sf::Color::White);
                         }else{
+                            //he seleccionado guardar partida
                             if(guardando && GetPressedItemSobreescribir()==0 && !sobreescrito){
-                                
+                                //sobreescribirmos
                                 sobreescrito=true;
                             }
                             if(GetPressedItemGuardar()==0){
+                                //hemos presionado que queremos guardar
                                 guardando=true;
                             } 
                             
                         }
                     }
                     if(enOpciones){
+                        //estmoas en opciones
                         if(GetPressedItemOpciones()==0){
+                            //estamos en sonido
                            enSonido=true; 
                         }
                         if(GetPressedItemOpciones()==1){
+                            //estamos en musica
                             enMusica=true;
                         }
                         if(GetPressedItemOpciones()==2 && !pausaopciones && !enPausa){
+                            //salimos del menu opciones al menuy principal
                             mostrarMenuppal=true;
                             pausaopciones=false;
                             enOpciones=false;
                             opcionMenuppal=6;
                             //selectedItemIndexOpciones=0;
                             int i=0;
+                            //reseteamos el menu
                             for(i=0; i<opcionesMenu.size(); i++){
                                 if(i==0){
                                     opcionesMenu[i]->setColor(sf::Color::Red);
@@ -537,12 +565,13 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                         selectedItemIndexOpciones=GetPressedItemOpciones();
                         
                     }if(GetPressedItemOpciones()==2){
-                        std::cout<<"a ver si ahora al darle a volver sale este exto"<<std::endl;
+                        //salimos al menu de pausa
                         enOpciones=false;
                         enPausa=true;
                         pausaopciones=false;
                         selectedItemIndexOpciones=0;
                         int i=0;
+                        //reseteamos el menuIKnGame y el menu de opciones
                         for(i=0; i<opcionesMenu.size(); i++){
                             if(i==0){
                                 opcionesMenu[i]->setColor(sf::Color::Red);
@@ -565,12 +594,16 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                 //Tecla ESC para salir
                 case sf::Keyboard::Escape:
                     if(mostrarMenuppal){
+                        //si estoy en el menu principal y pulso ESC salgo de la pantalla
                         window.close();
                     }
                     if(enPartida){
+                        //estoy en eljuego
                         if(enPausa){
+                            //estoy en pausa
                             selectedItemIndexInPausa=0;
                             int i=0;
+                            //seteto el menu
                             for(i=0; i<menuInGame.size(); i++){
                                 if(GetPressedItem()==i){
                                     menuInGame[i]->setColor(sf::Color::Red);
@@ -579,15 +612,17 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                                 }   
                             }
                             if(opcionMenuInGame==1){
+                                //salgo de la sopcion guardar y vuelvo al emnu en pausa
                                 opcionMenuInGame=5;
-                                std::cout<<"Saliendo de guardar"<<std::endl;
                                 guardando=false;
                                 sobreescrito=false;
                             }else{
                                 if(opcionMenuInGame==2){
+                                    //salgo de controles
                                     enControles=false;
                                 }
                                 if(opcionMenuInGame==3 && pausaopciones){
+                                    //salgo de opciones para ir al menuInGame
                                     enOpciones=false;
                                     pausaopciones=false;
                                     enPausa=true;
@@ -601,7 +636,8 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                             }
                             
                         }else{
-                            std::cout<<"Estoy en pausa, claro, donde voy a estar sino"<<std::endl;
+                            //me meto en pausa
+                            /*std::cout<<"Estoy en pausa, claro, donde voy a estar sino"<<std::endl;
                             std::cout<<enPartida<<std::endl;
                             std::cout<<enCargar<<std::endl;
                             std::cout<<enOpciones<<std::endl;
@@ -613,16 +649,10 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
                             std::cout<<enSonido<<std::endl;
                             std::cout<<enMusica<<std::endl;
                             std::cout<<pausaopciones<<std::endl;
-                            std::cout<<"impresas todas las variables booleanas"<<std::endl;
-                            
-                            
-                            
-                            
+                            std::cout<<"impresas todas las variables booleanas"<<std::endl;*/
                             enPausa=true;
-                            std::cout<<enPausa <<std::endl;
                            
-                        }
-                        
+                        }  
                     }  
                     if(enControles){
                         if(enPausa){
@@ -675,6 +705,8 @@ void Menu::teclas(sf::RenderWindow& window, sf::Event event){
 }
 
 void Menu::moveUp(std::vector<sf::Text*> menu, int &iterator){
+    
+    //con este metodo me desplazo hacia arriba en las opciones, 3, 2, 1
     if(iterator-1>=0){
         menu[iterator]->setColor(sf::Color::White);
         iterator--;
@@ -684,31 +716,28 @@ void Menu::moveUp(std::vector<sf::Text*> menu, int &iterator){
 
 void Menu::moveDown(std::vector<sf::Text*> menu, int &iterator){
     
+    //con este metodo me desplazo hacia abajo en el menu de opciones, 1, 2, 3
     if(iterator+1<menu.size()){
         menu[iterator]->setColor(sf::Color::White);
         iterator++;
-        std::cout<<iterator<<std::endl;
-        std::cout<<"acabo de imprimir le iterator"<<std::endl;
         menu[iterator]->setColor(sf::Color::Red);
     }
 }
 
 void Menu::nuevaPartida(sf::RenderWindow &window){
+    
     //Aqui cargo el fondo para poder lanzar el juego. Metodo: nuevaPartida
-        
-    //std::cout<<"hasta aqui llego en la funcion nuevaPartida"<<std::endl;
-    //cargartextura(texturaBackground, background);// de momento no tengo que usarlo
     window.draw(*background);
+
 }
 
 void Menu::submenu(sf::RenderWindow& window){
     
-    
+    //imprime el recuadro de pausa y el menu
     window.draw(*fondo);//para poder una transparencia
     window.draw(*FondomenuInPausa);
     draw(window, menuInGame);
     //std::cout<<"estoy aqui, en el metodo submenu"<<std::endl;
-    
 
 }
 
@@ -718,6 +747,7 @@ void cargartextura(sf::Texture textura, sf::Sprite &sprite){
 
 void Menu::guardar(sf::RenderWindow &window){
  
+    //pregunta si queremos guardar la partida
     window.draw(*FondomenuInPausa);
     window.draw(*desea);
     window.draw(*guardarsino[0]);
@@ -727,6 +757,7 @@ void Menu::guardar(sf::RenderWindow &window){
 
 void Menu::sobreescribir(sf::RenderWindow& window){
    
+    //pregunta si queremos sobreescribir la partida
     window.draw(*sobreescribirText);
     window.draw(*sobreescribir2Text);
     window.draw(*sobreescribirsino[0]);
@@ -735,11 +766,15 @@ void Menu::sobreescribir(sf::RenderWindow& window){
 }
 
 void Menu::sobreescritocorrectamente(sf::RenderWindow &window){
+    
+    //metodo que muestra que la partida se ha guardado correctamente
     window.draw(*sobrescrita);
+
 }
 
 void Menu::controles(sf::RenderWindow& window){
 
+    //mostramos los controles, la proxima vez se mostrara una imagen
     window.clear();
     window.draw(*izquierda);
     window.draw(*derecha);
@@ -772,12 +807,14 @@ void Menu::opciones(sf::RenderWindow& window){
 
 void Menu::creditos(sf::RenderWindow& window){
    
+    //mostramos los creditos
     window.draw(*textocreditos);    
     
 }
 
 void Menu::cargarPartida(sf::RenderWindow &window){
 
+    //cargamos la partida guardada
     window.clear();
     window.draw(*textoCargarPartida);
  
@@ -785,6 +822,7 @@ void Menu::cargarPartida(sf::RenderWindow &window){
 
 void Menu::reinicio(){
  
+    //reiniciamos las variables booleanas
     enPartida = false;
     enCargar = false;
     enOpciones = false;

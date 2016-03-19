@@ -8,35 +8,43 @@
 #include "Cargar.h"
 #include <math.h> 
 //velocidad a la que se mueve el personaje
-#define kVel 15
+#define kVel 10
 
 
 
 int main(){
-    sf::RenderWindow window(sf::VideoMode(1066, 600), "SFML works!");
-    /*sf::CircleShape shape(380.f);
-    shape.setFillColor(sf::Color::White);
-    shape.setOrigin(800.0, -20.0);*/
+    sf::RenderWindow window(sf::VideoMode(1066, 600), "Movimiento de la camara y cargar el mapa!");
+    
+    //Creo un personaje para poder moverlo
     sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
+    
+    //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
     Cargar *mapa = new Cargar();
     mapa->leerMapa();
     
+    //Creo la camara con el ancho y el largo de la ventana, ademas le paso la cantidad de pixeles que se mueve el personaje y el mapa
     Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
     
-    
+    //modifico los parametros del personaje
     personaje->setFillColor(sf::Color::Red);
     personaje->setOutlineColor(sf::Color::Blue);
     personaje->setOutlineThickness(10);
     personaje->setPosition(100, 415);
     
+    //menssajes para comprobar cuanto ocupa el mapa
+    /*
     std::cout<< mapa->_tileWidth <<std::endl;
     std::cout<< mapa->_width <<std::endl;
     std::cout<< mapa->_tileWidth*mapa->_width <<std::endl;
+    */
     
+    //creo un vector de fondos para ponerlo detras del mapa
     std::vector<sf::Sprite*> fondos;
+    //variable para saber cuantas veces he de pintar el fondo ya que el mapa tiene mas pixeles que el fondo
     int cuantasVecesDeboPintarElFondo=(mapa->_tileWidth*mapa->_width)/mapa->fondo.getGlobalBounds().width;
     cuantasVecesDeboPintarElFondo=trunc(cuantasVecesDeboPintarElFondo)+1;
     
+    //cargo la textura del fondo
     sf::Texture tex;
     if (!tex.loadFromFile("resources/background.jpg"))
     {
@@ -44,11 +52,14 @@ int main(){
         exit(0);
     }
     
+    //relleno el vector de fondos con el valor cuantasVecesDeboPintarElFondo
     for(int i=0; i<cuantasVecesDeboPintarElFondo; i++){
         fondos.push_back(new sf::Sprite());
         fondos[i]->setTexture(tex);
         fondos[i]->setPosition(mapa->fondo.getGlobalBounds().width*i, 0);
     }
+    
+    
     while (window.isOpen()){
         //Bucle de obtención de eventos
         sf::Event event;
@@ -65,11 +76,13 @@ int main(){
                         
                         //Mapeo del cursor
                         case sf::Keyboard::Right:
+                            //muevo a la derecha el personaje y la camara con el metodo moveRight
                             personaje->move(kVel, 0);
                             camara->moveRight(*personaje);
                         break;
 
                         case sf::Keyboard::Left:
+                            //muevo a la izquierda el personaje y la camara con el metodo moveLeft
                             personaje->move(-kVel, 0);
                             camara->moveLeft(*personaje);
                         break;
@@ -98,18 +111,26 @@ int main(){
             }
             
         }     
-    window.clear();
-    //window.draw(mapa->fondo);
-    for(sf::Sprite* q : fondos){
-        window.draw(*q); 
-    }
-    
-    mapa->dibuja(window);
-    
-    window.draw(*personaje);
-    camara->draw(window);
-    //window.draw(shape);
-    window.display();
+        
+        
+        /**Render**/
+        window.clear();
+        
+        //dibujo los fondos
+        for(sf::Sprite* q : fondos){
+            window.draw(*q); 
+        }
+        
+        //dibujo el mapa con su metodo
+        mapa->dibuja(window);
+        
+        //dibujo el personaje
+        window.draw(*personaje);
+        
+        //setteo la camara
+        camara->draw(window);
+        
+        window.display();
 
     }
     

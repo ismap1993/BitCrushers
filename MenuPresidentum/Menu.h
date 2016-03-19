@@ -73,14 +73,15 @@ private:
     int selectedItemIndexGuardar;
     int selectedItemIndexSobreescribir;
     int selectedItemIndexOpciones;
+    
     sf::Font fuente;
+    
     std::vector<sf::Text*> menu;
     std::vector<sf::Text*> menuInGame;
     std::vector<sf::Text*> guardarsino;
     std::vector<sf::Text*> sobreescribirsino;
     std::vector<sf::Text*> opcionesMenu;
-    //sf::Text menu [MAX_NUMBER_OF_ITEMS];
-    //sf::Text menuInGame [5];
+
     bool mostrarMenuppal;
     bool enPartida;
     bool enCargar;
@@ -93,8 +94,11 @@ private:
     bool enSonido;
     bool enMusica;
     bool pausaopciones;
+    
     sf::Sprite *background;
+    
     sf::Texture texturaBackground;
+    
     sf::RectangleShape *FondomenuInPausa;
     sf::RectangleShape *barrasonido;
     sf::RectangleShape *barramusica;

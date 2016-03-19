@@ -20,31 +20,31 @@ public:
     Cargar();
     Cargar(const Cargar& orig);
     virtual ~Cargar();
+    
     void leerMapa();
     void dibuja(sf::RenderWindow &window);
+    
     sf::Sprite  fondo;
     int _width;
     int _tileWidth;
-    sf::Texture getTextura();
+ 
 private:
+    
     int ***_tilemap;
     int _numLayers;
     int _height;
     int _tileHeigth;
     
     sf::Sprite ****_tilemapSprite;
-    sf::Texture _tilesetTexture;
     sf::Sprite *_tilesetSprite;
     sf::Sprite te;
-
-    sf::VertexArray m_vertices;
+    
+    sf::Texture _tilesetTexture;
     sf::Texture m_tileset;
-
-    /*ANADIDO*/
     sf::Texture fond;
      
-     /*ANADIDO*/
-
+    sf::VertexArray m_vertices;
+    
 };
 
 #endif	/* CARGAR_H */

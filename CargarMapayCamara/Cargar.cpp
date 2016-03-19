@@ -15,7 +15,7 @@
 using namespace std;
 
 Cargar::Cargar() {
-    
+    //constructor vacio
     
 }
 
@@ -23,6 +23,7 @@ Cargar::Cargar(const Cargar& orig) {
 }
 
 Cargar::~Cargar() {
+    //metodo que elimina el mapa
     for(int l=0; l<_numLayers; l++){
         for(int y=0; y<_height; y++){
             delete[] _tilemap[l][y];
@@ -33,19 +34,20 @@ Cargar::~Cargar() {
 }
 
 void Cargar::leerMapa(){
-       /*ANADIDO*/
+
+    //cargo la textura del fondo
     if(!fond.loadFromFile("resources/background.jpg")){
-        std::cerr << "Error cargando la imagen fondooo.png";
+        std::cerr << "Error cargando la imagen background.png";
         exit(0);
     }
-    
     fondo.setTexture(fond);
-    /*ANADIDO*/
 
+    //creo el objeto xml
     TiXmlDocument doc;
     doc.LoadFile("resources/mapaMario.tmx");
     TiXmlElement* map = doc.FirstChildElement("map");
-
+    
+    //leo sus atributos
     map->QueryIntAttribute("width",&_width);
     map->QueryIntAttribute("height",&_height);
     map->QueryIntAttribute("tilewidth",&_tileWidth);
@@ -59,15 +61,17 @@ void Cargar::leerMapa(){
         img=img->NextSiblingElement("tileset");
     }
     
+    
     string filename;
 
     img = map->FirstChildElement("tileset");
-    
+    //guardamos en filename el spritesheet
     while(img){
         filename=(string)img->FirstChildElement("image")->Attribute("source");
         img=img->NextSiblingElement("tileset");
     }  
-
+    
+    //leemos las diferentes capas
     _tilesetTexture.loadFromFile(filename);
     TiXmlElement *layer = map->FirstChildElement("layer");
     while(layer){
@@ -88,12 +92,12 @@ void Cargar::leerMapa(){
     }
 
     TiXmlElement *data;
-    
+    //leemos el atributo imagen
     layer = map->FirstChildElement("layer");
     string *name=new string[_numLayers];
     int j=0;
     int l=0;
-      
+    //leo los tiles del xml y avanzo a la siguiente posicion
     while(layer){
         data= layer->FirstChildElement("data")->FirstChildElement("tile");
         name[j]= (string)layer->Attribute("name");
@@ -110,7 +114,7 @@ void Cargar::leerMapa(){
         j++;
     }
       
-       //Reserva de memoria para los sprites
+    //Reserva de memoria para los sprites
     _tilemapSprite=new sf::Sprite***[_numLayers];
       
     for(int l=0; l<_numLayers; l++){
@@ -128,12 +132,12 @@ void Cargar::leerMapa(){
     sf::Texture aux;  
     
     //falta el corte
-  
+    
     int columns = _tilesetTexture.getSize().x / _tileWidth;
     int rows = _tilesetTexture.getSize().y / _tileHeigth;
     
     cout<<columns<<" "<<rows<<endl; 
-
+    
     _tilesetSprite =new sf::Sprite[columns*rows];     
     int t=0;
     for(int y=0; y<rows; y++){
@@ -215,14 +219,9 @@ void Cargar::leerMapa(){
 
 
 void Cargar::dibuja(sf::RenderWindow& window){
-    /*ANADIDO*/
-    //window.draw(fondo);
-    //sf::View view=window.getView();
-
-    //fondo.setPosition(view.getCenter().x-fond.getSize().x/2,view.getCenter().y-fond.getSize().y/2);
-    //window.draw(fondo);
     
-    /*ANADIDO*/
+    
+    //dibujamos el mapa
     for(int t=0; t<_numLayers; t++){
         for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
@@ -235,8 +234,3 @@ void Cargar::dibuja(sf::RenderWindow& window){
 
 }
 
-sf::Texture Cargar::getTextura(){
-    
-    return *fondo.getTexture();
-
-}

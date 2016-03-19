@@ -21,20 +21,26 @@ public:
     Camara(int width, int height, int desp, Cargar &mapa);
     Camara(const Camara& orig);
     virtual ~Camara();
+    
     void draw(sf::RenderWindow &window);
     void moveRight(sf::RectangleShape& personaje);
     void moveLeft(sf::RectangleShape& personaje);
     
     
 private:
+    
     int ancho;
     int alto;
-    sf::View *camara;
     int desplazamientoCamara;
     int posicionOrigenCamara;
     int kVel;
+    
+    sf::View *camara;
+    
     Cargar *mapa;
+    
     sf::Sprite background;
+    
 };
 
 #endif /* CAMARA_H */

@@ -40,13 +40,16 @@ Camara::~Camara() {
 void Camara::draw(sf::RenderWindow& window){
     
     window.setView(*camara);
+    
 }
 
 void Camara::moveRight(sf::RectangleShape &personaje){
     
     if(desplazamientoCamara==0){
-        std::cout<<mapa->_tileWidth*mapa->_width<<std::endl;
-        if(personaje.getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(mapa->_tileWidth*mapa->_width*0.79)){
+        //comprobamos que la posicion del personaje sea mayor que la camara y que el centro de la camara sea menor del fondo
+        if(personaje.getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(background.getLocalBounds().width*0.79)){
+        //if(personaje.getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(mapa->_tileWidth*mapa->_width*0.79)){
+            std::cout<<(mapa->_tileWidth*mapa->_width*0.79)<<std::endl;
             //con background.getLocalBounds().width*0.79 calculo la parte derecha del mapa para fijar la camara
             camara->move(kVel,0);
             desplazamientoCamara=desplazamientoCamara+kVel; 
@@ -58,7 +61,12 @@ void Camara::moveRight(sf::RectangleShape &personaje){
         }*/
 
     }else{
-        if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(mapa->_tileWidth*mapa->_width*0.79)){
+        //con esto averiguamos el margen derecho para saber cuando parar la camara al llegar al final del mapa
+        int margen= background.getLocalBounds().width-(background.getLocalBounds().width*0.79);
+        if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(personaje.getPosition().x+margen) &&
+            (personaje.getPosition().x+margen)<(mapa->_tileWidth*mapa->_width)){
+        //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(background.getLocalBounds().width*0.79)){
+        //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(mapa->_tileWidth*mapa->_width*0.79)){
             camara->move(kVel,0);
             desplazamientoCamara=desplazamientoCamara+kVel;  
 
