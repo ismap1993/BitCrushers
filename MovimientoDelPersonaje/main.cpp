@@ -238,9 +238,9 @@ int main()
     
     sf::Vector2f posicionJugador(100, 100);
     sf::Vector2f velocidadJugador(0, 0);
-    const float gravedad = 0.2;
+    const float gravedad = 0.5;
     int alturaSuelo = suelo.getPosition().y - 65;
-    float velocidadSalto = 7, velocidadMovimiento = 5;
+    float velocidadSalto = 11, velocidadMovimiento = 5;
     bool salto = false;
 
     
