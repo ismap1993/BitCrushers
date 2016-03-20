@@ -256,7 +256,7 @@ int main()
                         case sf::Keyboard::Right:
                                std::cerr << "entra";
                                 trans31.setString( std::to_string(n));
-                            n++; 
+                            n++; //subir nivel, para probar que cambia
                             
                             break;
                             

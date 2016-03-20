@@ -334,9 +334,11 @@ int main()
     while (window.isOpen())
     { 
         
+         
+        
         //TIMER - 30 SECONDS
                 int timer = clock.getElapsedTime().asSeconds();
-                std::cout << timer << std::endl;
+               
 
                 if (timer > 0 && countdown !=0) {
                     countdown--;
@@ -369,12 +371,14 @@ int main()
                     //Verifico si se pulsa alguna tecla de movimiento
                     switch(event.key.code) {
                         
+                        //para cambiar sprite vida principal
                          case sf::Keyboard::Right:
                             i=1;
                             break;
                          
                          case sf::Keyboard::Left:
                             i=0;
+                         
                             break;
                         
                         
