@@ -44,9 +44,9 @@ int main()
     
     //Cargo la imagen donde reside la textura del sprite
     sf::Texture tex;
-    if (!tex.loadFromFile("resources/caracol.png"))
+    if (!tex.loadFromFile("resources/pedro.png"))
     {
-        std::cerr << "Error cargando la imagen caracol.png";
+        std::cerr << "Error cargando la imagen pedro.png";
         exit(0);
     }
     
@@ -62,13 +62,10 @@ int main()
     sf::Sprite sprite(tex);
       
     //Le pongo el centroide donde corresponde
-    sprite.setOrigin(64/2,32/2);
-
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(0*64, 0*32, 64, 32));
+    sprite.setOrigin(46/2,139/2);
     
     // Lo dispongo en el centro de la pantalla
-    sprite.setPosition(300, 482);
+    sprite.setPosition(450, 430);
 
     //ARRAY DE VOTOS  
     vector<sf::Sprite*>* votos = new vector<sf::Sprite*>(); //DEFINICOIN DEL VECTOR DE PUNTEROS A SPRITE
@@ -145,8 +142,7 @@ int main()
                         
                         //Mapeo del cursor
                         case sf::Keyboard::Right:
-                            sprite.setTextureRect(sf::IntRect(0*64, 0*32, 64, 32));
-                            //Escala por defecto
+                            
                             sprite.setScale(1,-1);
                             sprite.setRotation(180);
                             sprite.move(kVel,0);
@@ -154,7 +150,6 @@ int main()
                         break;
 
                         case sf::Keyboard::Left:
-                            sprite.setTextureRect(sf::IntRect(0*64, 0*32, 64, 32));
                             //Reflejo vertical
                             sprite.setScale(1,1);
                             sprite.setRotation(0);
