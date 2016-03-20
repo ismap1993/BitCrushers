@@ -42,8 +42,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-std=c++11
+CXXFLAGS=-std=c++11
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -52,35 +52,35 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network-d.a ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network.a
+LDLIBSOPTIONS=../../../../../SFML/lib/libsfml-graphics-d.a ../../../../../SFML/lib/libsfml-graphics.a ../../../../../SFML/lib/libsfml-window-d.a ../../../../../SFML/lib/libsfml-window.a ../../../../../SFML/lib/libsfml-system-d.a ../../../../../SFML/lib/libsfml-system.a ../../../../../SFML/lib/libsfml-audio-d.a ../../../../../SFML/lib/libsfml-audio.a ../../../../../SFML/lib/libsfml-main-d.a ../../../../../SFML/lib/libsfml-main.a ../../../../../SFML/lib/libsfml-network-d.a ../../../../../SFML/lib/libsfml-network.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-graphics-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-graphics.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-graphics.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-window-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-window.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-window.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-system-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-system.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-system.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-audio-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-audio.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-audio.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-main-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-main.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-main.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-network-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML-GCC-4.8.1-MinGW-master/lib/libsfml-network.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ../../../../../SFML/lib/libsfml-network.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -89,7 +89,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ${OBJECTFI
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../../../../../SFML-GCC-4.8.1-MinGW-master/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../../../../../SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

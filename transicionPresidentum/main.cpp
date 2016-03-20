@@ -144,45 +144,59 @@ int main()
      
      
      sf::Text opciones("Pulsa 1 para ver la introduccion""\n""\n""Pulsa 2 para ver el nivel tutorial""\n""\n" "Pulsa 3 para ver el nivel en el que te encuentras""\n""\n""Pulsa 4 para ver los puntos obtenidos en este nivel""\n""\n""Pulsa 5 para ver los creditos finales", fontpixelated, 50);
-     opciones.setPosition(320,150);
-     opciones.setCharacterSize(20);
-     opciones.setColor(sf::Color::White);
+     opciones.setPosition(235,150);
+     opciones.setCharacterSize(30);
+     opciones.setColor(sf::Color::Black);
      
      sf::Text trans1("El pais se encuentra en un momento de gran inestabilidad politica y esta sumido en una profunda crisis economica," 
      "\n""con una gran tasa de paro, muchos casos de corrupcion, etc.""\n""\n""\n"" Tu objetivo es que tu partido llegue a presidir el gobierno." "\n" "Para ello deberas superar los distintos niveles derrotando a tus enemigos y consiguiendo el mayor numero de votos."
-     "\n""Ademas, al final de cada nivel deberas enfrentarte a un jefe final y si lo deseas podras pactar con el.""\n""\n""\n""Al derrotar todos los jefes te convertiras en el presidente del pais." "\n" "¿Apostaras por el bipartidismo "
+     "\n""Ademas, al final de cada nivel deberas enfrentarte a un jefe final y si lo deseas podras pactar con el.""\n""\n""\n""Al derrotar todos los jefes te convertiras en el presidente del pais." "\n" "Apostaras por el bipartidismo "
      "o por las nuevas fuerzas?""\n""EL PAIS TE NECESITA Y SOLO CON TU AYUDA SE PODRA ACABAR CON ESTA LOCURA.", fontpixelated, 50);
      trans1.setPosition(10,100);
      trans1.setCharacterSize(20);
-     trans1.setColor(sf::Color::White);
+     trans1.setColor(sf::Color::Black);
      
      
      
-     sf::Text trans2("Este es un nivel de tutorial, sigue las indicaciones y ¡derrota a tus enemigos!", fontpixelated, 50);
-     trans2.setPosition(10,100);
-     trans2.setCharacterSize(20);
-     trans2.setColor(sf::Color::White);
+     sf::Text trans2("Este es un nivel de tutorial, sigue las indicaciones y derrota a tus enemigos", fontpixelated, 50);
+     trans2.setPosition(50,200);
+     trans2.setCharacterSize(22);
+     trans2.setColor(sf::Color::Black);
+     
+     int n=1;
+     
+     sf::Text trans3("Te encuentras en el nivel:", fontpixelated, 50);
+     trans3.setPosition(100,200);
+     trans3.setCharacterSize(22);
+     trans3.setColor(sf::Color::Black);
+     
+    std::string countdownString;
+    std::ostringstream convert;
+    convert << n;
+    countdownString = convert.str();
+    
+     sf::Text trans31;
+     trans31.setFont(font);
+     trans31.setString(countdownString);
+     trans31.setPosition(350,200);
+     trans31.setCharacterSize(22);
+     trans31.setColor(sf::Color::Black);
      
      
-     sf::Text trans3("Te encuentras en el nivel: 2 ", fontpixelated, 50);
-     trans3.setPosition(10,100);
-     trans3.setCharacterSize(20);
-     trans3.setColor(sf::Color::White);
+     
+     sf::Text trans4("ENHORABUENA. Has superado el nivel""\n" "\n""VOTOS CONSEGUIDOS: 28""\n""\n"
+     "PACTO: NO REALIZADO""\n""\n""ENEMIGOS DERROTADOS: 3""\n""\n""SIMPATIZANTE LIBERADO: SI""\n"
+     "\n""TIEMPO: 2m 30s" , fontpixelated, 50);
+     trans4.setPosition(50,100);
+     trans4.setCharacterSize(22);
+     trans4.setColor(sf::Color::Black);
      
      
-     sf::Text trans4("ENHORABUENA. Has superado el nivel!" "\n""VOTOS CONSEGUIDOS:28""\n"
-     "PACTO:NO REALIZADO""\n""ENEMIGOS DERROTADOS:3""\n""SIMPATIZANTE LIBERADO:SI"
-     "\n""TIEMPO:2m 30s" , fontpixelated, 50);
-     trans4.setPosition(10,100);
-     trans4.setCharacterSize(20);
-     trans4.setColor(sf::Color::White);
-     
-     
-     sf::Text trans5("FELICIDADES, ERES EL NUEVO PRESIDENTE""\n""VOTOS CONSEGUIDOS:28""\n""PACTOS REALIZADOS:3"
-     "\n""ENEMIGOS DERROTADOS:15""\n""SIMPATIZANTES LIBERADOS:4""\n""TIEMPO:3m 35s""\n""\n""Llegan nuevos tiempo para el pais, CIUDADANOS ha llegado al poder y se presagian grandes cambios en la sociedad.""\n" "Se respiran nuevos aires.", fontpixelated, 50);
-     trans5.setPosition(10,100);
-     trans5.setCharacterSize(20);
-     trans5.setColor(sf::Color::White);
+     sf::Text trans5("FELICIDADES, ERES EL NUEVO PRESIDENTE""\n""\n""VOTOS CONSEGUIDOS: 28""\n""\n""PACTOS REALIZADOS:3"
+     "\n""\n""ENEMIGOS DERROTADOS: 15""\n""\n""SIMPATIZANTES LIBERADOS:4""\n""\n""TIEMPO: 3m 35s""\n""\n""Llegan nuevos tiempo para el pais,""\n""CIUDADANOS ha llegado al poder y se presagian grandes cambios en la sociedad.""\n""Se respiran nuevos aires.", fontpixelated, 50);
+     trans5.setPosition(50,100);
+     trans5.setCharacterSize(22);
+     trans5.setColor(sf::Color::Black);
  
    
     int i=0;
@@ -207,7 +221,7 @@ int main()
         
         while (window.pollEvent(event))
         {
-               
+               trans31.setString( std::to_string(n));
                 
                 
                 switch(event.type){
@@ -236,6 +250,14 @@ int main()
                         
                         case sf::Keyboard::Num3:
                             i=3;
+                           
+                            break;
+                        
+                        case sf::Keyboard::Right:
+                               std::cerr << "entra";
+                                trans31.setString( std::to_string(n));
+                            n++; 
+                            
                             break;
                             
                         case sf::Keyboard::Num4:
@@ -271,7 +293,8 @@ int main()
         if(i==0)window.draw(opciones);
         if(i==1) window.draw(trans1);  
         if(i==2)  window.draw(trans2);   
-        if(i==3)  window.draw(trans3);
+        if(i==3) { window.draw(trans3);
+         window.draw(trans31);}
         if(i==4)  window.draw(trans4);
         if(i==5)  window.draw(trans5);
        

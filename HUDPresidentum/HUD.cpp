@@ -11,7 +11,7 @@
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
-#include <SFML/Graphics.hpp>
+
 #include <SFML/System/Clock.hpp>
 
  #include <vector>
@@ -227,6 +227,15 @@ int main()
     
     sf::Sprite spritevidaalbert(texvidaalbert);
     
+     sf::Texture texvidaalbert2;
+    if (!texvidaalbert2.loadFromFile("resources/spriteaitor.png"))
+    {
+        std::cerr << "Error cargando la imagen caras.png";
+        exit(0);
+    }
+    
+    sf::Sprite spritevidaalbert2(texvidaalbert2);
+    
 
     
     
@@ -267,6 +276,7 @@ int main()
     spritemariano.setOrigin(matriz[18][2]/2,matriz[18][3]/2);
     spritepablo.setOrigin(matriz[16][2]/2,matriz[16][3]/2);
     spritevidaalbert.setOrigin(matriz[15][2]/2,matriz[15][3]/2);
+    spritevidaalbert2.setOrigin(matriz[14][2]/2,matriz[14][3]/2);
     
     spritevidapedro.setOrigin(matriz[11][2]/2,matriz[11][3]/2);
     spritevidamariano.setOrigin(matriz[13][2]/2,matriz[13][3]/2);
@@ -285,6 +295,7 @@ int main()
     spritemariano.setTextureRect(sf::IntRect(matriz[18][0], matriz[18][1], matriz[18][2], matriz[18][3]));
     spritepablo.setTextureRect(sf::IntRect(matriz[16][0], matriz[16][1], matriz[16][2], matriz[16][3]));
     spritevidaalbert.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+    spritevidaalbert2.setTextureRect(sf::IntRect(matriz[14][0], matriz[14][1], matriz[14][2], matriz[14][3]));
     
     spritevidapedro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
     spritevidamariano.setTextureRect(sf::IntRect(matriz[13][0], matriz[13][1], matriz[13][2], matriz[13][3]));
@@ -298,6 +309,7 @@ int main()
     spritemariano.setPosition(100, 40);
     spritepablo.setPosition(150, 40);
     spritevidaalbert.setPosition(950, 65);
+     spritevidaalbert2.setPosition(950, 65);
    
     spritevidapedro.setPosition(50, 70);
     spritevidamariano.setPosition(100, 70);
@@ -308,6 +320,7 @@ int main()
     spritemariano.setScale(0.5,0.5);
     spritepablo.setScale(0.5,0.5);
     spritevidaalbert.setScale(1,1);
+    spritevidaalbert2.setScale(1,1);
  
     spritevidapedro.setScale(0.3,0.3);
     spritevidamariano.setScale(0.3,0.3);
@@ -315,7 +328,7 @@ int main()
     
      
        
-    
+    int i=0;
 
     //Bucle del juego
     while (window.isOpen())
@@ -356,6 +369,14 @@ int main()
                     //Verifico si se pulsa alguna tecla de movimiento
                     switch(event.key.code) {
                         
+                         case sf::Keyboard::Right:
+                            i=1;
+                            break;
+                         
+                         case sf::Keyboard::Left:
+                            i=0;
+                            break;
+                        
                         
                
                         
@@ -389,8 +410,8 @@ int main()
            window.draw(spritevidapablo);
          window.draw(spritevidapedro);
           window.draw(spritevidamariano);
-           window.draw(spritevidaalbert);
-           
+           if(i==0) window.draw(spritevidaalbert);
+           if(i==1) window.draw(spritevidaalbert2);
         window.draw(hudVotosValue); //VALOR NUMERICO DE LOS VOTOS
         window.draw(hudVotos);      //CARTEL DE VOTOS
         window.draw(contadorValue); //VALOR NUMERICO De tiempo
