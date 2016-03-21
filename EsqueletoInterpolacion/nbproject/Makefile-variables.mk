@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=p02016
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/p02016
+CND_ARTIFACT_NAME_Debug=esqueletointerpolacion
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/esqueletointerpolacion
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=p02016.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/p02016.tar
+CND_PACKAGE_NAME_Debug=esqueletointerpolacion.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/esqueletointerpolacion.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=p02016
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/p02016
+CND_ARTIFACT_NAME_Release=esqueletointerpolacion
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/esqueletointerpolacion
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=p02016.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/p02016.tar
+CND_PACKAGE_NAME_Release=esqueletointerpolacion.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/esqueletointerpolacion.tar
 #
 # include compiler specific variables
 #
