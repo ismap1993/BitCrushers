@@ -166,7 +166,7 @@ int main()
             }
              i++;   //NO HUBO COLISION ENTRE LOS DOS SPRITES COMPARADOS
         }
-        if(rompibles!=NULL)
+        if(rompibles!=NULL)         //DESTRUCCIÓN DEL OBJETO rompibles
         if(rompibles->empty()){
             delete rompibles;
             rompibles = NULL;
