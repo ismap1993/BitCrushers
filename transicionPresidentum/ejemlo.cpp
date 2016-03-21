@@ -265,10 +265,10 @@ int main() {
     sf::Text *textos = new sf::Text[numLetras];
     charString.str("Pulsa 2 para ver la introduccion""\n""\n""Pulsa 3 para ver el nivel tutorial""\n""\n" "Pulsa 4 para ver el nivel en el que te encuentras""\n""\n""Pulsa 5 para ver los puntos obtenidos en este nivel""\n""\n""Pulsa 6 para ver los creditos finales");
     textos[0].setString(charString.str());
-    charString.str("El pais se encuentra en un momento de gran inestabilidad politica y esta sumido en una profunda crisis economica," 
-     "\n""con una gran tasa de paro, muchos casos de corrupcion, etc.""\n""\n""\n"" Tu objetivo es que tu partido llegue a presidir el gobierno." "\n" "Para ello deberas superar los distintos niveles derrotando a tus enemigos y consiguiendo el mayor numero de votos."
-     "\n""Ademas, al final de cada nivel deberas enfrentarte a un jefe final y si lo deseas podras pactar con el.""\n""\n""\n""Al derrotar todos los jefes te convertiras en el presidente del pais." "\n" "Apostaras por el bipartidismo "
-     "o por las nuevas fuerzas?""\n""EL PAIS TE NECESITA Y SOLO CON TU AYUDA SE PODRA ACABAR CON ESTA LOCURA.");
+    charString.str("El pais se encuentra en un momento de gran inestabilidad politica y esta sumido en una profunda""\n" "crisis economica, "
+    "con una gran tasa de paro, muchos casos de corrupcion, etc.""\n""\n""\n""Tu objetivo es que tu partido llegue a presidir el gobierno." "\n""Para ello deberas superar los distintos niveles""\n""derrotando a tus enemigos y consiguiendo el mayor numero de votos."
+     "\n""Ademas, al final de cada nivel deberas enfrentarte a un jefe final y, si lo deseas, podras pactar con el.""\n""\n""\n""Al derrotar todos los jefes te convertiras en el presidente del pais." "\n" "Apostaras por el bipartidismo "
+     "o por las nuevas fuerzas?""\n""\n""EL PAIS TE NECESITA Y SOLO CON TU AYUDA SE PODRA ACABAR CON ESTA LOCURA.");
     textos[1].setString(charString.str());
     charString.str("Este es un nivel de tutorial, sigue las indicaciones y derrota a tus enemigos");
     textos[2].setString(charString.str());
@@ -281,7 +281,7 @@ int main() {
     charString.str("ERES EL NUEVO PRESIDENTE""\n""\n""VOTOS CONSEGUIDOS: 28""\n""\n""PACTOS REALIZADOS: 3"
      "\n""\n""ENEMIGOS DERROTADOS: 15""\n""\n""SIMPATIZANTES LIBERADOS: 4""\n""\n""TIEMPO: 3m 35s");
     textos[5].setString(charString.str());
-    charString.str("Llegan nuevos tiempo para el pais,""\n""CIUDADANOS ha llegado al poder.""\n""Se presagian grandes cambios en la sociedad.""\n""Se respiran nuevos aires.");
+    charString.str("Llegan nuevos tiempo para el pais,""\n""\n""CIUDADANOS ha llegado al poder.""\n""\n""Se presagian grandes cambios.""\n""\n""Y se respiran nuevos aires.");
     textos[6].setString(charString.str());
 
 
@@ -302,14 +302,21 @@ int main() {
     textos[5].setColor(sf::Color(000,000,000));
     textos[6].setColor(sf::Color(000,000,000));
    
+    textos[0].setStyle(sf::Text::Bold);
+    textos[1].setStyle(sf::Text::Bold);
+    textos[2].setStyle(sf::Text::Bold);
+    textos[3].setStyle(sf::Text::Bold);
+    textos[4].setStyle(sf::Text::Bold);
+    textos[5].setStyle(sf::Text::Bold);
+    textos[6].setStyle(sf::Text::Bold);
     
-    textos[0].setCharacterSize(18);
-    textos[1].setCharacterSize(18);
-    textos[2].setCharacterSize(18);
-    textos[3].setCharacterSize(18);
-    textos[4].setCharacterSize(18);
-    textos[5].setCharacterSize(18);
-    textos[6].setCharacterSize(18);
+    textos[0].setCharacterSize(25);
+    textos[1].setCharacterSize(20);
+    textos[2].setCharacterSize(25);
+    textos[3].setCharacterSize(25);
+    textos[4].setCharacterSize(25);
+    textos[5].setCharacterSize(25);
+    textos[6].setCharacterSize(25);
   
      
     /***********************************************
@@ -320,13 +327,13 @@ int main() {
 
      
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Presidentum");
-    textos[0].setPosition(sf::Vector2f(200, 200));
-    textos[1].setPosition(sf::Vector2f(10, 600));
-    textos[2].setPosition(sf::Vector2f(200, 200));
-    textos[3].setPosition(sf::Vector2f(200, 200));
-    textos[4].setPosition(sf::Vector2f(200, 200));
-    textos[5].setPosition(sf::Vector2f(200, 200));
-    textos[6].setPosition(sf::Vector2f(600, 600));
+    textos[0].setPosition(sf::Vector2f(170, 200));
+    textos[1].setPosition(sf::Vector2f(40, 600));
+    textos[2].setPosition(sf::Vector2f(100, 200));
+    textos[3].setPosition(sf::Vector2f(340, 200));
+    textos[4].setPosition(sf::Vector2f(350, 200));
+    textos[5].setPosition(sf::Vector2f(170, 200));
+    textos[6].setPosition(sf::Vector2f(560, 600));
  
      
     timeUpdateGame = relog.getElapsedTime();
