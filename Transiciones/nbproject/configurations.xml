@@ -8,14 +8,11 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <logicalFolder name="Fonts" displayName="Fonts" projectFiles="true">
-        <itemPath>C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/resources/Fonts/MyriadPro Regular.ttf</itemPath>
-      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -62,15 +59,7 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/resources/Fonts/MyriadPro Regular.ttf"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -93,15 +82,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/resources/Fonts/MyriadPro Regular.ttf"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

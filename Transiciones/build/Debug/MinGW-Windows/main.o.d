@@ -1,5 +1,4 @@
-build/Debug/MinGW-Windows/_ext/13a2d6a6/ejemlo.o: \
- c:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp \
+build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
