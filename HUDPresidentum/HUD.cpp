@@ -19,7 +19,7 @@
  #include <fstream>
  #include <cstring>
 
-#define kVel 5
+
 using namespace std;
 using namespace sf;
 
@@ -27,7 +27,18 @@ using namespace sf;
  const int MAX_CHARS_PER_LINE = 512;
  const int MAX_TOKENS_PER_LINE = 20;
  const char* const DELIMITER = "\""; //IMPORTANTE, cada elemento de las lineas del XML van separados por comillas (")
-int main()
+ 
+ 
+ //funcion to_string
+ template <typename T>
+std::string to_string(T countdown)
+{
+	std::ostringstream convert ;
+	convert << countdown ;
+	return convert.str() ;
+}
+
+ int main()
 {
     
     
@@ -54,13 +65,13 @@ int main()
 
     //temporizador
     sf::Clock clock;
-    int countdown = 30;
+    int countdown = 31;
 
     //convert countdown to a string
     std::string countdownString;
-    std::ostringstream convert;
+   /* std::ostringstream convert;
     convert << countdown;
-    countdownString = convert.str();
+    countdownString = convert.str();*/
 
  
      sf::Text contador("TIEMPO:", fontpixelated, 50);
@@ -381,7 +392,24 @@ int main()
                          
                             break;
                         
-                        
+                         case sf::Keyboard::Num1:
+                            i=3;
+                            spritealbert.setTextureRect(sf::IntRect(matriz[17][0], matriz[17][1], matriz[17][2], matriz[17][3]));
+                            spritepedro.setScale(0.5,0.5);
+                            //Escala por defecto
+                            
+                            spritevidaalbert.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+                            spritevidapedro.setScale(0.3,0.3);
+                            
+                            spritevidapedro.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+                            spritevidaalbert.setScale(1,1);
+                            
+                            
+                           
+                            spritepedro.setTextureRect(sf::IntRect(matriz[19][0], matriz[19][1], matriz[19][2], matriz[19][3]));
+                            spritealbert.setScale(1,1);
+                           
+                            break;
                
                         
                         
@@ -416,6 +444,10 @@ int main()
           window.draw(spritevidamariano);
            if(i==0) window.draw(spritevidaalbert);
            if(i==1) window.draw(spritevidaalbert2);
+          if(i==3){ window.draw(spritepedro);
+          window.draw(spritealbert);
+          window.draw(spritevidaalbert);
+          window.draw(spritevidapedro);}
         window.draw(hudVotosValue); //VALOR NUMERICO DE LOS VOTOS
         window.draw(hudVotos);      //CARTEL DE VOTOS
         window.draw(contadorValue); //VALOR NUMERICO De tiempo
