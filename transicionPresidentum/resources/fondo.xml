@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:d62c3ab05b28bf262ff1d415cb4625d9:f6e2767c4f6ab07c0eb9b55bda40f1b0:ca7381e98400c2d3112d373f2c253cd5$ -->
+<!-- $TexturePacker:SmartUpdate:93441d23a533cb46343ff305cbb2d5fb:9b247983bfab5999c289d3c41b3d2834:ca7381e98400c2d3112d373f2c253cd5$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -19,11 +19,12 @@ vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
 verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
 triangles  => sprite triangulation, 3 vertex indices per triangle
 -->
-<TextureAtlas imagePath="fondo.png" width="1445" height="602">
-    <sprite n="enhorabuena.png" x="1069" y="1" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
-    <sprite n="felicidades.png" x="1069" y="91" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
-    <sprite n="fondo.jpg" x="1" y="1" w="1066" h="600" pX="0.5" pY="0.5"/>
-    <sprite n="nivel.png" x="1069" y="181" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
-    <sprite n="presi.png" x="1069" y="271" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
-    <sprite n="tuto.png" x="1069" y="361" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
+<TextureAtlas imagePath="fondo.png" width="1001" height="2042">
+    <sprite n="enhorabuena.png" x="603" y="975" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
+    <sprite n="felicidades.png" x="603" y="1065" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
+    <sprite n="fondo.jpg" x="1" y="975" w="1066" h="600" pX="0.5" pY="0.5" r="y"/>
+    <sprite n="logo.png" x="1" y="1" w="999" h="972" pX="0.5" pY="0.5" oX="0" oY="28" oW="1000" oH="1000"/>
+    <sprite n="nivel.png" x="603" y="1155" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
+    <sprite n="presi.png" x="603" y="1245" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
+    <sprite n="tuto.png" x="603" y="1335" w="375" h="88" pX="0.5" pY="0.5" oX="20" oY="22" oW="423" oH="135"/>
 </TextureAtlas>

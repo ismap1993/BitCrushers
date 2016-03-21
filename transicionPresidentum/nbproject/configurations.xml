@@ -8,11 +8,14 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <logicalFolder name="Fonts" displayName="Fonts" projectFiles="true">
+        <itemPath>C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/resources/Fonts/MyriadPro Regular.ttf</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.cpp</itemPath>
+      <itemPath>C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -26,6 +29,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>C:\Users\cesarposas\Documents\NetBeansProjects\transicionPresidentum\resources\Fonts</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -59,7 +65,15 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/resources/Fonts/MyriadPro Regular.ttf"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -82,7 +96,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/resources/Fonts/MyriadPro Regular.ttf"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
     </conf>
   </confs>

@@ -18,7 +18,6 @@
  #include <fstream>
  #include <cstring>
 
-
 using namespace std;
 using namespace sf;
 
@@ -270,22 +269,59 @@ int main()
    
     //Creamos una ventana 
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Presidentum");
-    
+    window.setFramerateLimit(60);
    
-       
-    
+        //temporizador
+    sf::Clock clock;
+    sf::Time time = sf::seconds(5);
 
     //Bucle del juego
     while (window.isOpen())
     { 
-         
+        
+      /*  
        
+        int timer = clock.getElapsedTime().asSeconds();
+         std::cout << elapsed1.asSeconds() << std::endl;    */   
+                
+         /*   while(timer>=0 && timer<=60 ) {
+                    
+                    if(timer==6 && timer<=10){
+                        
+                        i=0;
+                        
+                     
+                    }
+                    
+                    if(timer==10 && timer<=15){
+                        i=1;
+                        
+                     
+                    
+                    }
+                    
+                    if(timer==15){
+                        i==2;
+                    }
+                   
+                    if(timer==20){
+                        i==3;
+                    }
+                    
+                    timer++;
+                    
+                }
+                   
+        clock.restart();*/
             //Bucle de obtención de eventos
         sf::Event event;
         
         while (window.pollEvent(event))
         {
-            
+             
+                    
+                    
+                
                 
                 switch(event.type){
                 
@@ -349,8 +385,13 @@ int main()
         
         window.draw(spritefondo);
         if(i==0)window.draw(opciones);
-        if(i==1){ window.draw(trans1); 
-        window.draw(spritepresi);}
+        if(i==1){ 
+            window.draw(spritepresi);
+            clock.restart();
+           if(clock.getElapsedTime().asSeconds()>=time.asSeconds()){  
+            window.draw(trans1);} 
+           
+       }
         if(i==2){ window.draw(trans2);
         window.draw(spritetutorial);} ;
         
