@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/13a2d6a6/main.o
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -86,10 +86,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum.exe: ${OBJECTFI
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/transicionpresidentum ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/13a2d6a6/main.o: /C/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/13a2d6a6
+${OBJECTDIR}/main.o: main.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/13a2d6a6/main.o /C/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp
+	$(COMPILE.cc) -g -I/C/SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
