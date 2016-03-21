@@ -15,7 +15,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp</itemPath>
+      <itemPath>C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -65,7 +65,7 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp"
+      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -96,7 +96,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/ejemlo.cpp"
+      <item path="C:/Users/cesarposas/Documents/NetBeansProjects/transicionPresidentum/main.cpp"
             ex="false"
             tool="1"
             flavor2="0">
