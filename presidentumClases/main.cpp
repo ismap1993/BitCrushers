@@ -19,6 +19,7 @@
 
 int main()
 {
+    //ola k ase
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Presidentum!"); 
     /*
     //cuando llamemos a Juego alli habrá que llamar al estado, pasandole estos parametros
