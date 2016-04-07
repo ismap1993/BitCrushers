@@ -1,0 +1,199 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* 
+ * File:   Jugador.cpp
+ * Author: alfon
+ * 
+ * Created on 5 de abril de 2016, 19:31
+ */
+#include <vector>
+#include <string> 
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include "Jugador.h"
+using namespace std;
+using std::cout;
+using std::endl;
+using std::ifstream;
+
+const int MAX_CHARS_PER_LINE = 512;
+const int MAX_TOKENS_PER_LINE = 20;
+const char* const DELIMITER = "\""; //IMPORTANTE, cada elemento de las lineas del XML van separados por comillas (")
+
+
+Jugador::Jugador() {
+}
+
+Jugador::Jugador(const Jugador& orig) {
+}
+
+Jugador::~Jugador() {
+}
+
+Jugador::Jugador(int x, int y, int politico){
+    
+    matriz=new int*[99];
+    for(int i=0; i<99;i++){
+        matriz[i]=new int[4];
+    }
+    leerXML();
+    
+    switch(politico){
+        case 1:
+            if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
+                std::cerr<<"Error al cargar la textura de pablospritesheet.png";
+            }
+            break;
+        case 2:
+            if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
+                std::cerr<<"Error al cargar la textura de albertspritesheet.png";
+            }
+            break;
+        case 3:
+            if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
+                std::cerr<<"Error al cargar la textura de marianospritesheet.png";
+            }
+            break;
+        case 4:
+            if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
+                std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
+            }
+            break;
+            
+    }
+    
+    
+    sprite.setTexture(texturaJugador);
+    //Le pongo el centroide donde corresponde
+    // w=78 h=148 en todos los sprites menos en los de ataque
+    sprite.setOrigin(39, 74);
+   
+    sprite.setOrigin((matriz[0][2])/2,(matriz[0][3])/2);
+    //Cojo el sprite que me interesa por defecto del sheet
+    sprite.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
+    //sprite->setPosition(100, 415);
+    
+    sprite.setPosition(x, y);
+    std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
+    tieneLLave = false;
+    
+}
+
+void Jugador::leerXML(){
+    int posX=0;
+    int linea=1;
+    
+    
+    /****LECTURA DEL XML PARA EL SPRITE!!****/
+    ifstream fin;
+    fin.open("resources/pablospritesheet.xml"); // abrir el xml que se va a leer
+    
+
+    // comenzamos a leer cada una de las lineas
+    while (!fin.eof()){
+
+        // esto es para controlar el tamanyo maximo de cada linea
+        char buf[MAX_CHARS_PER_LINE];
+        fin.getline(buf, MAX_CHARS_PER_LINE);
+        int n = 0;
+
+        // cada linea va almacenada en un vector
+        const char* token[MAX_TOKENS_PER_LINE] = {};
+
+        // parseamos las lineas, separando cada elemento de la linea por comillas (")
+        token[0] = strtok(buf, DELIMITER);
+
+        if (token[0]){
+            for (n = 1; n < MAX_TOKENS_PER_LINE; n++){
+                token[n] = strtok(0, DELIMITER);
+
+                if (linea<=2) break; // si no hay mas, se termina el bucle
+                //SOLO nos interesa a partir de la linea 2 del XML
+                if(linea>2){
+                    //Vamos almacenando en la matriz segun el parametro que nos interesa en el orden correcto
+                    if(n==3){ //El tercer elemento corresponde a x
+                        matriz[posX][0]=atoi(token[n]);
+                    }
+
+                    if(n==5){ //El quinto elemento corresponde a y
+                        matriz[posX][1]=atoi(token[n]);
+                    }
+
+                    if(n==7){ //El septimo elemento corresponde a w
+                        matriz[posX][2]=atoi(token[n]);
+                    }
+
+                    if(n==9){ //El noveno elemento corresponde a h
+                        matriz[posX][3]=atoi(token[n]);
+                        posX++;
+                        break;
+                    }
+                }        
+            }
+        }
+
+        linea++;
+        if(linea==14){break;}
+    }
+    //Esto es para imprimir la matriz obtenida en consola
+    if(linea>2){
+        for(int i=0; i<11;i++){
+            for (int j=0;j<4;j++){
+                cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
+            }
+            cout << endl;
+        }
+    }
+    cout<<"presidentumClases"<<endl;
+}
+
+void Jugador::draw(sf::RenderWindow& window){
+    
+    window.draw(sprite);
+    
+}
+
+sf::Sprite Jugador::getSprite(){
+    return sprite;
+}
+
+void Jugador::handle(sf::Event event, sf::RenderWindow &window){
+    
+    
+    sf::Vector2f velocidadJugador(0, 0);
+    float velocidadSalto = 11, velocidadMovimiento = 5;
+    switch(event.type){
+        case sf::Event::Closed:
+            window.close();
+            break;
+        
+        case sf::Event::KeyPressed:
+            
+            switch(event.key.code){
+                case sf::Keyboard::Right:
+                    velocidadJugador.x = velocidadMovimiento;
+                    sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+                    sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
+                    break;  
+               
+            
+            
+            
+            }
+            
+            
+            
+            
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+        velocidadJugador.x = velocidadMovimiento;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+        sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
+    }
+}
