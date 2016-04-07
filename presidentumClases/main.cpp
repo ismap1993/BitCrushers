@@ -3,8 +3,11 @@
 #include <string> 
 #include <SFML/Graphics.hpp>
 
-#define kVel 15
-
+//#define kVel 15
+#include "EMenu.h"
+#include "Mapa.h"
+#include "Camara.h"
+#include "Jugador.h"
 #include <fstream>
 #include <cstring>
 
@@ -17,17 +20,6 @@
 #include "ECinematica.h"
 #include "EInGame.h"
 
-using namespace std;
-using std::cout;
-using std::endl;
-using std::ifstream;
-
- 
-const int MAX_CHARS_PER_LINE = 512;
-const int MAX_TOKENS_PER_LINE = 20;
-const char* const DELIMITER = "\""; //IMPORTANTE, cada elemento de las lineas del XML van separados por comillas (")
- 
-
 
 
 
@@ -35,191 +27,34 @@ const char* const DELIMITER = "\""; //IMPORTANTE, cada elemento de las lineas de
 
 int main()
 {
- 
-    /*MATRIZ BIDIMENSIONAL para almacenar los 4 parametros de cada sprite*/
-    int **matriz;
-    matriz= new int*[99];
-    for(int i = 0; i < 99; i++){
-        matriz[i] = new int[4];
-    }
-
-    int posX=0;
-    int linea=1;
+    //ola k ase
+    sf::RenderWindow window(sf::VideoMode(1066, 600), "Presidentum!"); 
+    /*
+    //cuando llamemos a Juego alli habrá que llamar al estado, pasandole estos parametros
     
+    //Cargo la clase menu
+    EMenu *menu = new EMenu(window.getSize().x, window.getSize().y);
+    menu -> run(window);
+    */
     
-   /****LECTURA DEL XML PARA EL SPRITE!!****/
+    window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
+    window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
+    Jugador* player = new Jugador(100, 200, 1, true);//le pasamos la posicion X e Y donde se colocará el sprite. 
+                                                    //El tercer parametro es que personaje es, solo puede ser hasta el 4. 1.Pablo 2.Albert 3.Rajoy 4.Pedro
+                                                    //El cuarto parametro es para saber si está activado el personaje en el array de personajes ya que solo un personaje se puede mostrar.
+    player->leerXML();//PREGUNTA    ¿es mejor que la matriz deonde se guardan los datos del psrite sheet sea global de la clase Juego o que cada jugador tenga su propia matriz aunque sea la misma?
     
-
-  ifstream fin;
-  fin.open("resources/pedrospritesheet.xml"); // abrir el xml que se va a leer
-  if (!fin.good()) 
-    return 1; // si el fichero no existe...
-  
-  // comenzamos a leer cada una de las lineas
-  while (!fin.eof())
-  {
- 
-    // esto es para controlar el tamanyo maximo de cada linea
-    char buf[MAX_CHARS_PER_LINE];
-    fin.getline(buf, MAX_CHARS_PER_LINE);
-    int n = 0;
+    //Mapa *mapa = new Mapa();
+    //mapa->leerMapa();
     
-    // cada linea va almacenada en un vector
-    const char* token[MAX_TOKENS_PER_LINE] = {};
-    
-    // parseamos las lineas, separando cada elemento de la linea por comillas (")
-    token[0] = strtok(buf, DELIMITER);
-    
-    if (token[0])
-    {
-      for (n = 1; n < MAX_TOKENS_PER_LINE; n++)
-      {
-        token[n] = strtok(0, DELIMITER);
-        
-        if (linea<=2) break; // si no hay mas, se termina el bucle
-        //SOLO nos interesa a partir de la linea 22 del XML
-        if(linea>2){
-            //Vamos almacenando en la matriz segun el parametro que nos interesa en el orden correcto
-           if(n==3){ //El tercer elemento corresponde a x
-               matriz[posX][0]=atoi(token[n]);
-            }
-           
-           if(n==5){ //El quinto elemento corresponde a y
-               matriz[posX][1]=atoi(token[n]);
-           }
-           
-           if(n==7){ //El septimo elemento corresponde a w
-               matriz[posX][2]=atoi(token[n]);
-           }
-           
-           if(n==9){ //El noveno elemento corresponde a h
-               matriz[posX][3]=atoi(token[n]);
-               posX++;
-               break;
-           }
-        }
-        //if (!token[n]) break; // si no hay mas, se termina el bucle
-        
-      }
-    }
-
-    linea++;
-    if(linea==14){break;}
-  }
- 
-  //Para el tiempo que dura un golpe
-  sf::Clock golpeoTime;
-  float golpeo=0;
-  bool der=true;//direccion del personaje
-  bool izq=false;//direccion del personaje
-  
-  
-  //Creamos una ventana 
-    sf::RenderWindow window(sf::VideoMode(1066, 600), "Ejecutable para probar cosas relacionadas con la IA");
-    
-    //Cargo la imagen donde reside la textura del sprite
-    sf::Texture tex;
-    if (!tex.loadFromFile("resources/pedrospritesheet.png"))
-    {
-        std::cerr << "Error cargando la imagen pedro.png";
-        exit(0);
-    }
-
-    
-    //Y creo el spritesheet a partir de la imagen anterior
-    sf::Sprite sprite(tex);
-    
-    //Le pongo el centroide donde corresponde
-    // w=78 h=148 en todos los sprites menos en los de ataque
-    sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
-    
-    // Lo dispongo en el centro de la pantalla
-    sprite.setPosition(500, 432);
-    
-    
-    
-    
-    sf::Texture tex2;
-    if (!tex2.loadFromFile("resources/pablospritesheet.png"))
-    {
-        std::cerr << "Error cargando la imagen pablo.png";
-        exit(0);
-    }
-
-    
-    //Y creo el spritesheet a partir de la imagen anterior
-    sf::Sprite sprite2(tex2);
-    
-    //Le pongo el centroide donde corresponde
-    // w=78 h=148 en todos los sprites menos en los de ataque
-    sprite2.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite2.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-    
-    // Lo dispongo en el centro de la pantalla
-    //sprite2.setPosition(800, 432);
-    
-    
-    
-    
-    sf::Texture tex3;
-    if (!tex3.loadFromFile("resources/albertspritesheet.png"))
-    {
-        std::cerr << "Error cargando la imagen albert.png";
-        exit(0);
-    }
-
-    
-    //Y creo el spritesheet a partir de la imagen anterior
-    sf::Sprite sprite3(tex3);
-    
-    //Le pongo el centroide donde corresponde
-    // w=78 h=148 en todos los sprites menos en los de ataque
-    sprite3.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite3.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-    
-    // Lo dispongo en el centro de la pantalla
-    //sprite3.setPosition(600, 432);
-    
-    
-    
-    
-    sf::RectangleShape suelo(sf::Vector2f(1280, 500));
-    suelo.setPosition(0,500);
-    suelo.setOutlineThickness(1.0f);
-    suelo.setFillColor(sf::Color(120,66,0));
-    suelo.setOutlineColor(sf::Color::Black);
-    
-    sf::RectangleShape enemigo1(sf::Vector2f(50, 50));
-    enemigo1.setPosition(250,432);
-    enemigo1.setOutlineThickness(1.0f);
-    enemigo1.setFillColor(sf::Color(120,66,0));
-    enemigo1.setOutlineColor(sf::Color::Black);
-    bool enemigo1vive=true;
-    
-    
-    sf::RectangleShape enemigo2(sf::Vector2f(50, 50));
-    enemigo2.setPosition(400,432);
-    enemigo2.setOutlineThickness(1.0f);
-    enemigo2.setFillColor(sf::Color(120,66,0));
-    enemigo2.setOutlineColor(sf::Color::Black);
-    bool enemigo2vive=true;
-    
-    int p=0;   //personaje seleccionado
-    int i=0;   //intersecciones entre personajes
-    
-    
-    
-    window.setFramerateLimit(50);
-    
-    
+    //Camara *camara = new Camara(window.getSize().x, window.getSize().y, 15, mapa->fondo, mapa->_width, mapa->_tileWidth);
+    //le pasamos el alto y el ancho de la ventana
+    //el siguiente parametro es la distancia que se mueve la ventana cada vez que se mueve el personaje
+    //le pasamos el fondo para poder consultarlo
+    //el mapa->fondo nos ayuda a saber hasta donde debemos mover la camara ya que es el ancho del mapa
+    //el mapa->_tileWidth nos indica el ancho del tile
    
+<<<<<<< HEAD
   
     sf::Clock clock;
     
@@ -352,109 +187,32 @@ int main()
             velocidadJugador.x = velocidadMovimiento;
             sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
                                 sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-        }
+=======
+    while(window.isOpen()){
         
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            velocidadJugador.x = -velocidadMovimiento;
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
-        }
-        else{
-            velocidadJugador.x = 0;
-            
-        }
         
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
-        }
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
+        sf::Event event;
+        while(window.pollEvent(event)){
+            //player->handle(event, window);
+>>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
         }
         
         
         
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && salto)
-        {
-            velocidadJugador.y = -velocidadSalto;
-            salto = false;
-            
-        }
         
-        
-
-        if(!salto)
-            velocidadJugador.y += gravedad;
-        else
-            velocidadJugador.y = 0;
-
-        posicionJugador += velocidadJugador;
-
-        salto = posicionJugador.y + 10 >= alturaSuelo;
-
-        if(salto)
-            posicionJugador.y = alturaSuelo - 10;
-
-        
-        sprite.setPosition(posicionJugador);
-
-        
-        
-        //Despues de golpear, a los 0,5s, el personaje vuelve a su posicion original (izquierda o derecha)
-        golpeo= golpeoTime.getElapsedTime().asSeconds();
-        if(golpeo>0.5 && der==true){
-           
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
-            sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-            golpeoTime.restart();
-           
-           
-           
-        }
-        
-        if(golpeo>0.5 && izq==true){
-            
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
-            sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
-            golpeoTime.restart();
-           
-           
-           
-        }
-        
-        //Muerte a los enemigos!
-        if(sprite.getGlobalBounds().intersects(enemigo1.getGlobalBounds())  ||  sprite2.getGlobalBounds().intersects(enemigo1.getGlobalBounds())  ||  sprite3.getGlobalBounds().intersects(enemigo1.getGlobalBounds())){
-            enemigo1vive=false;
-        }
-        if(sprite.getGlobalBounds().intersects(enemigo2.getGlobalBounds())  ||  sprite2.getGlobalBounds().intersects(enemigo2.getGlobalBounds())  ||  sprite3.getGlobalBounds().intersects(enemigo2.getGlobalBounds())){
-            enemigo2vive=false;
-        }
-       
-        window.clear(sf::Color(sf::Color::White));
-
-        window.draw(sprite);
-
-        window.draw(suelo);
-        
-        if(enemigo1vive==true){
-            window.draw(enemigo1);
-        }
-        
-        if(enemigo2vive==true){
-            window.draw(enemigo2);
-        }
+        window.clear(sf::Color::White);
+        player->draw(window);
+        //mapa->dibuja(window);
+        //std::cout<< player->getSprite().getPosition().x <<std::endl;
+        //window.draw(player->getSprite());
         
         window.display();
         
     }
     
+    
+    
     return 0;
-
+    
 }
 

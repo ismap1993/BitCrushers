@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/main.o: main.cpp \
+build/Debug/MinGW-Windows/Camara.o: Camara.cpp Camara.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,12 +63,9 @@ build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
-<<<<<<< HEAD
- c:/SFML/include/SFML/Graphics/Text.hpp Juego.h Escena.h EIntro.h EMenu.h \
- EMenuInGame.h ECinematica.h EInGame.h
-=======
- c:/SFML/include/SFML/Graphics/Text.hpp EMenu.h Mapa.h Camara.h Jugador.h
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
+ c:/SFML/include/SFML/Graphics/Text.hpp Mapa.h
+
+Camara.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -208,26 +205,4 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-<<<<<<< HEAD
-Juego.h:
-
-Escena.h:
-
-EIntro.h:
-
-EMenu.h:
-
-EMenuInGame.h:
-
-ECinematica.h:
-
-EInGame.h:
-=======
-EMenu.h:
-
 Mapa.h:
-
-Camara.h:
-
-Jugador.h:
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
