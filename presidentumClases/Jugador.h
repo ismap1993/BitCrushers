@@ -17,7 +17,7 @@
 class Jugador {
 public:
     Jugador();
-    Jugador(int x, int y, int politico);//1.Pablo 2.Albert 3.Rajoy 4.Pedro
+    Jugador(int x, int y, int politico, bool activado);//1.Pablo 2.Albert 3.Rajoy 4.Pedro
     Jugador(const Jugador& orig);
     virtual ~Jugador();
     sf::Sprite getSprite();
@@ -29,6 +29,7 @@ private:
     
     sf::Sprite sprite;
     bool tieneLLave;
+    bool activo;
     int** matriz;
     sf::Texture texturaJugador;
     

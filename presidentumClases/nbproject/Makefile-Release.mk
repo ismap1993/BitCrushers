@@ -35,9 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/EMenu.o \
 	${OBJECTDIR}/Jugador.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/Mapa.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/tinystr.o \
+	${OBJECTDIR}/tinyxml.o \
+	${OBJECTDIR}/tinyxmlerror.o \
+	${OBJECTDIR}/tinyxmlparser.o
 
 
 # C Compiler Flags
@@ -64,6 +70,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/presidentumclases.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/presidentumclases ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Camara.o: Camara.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
+
 ${OBJECTDIR}/EMenu.o: EMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -74,10 +85,35 @@ ${OBJECTDIR}/Jugador.o: Jugador.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
 
+${OBJECTDIR}/Mapa.o: Mapa.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/tinystr.o: tinystr.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinystr.o tinystr.cpp
+
+${OBJECTDIR}/tinyxml.o: tinyxml.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml.o tinyxml.cpp
+
+${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlerror.o tinyxmlerror.cpp
+
+${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
 
 # Subprojects
 .build-subprojects:

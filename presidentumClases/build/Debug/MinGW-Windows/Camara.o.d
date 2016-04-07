@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/main.o: main.cpp \
+build/Debug/MinGW-Windows/Camara.o: Camara.cpp Camara.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,7 +63,9 @@ build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp EMenu.h Mapa.h Camara.h Jugador.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Mapa.h
+
+Camara.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -203,10 +205,4 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-EMenu.h:
-
 Mapa.h:
-
-Camara.h:
-
-Jugador.h:

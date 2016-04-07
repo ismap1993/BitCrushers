@@ -36,7 +36,7 @@ Jugador::Jugador(const Jugador& orig) {
 Jugador::~Jugador() {
 }
 
-Jugador::Jugador(int x, int y, int politico){
+Jugador::Jugador(int x, int y, int politico, bool activado){
     
     matriz=new int*[99];
     for(int i=0; i<99;i++){
@@ -82,6 +82,7 @@ Jugador::Jugador(int x, int y, int politico){
     sprite.setPosition(x, y);
     std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
     tieneLLave = false;
+    activo = activado;
     
 }
 
