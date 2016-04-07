@@ -8,6 +8,14 @@
 #include <fstream>
 #include <cstring>
 
+#include "Juego.h"
+#include "Escena.h"
+
+#include "EIntro.h"
+#include "EMenu.h"
+#include "EMenuInGame.h"
+#include "ECinematica.h"
+#include "EInGame.h"
 
 using namespace std;
 using std::cout;
@@ -223,23 +231,31 @@ int main()
     int alturaSuelo = suelo.getPosition().y - 65;
     float velocidadSalto = 11, velocidadMovimiento = 5;
     bool salto = false;
-
+    sf::Clock reloj; //RELOJ PARA CONTROLAR EL BOTON DE CAMBIO DE ESTADO
     
     sprite.setPosition(posicionJugador);
     
     
-    //---------PUNTO DE ENTRADA-----------------
+    //---------PRUEBAS DE CARLOS-----------------
     
-    //Player jugador = new Player();
-    
-    //std::cout << jugador  << std::endl;
-    
-    
+    Juego* juego = new Juego();
+    std::cout << "Instancia de Juego: " << &juego  << std::endl;
+    std::cout << "Pulsa la tecla 1 para cambiar al estado ECinematica."  << std::endl;
+    std::cout << "Pulsa la tecla 2 para cambiar al estado EMenuInGame."  << std::endl;
+    std::cout << "Pulsa la tecla 3 para cambiar al estado EMenu."  << std::endl;
+    std::cout << "Pulsa la tecla 4 para cambiar al estado EIntro."  << std::endl;
+    std::cout << "Pulsa la tecla 5 para cambiar al estado EInGame."  << std::endl;
+    std::cout << "Pulsa la tecla 6 para consultar el estado actual."  << std::endl;
     
     while (window.isOpen()){  
         
-        
-        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && reloj.getElapsedTime().asSeconds()>0.2){ECinematica::Instance(juego); reloj.restart(); }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) && reloj.getElapsedTime().asSeconds()>0.2){ EMenuInGame::Instance(juego); reloj.restart(); }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3) && reloj.getElapsedTime().asSeconds()>0.2){ EMenu::Instance(juego); reloj.restart(); }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num4) && reloj.getElapsedTime().asSeconds()>0.2){ EIntro::Instance(juego); reloj.restart(); }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num5) && reloj.getElapsedTime().asSeconds()>0.2){ EInGame::Instance(juego);  reloj.restart(); }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num6) && reloj.getElapsedTime().asSeconds()>0.2){ std::cout << "ESTADO ACTUAL: "  << juego->currentState() << std::endl; reloj.restart(); }
+
         
         //Bucle de obtención de eventos
         sf::Event event;
@@ -294,7 +310,7 @@ int main()
                 case sf::Event::KeyPressed:
                     //std::cout << event.key.code << std::endl;
                     //Verifico si se pulsa alguna tecla de movimiento
-                           
+                    //std::cout << event.key.code << std::endl;
                     switch(event.key.code) {
                         case sf::Keyboard::Space:
                              
