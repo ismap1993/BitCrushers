@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-<<<<<<< HEAD
 	${OBJECTDIR}/ECinematica.o \
 	${OBJECTDIR}/EInGame.o \
 	${OBJECTDIR}/EIntro.o \
@@ -44,17 +43,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Escena.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/main.o
-=======
-	${OBJECTDIR}/Camara.o \
-	${OBJECTDIR}/EMenu.o \
-	${OBJECTDIR}/Jugador.o \
-	${OBJECTDIR}/Mapa.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/tinystr.o \
-	${OBJECTDIR}/tinyxml.o \
-	${OBJECTDIR}/tinyxmlerror.o \
-	${OBJECTDIR}/tinyxmlparser.o
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
 
 
 # C Compiler Flags
@@ -81,7 +69,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/presidentumclases.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/presidentumclases ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-<<<<<<< HEAD
 ${OBJECTDIR}/ECinematica.o: ECinematica.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -96,19 +83,12 @@ ${OBJECTDIR}/EIntro.o: EIntro.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EIntro.o EIntro.cpp
-=======
-${OBJECTDIR}/Camara.o: Camara.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
 
 ${OBJECTDIR}/EMenu.o: EMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EMenu.o EMenu.cpp
 
-<<<<<<< HEAD
 ${OBJECTDIR}/EMenuInGame.o: EMenuInGame.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -123,42 +103,11 @@ ${OBJECTDIR}/Juego.o: Juego.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
-=======
-${OBJECTDIR}/Jugador.o: Jugador.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
-
-${OBJECTDIR}/Mapa.o: Mapa.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
-
-${OBJECTDIR}/tinystr.o: tinystr.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinystr.o tinystr.cpp
-
-${OBJECTDIR}/tinyxml.o: tinyxml.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml.o tinyxml.cpp
-
-${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlerror.o tinyxmlerror.cpp
-
-${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
 
 # Subprojects
 .build-subprojects:

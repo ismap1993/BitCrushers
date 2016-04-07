@@ -4,7 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-<<<<<<< HEAD
       <logicalFolder name="f1" displayName="Estados" projectFiles="true">
         <itemPath>ECinematica.h</itemPath>
         <itemPath>EInGame.h</itemPath>
@@ -14,14 +13,6 @@
       </logicalFolder>
       <itemPath>Escena.h</itemPath>
       <itemPath>Juego.h</itemPath>
-=======
-      <itemPath>Camara.h</itemPath>
-      <itemPath>EMenu.h</itemPath>
-      <itemPath>Jugador.h</itemPath>
-      <itemPath>Mapa.h</itemPath>
-      <itemPath>tinystr.h</itemPath>
-      <itemPath>tinyxml.h</itemPath>
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -30,7 +21,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-<<<<<<< HEAD
       <logicalFolder name="f1" displayName="Estados" projectFiles="true">
         <itemPath>ECinematica.cpp</itemPath>
         <itemPath>EInGame.cpp</itemPath>
@@ -40,17 +30,7 @@
       </logicalFolder>
       <itemPath>Escena.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
-=======
-      <itemPath>Camara.cpp</itemPath>
-      <itemPath>EMenu.cpp</itemPath>
-      <itemPath>Jugador.cpp</itemPath>
-      <itemPath>Mapa.cpp</itemPath>
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
       <itemPath>main.cpp</itemPath>
-      <itemPath>tinystr.cpp</itemPath>
-      <itemPath>tinyxml.cpp</itemPath>
-      <itemPath>tinyxmlerror.cpp</itemPath>
-      <itemPath>tinyxmlparser.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -74,7 +54,6 @@
       </toolsSet>
       <compileType>
         <ccTool>
-          <standard>8</standard>
           <incDir>
             <pElem>C:/SFML/include</pElem>
           </incDir>
@@ -90,7 +69,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-<<<<<<< HEAD
       <item path="ECinematica.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ECinematica.h" ex="false" tool="3" flavor2="0">
@@ -102,17 +80,11 @@
       <item path="EIntro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EIntro.h" ex="false" tool="3" flavor2="0">
-=======
-      <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Camara.h" ex="false" tool="3" flavor2="0">
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
       </item>
       <item path="EMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EMenu.h" ex="false" tool="3" flavor2="0">
       </item>
-<<<<<<< HEAD
       <item path="EMenuInGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EMenuInGame.h" ex="false" tool="3" flavor2="0">
@@ -124,29 +96,8 @@
       <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Juego.h" ex="false" tool="3" flavor2="0">
-=======
-      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinystr.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinystr.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tinyxml.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinyxml.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -169,7 +120,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-<<<<<<< HEAD
       <item path="ECinematica.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ECinematica.h" ex="false" tool="3" flavor2="0">
@@ -181,17 +131,11 @@
       <item path="EIntro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EIntro.h" ex="false" tool="3" flavor2="0">
-=======
-      <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Camara.h" ex="false" tool="3" flavor2="0">
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
       </item>
       <item path="EMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EMenu.h" ex="false" tool="3" flavor2="0">
       </item>
-<<<<<<< HEAD
       <item path="EMenuInGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="EMenuInGame.h" ex="false" tool="3" flavor2="0">
@@ -203,29 +147,8 @@
       <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Juego.h" ex="false" tool="3" flavor2="0">
-=======
-      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
->>>>>>> 46bc60a011a73d2d421aba81d3a5685d3c78b415
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinystr.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinystr.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tinyxml.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinyxml.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
