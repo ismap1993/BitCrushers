@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/476a240/Jugador.o \
 	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/main.o
 
@@ -74,6 +75,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos.exe: /C/SFML/lib/libsfml
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/476a240/Jugador.o: ../presidentumClases2/Jugador.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/476a240
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/476a240/Jugador.o ../presidentumClases2/Jugador.cpp
 
 ${OBJECTDIR}/NPC.o: NPC.cpp 
 	${MKDIR} -p ${OBJECTDIR}

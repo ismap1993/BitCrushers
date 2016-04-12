@@ -1,7 +1,7 @@
-build/Debug/MinGW-Windows/main.o: main.cpp \
- c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
- c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
- c:/SFML/include/SFML/System/Clock.hpp \
+build/Debug/MinGW-Windows/_ext/476a240/Jugador.o: \
+ ../presidentumClases2/Jugador.cpp c:/SFML/include/SFML/Graphics.hpp \
+ c:/SFML/include/SFML/Window.hpp c:/SFML/include/SFML/System.hpp \
+ c:/SFML/include/SFML/Config.hpp c:/SFML/include/SFML/System/Clock.hpp \
  c:/SFML/include/SFML/System/Export.hpp \
  c:/SFML/include/SFML/System/Time.hpp c:/SFML/include/SFML/System/Err.hpp \
  c:/SFML/include/SFML/System/FileInputStream.hpp \
@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h
+ c:/SFML/include/SFML/Graphics/Text.hpp ../presidentumClases2/Jugador.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -203,4 +203,4 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Jugador.h:
+../presidentumClases2/Jugador.h:
