@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=presidentumclases
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/presidentumclases
+CND_ARTIFACT_NAME_Debug=presidentumclases2
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/presidentumclases2
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=presidentumclases.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/presidentumclases.tar
+CND_PACKAGE_NAME_Debug=presidentumclases2.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/presidentumclases2.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=presidentumclases
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/presidentumclases
+CND_ARTIFACT_NAME_Release=presidentumclases2
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/presidentumclases2
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=presidentumclases.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/presidentumclases.tar
+CND_PACKAGE_NAME_Release=presidentumclases2.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/presidentumclases2.tar
 #
 # include compiler specific variables
 #

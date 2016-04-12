@@ -5,7 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Camara.h</itemPath>
-      <itemPath>EMenu.h</itemPath>
       <itemPath>Jugador.h</itemPath>
       <itemPath>Mapa.h</itemPath>
       <itemPath>tinystr.h</itemPath>
@@ -19,7 +18,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Camara.cpp</itemPath>
-      <itemPath>EMenu.cpp</itemPath>
       <itemPath>Jugador.cpp</itemPath>
       <itemPath>Mapa.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -39,6 +37,8 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>EMenu.cpp</itemPath>
+    <itemPath>EMenu.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
