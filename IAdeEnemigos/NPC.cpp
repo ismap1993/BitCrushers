@@ -33,11 +33,12 @@ int NPC::getHp(){
     
     
 }
-/*
-virtual void ataque(Jugador* jugador){
+
+void NPC::atacar(Jugador* jugador){
     
     
 }
+/*
 virtual Mundo* getMundo(){
     
     

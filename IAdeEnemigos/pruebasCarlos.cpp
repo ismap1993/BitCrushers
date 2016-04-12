@@ -15,19 +15,30 @@
 #include <fstream>
 #include <cstring>
 
+#include "Juego.h"
+#include "Escena.h"
+
+#include "EIntro.h"
+#include "EMenu.h"
+#include "EMenuInGame.h"
+#include "ECinematica.h"
+#include "EInGame.h"
+
+#include "Enemigo.h"
+#include "NPC.h"
+
 static int carlos(){
     
     
+    //---------PRUEBAS DE CARLOS-----------------
     
+    //Juego* juego = new Juego();
+    //juego->Init();
     
+    std::cout<<"Holaa"<<std::endl;
     
-    
-    
-    
-    
-    
-    
-    
+    Enemigo* pruebaEnemy = new Enemigo();
+    std::cout<<"pruebaEnemy: "<< &pruebaEnemy << std::endl;
     
     
     

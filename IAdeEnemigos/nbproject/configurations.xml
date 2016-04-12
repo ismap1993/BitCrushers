@@ -12,7 +12,10 @@
         <itemPath>EMenuInGame.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="NPC" projectFiles="true">
+        <itemPath>Enemigo.h</itemPath>
       </logicalFolder>
+      <itemPath>Escena.h</itemPath>
+      <itemPath>Juego.h</itemPath>
       <itemPath>../presidentumClases2/Jugador.h</itemPath>
       <itemPath>NPC.h</itemPath>
     </logicalFolder>
@@ -31,6 +34,7 @@
         <itemPath>EMenuInGame.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="NPC" projectFiles="true">
+        <itemPath>Enemigo.cpp</itemPath>
       </logicalFolder>
       <itemPath>Escena.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
@@ -101,9 +105,17 @@
       </item>
       <item path="EMenuInGame.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Enemigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemigo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Escena.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Escena.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Juego.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="NPC.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -160,9 +172,17 @@
       </item>
       <item path="EMenuInGame.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Enemigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemigo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Escena.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Escena.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Juego.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="NPC.cpp" ex="false" tool="1" flavor2="0">
       </item>

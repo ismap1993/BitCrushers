@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/EIntro.o \
 	${OBJECTDIR}/EMenu.o \
 	${OBJECTDIR}/EMenuInGame.o \
+	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Escena.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/NPC.o \
@@ -114,6 +115,11 @@ ${OBJECTDIR}/EMenuInGame.o: EMenuInGame.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EMenuInGame.o EMenuInGame.cpp
+
+${OBJECTDIR}/Enemigo.o: Enemigo.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemigo.o Enemigo.cpp
 
 ${OBJECTDIR}/Escena.o: Escena.cpp 
 	${MKDIR} -p ${OBJECTDIR}
