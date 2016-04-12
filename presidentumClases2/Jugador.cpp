@@ -77,10 +77,9 @@ Jugador::Jugador(int x, int y, int politico, bool activado){
     sprite.setOrigin((matriz[0][2])/2,(matriz[0][3])/2);
     //Cojo el sprite que me interesa por defecto del sheet
     sprite.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
-    //sprite->setPosition(100, 415);
     
     sprite.setPosition(x, y);
-    std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
+    std::cout<<sprite.getPosition().x<<" estamos en estas dos coordenadas "<<sprite.getPosition().y<<std::endl;
     tieneLLave = false;
     activo = activado;
     
@@ -174,11 +173,11 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window){
     suelo.setOutlineColor(sf::Color::Black);
     */
     
-   sf::Vector2f posicionJugador(100, 100);
+    sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
     sf::Vector2f velocidadJugador(0, 0);
     const float gravedad = 0.5;
     //int alturaSuelo = suelo.getPosition().y - 65;
-    int alturaSuelo = 100;
+    int alturaSuelo = sprite.getPosition().y+10;
     float velocidadSalto = 11, velocidadMovimiento = 5;
     bool salto = false;
     //sprite.setPosition(posicionJugador);
@@ -193,64 +192,58 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window){
             switch(event.key.code){
                 
             }
-            
-            
-            
-            
+ 
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            velocidadJugador.x = velocidadMovimiento;
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-        }
-        
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            velocidadJugador.x = -velocidadMovimiento;
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
-        }
-        else{
-            velocidadJugador.x = 0;
-            
-        }
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
-        }
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-                                sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
-        }
-        
-        
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && salto)
-        {
-            velocidadJugador.y = -velocidadSalto;
-            salto = false;
-            
-        }
-        
-        
+        velocidadJugador.x = velocidadMovimiento;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+        sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        velocidadJugador.x = -velocidadMovimiento;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+        sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
+    }
+    else{
+        velocidadJugador.x = 0;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+        sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
+    }
 
-        if(!salto)
-            velocidadJugador.y += gravedad;
-        else
-            velocidadJugador.y = 0;
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
 
-        posicionJugador += velocidadJugador;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+                            sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
+    }
 
-        salto = posicionJugador.y + 10 >= alturaSuelo;
 
-        if(salto)
-            posicionJugador.y = alturaSuelo - 10;
 
-        
-        sprite.setPosition(posicionJugador);
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && salto)
+    {
+        velocidadJugador.y = -velocidadSalto;
+        salto = false;
+
+    }
+
+
+
+    if(!salto)
+        velocidadJugador.y += gravedad;
+    else
+        velocidadJugador.y = 0;
+
+    posicionJugador += velocidadJugador;
+
+    salto = posicionJugador.y + 10 >= alturaSuelo;
+    std::cout<<posicionJugador.x<<"ammm"<<posicionJugador.y<<std::endl;
+    if(salto)
+        posicionJugador.y = alturaSuelo - 10;
+
+
+    sprite.setPosition(posicionJugador);
+    std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
 }
