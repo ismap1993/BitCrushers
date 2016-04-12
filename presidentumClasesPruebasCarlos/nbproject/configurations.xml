@@ -54,6 +54,7 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <standard>8</standard>
           <incDir>
             <pElem>C:/SFML/include</pElem>
           </incDir>
