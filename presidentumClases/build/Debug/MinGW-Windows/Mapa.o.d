@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/EMenu.o: EMenu.cpp EMenu.h Juego.h \
+build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,11 +63,9 @@ build/Debug/MinGW-Windows/EMenu.o: EMenu.cpp EMenu.h Juego.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Escena.h EIntro.h
+ c:/SFML/include/SFML/Graphics/Text.hpp tinystr.h tinyxml.h
 
-EMenu.h:
-
-Juego.h:
+Mapa.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -207,6 +205,6 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Escena.h:
+tinystr.h:
 
-EIntro.h:
+tinyxml.h:

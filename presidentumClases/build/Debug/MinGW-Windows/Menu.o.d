@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/EInGame.o: EInGame.cpp EInGame.h Juego.h \
+build/Debug/MinGW-Windows/Menu.o: Menu.cpp Menu.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,11 +63,9 @@ build/Debug/MinGW-Windows/EInGame.o: EInGame.cpp EInGame.h Juego.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Escena.h
+ c:/SFML/include/SFML/Graphics/Text.hpp
 
-EInGame.h:
-
-Juego.h:
+Menu.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -206,5 +204,3 @@ c:/SFML/include/SFML/Graphics/Shader.hpp:
 c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
-
-Escena.h:
