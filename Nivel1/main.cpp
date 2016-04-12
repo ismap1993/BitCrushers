@@ -79,6 +79,10 @@ int main(){
                             //muevo a la derecha el personaje y la camara con el metodo moveRight
                             personaje->move(kVel, 0);
                             camara->moveRight(*personaje);
+                            std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
+                            if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
+                                personaje->move(-kVel, 0);
+                            }
                         break;
 
                         case sf::Keyboard::Left:
