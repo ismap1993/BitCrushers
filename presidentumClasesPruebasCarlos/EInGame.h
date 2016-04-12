@@ -38,7 +38,7 @@ protected:
 
 private:
     
-    int ** matrizRecorte;
+    int** matrizRecorte;
     static EInGame* pinstance;
     Juego* _context;
     
