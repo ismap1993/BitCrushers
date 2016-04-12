@@ -24,6 +24,7 @@ public:
     void Init();
     void Update();
     void Render();
+    void generarRecorte();
     Juego* getContext();
     static EInGame* Instance(Juego* context);
     ~EInGame();
@@ -37,6 +38,7 @@ protected:
 
 private:
     
+    int ** matrizRecorte;
     static EInGame* pinstance;
     Juego* _context;
     

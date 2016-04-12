@@ -75,6 +75,12 @@ void EInGame::Render(){
     
 }
 
+void EInGame::generarRecorte(){
+    
+    
+    
+}
+
 Juego* EInGame::getContext(){
     
     return _context;    //Para recuperar el contexto
