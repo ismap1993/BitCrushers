@@ -21,7 +21,7 @@ public:
     virtual int getY();
     virtual int getAtaque();
     virtual int getHp();
-    //virtual void ataque(Jugador* jugador);
+    virtual void ataque(Jugador* jugador);
     //virtual Mundo* getMundo();
     virtual ~NPC();
 private:

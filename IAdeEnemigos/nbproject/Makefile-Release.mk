@@ -36,6 +36,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/476a240/Jugador.o \
+	${OBJECTDIR}/ECinematica.o \
+	${OBJECTDIR}/EInGame.o \
+	${OBJECTDIR}/EIntro.o \
+	${OBJECTDIR}/EMenu.o \
+	${OBJECTDIR}/EMenuInGame.o \
+	${OBJECTDIR}/Escena.o \
+	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/pruebasAlfonso.o \
@@ -70,6 +77,41 @@ ${OBJECTDIR}/_ext/476a240/Jugador.o: ../presidentumClases2/Jugador.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/476a240
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/476a240/Jugador.o ../presidentumClases2/Jugador.cpp
+
+${OBJECTDIR}/ECinematica.o: ECinematica.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ECinematica.o ECinematica.cpp
+
+${OBJECTDIR}/EInGame.o: EInGame.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EInGame.o EInGame.cpp
+
+${OBJECTDIR}/EIntro.o: EIntro.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EIntro.o EIntro.cpp
+
+${OBJECTDIR}/EMenu.o: EMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EMenu.o EMenu.cpp
+
+${OBJECTDIR}/EMenuInGame.o: EMenuInGame.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EMenuInGame.o EMenuInGame.cpp
+
+${OBJECTDIR}/Escena.o: Escena.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escena.o Escena.cpp
+
+${OBJECTDIR}/Juego.o: Juego.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
 
 ${OBJECTDIR}/NPC.o: NPC.cpp 
 	${MKDIR} -p ${OBJECTDIR}
