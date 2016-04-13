@@ -59,11 +59,37 @@ int main(){
         fondos[i]->setPosition(mapa->fondo.getGlobalBounds().width*i, 0);
     }
     
+    sf::RectangleShape suelo(sf::Vector2f(1280, 500));
+    suelo.setPosition(0,500);
+    suelo.setOutlineThickness(1.0f);
+    suelo.setFillColor(sf::Color(120,66,0));
+    suelo.setOutlineColor(sf::Color::Black);
+    
+    sf::Vector2f posicionJugador(100, 100);
+    sf::Vector2f velocidadJugador(0, 0);
+    const float gravedad = 0.1;
+    //int alturaSuelo = 100;
+    int alturaSuelo = suelo.getPosition().y - 100;
+    //int alturaSuelo = mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)=4;
+    float velocidadSalto = 7, velocidadMovimiento = 0.3;
+    bool salto = false;
+
+    
+    personaje->setPosition(posicionJugador);
+    
     
     while (window.isOpen()){
+        
+        
+        if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
+                                personaje->move(-kVel, 0);
+                            }
         //Bucle de obtención de eventos
         sf::Event event;
         while (window.pollEvent(event)){
+            
+            
+            
             switch(event.type){
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
@@ -117,6 +143,66 @@ int main(){
         }     
         
         
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
+                                velocidadJugador.x = 0;
+                            }
+            velocidadJugador.x = velocidadMovimiento;
+            //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+              //                  sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
+        }
+        
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            velocidadJugador.x = -velocidadMovimiento;
+            //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+              //                  sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
+        }
+        else{
+            velocidadJugador.x = 0;
+            
+        }
+        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            
+            //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+              //                  sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
+        }
+        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            
+            //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+              //                  sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
+        }
+        
+        
+        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && salto)
+        {
+            velocidadJugador.y = -velocidadSalto;
+            salto = false;
+            
+        }
+        
+        
+
+        if(!salto)
+            velocidadJugador.y += gravedad;
+        else
+            velocidadJugador.y = 0;
+
+        posicionJugador += velocidadJugador;
+
+        salto = posicionJugador.y + 10 >= alturaSuelo;
+
+        if(salto)
+            posicionJugador.y = alturaSuelo - 10;
+
+        
+        personaje->setPosition(posicionJugador);
+        
+        
         /**Render**/
         window.clear();
         
@@ -127,6 +213,8 @@ int main(){
         
         //dibujo el mapa con su metodo
         mapa->dibuja(window);
+        
+        window.draw(suelo);
         
         //dibujo el personaje
         window.draw(*personaje);
