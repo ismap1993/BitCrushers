@@ -22,6 +22,7 @@ public:
     virtual ~Cargar();
     
     void leerMapa();
+    int getTile(int x, int y);
     void dibuja(sf::RenderWindow &window);
     
     sf::Sprite  fondo;

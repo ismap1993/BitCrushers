@@ -53,6 +53,7 @@ void Cargar::leerMapa(){
     map->QueryIntAttribute("tilewidth",&_tileWidth);
     map->QueryIntAttribute("tileheight",&_tileHeigth);
     
+    
     //Leemos las diferentes imagenes que nos sirven para hacer el rect de las texturas
     TiXmlElement *img = map->FirstChildElement("tileset");
     int numTil=0;
@@ -149,7 +150,7 @@ void Cargar::leerMapa(){
         }
     }
     
-    cout<<"nostas"<<endl;
+    
     /**
     for(int y=0; y<t; y++)
     {
@@ -197,8 +198,8 @@ void Cargar::leerMapa(){
     cout<<"Nombre del tileset= "<<filename[1]<<endl;
     cout<<endl;
      
-     /**
-    cout<<"Gid de las capas"<<endl;
+     
+    /*cout<<"Gid de las capas"<<endl;
    for(int l=0; l<_numLayers; l++)
     {
        cout<<name[l]<<endl;
@@ -214,23 +215,39 @@ void Cargar::leerMapa(){
                 }
             }
         }
-   }**/
+   }*/
 }
 
 
 void Cargar::dibuja(sf::RenderWindow& window){
-    
     
     //dibujamos el mapa
     for(int t=0; t<_numLayers; t++){
         for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
                 if(_tilemapSprite[t][y][x]!=NULL){
+//                    if(_tilemap[0][y][x]==40){
+//                        //dibuja enemigo (por debajo) en el reloj
+//                        sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
+//                        
+//                        personaje->setFillColor(sf::Color::Red);
+//                        personaje->setOutlineColor(sf::Color::Blue);
+//                        personaje->setOutlineThickness(10);
+//                        personaje->setPosition(x*32, y*32);
+//                        window.draw(*personaje);
+//                    }
                     window.draw(*(_tilemapSprite[t][y][x]));
                 }
             }
         }
     }
+    
+}
 
+int Cargar::getTile(int posx, int posy){
+    
+    int resultado= _tilemap[0][posy/32][posx/32];
+
+    return resultado;
 }
 
