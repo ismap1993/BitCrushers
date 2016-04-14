@@ -24,8 +24,9 @@ public:
     void Init();
     void Update();
     void Render();
-    void generarRecorte();
+    int** generarRecorte();
     Juego* getContext();
+
     static EInGame* Instance(Juego* context);
     ~EInGame();
     

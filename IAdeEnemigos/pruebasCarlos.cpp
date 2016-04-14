@@ -37,9 +37,13 @@ static int carlos(){
     
     std::cout<<"Holaa"<<std::endl;
     
-    Enemigo* pruebaEnemy = new Enemigo();
-    std::cout<<"pruebaEnemy: "<< &pruebaEnemy << std::endl;
+    Enemigo* pruebaEnemy = new Enemigo(false);
+    std::cout<<"pruebaEnemy: "<< pruebaEnemy->getPatrullaje() << std::endl;
     
+    
+    
+    
+    delete pruebaEnemy;
     
     
     return 0;

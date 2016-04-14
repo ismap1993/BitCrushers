@@ -17,9 +17,13 @@
 class Enemigo: public NPC {
 public:
     Enemigo();
-    Enemigo(const Enemigo& orig);
-    virtual ~Enemigo();
+    Enemigo(bool valorPatrullaje);
+    bool getPatrullaje();
+    void setPatrullaje(bool valorPatrullaje);
+    ~Enemigo();
+    
 private:
+    bool patrullaje;
 
 };
 

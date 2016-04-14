@@ -85,7 +85,8 @@ void EInGame::Render(){
     
 }
 
-void EInGame::generarRecorte(){
+
+int** EInGame::generarRecorte(){
     int posX=0;
     int linea=1;
     

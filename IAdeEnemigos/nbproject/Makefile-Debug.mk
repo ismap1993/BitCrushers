@@ -44,6 +44,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Escena.o \
 	${OBJECTDIR}/Juego.o \
+	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/pruebasAlfonso.o \
@@ -130,6 +131,11 @@ ${OBJECTDIR}/Juego.o: Juego.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
+
+${OBJECTDIR}/Mundo.o: Mundo.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mundo.o Mundo.cpp
 
 ${OBJECTDIR}/NPC.o: NPC.cpp 
 	${MKDIR} -p ${OBJECTDIR}
