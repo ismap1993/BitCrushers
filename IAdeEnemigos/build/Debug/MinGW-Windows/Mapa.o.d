@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/ECinematica.o: ECinematica.cpp \
+build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,8 +63,10 @@ build/Debug/MinGW-Windows/ECinematica.o: ECinematica.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Juego.h Escena.h EIntro.h EMenu.h \
- EMenuInGame.h ECinematica.h EInGame.h Mundo.h Mapa.h juego.h
+ c:/SFML/include/SFML/Graphics/Text.hpp juego.h Escena.h tinystr.h \
+ tinyxml.h Juego.h
+
+Mapa.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -204,22 +206,12 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Juego.h:
+juego.h:
 
 Escena.h:
 
-EIntro.h:
+tinystr.h:
 
-EMenu.h:
+tinyxml.h:
 
-EMenuInGame.h:
-
-ECinematica.h:
-
-EInGame.h:
-
-Mundo.h:
-
-Mapa.h:
-
-juego.h:
+Juego.h:

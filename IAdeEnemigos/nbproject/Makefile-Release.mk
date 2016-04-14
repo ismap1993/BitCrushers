@@ -44,11 +44,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Escena.o \
 	${OBJECTDIR}/Juego.o \
+	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/pruebasAlfonso.o \
-	${OBJECTDIR}/pruebasCarlos.o
+	${OBJECTDIR}/pruebasCarlos.o \
+	${OBJECTDIR}/tinystr.o \
+	${OBJECTDIR}/tinyxml.o \
+	${OBJECTDIR}/tinyxmlerror.o \
+	${OBJECTDIR}/tinyxmlparser.o
 
 
 # C Compiler Flags
@@ -120,6 +125,11 @@ ${OBJECTDIR}/Juego.o: Juego.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
 
+${OBJECTDIR}/Mapa.o: Mapa.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
+
 ${OBJECTDIR}/Mundo.o: Mundo.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -144,6 +154,26 @@ ${OBJECTDIR}/pruebasCarlos.o: pruebasCarlos.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/pruebasCarlos.o pruebasCarlos.cpp
+
+${OBJECTDIR}/tinystr.o: tinystr.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinystr.o tinystr.cpp
+
+${OBJECTDIR}/tinyxml.o: tinyxml.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml.o tinyxml.cpp
+
+${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlerror.o tinyxmlerror.cpp
+
+${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
 
 # Subprojects
 .build-subprojects:

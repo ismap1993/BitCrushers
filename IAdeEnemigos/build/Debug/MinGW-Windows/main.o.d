@@ -65,7 +65,7 @@ build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h pruebasAlfonso.cpp \
  pruebasCarlos.cpp Juego.h Escena.h EIntro.h EMenu.h EMenuInGame.h \
- ECinematica.h EInGame.h Enemigo.h NPC.h
+ ECinematica.h EInGame.h Mundo.h Mapa.h juego.h Enemigo.h NPC.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -224,6 +224,12 @@ EMenuInGame.h:
 ECinematica.h:
 
 EInGame.h:
+
+Mundo.h:
+
+Mapa.h:
+
+juego.h:
 
 Enemigo.h:
 
