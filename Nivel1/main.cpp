@@ -60,7 +60,7 @@ int main(){
     }
     
     sf::RectangleShape suelo(sf::Vector2f(1280, 500));
-    suelo.setPosition(0,500);
+    suelo.setPosition(0,600);
     suelo.setOutlineThickness(1.0f);
     suelo.setFillColor(sf::Color(120,66,0));
     suelo.setOutlineColor(sf::Color::Black);
@@ -81,9 +81,7 @@ int main(){
     while (window.isOpen()){
         
         
-        if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
-                                personaje->move(-kVel, 0);
-                            }
+        
         //Bucle de obtención de eventos
         sf::Event event;
         while (window.pollEvent(event)){
@@ -101,7 +99,7 @@ int main(){
                     switch(event.key.code) {
                         
                         //Mapeo del cursor
-                        case sf::Keyboard::Right:
+                       /* case sf::Keyboard::Right:
                             //muevo a la derecha el personaje y la camara con el metodo moveRight
                             personaje->move(kVel, 0);
                             camara->moveRight(*personaje);
@@ -109,21 +107,9 @@ int main(){
                             if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
                                 personaje->move(-kVel, 0);
                             }
-                        break;
+                        break;*/
 
-                        case sf::Keyboard::Left:
-                            //muevo a la izquierda el personaje y la camara con el metodo moveLeft
-                            personaje->move(-kVel, 0);
-                            camara->moveLeft(*personaje);
-                        break;
                         
-                        case sf::Keyboard::Up:
-                            
-                        break;
-                        
-                        case sf::Keyboard::Down:
-                            
-                        break;
                         
                         
                         //Tecla ESC para salir
@@ -142,12 +128,66 @@ int main(){
             
         }     
         
+        /*if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)==1){
+            
+            //std::cout<<"holaaaaaa"<<std::endl;
+            //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
+            
+            alturaSuelo=580;
+            
+            if(personaje->getPosition().y>400){
+                //std::cout<<"ID= "<< personaje->getPosition().y<<std::endl;
+                
+                alturaSuelo=580;
+                //velocidadJugador.y = 0;
+                //personaje->setPosition(personaje->getPosition().x, 690);
+            }
+            
+            //velocidadJugador.y = aux;
+        }
+        
+        else{
+            velocidadJugador.y = 0;
+            alturaSuelo=personaje->getPosition().y;
+        }*/
+       
+        if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==30){
+                                velocidadJugador.y = 0;
+                                alturaSuelo=personaje->getPosition().y;
+                                
+                                 //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
+        }
+        
+        else if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)==1){
+            
+            //std::cout<<"holaaaaaa"<<std::endl;
+            //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
+            
+            alturaSuelo=580;
+            
+            if(personaje->getPosition().y>400){
+                //std::cout<<"ID= "<< personaje->getPosition().y<<std::endl;
+                
+                alturaSuelo=580;
+                //velocidadJugador.y = 0;
+                //personaje->setPosition(personaje->getPosition().x, 690);
+            }
+            
+            //velocidadJugador.y = aux;
+        }
         
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            camara->moveRight(*personaje);
+            
+            std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
+            
             if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
+                std::cout<<"ID= holaaaaaaaa"<<std::endl;
                                 velocidadJugador.x = 0;
+                                
                             }
-            velocidadJugador.x = velocidadMovimiento;
+            else
+                velocidadJugador.x = velocidadMovimiento;
             //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
               //                  sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
         }
