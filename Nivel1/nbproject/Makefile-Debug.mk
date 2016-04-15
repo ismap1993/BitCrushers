@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/Cargar.o \
+	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/tinystr.o \
 	${OBJECTDIR}/tinyxml.o \
@@ -89,6 +90,11 @@ ${OBJECTDIR}/Cargar.o: Cargar.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cargar.o Cargar.cpp
+
+${OBJECTDIR}/Jugador.o: Jugador.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -15,6 +15,7 @@
 #define CAMARA_H
 #include <SFML/Graphics.hpp>
 #include "Cargar.h"
+#include "Jugador.h"
 
 class Camara {
 public:
@@ -23,8 +24,8 @@ public:
     virtual ~Camara();
     
     void draw(sf::RenderWindow &window);
-    void moveRight(sf::RectangleShape& personaje);
-    void moveLeft(sf::RectangleShape& personaje);
+    void moveRight(Jugador *personaje);
+    void moveLeft(Jugador *personaje);
     
     
 private:

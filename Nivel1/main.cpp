@@ -7,6 +7,7 @@
 #include <vector>
 #include "Cargar.h"
 #include <math.h> 
+#include "Jugador.h"
 //velocidad a la que se mueve el personaje
 #define kVel 10
 
@@ -17,6 +18,10 @@ int main(){
     
     //Creo un personaje para poder moverlo
     sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
+    float posx = 200; //para que sean floats
+    float posy = 359;
+    Jugador* player = new Jugador(posx, posy, 1, true);
+    //player->leerXML();
     
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
     Cargar *mapa = new Cargar();
@@ -151,14 +156,12 @@ int main(){
             alturaSuelo=personaje->getPosition().y;
         }*/
        
-        if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==30){
+        if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)>1){
                                 velocidadJugador.y = 0;
                                 alturaSuelo=personaje->getPosition().y;
                                 
                                  //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
-        }
-        
-        else if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)==1){
+        }else if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)==1){
             
             //std::cout<<"holaaaaaa"<<std::endl;
             //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
@@ -177,9 +180,9 @@ int main(){
         }
         
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            camara->moveRight(*personaje);
+            //camara->moveRight(*personaje);
             
-            std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
+            //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
             
             if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)==4){
                 std::cout<<"ID= holaaaaaaaa"<<std::endl;
@@ -193,6 +196,7 @@ int main(){
         }
         
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            //camara->moveLeft(*personaje);
             velocidadJugador.x = -velocidadMovimiento;
             //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
               //                  sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
@@ -256,8 +260,10 @@ int main(){
         
         window.draw(suelo);
         
+
         //dibujo el personaje
-        window.draw(*personaje);
+        player->draw(window);
+        player->handle(event, window, mapa, camara);
         
         //setteo la camara
         camara->draw(window);
