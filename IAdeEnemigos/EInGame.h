@@ -15,7 +15,6 @@
 #define EINGAME_H
 
 #include "Juego.h"
-#include "Mundo.h"
 
 class EInGame: public Escena {
 public:
@@ -25,7 +24,6 @@ public:
     void Init();
     void Update();
     void Render();
-    int** getRecorte();
     int** generarRecorte();
     Juego* getContext();
 
@@ -43,7 +41,6 @@ private:
     
     int** matrizRecorte;
     static EInGame* pinstance;
-    Mundo* mundo;
     Juego* _context;
     
 };

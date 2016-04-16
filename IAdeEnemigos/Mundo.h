@@ -13,23 +13,14 @@
 
 #ifndef MUNDO_H
 #define MUNDO_H
-#include "Mapa.h"
 
 class Mundo {
 public:
-    Mundo(int nivel);
-    void crearNivel(int nivel);
-
-    void Render();
-    
-    static Mundo* Instance(int nivel);
-    
-    ~Mundo();
+    Mundo();
+    Mundo(const Mundo& orig);
+    virtual ~Mundo();
 private:
 
-       static Mundo* pinstance;
-       Mapa* mapa;
-    
 };
 
 #endif /* MUNDO_H */

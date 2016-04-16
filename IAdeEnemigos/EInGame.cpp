@@ -55,10 +55,6 @@ void EInGame::Handle(){
 }
 
 void EInGame::Init(){
-    
-    mundo = new Mundo(1);
-    
-    
     rectangulo.setSize(sf::Vector2f(300, 200));
     rectangulo.setOutlineColor(sf::Color::Blue);
     rectangulo.setFillColor(sf::Color::Blue);
@@ -77,7 +73,6 @@ void EInGame::Update(){
     
     rectangulo.rotate(0.2);
     
-    
     Render();
 
 }
@@ -86,16 +81,10 @@ void EInGame::Render(){
     
     _context->window->clear(sf::Color::White); //COLOR DE FONDO BLANCO    
     _context->window->draw(rectangulo);
-    mundo->Render();
     _context->window->display();
     
 }
 
-int** EInGame::getRecorte(){
-    
-    return matrizRecorte;
-    
-}
 
 int** EInGame::generarRecorte(){
     int posX=0;
@@ -162,7 +151,6 @@ int** EInGame::generarRecorte(){
         }
     }
     
-    return matrizRecorte;
     
 }
 
@@ -174,11 +162,8 @@ Juego* EInGame::getContext(){
 
 EInGame::~EInGame(){
                             //Destruccion de la instancia 
-    
-    
-    delete mundo;
+    std::cout << "EInGame ha sido eliminada. "  << std::endl;
     _context = 0;
     pinstance = 0;
-    std::cout << "EInGame ha sido eliminada. "  << std::endl;
     
 }

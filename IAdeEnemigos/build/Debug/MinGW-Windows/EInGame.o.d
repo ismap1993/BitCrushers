@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/EInGame.o: EInGame.cpp EInGame.h Juego.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Escena.h Mundo.h Mapa.h juego.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Escena.h
 
 EInGame.h:
 
@@ -208,9 +208,3 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
 Escena.h:
-
-Mundo.h:
-
-Mapa.h:
-
-juego.h:

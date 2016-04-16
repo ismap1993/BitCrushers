@@ -24,14 +24,6 @@
 
 using namespace std;
 
-Juego* Juego::pinstance = 0;
-Juego* Juego::Instance(){
-    
-    if(pinstance == 0) pinstance = new Juego();
-
-    return pinstance;
-}
-
 Juego::Juego(){
     
     _state = 0;
@@ -46,10 +38,10 @@ void Juego::Init(){
     
     std::cout << "Instancia de Juego: " << this  << std::endl;
     std::cout << "Pulsa la tecla 1 para cambiar al estado ECinematica."  << std::endl;
-    std::cout << "Pulsa la tecla 2 para cambiar al estado EInGame."  << std::endl;
+    std::cout << "Pulsa la tecla 2 para cambiar al estado EMenuInGame."  << std::endl;
     std::cout << "Pulsa la tecla 3 para cambiar al estado EMenu."  << std::endl;
     std::cout << "Pulsa la tecla 4 para cambiar al estado EIntro."  << std::endl;
-    std::cout << "Pulsa la tecla 5 para cambiar al estado EMenuInGame."  << std::endl;
+    std::cout << "Pulsa la tecla 5 para cambiar al estado EInGame."  << std::endl;
     std::cout << "Pulsa la tecla 6 para consultar el estado actual."  << std::endl;
     std::cout << "Pulsa la tecla 7 para Destruir ECinematica"  << std::endl;
     std::cout << "Pulsa la tecla 8 para Destruir EMenuInGame"  << std::endl;
@@ -112,9 +104,5 @@ void Juego::setState(Escena* state){
 }
 
 Juego::~Juego() {
-    
-   delete EInGame::Instance(this);
-   std::cout << "Juego ha sido eliminado."   << std::endl;
-    
     
 }
