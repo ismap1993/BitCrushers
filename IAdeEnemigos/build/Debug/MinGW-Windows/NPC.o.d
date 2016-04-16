@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/NPC.o: NPC.cpp NPC.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h
 
 NPC.h:
 
@@ -206,3 +206,5 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
 Jugador.h:
+
+Mapa.h:
