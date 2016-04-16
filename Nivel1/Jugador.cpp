@@ -18,7 +18,7 @@
 #include <cstring>
 #include "Jugador.h"
 #include "Camara.h"
-#include "Cargar.h"
+#include "Mapa.h"
 using namespace std;
 using std::cout;
 using std::endl;
@@ -177,7 +177,7 @@ sf::Sprite Jugador::getSprite(){
     return sprite;
 }
 
-void Jugador::handle(sf::Event event, sf::RenderWindow &window, Cargar *mapa, Camara *camara){
+void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
     
     /*sf::RectangleShape suelo(sf::Vector2f(1280, 500));
     suelo.setPosition(0,500);

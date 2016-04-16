@@ -5,7 +5,7 @@
 #include <SFML/System.hpp>
 #include <string>
 #include <vector>
-#include "Cargar.h"
+#include "Mapa.h"
 #include <math.h> 
 #include "Jugador.h"
 //velocidad a la que se mueve el personaje
@@ -24,8 +24,8 @@ int main(){
     //player->leerXML();
     
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
-    Cargar *mapa = new Cargar();
-    mapa->leerMapa();
+    Mapa *mapa = new Mapa();
+    mapa->leerMapa(1);
     
     //Creo la camara con el ancho y el largo de la ventana, ademas le paso la cantidad de pixeles que se mueve el personaje y el mapa
     Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
@@ -79,20 +79,13 @@ int main(){
     float velocidadSalto = 7, velocidadMovimiento = 0.3;
     bool salto = false;
 
-    
     personaje->setPosition(posicionJugador);
     
-    
     while (window.isOpen()){
-        
-        
-        
         //Bucle de obtención de eventos
         sf::Event event;
         while (window.pollEvent(event)){
-            
-            
-            
+
             switch(event.type){
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
@@ -114,9 +107,6 @@ int main(){
                             }
                         break;*/
 
-                        
-                        
-                        
                         //Tecla ESC para salir
                         case sf::Keyboard::Escape:
                             window.close();
@@ -128,9 +118,7 @@ int main(){
                         break;
                               
                     }
-
             }
-            
         }     
         
         /*if(mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)==1){

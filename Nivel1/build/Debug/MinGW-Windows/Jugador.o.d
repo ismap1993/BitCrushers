@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/Jugador.o: Jugador.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Cargar.h Camara.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h Camara.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -205,6 +205,6 @@ c:/SFML/include/SFML/Graphics/Text.hpp:
 
 Jugador.h:
 
-Cargar.h:
+Mapa.h:
 
 Camara.h:

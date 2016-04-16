@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="90">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Camara.h</itemPath>
-      <itemPath>Cargar.h</itemPath>
       <itemPath>Jugador.h</itemPath>
+      <itemPath>Mapa.h</itemPath>
       <itemPath>tinystr.h</itemPath>
       <itemPath>tinyxml.h</itemPath>
     </logicalFolder>
@@ -18,8 +18,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Camara.cpp</itemPath>
-      <itemPath>Cargar.cpp</itemPath>
       <itemPath>Jugador.cpp</itemPath>
+      <itemPath>Mapa.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>tinystr.cpp</itemPath>
       <itemPath>tinyxml.cpp</itemPath>
@@ -68,13 +68,13 @@
       </item>
       <item path="Camara.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Cargar.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Cargar.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -115,13 +115,13 @@
       </item>
       <item path="Camara.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Cargar.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Cargar.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

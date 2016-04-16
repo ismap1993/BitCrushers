@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/Camara.o: Camara.cpp Camara.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Cargar.h Jugador.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Mapa.h Jugador.h
 
 Camara.h:
 
@@ -205,6 +205,6 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Cargar.h:
+Mapa.h:
 
 Jugador.h:

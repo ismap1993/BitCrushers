@@ -12,11 +12,11 @@
  */
 
 #include "Camara.h"
-#include "Cargar.h"
+#include "Mapa.h"
 #include <iostream>
 #include "Jugador.h"
 
-Camara::Camara(int width, int height, int desp, Cargar &map){
+Camara::Camara(int width, int height, int desp, Mapa &map){
     
     ancho=width;
     alto=height;
@@ -24,7 +24,7 @@ Camara::Camara(int width, int height, int desp, Cargar &map){
     desplazamientoCamara=0;
     posicionOrigenCamara=camara->getCenter().x;
     kVel=desp;
-    mapa= new Cargar();
+    mapa= new Mapa();
     
     mapa->_tileWidth=map._tileWidth;
     mapa->_width=map._width;

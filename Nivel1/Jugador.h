@@ -13,7 +13,7 @@
 
 #ifndef JUGADOR_H
 #define JUGADOR_H
-#include "Cargar.h"
+#include "Mapa.h"
 class Camara;
 
 class Jugador {
@@ -25,7 +25,7 @@ public:
     sf::Sprite getSprite();
     void leerXML();
     void draw(sf::RenderWindow &window);
-    void handle(sf::Event event, sf::RenderWindow& window, Cargar *mapa, Camara *camara);
+    void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
     bool salto;
     int alturaSuelo;
     sf::Vector2f posicionJugador;
