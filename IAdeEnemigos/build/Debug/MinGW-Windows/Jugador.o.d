@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/pruebasAlfonso.o: pruebasAlfonso.cpp \
+build/Debug/MinGW-Windows/Jugador.o: Jugador.cpp \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,8 +63,8 @@ build/Debug/MinGW-Windows/pruebasAlfonso.o: pruebasAlfonso.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp tinyxml.h tinystr.h Camara.h \
- Mapa.h Jugador.h Proyectil.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h Proyectil.h \
+ Camara.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -204,14 +204,10 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-tinyxml.h:
-
-tinystr.h:
-
-Camara.h:
+Jugador.h:
 
 Mapa.h:
 
-Jugador.h:
-
 Proyectil.h:
+
+Camara.h:

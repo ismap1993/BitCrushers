@@ -27,8 +27,10 @@ Enemigo::Enemigo() : patrullaje(true) {
     
 }
 
-Enemigo::Enemigo(bool valorPatrullaje) : patrullaje(valorPatrullaje) {
+Enemigo::Enemigo(bool valorPatrullaje, int posx, int posy) : patrullaje(valorPatrullaje) {
  
+
+    
     
     
 }

@@ -17,7 +17,7 @@
 class Enemigo: public NPC {
 public:
     Enemigo();
-    Enemigo(bool valorPatrullaje);
+    Enemigo(bool valorPatrullaje, int posx, int posy);
     bool getPatrullaje();
     void setPatrullaje(bool valorPatrullaje);
     ~Enemigo();

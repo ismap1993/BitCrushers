@@ -13,7 +13,9 @@
 
 #ifndef JUGADOR_H
 #define JUGADOR_H
+#include <vector>
 #include "Mapa.h"
+#include "Proyectil.h"
 class Camara;
 
 class Jugador {
@@ -26,6 +28,7 @@ public:
     void leerXML();
     void draw(sf::RenderWindow &window);
     void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
+    void disparar();
     bool salto;
     int alturaSuelo;
     sf::Vector2f posicionJugador;
@@ -36,7 +39,9 @@ public:
     
     
 private:
-    
+
+    Proyectil *proyectiles; 
+    int contPro;//contador de proyectiles
     sf::Sprite sprite;
     bool tieneLLave;
     bool activo;
