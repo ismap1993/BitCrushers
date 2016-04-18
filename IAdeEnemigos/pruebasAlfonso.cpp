@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-#include <SFML/Graphics.hpp>
-#include "tinyxml.h"
-#include "Camara.h"
 #include <iostream>
-#include <SFML/System.hpp>
-#include <string>
 #include <vector>
-#include "Mapa.h"
-#include <math.h> 
-#include "Jugador.h"
+#include <string> 
+#include <SFML/Graphics.hpp>
 
-#define kVel 10
+//#define kVel 15
 
 #include "Jugador.h"
 #include <fstream>
@@ -38,12 +31,12 @@ static int alfonso(){
     Jugador* player = new Jugador(200, 380, 1, true);//le pasamos la posicion X e Y donde se colocará el sprite. 
                                                     //El tercer parametro es que personaje es, solo puede ser hasta el 4. 1.Pablo 2.Albert 3.Rajoy 4.Pedro
                                                     //El cuarto parametro es para saber si está activado el personaje en el array de personajes ya que solo un personaje se puede mostrar.
-    //player->leerXML();//PREGUNTA    ¿es mejor que la matriz deonde se guardan los datos del psrite sheet sea global de la clase Juego o que cada jugador tenga su propia matriz aunque sea la misma?
+    player->leerXML();//PREGUNTA    ¿es mejor que la matriz deonde se guardan los datos del psrite sheet sea global de la clase Juego o que cada jugador tenga su propia matriz aunque sea la misma?
 
-    Mapa *mapa = new Mapa();
-    mapa->leerMapa(1);
-    std::cout<<"holaaaaaa"<<std::endl;
-    Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
+    //Mapa *mapa = new Mapa();
+    //mapa->leerMapa();
+    
+    //Camara *camara = new Camara(window.getSize().x, window.getSize().y, 15, mapa->fondo, mapa->_width, mapa->_tileWidth);
     //le pasamos el alto y el ancho de la ventana
     //el siguiente parametro es la distancia que se mueve la ventana cada vez que se mueve el personaje
     //le pasamos el fondo para poder consultarlo
@@ -56,15 +49,12 @@ static int alfonso(){
             //player->handle(event, window);
         }
         window.clear(sf::Color::White);
-        mapa->dibuja(window);
-        //window.draw(sprite);
+        window.draw(sprite);
         player->draw(window);
-        player->handle(event, window, mapa, camara);
-        
+        player->handle(event, window);
+        //mapa->dibuja(window);
         //std::cout<< player->getSprite().getPosition().x <<std::endl;
-        //window.draw(player->getSprite());     
-        //setteo la camara
-        camara->draw(window);
+        //window.draw(player->getSprite());        
         window.display();
         
     }

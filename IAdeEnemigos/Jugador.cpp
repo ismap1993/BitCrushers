@@ -17,8 +17,6 @@
 #include <fstream>
 #include <cstring>
 #include "Jugador.h"
-#include "Camara.h"
-#include "Mapa.h"
 using namespace std;
 using std::cout;
 using std::endl;
@@ -38,7 +36,7 @@ Jugador::Jugador(const Jugador& orig) {
 Jugador::~Jugador() {
 }
 
-Jugador::Jugador(float x, float y, int politico, bool activado){
+Jugador::Jugador(int x, int y, int politico, bool activado){
     
     matriz=new int*[99];
     for(int i=0; i<99;i++){
@@ -84,17 +82,8 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     std::cout<<sprite.getPosition().x<<" estamos en estas dos coordenadas "<<sprite.getPosition().y<<std::endl;
     tieneLLave = false;
     activo = activado;
-    alturaSuelo=sprite.getPosition().y+10;
     
-    posicionJugador.x=x;
-    posicionJugador.y=y;
-    salto=false;
-    velocidadMovimiento=1;
-    velocidadSalto=5;
-    velocidadJugador.x=0;
-    velocidadJugador.y=0;
-    muerto=false;
-
+     
 }
 
 void Jugador::leerXML(){
@@ -166,18 +155,16 @@ void Jugador::leerXML(){
 }
 
 void Jugador::draw(sf::RenderWindow& window){
-    if(muerto==false){
-        window.draw(sprite);
-    }
     
-     //std::cout<<sprite.getPosition().y<<std::endl;
+    window.draw(sprite);
+    
 }
 
 sf::Sprite Jugador::getSprite(){
     return sprite;
 }
 
-void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
+void Jugador::handle(sf::Event event, sf::RenderWindow &window){
     
     /*sf::RectangleShape suelo(sf::Vector2f(1280, 500));
     suelo.setPosition(0,500);
@@ -186,14 +173,13 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     suelo.setOutlineColor(sf::Color::Black);
     */
     
-    //sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
-    //sf::Vector2f velocidadJugador(0, 0);
-    const float gravedad = 0.1;
+    sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
+    sf::Vector2f velocidadJugador(0, 0);
+    const float gravedad = 0.5;
     //int alturaSuelo = suelo.getPosition().y - 65;
-    //int alturaSuelo = sprite.getPosition().y+10;
-    //float velocidadSalto = 100, velocidadMovimiento = 5;
-    
-    //bool salto= false;
+    int alturaSuelo = sprite.getPosition().y+10;
+    float velocidadSalto = 11, velocidadMovimiento = 5;
+    bool salto = false;
     //sprite.setPosition(posicionJugador);
     
     switch(event.type){
@@ -208,61 +194,20 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             }
  
     }
-    
-    /*CAIDAS*/
-    if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)>1){
-                                velocidadJugador.y = 0;
-                                alturaSuelo=this->getSprite().getPosition().y;
-                                
-                                 //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
-    }else if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)==1){
-            
-            //std::cout<<"holaaaaaa"<<std::endl;
-            //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
-            
-            alturaSuelo=580;
-            
-            if(this->getSprite().getPosition().y>400){ //MUERTE!!
-                //std::cout<<"ID= "<< personaje->getPosition().y<<std::endl;
-                
-                //muerto=true;
-                alturaSuelo=500;
-                //velocidadJugador.y = 0;
-                //personaje->setPosition(personaje->getPosition().x, 690);
-            }
-            
-            //velocidadJugador.y = aux;
-     }
-    
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        camara->moveRight(this);
-        //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
-        if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
-            std::cout<<"ID= choque derecho!"<<std::endl;
-            velocidadJugador.x = -5;    
-        }else{
-            velocidadJugador.x = velocidadMovimiento;
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-            sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-        }
+        velocidadJugador.x = velocidadMovimiento;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+        sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-        camara->moveLeft(this);
-        
-        if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
-            std::cout<<"ID= choque izquierdo!"<<std::endl;
-            velocidadJugador.x = 5;    
-        }else{
-            velocidadJugador.x = -velocidadMovimiento;
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-            sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
-        }  
+        velocidadJugador.x = -velocidadMovimiento;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+        sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
     }
     else{
         velocidadJugador.x = 0;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
     }
@@ -271,8 +216,9 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && salto){
-                velocidadJugador.y = -velocidadSalto;
-                salto = false;
+        velocidadJugador.y = -velocidadSalto;
+        salto = false;
+
     }
 
     if(!salto)
@@ -283,12 +229,10 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     posicionJugador += velocidadJugador;
 
     salto = posicionJugador.y + 10 >= alturaSuelo;
-    //std::cout<<posicionJugador.x<<"ammm"<<posicionJugador.y<<std::endl;
-    if(salto){
-        sprite.setPosition(0, alturaSuelo-10);
-        //posicionJugador.y = alturaSuelo - 10;
-        
-    }
-        
+    std::cout<<posicionJugador.x<<"ammm"<<posicionJugador.y<<std::endl;
+    if(salto)
+        posicionJugador.y = alturaSuelo - 10;
+
+
     sprite.setPosition(posicionJugador);
 }

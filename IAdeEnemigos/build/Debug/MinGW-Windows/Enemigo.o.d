@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/Enemigo.o: Enemigo.cpp Enemigo.h NPC.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h
 
 Enemigo.h:
 
@@ -208,5 +208,3 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
 Jugador.h:
-
-Mapa.h:

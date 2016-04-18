@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/pruebasCarlos.o: pruebasCarlos.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h Juego.h Escena.h \
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Juego.h Escena.h \
  EIntro.h EMenu.h EMenuInGame.h ECinematica.h EInGame.h Enemigo.h NPC.h
 
 c:/SFML/include/SFML/Graphics.hpp:
@@ -205,8 +205,6 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
 Jugador.h:
-
-Mapa.h:
 
 Juego.h:
 
