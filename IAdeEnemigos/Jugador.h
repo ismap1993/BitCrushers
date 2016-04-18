@@ -13,23 +13,34 @@
 
 #ifndef JUGADOR_H
 #define JUGADOR_H
+#include "Mapa.h"
+class Camara;
 
 class Jugador {
 public:
     Jugador();
-    Jugador(int x, int y, int politico, bool activado);//1.Pablo 2.Albert 3.Rajoy 4.Pedro
+    Jugador(float x, float y, int politico, bool activado);//1.Pablo 2.Albert 3.Rajoy 4.Pedro
     Jugador(const Jugador& orig);
     virtual ~Jugador();
     sf::Sprite getSprite();
     void leerXML();
     void draw(sf::RenderWindow &window);
-    void handle(sf::Event event, sf::RenderWindow& window);
+    void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
+    bool salto;
+    int alturaSuelo;
+    sf::Vector2f posicionJugador;
+    float velocidadSalto;
+    float velocidadMovimiento;
+    sf::Vector2f velocidadJugador;
+    bool muerto;
+    
     
 private:
     
     sf::Sprite sprite;
     bool tieneLLave;
     bool activo;
+    
     int** matriz;
     sf::Texture texturaJugador;
     

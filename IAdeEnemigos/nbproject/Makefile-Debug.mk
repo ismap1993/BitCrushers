@@ -35,7 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/476a240/Jugador.o \
+	${OBJECTDIR}/_ext/901fb3be/Camara.o \
+	${OBJECTDIR}/_ext/901fb3be/Jugador.o \
+	${OBJECTDIR}/_ext/901fb3be/Mapa.o \
+	${OBJECTDIR}/_ext/901fb3be/tinystr.o \
+	${OBJECTDIR}/_ext/901fb3be/tinyxml.o \
+	${OBJECTDIR}/_ext/901fb3be/tinyxmlerror.o \
+	${OBJECTDIR}/_ext/901fb3be/tinyxmlparser.o \
 	${OBJECTDIR}/ECinematica.o \
 	${OBJECTDIR}/EInGame.o \
 	${OBJECTDIR}/EIntro.o \
@@ -87,10 +93,40 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/476a240/Jugador.o: ../presidentumClases2/Jugador.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/476a240
+${OBJECTDIR}/_ext/901fb3be/Camara.o: ../Nivel1/Camara.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/476a240/Jugador.o ../presidentumClases2/Jugador.cpp
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/Camara.o ../Nivel1/Camara.cpp
+
+${OBJECTDIR}/_ext/901fb3be/Jugador.o: ../Nivel1/Jugador.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/Jugador.o ../Nivel1/Jugador.cpp
+
+${OBJECTDIR}/_ext/901fb3be/Mapa.o: ../Nivel1/Mapa.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/Mapa.o ../Nivel1/Mapa.cpp
+
+${OBJECTDIR}/_ext/901fb3be/tinystr.o: ../Nivel1/tinystr.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinystr.o ../Nivel1/tinystr.cpp
+
+${OBJECTDIR}/_ext/901fb3be/tinyxml.o: ../Nivel1/tinyxml.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinyxml.o ../Nivel1/tinyxml.cpp
+
+${OBJECTDIR}/_ext/901fb3be/tinyxmlerror.o: ../Nivel1/tinyxmlerror.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinyxmlerror.o ../Nivel1/tinyxmlerror.cpp
+
+${OBJECTDIR}/_ext/901fb3be/tinyxmlparser.o: ../Nivel1/tinyxmlparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinyxmlparser.o ../Nivel1/tinyxmlparser.cpp
 
 ${OBJECTDIR}/ECinematica.o: ECinematica.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -63,7 +63,8 @@ build/Debug/MinGW-Windows/pruebasAlfonso.o: pruebasAlfonso.cpp \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h
+ c:/SFML/include/SFML/Graphics/Text.hpp tinyxml.h tinystr.h Camara.h \
+ Mapa.h Jugador.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -202,5 +203,13 @@ c:/SFML/include/SFML/Graphics/Shader.hpp:
 c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
+
+tinyxml.h:
+
+tinystr.h:
+
+Camara.h:
+
+Mapa.h:
 
 Jugador.h:
