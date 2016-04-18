@@ -19,8 +19,6 @@
 #include "Jugador.h"
 #include "Camara.h"
 #include "Mapa.h"
-#include "Proyectil.h"
-
 using namespace std;
 using std::cout;
 using std::endl;
@@ -96,13 +94,7 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     velocidadJugador.x=0;
     velocidadJugador.y=0;
     muerto=false;
-    //vector<sf::Sprite*>* votos = new vector<sf::Sprite*>();
-    
-    //proyectiles = new vector<Proyectil*>();
-    
-    proyectiles = new Proyectil[5];
-    contPro=0;
-    
+
 }
 
 void Jugador::leerXML(){
@@ -242,12 +234,6 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             //velocidadJugador.y = aux;
      }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        std::cout<<"holaaaaa, he presionado el espacio"<<std::endl;
-        disparar();
-    
-    }
-    
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         camara->moveRight(this);
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
@@ -305,13 +291,4 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
         
     sprite.setPosition(posicionJugador);
-}
-
-void Jugador::disparar(){
-    
-    Proyectil* pro = new Proyectil();
-    
-    Proyectil aux = pro->crearPro(0, this->getSprite().getPosition().x);
-    proyectiles[contPro] = aux;
-    
 }

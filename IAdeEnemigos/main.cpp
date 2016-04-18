@@ -15,7 +15,7 @@
 
 int main(){                   //COMENTAR UNA DE LAS DOS LLAMADAS PARA NO LIARLA!!
     
-   alfonso();
+   //alfonso();
    
    carlos();
         

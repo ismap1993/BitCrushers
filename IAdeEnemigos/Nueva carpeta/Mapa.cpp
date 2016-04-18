@@ -8,7 +8,6 @@
 #include "Mapa.h"
 #include "tinystr.h"
 #include "tinyxml.h"
-#include "Juego.h"
 #include <iostream>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -220,7 +219,7 @@ void Mapa::leerMapa(int numMapa){
 }
 
 
-void Mapa::dibuja(){
+void Mapa::dibuja(sf::RenderWindow& window){
     
     //dibujamos el mapa
     for(int t=0; t<_numLayers; t++){
@@ -237,7 +236,7 @@ void Mapa::dibuja(){
 //                        personaje->setPosition(x*32, y*32);
 //                        window.draw(*personaje);
 //                    }
-                    Juego::Instance()->window->draw(*(_tilemapSprite[t][y][x]));
+                    window.draw(*(_tilemapSprite[t][y][x]));
                 }
             }
         }

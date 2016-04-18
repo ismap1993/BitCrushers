@@ -19,8 +19,8 @@
 class Juego {
     
 public:
+    static Juego* Instance();
     Juego();
-    
     void Init();
     
     Escena* currentState();
@@ -37,7 +37,7 @@ public:
     
 private:
 	Escena* _state;
+        static Juego* pinstance;
 };
 
 #endif /* JUEGO_H */
-

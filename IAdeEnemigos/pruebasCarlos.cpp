@@ -26,6 +26,7 @@
 
 #include "Enemigo.h"
 #include "NPC.h"
+#include "Mundo.h"
 
 static int carlos(){
     
@@ -35,15 +36,8 @@ static int carlos(){
     //Juego* juego = new Juego();
     //juego->Init();
     
-    std::cout<<"Holaa"<<std::endl;
-    
-    Enemigo* pruebaEnemy = new Enemigo(false);
-    std::cout<<"pruebaEnemy: "<< pruebaEnemy->getPatrullaje() << std::endl;
-    
-    
-    
-    
-    delete pruebaEnemy;
+    Juego::Instance();
+    Juego::Instance()->Init();
     
     
     return 0;

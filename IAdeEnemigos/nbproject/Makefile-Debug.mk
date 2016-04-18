@@ -35,13 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/901fb3be/Camara.o \
-	${OBJECTDIR}/_ext/901fb3be/Jugador.o \
-	${OBJECTDIR}/_ext/901fb3be/Mapa.o \
-	${OBJECTDIR}/_ext/901fb3be/tinystr.o \
-	${OBJECTDIR}/_ext/901fb3be/tinyxml.o \
-	${OBJECTDIR}/_ext/901fb3be/tinyxmlerror.o \
-	${OBJECTDIR}/_ext/901fb3be/tinyxmlparser.o \
+	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/ECinematica.o \
 	${OBJECTDIR}/EInGame.o \
 	${OBJECTDIR}/EIntro.o \
@@ -50,11 +44,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Escena.o \
 	${OBJECTDIR}/Juego.o \
+	${OBJECTDIR}/Jugador.o \
+	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/pruebasAlfonso.o \
-	${OBJECTDIR}/pruebasCarlos.o
+	${OBJECTDIR}/pruebasCarlos.o \
+	${OBJECTDIR}/tinystr.o \
+	${OBJECTDIR}/tinyxml.o \
+	${OBJECTDIR}/tinyxmlerror.o \
+	${OBJECTDIR}/tinyxmlparser.o
 
 
 # C Compiler Flags
@@ -93,40 +93,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iadeenemigos ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/901fb3be/Camara.o: ../Nivel1/Camara.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
+${OBJECTDIR}/Camara.o: Camara.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/Camara.o ../Nivel1/Camara.cpp
-
-${OBJECTDIR}/_ext/901fb3be/Jugador.o: ../Nivel1/Jugador.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/Jugador.o ../Nivel1/Jugador.cpp
-
-${OBJECTDIR}/_ext/901fb3be/Mapa.o: ../Nivel1/Mapa.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/Mapa.o ../Nivel1/Mapa.cpp
-
-${OBJECTDIR}/_ext/901fb3be/tinystr.o: ../Nivel1/tinystr.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinystr.o ../Nivel1/tinystr.cpp
-
-${OBJECTDIR}/_ext/901fb3be/tinyxml.o: ../Nivel1/tinyxml.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinyxml.o ../Nivel1/tinyxml.cpp
-
-${OBJECTDIR}/_ext/901fb3be/tinyxmlerror.o: ../Nivel1/tinyxmlerror.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinyxmlerror.o ../Nivel1/tinyxmlerror.cpp
-
-${OBJECTDIR}/_ext/901fb3be/tinyxmlparser.o: ../Nivel1/tinyxmlparser.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/901fb3be
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/901fb3be/tinyxmlparser.o ../Nivel1/tinyxmlparser.cpp
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
 
 ${OBJECTDIR}/ECinematica.o: ECinematica.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -168,6 +138,16 @@ ${OBJECTDIR}/Juego.o: Juego.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
 
+${OBJECTDIR}/Jugador.o: Jugador.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
+
+${OBJECTDIR}/Mapa.o: Mapa.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
+
 ${OBJECTDIR}/Mundo.o: Mundo.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -192,6 +172,26 @@ ${OBJECTDIR}/pruebasCarlos.o: pruebasCarlos.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/pruebasCarlos.o pruebasCarlos.cpp
+
+${OBJECTDIR}/tinystr.o: tinystr.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinystr.o tinystr.cpp
+
+${OBJECTDIR}/tinyxml.o: tinyxml.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml.o tinyxml.cpp
+
+${OBJECTDIR}/tinyxmlerror.o: tinyxmlerror.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlerror.o tinyxmlerror.cpp
+
+${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxmlparser.o tinyxmlparser.cpp
 
 # Subprojects
 .build-subprojects:

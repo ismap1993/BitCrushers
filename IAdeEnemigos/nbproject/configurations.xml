@@ -14,15 +14,15 @@
       <logicalFolder name="f2" displayName="NPC" projectFiles="true">
         <itemPath>Enemigo.h</itemPath>
       </logicalFolder>
-      <itemPath>../Nivel1/Camara.h</itemPath>
+      <itemPath>Camara.h</itemPath>
       <itemPath>Escena.h</itemPath>
       <itemPath>Juego.h</itemPath>
-      <itemPath>../Nivel1/Jugador.h</itemPath>
-      <itemPath>../Nivel1/Mapa.h</itemPath>
+      <itemPath>Jugador.h</itemPath>
+      <itemPath>Mapa.h</itemPath>
       <itemPath>Mundo.h</itemPath>
       <itemPath>NPC.h</itemPath>
-      <itemPath>../Nivel1/tinystr.h</itemPath>
-      <itemPath>../Nivel1/tinyxml.h</itemPath>
+      <itemPath>tinystr.h</itemPath>
+      <itemPath>tinyxml.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -41,20 +41,20 @@
       <logicalFolder name="f2" displayName="NPC" projectFiles="true">
         <itemPath>Enemigo.cpp</itemPath>
       </logicalFolder>
-      <itemPath>../Nivel1/Camara.cpp</itemPath>
+      <itemPath>Camara.cpp</itemPath>
       <itemPath>Escena.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
-      <itemPath>../Nivel1/Jugador.cpp</itemPath>
-      <itemPath>../Nivel1/Mapa.cpp</itemPath>
+      <itemPath>Jugador.cpp</itemPath>
+      <itemPath>Mapa.cpp</itemPath>
       <itemPath>Mundo.cpp</itemPath>
       <itemPath>NPC.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>pruebasAlfonso.cpp</itemPath>
       <itemPath>pruebasCarlos.cpp</itemPath>
-      <itemPath>../Nivel1/tinystr.cpp</itemPath>
-      <itemPath>../Nivel1/tinyxml.cpp</itemPath>
-      <itemPath>../Nivel1/tinyxmlerror.cpp</itemPath>
-      <itemPath>../Nivel1/tinyxmlparser.cpp</itemPath>
+      <itemPath>tinystr.cpp</itemPath>
+      <itemPath>tinyxml.cpp</itemPath>
+      <itemPath>tinyxmlerror.cpp</itemPath>
+      <itemPath>tinyxmlparser.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -93,29 +93,9 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="../Nivel1/Camara.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../Nivel1/Camara.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/Jugador.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/Mapa.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/Mapa.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinystr.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinystr.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxml.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxml.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Camara.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ECinematica.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -149,6 +129,14 @@
       </item>
       <item path="Juego.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Mundo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Mundo.h" ex="false" tool="3" flavor2="0">
@@ -162,6 +150,18 @@
       <item path="pruebasAlfonso.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="pruebasCarlos.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -184,29 +184,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="../Nivel1/Camara.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../Nivel1/Camara.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/Jugador.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/Mapa.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/Mapa.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinystr.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinystr.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxml.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxml.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../Nivel1/tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Camara.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ECinematica.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -240,6 +220,14 @@
       </item>
       <item path="Juego.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Mundo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Mundo.h" ex="false" tool="3" flavor2="0">
@@ -253,6 +241,18 @@
       <item path="pruebasAlfonso.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="pruebasCarlos.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

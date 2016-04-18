@@ -23,7 +23,7 @@ public:
     
     void leerMapa(int numMapa);
     int getTile(int x, int y);
-    void dibuja();
+    void dibuja(sf::RenderWindow &window);
     
     sf::Sprite  fondo;
     int _width;
