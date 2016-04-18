@@ -33,9 +33,9 @@ static int alfonso(){
     sf::Sprite sprite;
     sprite.setTexture(texture);
     std::cout<<"sprite cargado"<<std::endl;
-    window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
-    window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
-    Jugador* player = new Jugador(200, 380, 1, true);//le pasamos la posicion X e Y donde se colocará el sprite. 
+    //window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
+    window.setFramerateLimit(240);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
+    Jugador* player = new Jugador(200, 380, 2, true);//le pasamos la posicion X e Y donde se colocará el sprite. 
                                                     //El tercer parametro es que personaje es, solo puede ser hasta el 4. 1.Pablo 2.Albert 3.Rajoy 4.Pedro
                                                     //El cuarto parametro es para saber si está activado el personaje en el array de personajes ya que solo un personaje se puede mostrar.
     //player->leerXML();//PREGUNTA    ¿es mejor que la matriz deonde se guardan los datos del psrite sheet sea global de la clase Juego o que cada jugador tenga su propia matriz aunque sea la misma?
