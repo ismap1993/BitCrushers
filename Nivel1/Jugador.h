@@ -33,6 +33,7 @@ public:
     float velocidadMovimiento;
     sf::Vector2f velocidadJugador;
     bool muerto;
+    int col;
     
     
 private:

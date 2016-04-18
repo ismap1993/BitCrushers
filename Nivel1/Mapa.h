@@ -15,6 +15,8 @@
 #define	MAPA_H
 #include <SFML/Graphics.hpp>
 
+
+
 class Mapa {
 public:
     Mapa();
@@ -28,6 +30,8 @@ public:
     sf::Sprite  fondo;
     int _width;
     int _tileWidth;
+    std::vector<sf::RectangleShape*> arrayColisiones;
+    std::vector<sf::RectangleShape*> arrayParedes;
  
 private:
     
