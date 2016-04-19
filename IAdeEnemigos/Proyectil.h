@@ -12,7 +12,7 @@
 class Proyectil {
 public:
     Proyectil();
-    Proyectil(int direccion, int pospersonaje); 
+    Proyectil(int direccion, int pospersonaje, int **mat, int politic); 
     Proyectil(const Proyectil& orig);
     virtual ~Proyectil();
     
@@ -20,7 +20,7 @@ public:
     void leerSprite();
     sf::Sprite getSprite();
     void dibuja(sf::RenderWindow &window);
-    Proyectil crearPro(int direccion, int position);
+    Proyectil crearPro();
  
 
 private:

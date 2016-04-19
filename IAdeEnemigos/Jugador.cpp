@@ -19,6 +19,7 @@
 #include "Jugador.h"
 #include "Camara.h"
 #include "Mapa.h"
+#include "Proyectil.h"
 using namespace std;
 using std::cout;
 using std::endl;
@@ -38,13 +39,14 @@ Jugador::Jugador(const Jugador& orig) {
 Jugador::~Jugador() {
 }
 
-Jugador::Jugador(float x, float y, int politico, bool activado){
+Jugador::Jugador(float x, float y, int politic, bool activado){
     
     matriz=new int*[99];
     for(int i=0; i<99;i++){
         matriz[i]=new int[4];
     }
     leerXML();
+    politico=politic;
     
     switch(politico){
         case 1:
@@ -94,22 +96,20 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     velocidadJugador.x=0;
     velocidadJugador.y=0;
     muerto=false;
+    direccionPro=1;//para saber la direccion del proyectil. Derecha: 1. Izquierda 2.
+    
+    proyectiles = new vector<Proyectil*>();
 
 }
 
 void Jugador::leerXML(){
     int posX=0;
     int linea=1;
-    
-    
     /****LECTURA DEL XML PARA EL SPRITE!!****/
     ifstream fin;
-    fin.open("resources/pablospritesheet.xml"); // abrir el xml que se va a leer
-    
-
+    fin.open("resources/albertspritesheet.xml"); // abrir el xml que se va a leer
     // comenzamos a leer cada una de las lineas
     while (!fin.eof()){
-
         // esto es para controlar el tamanyo maximo de cada linea
         char buf[MAX_CHARS_PER_LINE];
         fin.getline(buf, MAX_CHARS_PER_LINE);
@@ -149,13 +149,12 @@ void Jugador::leerXML(){
                 }        
             }
         }
-
         linea++;
-        if(linea==14){break;}
+        if(linea==15){break;}
     }
     //Esto es para imprimir la matriz obtenida en consola
     if(linea>2){
-        for(int i=0; i<11;i++){
+        for(int i=0; i<=11;i++){
             for (int j=0;j<4;j++){
                 cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
             }
@@ -178,6 +177,29 @@ sf::Sprite Jugador::getSprite(){
 }
 
 void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
+    
+    sf::Clock golpeoTime;
+    float golpeo=0;
+    
+    golpeo= golpeoTime.getElapsedTime().asSeconds();
+    if(golpeo>0.5 && direccionPro==1){
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
+        sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
+        golpeoTime.restart();
+    }
+
+    if(golpeo>0.5 && direccionPro==0){
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
+        sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
+        golpeoTime.restart();
+    }
+
+
+    
+    
+    
+    
+    
     
     /*sf::RectangleShape suelo(sf::Vector2f(1280, 500));
     suelo.setPosition(0,500);
@@ -211,30 +233,36 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     /*CAIDAS*/
     if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)>1){
-                                velocidadJugador.y = 0;
-                                alturaSuelo=this->getSprite().getPosition().y;
-                                
-                                 //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
+        velocidadJugador.y = 0;
+        alturaSuelo=this->getSprite().getPosition().y;
+
+        //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
     }else if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)==1){
             
-            //std::cout<<"holaaaaaa"<<std::endl;
-            //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
-            
-            alturaSuelo=580;
-            
-            if(this->getSprite().getPosition().y>400){ //MUERTE!!
-                //std::cout<<"ID= "<< personaje->getPosition().y<<std::endl;
-                
-                //muerto=true;
-                alturaSuelo=500;
-                //velocidadJugador.y = 0;
-                //personaje->setPosition(personaje->getPosition().x, 690);
-            }
-            
-            //velocidadJugador.y = aux;
-     }
+        //std::cout<<"holaaaaaa"<<std::endl;
+        //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
+
+        alturaSuelo=580;
+
+        if(this->getSprite().getPosition().y>400){ //MUERTE!!
+            //std::cout<<"ID= "<< personaje->getPosition().y<<std::endl;
+
+            //muerto=true;
+            alturaSuelo=500;
+            //velocidadJugador.y = 0;
+            //personaje->setPosition(personaje->getPosition().x, 690);
+        }
+
+        //velocidadJugador.y = aux;
+    }
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+        std::cout<<"Estoy presionando el espacio"<<std::endl;
+        disparar();
+    }
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+        direccionPro = 1;
         camara->moveRight(this);
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
         if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
@@ -247,6 +275,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         }
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        direccionPro = 0;
         camara->moveLeft(this);
         
         if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
@@ -291,4 +320,47 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
         
     sprite.setPosition(posicionJugador);
+}
+
+
+void Jugador::disparar(){
+    float disparoAparicion=0;
+    std::cout<<"Estoy disparando"<<std::endl;
+    disparoAparicion=aparicionProyectil.getElapsedTime().asSeconds();
+
+    if(direccionPro==1){//derecha
+        if(disparoAparicion>0.35){
+            //IMPORTANTE cambiar el centroide a la hora de atacar!
+            sprite.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
+            sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+            if(politico==2 || politico == 3 ){
+                //Al disparar, se genera un proyectil y se inserta en el vector
+                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition().x, matriz, politico);
+                pro->crearPro();
+                //std::cout << "posicion X proyectil reciente:" << pro->posx << std::endl;
+                proyectiles->push_back(pro);
+                /****/
+                std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                /****/
+            }
+        }
+    }else{//izquierda
+        if(disparoAparicion>0.35){
+            //IMPORTANTE cambiar el centroide a la hora de atacar!
+            sprite.setOrigin(matriz[1][2]/1.325,matriz[1][3]/2);
+            sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+            if(politico==2 || politico == 3 ){
+                //Al disparar, se genera un proyectil y se inserta en el vector
+                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition().x, matriz, politico);
+                proyectiles->push_back(pro);
+                /****/
+                std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                /****/
+            }
+        }
+    }
+
+
+
+    
 }
