@@ -36,7 +36,7 @@ static int alfonso(){
     std::cout<<"sprite cargado"<<std::endl;
     window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
     window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
-    Jugador* player = new Jugador(200, 380, 1, true);//le pasamos la posicion X e Y donde se colocará el sprite. 
+    Jugador* player = new Jugador(200, 380, 2, true);//le pasamos la posicion X e Y donde se colocará el sprite. 
                                                     //El tercer parametro es que personaje es, solo puede ser hasta el 4. 1.Pablo 2.Albert 3.Rajoy 4.Pedro
                                                     //El cuarto parametro es para saber si está activado el personaje en el array de personajes ya que solo un personaje se puede mostrar.
     //player->leerXML();//PREGUNTA    ¿es mejor que la matriz deonde se guardan los datos del psrite sheet sea global de la clase Juego o que cada jugador tenga su propia matriz aunque sea la misma?
@@ -57,7 +57,8 @@ static int alfonso(){
             //player->handle(event, window);
         }
          //Juego::Instance()->window->clear(sf::Color::White);
-        mapa->dibuja();
+        window.clear(sf::Color::White);
+        mapa->dibujaA(window);
         //window.draw(sprite);
         player->draw(window);
         player->handle(event, window, mapa, camara);
@@ -65,8 +66,26 @@ static int alfonso(){
         //std::cout<< player->getSprite().getPosition().x <<std::endl;
         //window.draw(player->getSprite());     
         //setteo la camara
+        /*
+         
+             proyectiles[i]->dibuja(window);
+            if(proyectiles[i]->destruir()){ //Si recorre mas de 450 de distancia...
+                delete proyectiles[i]; //...se destruye el proyectil
+                proyectiles.erase(proyectiles.begin()+i); //y se elimina la posicion del vector donde estaba
+            }*/
+        int i=0;
+        std::cout<<player->proyectiles->size()<<std::endl;
+        for(i=0; i<player->proyectiles->size();i++){
+            player->proyectiles->at(i)->dibuja(window);
+            std::cout<<"estoy dibujando"<<std::endl;
+            if(player->proyectiles->at(i)->destruir()){
+                delete player->proyectiles->at(i);
+                player->proyectiles->erase(player->proyectiles->begin()+i);
+            }
+        }
         camara->draw(window);
-        Juego::Instance()->window->display();
+        window.display();
+        //Juego::Instance()->window->display();
         
     }
     

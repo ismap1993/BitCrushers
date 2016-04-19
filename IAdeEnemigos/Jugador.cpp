@@ -20,6 +20,8 @@
 #include "Camara.h"
 #include "Mapa.h"
 #include "Proyectil.h"
+
+
 using namespace std;
 using std::cout;
 using std::endl;
@@ -335,7 +337,7 @@ void Jugador::disparar(){
             sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
             if(politico==2 || politico == 3 ){
                 //Al disparar, se genera un proyectil y se inserta en el vector
-                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition().x, matriz, politico);
+                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);
                 pro->crearPro();
                 //std::cout << "posicion X proyectil reciente:" << pro->posx << std::endl;
                 proyectiles->push_back(pro);
@@ -351,7 +353,7 @@ void Jugador::disparar(){
             sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
             if(politico==2 || politico == 3 ){
                 //Al disparar, se genera un proyectil y se inserta en el vector
-                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition().x, matriz, politico);
+                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);
                 proyectiles->push_back(pro);
                 /****/
                 std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;

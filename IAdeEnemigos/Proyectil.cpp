@@ -22,16 +22,16 @@ const char* const DELIMITER = "\""; //IMPORTANTE, cada elemento de las lineas de
 Proyectil::Proyectil(){
     
 }
-Proyectil::Proyectil(int direccion, int pospersonaje, int **mat, int politic) {
+Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int politic) {
     std::cout<<"Estoy aqui, en el constructor de proyectil"<<std::endl;
     dir=direccion;
     disRecorrida=0;
     if(direccion==1){
-        posx=pospersonaje+60;
-        posy=420;
+        posx=pospersonaje.x+60;
+        posy=pospersonaje.y;
     }else{
-        posx=pospersonaje-90;
-        posy=420;
+        posx=pospersonaje.x-90;
+        posy=pospersonaje.y;
     }
     matriz=mat;
     std::cout<<"Imprimiendo la matriz pasada por parametro"<<std::endl;
@@ -69,7 +69,12 @@ Proyectil::Proyectil(int direccion, int pospersonaje, int **mat, int politic) {
     disparoTime=0;
 
    
-   
+    for(int i=0; i<=11;i++){
+        for (int j=0;j<4;j++){
+            cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
+        }
+        cout << endl;
+    }
    
    
    
@@ -170,7 +175,6 @@ void Proyectil::leerSprite(){
 
 
 void Proyectil::dibuja(sf::RenderWindow& window){
-    //std::cout<<"becuase we are your friends"<<std::endl;
     std::cout<<"becuase we are your friends"<<std::endl;
        sf::Texture texvoto;
     if (!texvoto.loadFromFile("resources/sobres.png"))

@@ -12,7 +12,7 @@
 class Proyectil {
 public:
     Proyectil();
-    Proyectil(int direccion, int pospersonaje, int **mat, int politic); 
+    Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int politic); 
     Proyectil(const Proyectil& orig);
     virtual ~Proyectil();
     
