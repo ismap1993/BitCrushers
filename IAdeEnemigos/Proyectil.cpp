@@ -22,7 +22,8 @@ const char* const DELIMITER = "\""; //IMPORTANTE, cada elemento de las lineas de
 Proyectil::Proyectil(){
     
 }
-Proyectil::Proyectil(int direccion, int pospersonaje) {
+Proyectil::Proyectil(int direccion, int pospersonaje, int **mat, int politic) {
+    std::cout<<"Estoy aqui, en el constructor de proyectil"<<std::endl;
     dir=direccion;
     disRecorrida=0;
     if(direccion==1){
@@ -32,28 +33,50 @@ Proyectil::Proyectil(int direccion, int pospersonaje) {
         posx=pospersonaje-90;
         posy=420;
     }
-  
-    leerSprite();
-  //CARGAR LA IMAGEN
- if (!texPro.loadFromFile("resources/albertspritesheet.png"))
-    {
-        std::cerr << "Error cargando la imagen";
-        exit(0);
+    matriz=mat;
+    std::cout<<"Imprimiendo la matriz pasada por parametro"<<std::endl;
+    int i=0, j=0;
+    for(int i=0; i<=11;i++){
+        for (int j=0;j<4;j++){
+            cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
+        }
+        cout << endl;
     }
-  
-  spritePro.setTexture(texPro);
-  
-  spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
-
-  spritePro.setPosition(posx, posy);
     
-   std::cout << "proyectil creado!" << std::endl;
-   std::cout << "posicion X proyectil:" << posx << std::endl;
-   std::cout << "posicion Y proyectil:" << posy << std::endl;
-  
-   disparoAparicion=0;
-   disparoTime=0;
-   crearPro(direccion, pospersonaje);
+    
+    //leerSprite();
+    //CARGAR LA IMAGEN
+    if(politic==2){
+        if (!texPro.loadFromFile("resources/albertspritesheet.png")){
+            std::cerr << "Error cargando la imagen";
+            exit(0);
+        }
+    }else{
+        if (!texPro.loadFromFile("resources/marianospritesheet.png")){
+            std::cerr << "Error cargando la imagen";
+            exit(0);
+        }        
+    }
+
+    spritePro.setTexture(texPro);
+    spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    spritePro.setPosition(posx, posy);
+    
+    std::cout << "proyectil creado!" << std::endl;
+    std::cout << "posicion X proyectil:" << posx << " posicion Y proyectil:" << posy << std::endl;
+
+    disparoAparicion=0;
+    disparoTime=0;
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
 }
 
 Proyectil::Proyectil(const Proyectil& orig) {
@@ -147,19 +170,35 @@ void Proyectil::leerSprite(){
 
 
 void Proyectil::dibuja(sf::RenderWindow& window){
+    //std::cout<<"becuase we are your friends"<<std::endl;
+    std::cout<<"becuase we are your friends"<<std::endl;
+       sf::Texture texvoto;
+    if (!texvoto.loadFromFile("resources/sobres.png"))
+    {
+        std::cerr << "Error cargando la imagen sobres.png";
+        exit(0);
+    }
+       
+       sf::Sprite sprite(texvoto);
+    
+       sprite.setPosition(533, 300);
     window.draw(spritePro);
+    
     disparoTime= proyectilClock.getElapsedTime().asSeconds(); //Tiempo que determina la velocidad del proyectil
     if(disparoTime>0.015){ //Cuanto mayor sea, mas lento ira el proyectil
         if(dir==1){//derecha
             spritePro.move(5,0);
             disRecorrida+=5;
+            std::cout<<"Debo ir a la derecha (Facha)"<<std::endl;
         }
         if(dir==0){
             spritePro.move(-5,0);
             disRecorrida+=5;
+            std::cout<<"Debo ir a la izquierda (Hippie)"<<std::endl;
         }
         proyectilClock.restart(); 
     }
+    
 }
 
 bool Proyectil::destruir(){
@@ -175,14 +214,13 @@ sf::Sprite Proyectil::getSprite(){
     return spritePro;
 }
 
-Proyectil Proyectil::crearPro(int direccion, int position){
+Proyectil Proyectil::crearPro(){
     
     std::cout<<"He llegado aqui"<<std::endl;
     disparoAparicion=0;
     disparoAparicion=proyectilClock.getElapsedTime().asSeconds();
     //Dependiendo de la direccion hacia donde este mirando, se aplica un sprite u otro
-     if(direccion==1){ //Derecha
-
+     if(dir==1){ //Derecha
          if(disparoAparicion>0.35){
             //IMPORTANTE cambiar el centroide a la hora de atacar!
             spritePro.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
@@ -198,8 +236,7 @@ Proyectil Proyectil::crearPro(int direccion, int position){
          }    
      }
 
-     if(direccion==0){ //Izquierda
-
+     if(dir==0){ //Izquierda
          if(disparoAparicion>0.35){
             //IMPORTANTE cambiar el centroide a la hora de atacar!
             spritePro.setOrigin(matriz[1][2]/1.325,matriz[1][3]/2);
@@ -212,7 +249,7 @@ Proyectil Proyectil::crearPro(int direccion, int position){
            /****/
             return *this;
         }
-     }
+    }
 
 
     
