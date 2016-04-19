@@ -17,14 +17,16 @@
 
 class Mundo {
 public:
+    static Mundo* Instance(int nivel);
+    
     Mundo(int nivel);
+    
     void crearNivel(int nivel);
 
     void Render();
     
-    static Mundo* Instance(int nivel);
-    
     ~Mundo();
+    
 private:
 
        static Mundo* pinstance;
