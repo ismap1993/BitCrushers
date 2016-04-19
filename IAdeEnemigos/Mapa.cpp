@@ -25,17 +25,22 @@ Mapa::Mapa(const Mapa& orig) {
 
 Mapa::~Mapa() {
     //metodo que elimina el mapa
+    
     for(int l=0; l<_numLayers; l++){
         for(int y=0; y<_height; y++){
+            //std::co<<"Eliminando _tilemap[][] "<<utstd::endl;
             delete[] _tilemap[l][y];
         }
         delete[] _tilemap[l];
     }
     delete[] _tilemap;
+   
+    _numLayers = 0;
+    std::cout<<"Mapa ha sido eliminado."<<std::endl;
 }
 
 void Mapa::leerMapa(int numMapa){
-
+    _numLayers = 0;
     //cargo la textura del fondo
     if(!fond.loadFromFile("resources/background.jpg")){
         std::cerr << "Error cargando la imagen background.png";
@@ -198,7 +203,7 @@ void Mapa::leerMapa(int numMapa){
     cout<<"Nombre del tileset= "<<filename[0]<<endl;
     cout<<"Nombre del tileset= "<<filename[1]<<endl;
     cout<<endl;
-     
+   
      
     /*cout<<"Gid de las capas"<<endl;
    for(int l=0; l<_numLayers; l++)
@@ -221,7 +226,7 @@ void Mapa::leerMapa(int numMapa){
 
 
 void Mapa::dibuja(){
-    
+
     //dibujamos el mapa
     for(int t=0; t<_numLayers; t++){
         for(int y=0; y<_height; y++){
