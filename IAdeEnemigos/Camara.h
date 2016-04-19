@@ -14,13 +14,17 @@
 #ifndef CAMARA_H
 #define CAMARA_H
 #include <SFML/Graphics.hpp>
-#include "Mapa.h"
+
+
 #include "Jugador.h"
+#include "Mapa.h"
 
 class Camara {
 public:
-    Camara(int width, int height, int desp, Mapa &mapa);
-    Camara(const Camara& orig);
+    static Camara* Instance();
+    
+    Camara();
+  
     virtual ~Camara();
     
     void draw(sf::RenderWindow &window);
@@ -36,11 +40,13 @@ private:
     int posicionOrigenCamara;
     int kVel;
     
-    sf::View *camara;
+    sf::View* camara;
     
-    Mapa *mapa;
+    
     
     sf::Sprite background;
+    
+    static Camara* pinstance;
     
 };
 

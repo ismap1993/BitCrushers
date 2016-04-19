@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/Mapa.o \
+	${OBJECTDIR}/Plataforma.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/tinystr.o \
 	${OBJECTDIR}/tinyxml.o \
@@ -83,6 +84,11 @@ ${OBJECTDIR}/Mapa.o: Mapa.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
+
+${OBJECTDIR}/Plataforma.o: Plataforma.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Plataforma.o Plataforma.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -13,12 +13,16 @@
 
 #ifndef MAPA_H
 #define	MAPA_H
-#include <SFML/Graphics.hpp>
 
+#include <SFML/Graphics.hpp>
+#include "Mapa.h"
+#include "Camara.h"
+
+class Camara;
 class Mapa {
 public:
+    static Mapa* Instance();
     Mapa();
-    Mapa(const Mapa& orig);
     virtual ~Mapa();
     
     void leerMapa(int numMapa);
@@ -28,6 +32,7 @@ public:
     sf::Sprite  fondo;
     int _width;
     int _tileWidth;
+    
  
 private:
     
@@ -45,6 +50,10 @@ private:
     sf::Texture fond;
      
     sf::VertexArray m_vertices;
+    
+    Camara* camara;
+    
+    static Mapa* pinstance;
     
 };
 

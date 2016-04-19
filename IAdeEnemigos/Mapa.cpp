@@ -12,34 +12,28 @@
 #include <iostream>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include "Mundo.h"
 
 using namespace std;
+
+Mapa* Mapa::pinstance = 0;
+Mapa* Mapa::Instance(){
+    
+    if(pinstance == 0) pinstance = new Mapa();
+
+    return pinstance;
+}
 
 Mapa::Mapa() {
     //constructor vacio
     
+    //camara = Camara::Instance();
+    //std::cout<<Mundo::Instance()<<std::endl;
 }
 
-Mapa::Mapa(const Mapa& orig) {
-}
-
-Mapa::~Mapa() {
-    //metodo que elimina el mapa
-    
-    for(int l=0; l<_numLayers; l++){
-        for(int y=0; y<_height; y++){
-            //std::co<<"Eliminando _tilemap[][] "<<utstd::endl;
-            delete[] _tilemap[l][y];
-        }
-        delete[] _tilemap[l];
-    }
-    delete[] _tilemap;
-   
-    _numLayers = 0;
-    std::cout<<"Mapa ha sido eliminado."<<std::endl;
-}
 
 void Mapa::leerMapa(int numMapa){
+    
     _numLayers = 0;
     //cargo la textura del fondo
     if(!fond.loadFromFile("resources/background.jpg")){
@@ -143,7 +137,7 @@ void Mapa::leerMapa(int numMapa){
     int columns = _tilesetTexture.getSize().x / _tileWidth;
     int rows = _tilesetTexture.getSize().y / _tileHeigth;
     
-    cout<<columns<<" "<<rows<<endl; 
+   // cout<<columns<<" "<<rows<<endl; 
     
     _tilesetSprite =new sf::Sprite[columns*rows];     
     int t=0;
@@ -178,7 +172,7 @@ void Mapa::leerMapa(int numMapa){
                     cout<<gid<<endl;
                     cout<<rows<<endl;
                     cout<<columns<<endl;
-                    cout<<"Error aaaa"<<endl;
+                    cout<<"Error en la asginacion del sprite"<<endl;
                 }
                 else if(gid>0){   
 
@@ -193,6 +187,7 @@ void Mapa::leerMapa(int numMapa){
     }
       
     /////////////////////Resumen
+    /*
     cout<<endl;
     cout<<"Resumen:"<<endl;
     cout<<"Heigth= "<<_height<<endl;
@@ -203,7 +198,7 @@ void Mapa::leerMapa(int numMapa){
     cout<<"Nombre del tileset= "<<filename[0]<<endl;
     cout<<"Nombre del tileset= "<<filename[1]<<endl;
     cout<<endl;
-   
+   */
      
     /*cout<<"Gid de las capas"<<endl;
    for(int l=0; l<_numLayers; l++)
@@ -227,6 +222,7 @@ void Mapa::leerMapa(int numMapa){
 
 void Mapa::dibuja(){
 
+    std::cout<<_numLayers<<std::endl;
     //dibujamos el mapa
     for(int t=0; t<_numLayers; t++){
         for(int y=0; y<_height; y++){
@@ -257,3 +253,20 @@ int Mapa::getTile(int posx, int posy){
     return resultado;
 }
 
+Mapa::~Mapa() {
+    //metodo que elimina el mapa
+    
+    for(int l=0; l<_numLayers; l++){
+        for(int y=0; y<_height; y++){
+        
+            delete[] _tilemap[l][y];
+        }
+        delete[] _tilemap[l];
+    }
+    delete[] _tilemap;
+   
+    std::cout<<"Mapa ha sido eliminado."<<std::endl;
+    //std::cout<<"_numLayers: "<<_numLayers<<std::endl;
+    delete camara;
+    pinstance = 0;
+}

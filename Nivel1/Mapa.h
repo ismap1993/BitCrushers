@@ -14,6 +14,9 @@
 #ifndef MAPA_H
 #define	MAPA_H
 #include <SFML/Graphics.hpp>
+#include "Plataforma.h"
+
+
 
 class Mapa {
 public:
@@ -28,7 +31,10 @@ public:
     sf::Sprite  fondo;
     int _width;
     int _tileWidth;
- 
+    std::vector<sf::RectangleShape*> arrayColisiones;
+    std::vector<sf::RectangleShape*> arrayParedes;
+    std::vector<Plataforma*> arrayPlataformas;
+    
 private:
     
     int ***_tilemap;

@@ -44,6 +44,7 @@ private:
     int** matrizRecorte;
     static EInGame* pinstance;
     Mundo* mundo;
+    Jugador* jugador;
     Juego* _context;
     
 };

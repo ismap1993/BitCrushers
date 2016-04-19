@@ -17,9 +17,9 @@
 
 class Mundo {
 public:
-    static Mundo* Instance(int nivel);
+    static Mundo* Instance();
     
-    Mundo(int nivel);
+    Mundo();
     
     void crearNivel(int nivel);
 
@@ -27,8 +27,11 @@ public:
     
     ~Mundo();
     
+    int camaraVel;
+    
 private:
 
+       
        static Mundo* pinstance;
        Mapa* mapa;
     

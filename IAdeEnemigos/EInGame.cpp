@@ -56,7 +56,7 @@ void EInGame::Handle(){
 
 void EInGame::Init(){
     
-    mundo = new Mundo(1);
+    mundo = Mundo::Instance();
     
 }
 
