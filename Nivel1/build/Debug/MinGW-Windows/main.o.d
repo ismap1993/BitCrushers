@@ -64,7 +64,7 @@ build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp tinyxml.h tinystr.h Camara.h \
- Mapa.h Jugador.h
+ Mapa.h Plataforma.h Jugador.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -211,5 +211,7 @@ tinystr.h:
 Camara.h:
 
 Mapa.h:
+
+Plataforma.h:
 
 Jugador.h:

@@ -89,8 +89,8 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     posicionJugador.x=x;
     posicionJugador.y=y;
     salto=false;
-    velocidadMovimiento=5;
-    velocidadSalto=10;
+    velocidadMovimiento=8;
+    velocidadSalto=15;
     velocidadJugador.x=0;
     velocidadJugador.y=0;
     muerto=false;
@@ -192,7 +192,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     //sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
     //sf::Vector2f velocidadJugador(0, 0);
-    const float gravedad =0.5;
+    const float gravedad =1;
     //int alturaSuelo = suelo.getPosition().y - 65;
     //int alturaSuelo = sprite.getPosition().y+10;
     //float velocidadSalto = 100, velocidadMovimiento = 5;
@@ -272,10 +272,10 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     for(j=0; j<mapa->arrayParedes.size(); j++){
         if(this->getSprite().getGlobalBounds().intersects(mapa->arrayParedes[j]->getGlobalBounds())){
             if(this->getSprite().getPosition().x<mapa->arrayParedes[j]->getPosition().x){
-                cout<<"CHOQUE DERECHO"<<endl;
+                //cout<<"CHOQUE DERECHO"<<endl;
                 choque=0;
             }else if(this->getSprite().getPosition().x>mapa->arrayParedes[j]->getPosition().x){
-                cout<<"CHOQUE IZQUIERDO"<<endl;
+                //cout<<"CHOQUE IZQUIERDO"<<endl;
                 choque=1;
             }
         }
@@ -306,7 +306,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
 //            velocidadJugador.x=0;
 //        }else{
             velocidadJugador.x = velocidadMovimiento;
-            cout<<"velocidad jugador: "<<velocidadJugador.x<<endl;
+            //cout<<"velocidad jugador: "<<velocidadJugador.x<<endl;
 //        }
             
             //sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
@@ -315,7 +315,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             paso= pasoTime.getElapsedTime().asSeconds();
             if(paso>=0 && paso<=0.2){
                 sprite.setTextureRect(sf::IntRect(matriz[4][0], matriz[4][1], matriz[4][2], matriz[4][3]));
-                std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
             }
              if(paso>0.2){
                  if(paso>0.4){
@@ -324,7 +324,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 sprite.setTextureRect(sf::IntRect(matriz[5][0], matriz[5][1], matriz[5][2], matriz[5][3]));
                 
             }
-            std::cout<<"ID= pasos!"<< paso <<std::endl;
+            //std::cout<<"ID= pasos!"<< paso <<std::endl;
             
         
             
@@ -366,7 +366,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
              paso= pasoTime.getElapsedTime().asSeconds();
             if(paso>=0 && paso<=0.2){
                 sprite.setTextureRect(sf::IntRect(matriz[7][0], matriz[7][1], matriz[7][2], matriz[7][3]));
-                std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+               // std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
             }
              if(paso>0.2){
                  if(paso>0.4){
@@ -420,8 +420,8 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
 
     if(!salto){
         velocidadJugador.y += gravedad;
-        cout<<"pos Y "<<posicionJugador.y<<endl;
-        cout<<"altura suelo "<<alturaSuelo<<endl;
+       // cout<<"pos Y "<<posicionJugador.y<<endl;
+        //cout<<"altura suelo "<<alturaSuelo<<endl;
         
     }        
     else

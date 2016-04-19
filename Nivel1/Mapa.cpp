@@ -6,6 +6,7 @@
  */
 
 #include "Mapa.h"
+#include "Plataforma.h"
 #include "tinystr.h"
 #include "tinyxml.h"
 #include <iostream>
@@ -56,6 +57,7 @@ void Mapa::leerMapa(int numMapa){
     
     //Leemos las diferentes imagenes que nos sirven para hacer el rect de las texturas
     TiXmlElement *img = map->FirstChildElement("tileset");
+    
     int numTil=0;
     while(img){
         numTil++;
@@ -197,8 +199,134 @@ void Mapa::leerMapa(int numMapa){
     cout<<"Nombre del tileset= "<<filename[0]<<endl;
     cout<<"Nombre del tileset= "<<filename[1]<<endl;
     cout<<endl;
+    
+     TiXmlElement *colisiones = map->FirstChildElement("objectgroup");
+     string nombre;
+     int filas=0;
+     string xString, yString, widthString, heightString;
+     int x, y, width, height;
+     
+
+     while(colisiones){
+         nombre=(string) colisiones->Attribute("name");
+         if(nombre=="Colisiones"){
+             cout<<"nombre: "<<nombre<<endl;
+             TiXmlElement *object = colisiones->FirstChildElement("object");
+             while(object){
+                
+                xString = (string) object->Attribute("x");
+                yString = (string) object->Attribute("y");
+                widthString = (string) object->Attribute("width");
+                heightString = (string) object->Attribute("height");
+                
+                x=atoi(xString.c_str());
+                y=atoi(yString.c_str());
+                width=atoi(widthString.c_str());
+                height=atoi(heightString.c_str());
+                
+                /*Se crean los rectangulos que colisionan*/
+                sf::RectangleShape* colision = new sf::RectangleShape(sf::Vector2f(width, height));
+                colision->setPosition(x,y);
+                arrayColisiones.push_back(colision);
+               
+                
+
+                cout<<"x: "<<x<<endl;
+                cout<<"y: "<<y<<endl;
+                cout<<"width: "<<width<<endl;
+                cout<<"heigth: "<<height<<endl;
+                cout<<"----"<<endl;
+                object = object->NextSiblingElement("object");
+                filas++;
+             }   
+         }
+         colisiones = colisiones->NextSiblingElement("objectgroup");
+     }
+     
+     TiXmlElement *paredes = map->FirstChildElement("objectgroup");
+     
+     while(paredes){
+         nombre=(string) paredes->Attribute("name");
+         if(nombre=="Paredes"){
+              cout<<"nombre: "<<nombre<<endl;
+              TiXmlElement *object = paredes->FirstChildElement("object");
+              while(object){
+                xString = (string) object->Attribute("x");
+                yString = (string) object->Attribute("y");
+                widthString = (string) object->Attribute("width");
+                heightString = (string) object->Attribute("height");
+                
+                x=atoi(xString.c_str());
+                y=atoi(yString.c_str());
+                width=atoi(widthString.c_str());
+                height=atoi(heightString.c_str());
+                
+                sf::RectangleShape* colision = new sf::RectangleShape(sf::Vector2f(width, height));
+                colision->setPosition(x,y);
+                arrayParedes.push_back(colision);
+                
+                cout<<"x: "<<x<<endl;
+                cout<<"y: "<<y<<endl;
+                cout<<"width: "<<width<<endl;
+                cout<<"heigth: "<<height<<endl;
+                cout<<"----"<<endl;
+                
+                object = object->NextSiblingElement("object");
+                filas++;
+              }
+         }
+         paredes = paredes->NextSiblingElement("objectgroup");
+     }
+     
+//     cout<<"width "<<arrayColisiones[0]->getScale()<<endl;
+//     cout<<"height "<<arrayColisiones[0]->height<<endl;
+     
+        TiXmlElement *plataformas = map->FirstChildElement("objectgroup");
+        while(plataformas){
+            
+            nombre=(string) plataformas->Attribute("name");
+           
+            if(nombre=="Plataforma"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = plataformas->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        Plataforma *plataforma = new Plataforma(x, y);
+                        arrayPlataformas.push_back(plataforma);
+                        
+                        cout<<"x: "<<x<<endl;
+                        cout<<"y: "<<y<<endl;
+                        cout<<"----"<<endl;
+                        
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             plataformas = plataformas->NextSiblingElement("objectgroup");
+         }
      
      
+//     TiXmlElement *properties = colisiones->FirstChildElement("properties");
+//     string atributo;
+//     while(properties){
+//         atributo = properties->FirstChildElement("property")->Attribute("name");
+//         cout<<"hola"<<endl;
+//     }
+//     cout<<"atributo: "<<atributo<<endl;
+
+     
+     
+     
+    //guardamos en filename el spritesheet
+//    while(img){
+//        filename=(string)img->FirstChildElement("image")->Attribute("source");
+//        img=img->NextSiblingElement("tileset");
+//    }  
     /*cout<<"Gid de las capas"<<endl;
    for(int l=0; l<_numLayers; l++)
     {
@@ -236,6 +364,8 @@ void Mapa::dibuja(sf::RenderWindow& window){
 //                        personaje->setPosition(x*32, y*32);
 //                        window.draw(*personaje);
 //                    }
+                    arrayPlataformas[0]->move();
+                    window.draw(arrayPlataformas[0]->spritePlat);
                     window.draw(*(_tilemapSprite[t][y][x]));
                 }
             }

@@ -63,7 +63,7 @@ build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp tinystr.h tinyxml.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Plataforma.h tinystr.h tinyxml.h
 
 Mapa.h:
 
@@ -204,6 +204,8 @@ c:/SFML/include/SFML/Graphics/Shader.hpp:
 c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
+
+Plataforma.h:
 
 tinystr.h:
 
