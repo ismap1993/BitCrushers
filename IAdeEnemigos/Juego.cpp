@@ -55,11 +55,17 @@ void Juego::Init(){
     std::cout << "Pulsa la tecla 8 para Destruir EMenuInGame"  << std::endl;
     
     //ECinematica::Instance(this)->Handle();
-        sf::Clock reloj1;
-        bool b1 = true;
-        bool b2 = true;
-        bool b3 = true;
-        bool b4 = true;
+    
+    //AUTOINSTANCE ///////////////////////////////////
+    /*
+    sf::Clock reloj1;
+    bool b1 = true;
+    bool b2 = true;
+    bool b3 = true;
+    bool b4 = true;
+     */
+    ///////////////////////////////////////////////////
+        
     while(window->isOpen()){
        
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) && reloj.getElapsedTime().asSeconds()>0.2){ECinematica::Instance(this)->Handle(); reloj.restart(); }
@@ -72,7 +78,8 @@ void Juego::Init(){
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num7) && reloj.getElapsedTime().asSeconds()>0.2){delete ECinematica::Instance(this);reloj.restart(); }
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num8) && reloj.getElapsedTime().asSeconds()>0.2){delete EInGame::Instance(this);reloj.restart(); }
  
-        
+        //AUTOINSTANCE //////////////////////////////////
+        /*
         if(reloj1.getElapsedTime().asSeconds()>0.5 && b1){
             EInGame::Instance(this)->Handle();
             b1=false;
@@ -94,8 +101,8 @@ void Juego::Init(){
             b3=true;
             b4=true;        
             reloj1.restart();     
-        }
-  
+        }*/
+        ///////////////////////////////////////
            
         //Bucle de obtención de eventos
         while (window->pollEvent(event)){

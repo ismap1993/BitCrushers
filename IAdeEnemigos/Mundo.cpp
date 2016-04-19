@@ -13,26 +13,30 @@
 #include <iostream>
 #include "Mundo.h"
 #include "Juego.h"
-
+#include "Camara.h"
 
 Mundo* Mundo::pinstance = 0;
-Mundo* Mundo::Instance(int nivel){
+Mundo* Mundo::Instance(){
     
-    if(pinstance == 0) pinstance = new Mundo(nivel);
+    if(pinstance == 0) pinstance = new Mundo();
 
     return pinstance;
 }
 
-Mundo::Mundo(int nivel) {
+Mundo::Mundo() {
     
-    crearNivel(nivel);
+    camaraVel = 10;
+    
+    crearNivel(1);
     
 }
 
 void Mundo::crearNivel(int nivel){
     
-    mapa = new Mapa();
+    
+    mapa = Mapa::Instance();
     mapa->leerMapa(1);
+    //mapa->camara = new Camara();
     
     
 }
@@ -48,5 +52,4 @@ Mundo::~Mundo() {
     delete mapa;
     pinstance = 0;
     std::cout << "Mundo ha sido eliminado"   << std::endl;
-     std::cout << "Direccion de _tilemap: "   << mapa->_tileWidth << std::endl;
 }
