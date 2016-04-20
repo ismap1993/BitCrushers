@@ -155,6 +155,7 @@ void Jugador::leerXML(){
         if(linea==15){break;}
     }
     //Esto es para imprimir la matriz obtenida en consola
+    /*
     if(linea>2){
         for(int i=0; i<=11;i++){
             for (int j=0;j<4;j++){
@@ -164,6 +165,7 @@ void Jugador::leerXML(){
         }
     }
     cout<<"presidentumClases"<<endl;
+    */
 }
 
 void Jugador::draw(sf::RenderWindow& window){
@@ -179,8 +181,7 @@ sf::Sprite Jugador::getSprite(){
 }
 
 void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
-    if(sf::Keyboard::Space)
-        std::cout<<"Estoy presionando el espacio de manera sexy"<<std::endl;
+  
     sf::Clock golpeoTime;
     float golpeo=0;
     
@@ -243,7 +244,6 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
         
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        std::cout<<"Estoy presionando el espacio"<<std::endl;
         disparar();
     }
     
@@ -252,7 +252,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         camara->moveRight(this);
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
         if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
-            std::cout<<"ID= choque derecho!"<<std::endl;
+            //std::cout<<"ID= choque derecho!"<<std::endl;
             velocidadJugador.x = -5;    
         }else{
             velocidadJugador.x = velocidadMovimiento;
@@ -265,7 +265,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         camara->moveLeft(this);
         
         if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
-            std::cout<<"ID= choque izquierdo!"<<std::endl;
+            //std::cout<<"ID= choque izquierdo!"<<std::endl;
             velocidadJugador.x = 5;    
         }else{
             velocidadJugador.x = -velocidadMovimiento;
@@ -302,7 +302,6 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     if(salto){
         sprite.setPosition(0, alturaSuelo-10);
         //posicionJugador.y = alturaSuelo - 10;
-        
     }
         
     sprite.setPosition(posicionJugador);
@@ -311,9 +310,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
 
 void Jugador::disparar(){
     float disparoAparicion=0;
-    std::cout<<"Estoy disparando"<<std::endl;
     disparoAparicion=aparicionProyectil.getElapsedTime().asSeconds();
-
     if(direccionPro==1){//derecha
         if(disparoAparicion>0.35){
             //IMPORTANTE cambiar el centroide a la hora de atacar!
@@ -345,8 +342,4 @@ void Jugador::disparar(){
             }
         }
     }
-
-
-
-    
 }

@@ -14,6 +14,7 @@
 #include "Mapa.h"
 #include <math.h> 
 #include "Jugador.h"
+#include "Enemigo.h"
 
 #define kVel 10
 
@@ -42,8 +43,8 @@ int main(){
 
     Mapa *mapa = new Mapa();
     mapa->leerMapa(1);
-    std::cout<<"holaaaaaa"<<std::endl;
     Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
+    Enemigo *enemigo = new Enemigo(true);
     //le pasamos el alto y el ancho de la ventana
     //el siguiente parametro es la distancia que se mueve la ventana cada vez que se mueve el personaje
     //le pasamos el fondo para poder consultarlo
@@ -62,7 +63,6 @@ int main(){
 
         
         int i=0;
-        std::cout<<player->proyectiles->size()<<std::endl;
         for(i=0; i<player->proyectiles->size();i++){
             player->proyectiles->at(i)->dibuja(window);
             if(player->proyectiles->at(i)->destruir()){
@@ -71,6 +71,7 @@ int main(){
             }
         }
         camara->draw(window);
+        enemigo->draw(window);
         window.display();
         
     }

@@ -24,9 +24,10 @@ public:
     virtual int getAtaque();
     virtual int getHp();
     virtual void atacar(Jugador* jugador);
+
     //virtual Mundo* getMundo();
     virtual ~NPC();
-private:
+protected:
 
     int x; //posicion del personaje en x
     int y; //posicion del personaje en y
@@ -34,7 +35,7 @@ private:
     int hp; // vida que tiene el NPC
     //Mundo* mundo;
     //IA* ia;
-    sf::Texture* spriteSheet; // spritesheet que usará el sprite
+    sf::Sprite spriteSheet; // spritesheet que usará el sprite
 
 };
 

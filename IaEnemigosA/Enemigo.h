@@ -20,10 +20,15 @@ public:
     Enemigo(bool valorPatrullaje);
     bool getPatrullaje();
     void setPatrullaje(bool valorPatrullaje);
+    void leerXML();
     ~Enemigo();
-    
+    void draw(sf::RenderWindow &window);
+    void handle();
 private:
     bool patrullaje;
+    int **matriz;
+    sf::Texture texturaEnemigo;
+    
 
 };
 

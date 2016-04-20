@@ -47,3 +47,5 @@ virtual Mundo* getMundo(){
 NPC::~NPC(){
     
 }
+
+
