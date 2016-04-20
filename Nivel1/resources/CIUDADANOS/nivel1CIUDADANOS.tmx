@@ -12159,7 +12159,7 @@
  <objectgroup color="#55007f" name="BOSS FINAL">
   <object id="13" name="BOSS FINAL" x="4765" y="353" width="159" height="156"/>
  </objectgroup>
- <objectgroup draworder="index" name="Colisiones">
+ <objectgroup draworder="index" name="Suelo">
   <properties>
    <property name="Colisionable" value="True"/>
   </properties>
@@ -12181,7 +12181,6 @@
   <object id="60" x="1450.5" y="449.5" width="11" height="7.5"/>
   <object id="66" x="1029.53" y="354" width="18.94" height="26"/>
   <object id="92" x="2692" y="482" width="17" height="8"/>
-  <object id="101" x="2251.5" y="445" width="258.5" height="26"/>
  </objectgroup>
  <objectgroup color="#000000" name="Paredes">
   <object id="61" x="-8" y="1" width="37" height="412"/>
@@ -12193,7 +12192,7 @@
   <object id="71" x="1534" y="427" width="32" height="88"/>
   <object id="73" x="1694" y="393" width="41" height="23"/>
   <object id="74" x="1731" y="362" width="31" height="54"/>
-  <object id="75" x="1762" y="268" width="59" height="149"/>
+  <object id="75" x="1765" y="267" width="59" height="149"/>
   <object id="76" x="2003" y="263.5" width="10" height="23"/>
   <object id="77" x="736" y="426" width="32" height="178"/>
   <object id="78" x="929" y="427" width="32" height="178"/>

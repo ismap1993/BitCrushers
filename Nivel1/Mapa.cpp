@@ -6,13 +6,13 @@
  */
 
 #include "Mapa.h"
-#include "NPC.h"
 #include "Plataforma.h"
 #include "tinystr.h"
 #include "tinyxml.h"
 #include <iostream>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include "Enemigo.h"
 
 using namespace std;
 
@@ -201,18 +201,18 @@ void Mapa::leerMapa(int numMapa){
     cout<<"Nombre del tileset= "<<filename[1]<<endl;
     cout<<endl;
     
-     TiXmlElement *colisiones = map->FirstChildElement("objectgroup");
+     TiXmlElement *suelo = map->FirstChildElement("objectgroup");
      string nombre;
      int filas=0;
      string xString, yString, widthString, heightString;
      int x, y, width, height;
      
 
-     while(colisiones){
-         nombre=(string) colisiones->Attribute("name");
-         if(nombre=="Colisiones"){
+     while(suelo){
+         nombre=(string) suelo->Attribute("name");
+         if(nombre=="Suelo"){
              cout<<"nombre: "<<nombre<<endl;
-             TiXmlElement *object = colisiones->FirstChildElement("object");
+             TiXmlElement *object = suelo->FirstChildElement("object");
              while(object){
                 
                 xString = (string) object->Attribute("x");
@@ -228,7 +228,7 @@ void Mapa::leerMapa(int numMapa){
                 /*Se crean los rectangulos que colisionan*/
                 sf::RectangleShape* colision = new sf::RectangleShape(sf::Vector2f(width, height));
                 colision->setPosition(x,y);
-                arrayColisiones.push_back(colision);
+                arraySuelo.push_back(colision);
                
                 
 
@@ -241,7 +241,7 @@ void Mapa::leerMapa(int numMapa){
                 filas++;
              }   
          }
-         colisiones = colisiones->NextSiblingElement("objectgroup");
+         suelo = suelo->NextSiblingElement("objectgroup");
      }
      
      TiXmlElement *paredes = map->FirstChildElement("objectgroup");
@@ -365,11 +365,13 @@ void Mapa::leerMapa(int numMapa){
                         y=atoi(yString.c_str());
                         
                         
+                        Enemigo *enemigoC= new Enemigo(x, y, 0);
                         
-                        sf::RectangleShape* enemigosC = new sf::RectangleShape(sf::Vector2f(40, 110));
-                        enemigosC->setFillColor(sf::Color::Red);
-                        enemigosC->setPosition(x,y);
-                        arrayEnemigosC.push_back(enemigosC);
+                        
+                       // sf::RectangleShape* enemigosC = new sf::RectangleShape(sf::Vector2f(40, 110));
+                        //enemigosC->setFillColor(sf::Color::Red);
+                        //enemigosC->setPosition(x,y);
+                        arrayEnemigosC.push_back(enemigoC);
                         
                         cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
@@ -399,11 +401,11 @@ void Mapa::leerMapa(int numMapa){
                         y=atoi(yString.c_str());
                         
                         
-                        
-                        sf::RectangleShape* enemigosA = new sf::RectangleShape(sf::Vector2f(40, 110));
-                        enemigosA->setFillColor(sf::Color::Blue);
-                        enemigosA->setPosition(x,y);
-                        arrayEnemigosA.push_back(enemigosA);
+                        Enemigo *enemigoA= new Enemigo(x, y, 1);
+//                        sf::RectangleShape* enemigosA = new sf::RectangleShape(sf::Vector2f(40, 110));
+//                        enemigosA->setFillColor(sf::Color::Blue);
+//                        enemigosA->setPosition(x,y);
+                        arrayEnemigosA.push_back(enemigoA);
                         
                         cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
@@ -468,27 +470,26 @@ void Mapa::dibuja(sf::RenderWindow& window){
 //                        personaje->setPosition(x*32, y*32);
 //                        window.draw(*personaje);
 //                    }
-                    arrayPlataformas[0]->move();
-                    window.draw(arrayPlataformas[0]->spritePlat);
+//                    arrayPlataformas[0]->move();
+//                    window.draw(arrayPlataformas[0]->spritePlat);
                     
-                    for(int i=0; i<arrayVotos.size();i++){
-                        window.draw(arrayVotos[i]);
-                    }
-                    
-                    for(int j=0; j<arrayEnemigosC.size();j++){
-                        window.draw(*arrayEnemigosC[j]);
-                    }
-                    
-                    for(int k=0; k<arrayEnemigosA.size();k++){
-                        window.draw(*arrayEnemigosA[k]);
-                    }
+//                    for(int i=0; i<arrayVotos.size();i++){
+//                        window.draw(arrayVotos[i]);
+//                    }
+//                    
+//                    for(int j=0; j<arrayEnemigosC.size();j++){
+//                        window.draw(*arrayEnemigosC[j]);
+//                    }
+//                    
+//                    for(int k=0; k<arrayEnemigosA.size();k++){
+//                        window.draw(*arrayEnemigosA[k]);
+//                    }
                     
                     window.draw(*(_tilemapSprite[t][y][x]));
                 }
             }
         }
     }
-    
 }
 
 int Mapa::getTile(int posx, int posy){
@@ -498,3 +499,40 @@ int Mapa::getTile(int posx, int posy){
     return resultado;
 }
 
+//std::vector<sf::RectangleShape*> Mapa::getEnemigosC(sf::RenderWindow& window){
+//    for(int j=0; j<arrayEnemigosC.size();j++){
+//           window.draw(*arrayEnemigosC[j]);
+//    }
+//}
+
+//std::vector<sf::RectangleShape*> Mapa::getEnemigosA(sf::RenderWindow& window){
+//    for(int j=0; j<arrayEnemigosA.size();j++){
+//           window.draw(*arrayEnemigosA[j]);
+//    }
+//}
+
+void Mapa::dibujaVotos(sf::RenderWindow& window){
+    for(int i=0; i<arrayVotos.size();i++){
+          window.draw(arrayVotos[i]);
+        }
+}
+
+
+void Mapa::dibujaEnemigosC(sf::RenderWindow& window){
+    for(int j=0; j<arrayEnemigosC.size();j++){
+           window.draw(arrayEnemigosC[j]->getSprite());
+    }
+}
+
+void Mapa::dibujaEnemigosA(sf::RenderWindow& window){
+    for(int j=0; j<arrayEnemigosA.size();j++){
+           window.draw(arrayEnemigosA[j]->getSprite());
+    }
+}
+
+void Mapa::dibujaPlataformas(sf::RenderWindow& window){
+    for(int j=0; j<arrayPlataformas.size();j++){
+           window.draw(arrayPlataformas[j]->spritePlat);
+           arrayPlataformas[j]->move();
+    }
+}

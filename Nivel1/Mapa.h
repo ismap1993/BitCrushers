@@ -15,6 +15,7 @@
 #define	MAPA_H
 #include <SFML/Graphics.hpp>
 #include "Plataforma.h"
+#include "Enemigo.h"
 
 
 
@@ -27,16 +28,24 @@ public:
     void leerMapa(int numMapa);
     int getTile(int x, int y);
     void dibuja(sf::RenderWindow &window);
+    void dibujaEnemigosC(sf::RenderWindow& window);
+    void dibujaEnemigosA(sf::RenderWindow& window);
+    void dibujaVotos(sf::RenderWindow& window);
+    void dibujaPlataformas(sf::RenderWindow& window);
+
     
     sf::Sprite  fondo;
     int _width;
     int _tileWidth;
-    std::vector<sf::RectangleShape*> arrayColisiones;
+    std::vector<sf::RectangleShape*> arraySuelo;
     std::vector<sf::RectangleShape*> arrayParedes;
     std::vector<Plataforma*> arrayPlataformas;
     std::vector<sf::Sprite> arrayVotos;
-    std::vector<sf::RectangleShape*> arrayEnemigosC;
-    std::vector<sf::RectangleShape*> arrayEnemigosA;
+//    std::vector<sf::RectangleShape*> arrayEnemigosC;
+//    std::vector<sf::RectangleShape*> arrayEnemigosA;
+    std::vector<Enemigo*> arrayEnemigosC;
+    std::vector<Enemigo*> arrayEnemigosA;
+
 
 private:
     

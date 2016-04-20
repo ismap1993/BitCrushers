@@ -15,9 +15,9 @@
 
 int main(){
     
-    sf::RenderWindow window(sf::VideoMode(1066, 600), "Movimiento de la camara y cargar el mapa!");
+    sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Nivel 1 + colisiones!");
     window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
-    window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
+    window.setFramerateLimit(120);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
     //Creo un personaje para poder moverlo
     //sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
     float posx = 200; //para que sean floats
@@ -249,8 +249,13 @@ int main(){
         mapa->dibuja(window);
         
         //window.draw(suelo);
-        
-
+//        for(int i=0; i<mapa->arrayVotos.size();i++){
+//          window.draw(mapa->arrayVotos[i]);
+//        }
+        mapa->dibujaVotos(window);
+        mapa->dibujaEnemigosC(window);
+        mapa->dibujaEnemigosA(window);
+        mapa->dibujaPlataformas(window);
         //dibujo el personaje
         player->draw(window);
         player->handle(event, window, mapa, camara);
