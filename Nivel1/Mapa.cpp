@@ -6,6 +6,7 @@
  */
 
 #include "Mapa.h"
+#include "NPC.h"
 #include "Plataforma.h"
 #include "tinystr.h"
 #include "tinyxml.h"
@@ -309,8 +310,111 @@ void Mapa::leerMapa(int numMapa){
                 }
              plataformas = plataformas->NextSiblingElement("objectgroup");
          }
+        
+         TiXmlElement *votos = map->FirstChildElement("objectgroup");
+        while(votos){
+            
+            nombre=(string) votos->Attribute("name");
+           
+            if(nombre=="Votos"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = votos->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        
+                        
+                        if (!texVoto.loadFromFile("resources/voto.png")) {
+                                std::cerr << "Error cargando la imagen voto.png";
+                                exit(0);
+                        }
+                        spriteVoto.setTexture(texVoto);
+                        spriteVoto.setPosition(x, y);
+                        
+                        arrayVotos.push_back(spriteVoto);
+                        
+                        cout<<"x: "<<x<<endl;
+                        cout<<"y: "<<y<<endl;
+                        cout<<"----"<<endl;
+                        
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             votos = votos->NextSiblingElement("objectgroup");
+         }
      
      
+        TiXmlElement *enemigosC = map->FirstChildElement("objectgroup");
+        while(enemigosC){
+            
+            nombre=(string) enemigosC->Attribute("name");
+           
+            if(nombre=="Enemigos C"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = enemigosC->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        
+                        
+                        sf::RectangleShape* enemigosC = new sf::RectangleShape(sf::Vector2f(40, 110));
+                        enemigosC->setFillColor(sf::Color::Red);
+                        enemigosC->setPosition(x,y);
+                        arrayEnemigosC.push_back(enemigosC);
+                        
+                        cout<<"x: "<<x<<endl;
+                        cout<<"y: "<<y<<endl;
+                        cout<<"----"<<endl;
+                        
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             enemigosC = enemigosC->NextSiblingElement("objectgroup");
+         }
+          
+        
+        TiXmlElement *enemigosA = map->FirstChildElement("objectgroup");
+        while(enemigosA){
+            
+            nombre=(string) enemigosA->Attribute("name");
+           
+            if(nombre=="Enemigos A"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = enemigosA->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        
+                        
+                        sf::RectangleShape* enemigosA = new sf::RectangleShape(sf::Vector2f(40, 110));
+                        enemigosA->setFillColor(sf::Color::Blue);
+                        enemigosA->setPosition(x,y);
+                        arrayEnemigosA.push_back(enemigosA);
+                        
+                        cout<<"x: "<<x<<endl;
+                        cout<<"y: "<<y<<endl;
+                        cout<<"----"<<endl;
+                        
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             enemigosA = enemigosA->NextSiblingElement("objectgroup");
+         }
 //     TiXmlElement *properties = colisiones->FirstChildElement("properties");
 //     string atributo;
 //     while(properties){
@@ -366,6 +470,19 @@ void Mapa::dibuja(sf::RenderWindow& window){
 //                    }
                     arrayPlataformas[0]->move();
                     window.draw(arrayPlataformas[0]->spritePlat);
+                    
+                    for(int i=0; i<arrayVotos.size();i++){
+                        window.draw(arrayVotos[i]);
+                    }
+                    
+                    for(int j=0; j<arrayEnemigosC.size();j++){
+                        window.draw(*arrayEnemigosC[j]);
+                    }
+                    
+                    for(int k=0; k<arrayEnemigosA.size();k++){
+                        window.draw(*arrayEnemigosA[k]);
+                    }
+                    
                     window.draw(*(_tilemapSprite[t][y][x]));
                 }
             }
