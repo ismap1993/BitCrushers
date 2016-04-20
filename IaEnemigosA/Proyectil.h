@@ -31,7 +31,7 @@ private:
     int disRecorrida; //Destruir el proyectil al haber recorrido 450 de distancia
     sf::Sprite spritePro;
     sf::Texture texPro;
-    
+    int politico;
     
     //Tiempo en el que se van desplazando los proyectiles
     sf::Clock proyectilClock;

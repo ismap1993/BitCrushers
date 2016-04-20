@@ -14,17 +14,26 @@
 #ifndef ENEMIGO_H
 #define ENEMIGO_H
 #include "NPC.h"
+#include "Jugador.h"
+#include "Proyectil.h"
+
 class Enemigo: public NPC {
 public:
     Enemigo();
-    Enemigo(bool valorPatrullaje);
+    Enemigo(bool valorPatrullaje, float posx, float posy, int type);
     bool getPatrullaje();
     void setPatrullaje(bool valorPatrullaje);
     void leerXML();
     ~Enemigo();
     void draw(sf::RenderWindow &window);
-    void handle();
+    void handle(Jugador* jugador);
+    void disparar();
+    
+    std::vector<Proyectil*>* proyectiles;
 private:
+    sf::Clock aparicionProyectil;
+    int direccion;//0 derecha. 1 izquierda
+    int tipo;//0 cuerpo. 1 distancia
     bool patrullaje;
     int **matriz;
     sf::Texture texturaEnemigo;

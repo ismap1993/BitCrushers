@@ -33,6 +33,7 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
         posy=pospersonaje.y;
     }
     matriz=mat;
+    politico=politic;
     /*
     //para imprimir la matriz
     for(int i=0; i<=11;i++){
@@ -48,15 +49,25 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
             std::cerr << "Error cargando la imagen";
             exit(0);
         }
-    }else{
+        spritePro.setTexture(texPro);
+        spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    }else if(politic==3){
         if (!texPro.loadFromFile("resources/marianospritesheet.png")){
             std::cerr << "Error cargando la imagen";
             exit(0);
-        }        
+        } 
+        spritePro.setTexture(texPro);
+        spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    }else{
+        if (!texPro.loadFromFile("resources/CIUDADANOS/enemigosCIUDADANOS.png")){
+            std::cerr << "Error cargando la imagen";
+            exit(0);
+        } 
+        spritePro.setTexture(texPro);
+        spritePro.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
     }
 
-    spritePro.setTexture(texPro);
-    spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    
     spritePro.setPosition(posx, posy);
     
     //std::cout << "proyectil creado!" << std::endl;
@@ -93,7 +104,11 @@ void Proyectil::leerSprite(){
     
 
   ifstream fin;
+  if(politico!=5){
   fin.open("resources/albertspritesheet.xml"); // abrir el xml que se va a leer
+  }else{
+      fin.open("resources/CIUDADANOS/enemigosCIUDADANOS.xml");
+  }
           if (!fin.good()) 
             std::cout << "No se ha podido abrir el spritesheet" << std::endl;
   
