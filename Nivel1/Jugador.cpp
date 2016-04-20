@@ -89,8 +89,8 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     posicionJugador.x=x;
     posicionJugador.y=y;
     salto=false;
-    velocidadMovimiento=8;
-    velocidadSalto=15;
+    velocidadMovimiento=5;
+    velocidadSalto=10;
     velocidadJugador.x=0;
     velocidadJugador.y=0;
     muerto=false;
@@ -192,7 +192,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     //sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
     //sf::Vector2f velocidadJugador(0, 0);
-    const float gravedad =1;
+    const float gravedad =0.5;
     //int alturaSuelo = suelo.getPosition().y - 65;
     //int alturaSuelo = sprite.getPosition().y+10;
     //float velocidadSalto = 100, velocidadMovimiento = 5;
@@ -244,13 +244,13 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     bool enelsuelo=false;
     int i=0;
     
-     for(i=0; i<mapa->arrayColisiones.size(); i++){
-         if(this->getSprite().getGlobalBounds().intersects(mapa->arrayColisiones[i]->getGlobalBounds())){   
-             if(this->getSprite().getPosition().y<mapa->arrayColisiones[i]->getPosition().y){
+     for(i=0; i<mapa->arraySuelo.size(); i++){
+         if(this->getSprite().getGlobalBounds().intersects(mapa->arraySuelo[i]->getGlobalBounds())){   
+             if(this->getSprite().getPosition().y<mapa->arraySuelo[i]->getPosition().y){
                  /*Solo se subira a la plataforma si el personaje se encuentra por encima de esta, es decir: 
                   SI posicion Y del personaje < posicion Y plataforma */
                 velocidadJugador.y = 0;
-                alturaSuelo=mapa->arrayColisiones[i]->getPosition().y-90;
+                alturaSuelo=mapa->arraySuelo[i]->getPosition().y-90;
                 enelsuelo=true;
              }else{
                  velocidadJugador.y=1;
@@ -258,14 +258,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
          }
      }
     
-    if(enelsuelo==true){
-        //cout<<"ESTA PISANDO EL SUELO!!"<<endl;
-        //cout<<"Posicion Y del jugador: "<<this->getSprite().getPosition().y<<endl;
-        posicionJugador.y=alturaSuelo+36.5;
-    }else{
-        //cout<<"ESTOY EN EL AIRE!!!"<<endl;
-        alturaSuelo=580;
-    }
+    
     
     int choque=-1; //0 der, 1 izq, -1 nada
     int j=0;
@@ -279,6 +272,58 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 choque=1;
             }
         }
+    }
+    
+    //Plataforma *plataforma = new Plataforma(300, 500);
+    //plataforma->spritePlat;
+    //mapa->arrayPlataformas.size();
+    //mapa->arrayPlataformas[2]->spritePlat.getGlobalBounds().intersects();
+    
+    int choquePlat;
+    int k=0;
+
+    for(k=0; k<mapa->arrayPlataformas.size(); k++){
+        if(this->getSprite().getGlobalBounds().intersects(mapa->arrayPlataformas[k]->spritePlat.getGlobalBounds())){  
+            if(this->getSprite().getPosition().y<mapa->arrayPlataformas[k]->spritePlat.getPosition().y){
+                alturaSuelo=mapa->arrayPlataformas[k]->spritePlat.getPosition().y-90;
+                enelsuelo=true;
+                //this->getSprite().getPosition().x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x;
+                //this->getSprite().setPosition(mapa->arrayPlataformas[k]->spritePlat.getPosition().x,mapa->arrayPlataformas[k]->spritePlat.getPosition().y);
+//                posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x;
+                if(mapa->arrayPlataformas[k]->direccion==1){
+                    posicionJugador.x+=0.9;
+                }else{
+                    posicionJugador.x-=0.9;
+                }
+                
+//                if(this->getSprite().getPosition().x>mapa->arrayPlataformas[k]->spritePlat.getPosition().x){
+//                    posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x;
+//                    mapa->arrayPlataformas[k]->spritePlat.setOrigin(32, 0);
+//                }
+//                
+//                else if(this->getSprite().getPosition().x<mapa->arrayPlataformas[k]->spritePlat.getPosition().x){
+//                    posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x +5;
+//                }
+                
+                
+                
+                choquePlat=0;
+                //velocidadJugador.x=2.2;
+            }
+            
+            
+            
+            //posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x +25;
+        }
+    }
+    
+    if(enelsuelo==true){
+        //cout<<"ESTA PISANDO EL SUELO!!"<<endl;
+        //cout<<"Posicion Y del jugador: "<<this->getSprite().getPosition().y<<endl;
+        posicionJugador.y=alturaSuelo+36.5;
+    }else{
+        //cout<<"ESTOY EN EL AIRE!!!"<<endl;
+        alturaSuelo=580;
     }
     
     //Despues de golpear, a los 0,5s, el personaje vuelve a su posicion original (izquierda o derecha)

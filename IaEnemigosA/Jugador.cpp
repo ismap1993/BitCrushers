@@ -93,7 +93,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     posicionJugador.x=x;
     posicionJugador.y=y;
     salto=false;
-    velocidadMovimiento=1;
+    velocidadMovimiento=3;
     velocidadSalto=5;
     velocidadJugador.x=0;
     velocidadJugador.y=0;
@@ -202,26 +202,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     //sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
     //sf::Vector2f velocidadJugador(0, 0);
     const float gravedad = 0.1;
-    switch(event.type){       
-        //Si se recibe el evento de cerrar la ventana la cierro
-        case sf::Event::Closed:
-            window.close();
-            break;
-        //Se pulsÃ³ una tecla, imprimo su codigo
-        case sf::Event::KeyPressed:
-            //Verifico si se pulsa alguna tecla de movimiento
-            switch(event.key.code) {
-                //Mapeo del cursor
-                case sf::Keyboard::Space:
-                    std::cout<<"Estoy presionando el espacio de manera sexy"<<"Estoy presionando el espacio de manera sexy"<<"Estoy presionando el espacio de manera sexy"<<std::endl;
-                break;
-                case sf::Keyboard::Escape:
-                    window.close();
-                break;
-                default:
-                break;   
-            }
-    }
+
    
     
     /*CAIDAS*/

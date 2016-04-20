@@ -44,7 +44,7 @@ int main(){
     Mapa *mapa = new Mapa();
     mapa->leerMapa(1);
     Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
-    Enemigo *enemigo = new Enemigo(true);
+    Enemigo *enemigo = new Enemigo(true, 530.0, 350, 1);
     //le pasamos el alto y el ancho de la ventana
     //el siguiente parametro es la distancia que se mueve la ventana cada vez que se mueve el personaje
     //le pasamos el fondo para poder consultarlo
@@ -58,8 +58,9 @@ int main(){
         mapa->dibujaA(window);
         //window.draw(sprite);
         player->draw(window);
+        enemigo->draw(window);
         player->handle(event, window, mapa, camara);
-        
+       enemigo->handle(player);
 
         
         int i=0;
@@ -70,8 +71,16 @@ int main(){
                 player->proyectiles->erase(player->proyectiles->begin()+i);
             }
         }
+        int j=0;
+        for(j=0; j<enemigo->proyectiles->size();j++){
+            enemigo->proyectiles->at(j)->dibuja(window);
+            if(enemigo->proyectiles->at(j)->destruir()){
+                delete enemigo->proyectiles->at(j);
+                enemigo->proyectiles->erase(enemigo->proyectiles->begin()+j);
+            }
+        }
         camara->draw(window);
-        enemigo->draw(window);
+        
         window.display();
         
     }

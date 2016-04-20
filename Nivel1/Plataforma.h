@@ -18,12 +18,13 @@ public:
     sf::Sprite spritePlat;
     sf::Texture texPlat;
     void move();
+    int direccion;
     
 private:
     int posx;
     int posy;
     float recorrido;
-    int direccion;
+    
     
     
     sf::Clock tiempoRecorrido;
