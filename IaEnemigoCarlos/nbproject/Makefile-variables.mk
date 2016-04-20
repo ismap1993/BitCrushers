@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=iaenemigosa
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/iaenemigosa
+CND_ARTIFACT_NAME_Debug=iaenemigocarlos
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/iaenemigocarlos
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=iaenemigosa.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/iaenemigosa.tar
+CND_PACKAGE_NAME_Debug=iaenemigocarlos.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/iaenemigocarlos.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=iaenemigosa
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/iaenemigosa
+CND_ARTIFACT_NAME_Release=iaenemigocarlos
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/iaenemigocarlos
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=iaenemigosa.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/iaenemigosa.tar
+CND_PACKAGE_NAME_Release=iaenemigocarlos.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/iaenemigocarlos.tar
 #
 # include compiler specific variables
 #

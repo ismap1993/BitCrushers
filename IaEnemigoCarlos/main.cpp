@@ -25,7 +25,7 @@
 int main(){ 
     
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Presidentum!"); 
-   
+     sf::Event event;
     sf::Texture texture;
     if(!texture.loadFromFile("resources/background.jpg")){
         std::cerr<<"error al cargar el background";
@@ -43,35 +43,35 @@ int main(){
 
     Mapa *mapa = new Mapa();
     mapa->leerMapa(1);
-    Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
-    Enemigo enemigo = new Enemigo(true);
-    //le pasamos el alto y el ancho de la ventana
-    //el siguiente parametro es la distancia que se mueve la ventana cada vez que se mueve el personaje
-    //le pasamos el fondo para poder consultarlo
-    //el mapa->fondo nos ayuda a saber hasta donde debemos mover la camara ya que es el ancho del mapa
-    //el mapa->_tileWidth nos indica el ancho del tile
+    Camara* camara = new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
+    Enemigo* enemigo = new Enemigo(500, 340, 2, true, true);
+    
    
     while(window.isOpen()){
-        sf::Event event;
-        
+    
         window.clear(sf::Color::White);
+        
         mapa->dibujaA(window);
-        //window.draw(sprite);
+        
         player->draw(window);
+        
+        enemigo->draw(window);
+        enemigo->update();
+        
         player->handle(event, window, mapa, camara);
+        //enemigo->handle(event, window, mapa, camara);
         
-
+    
         
-        int i=0;
-        for(i=0; i<player->proyectiles->size();i++){
-            player->proyectiles->at(i)->dibuja(window);
-            if(player->proyectiles->at(i)->destruir()){
-                delete player->proyectiles->at(i);
-                player->proyectiles->erase(player->proyectiles->begin()+i);
+        while (window.pollEvent(event)){  
+            switch(event.type){     
+                case sf::Event::Closed:
+                    window.close();
+                    break;       
             }
         }
-        camara->draw(window);
-        window.display();
+    camara->draw(window);
+    window.display();
         
     }
     

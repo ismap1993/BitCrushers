@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Camara.o \
 	${OBJECTDIR}/Enemigo.o \
+	${OBJECTDIR}/JefeFinal.o \
 	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/NPC.o \
@@ -66,23 +67,23 @@ LDLIBSOPTIONS=/C/SFML/lib/libsfml-graphics-d.a /C/SFML/lib/libsfml-window-d.a /C
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: /C/SFML/lib/libsfml-graphics-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: /C/SFML/lib/libsfml-graphics-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: /C/SFML/lib/libsfml-window-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: /C/SFML/lib/libsfml-window-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: /C/SFML/lib/libsfml-system-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: /C/SFML/lib/libsfml-system-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: /C/SFML/lib/libsfml-audio-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: /C/SFML/lib/libsfml-audio-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: /C/SFML/lib/libsfml-main-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: /C/SFML/lib/libsfml-main-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: /C/SFML/lib/libsfml-network-d.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: /C/SFML/lib/libsfml-network-d.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Camara.o: Camara.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -93,6 +94,11 @@ ${OBJECTDIR}/Enemigo.o: Enemigo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemigo.o Enemigo.cpp
+
+${OBJECTDIR}/JefeFinal.o: JefeFinal.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/JefeFinal.o JefeFinal.cpp
 
 ${OBJECTDIR}/Jugador.o: Jugador.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -145,7 +151,7 @@ ${OBJECTDIR}/tinyxmlparser.o: tinyxmlparser.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigosa.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/iaenemigocarlos.exe
 
 # Subprojects
 .clean-subprojects:
