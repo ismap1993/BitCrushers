@@ -20,12 +20,12 @@
 #include "tinystr.h"
 #include "tinyxml.h"
 
-class Camara;
+
 class Mapa {
 public:
    
     Mapa();
-    virtual ~Mapa();
+    ~Mapa();
     
     void leerMapa(int numMapa);
     int getTile(int x, int y);
@@ -44,10 +44,15 @@ private:
     int _tileHeigth;
     
     TiXmlDocument* doc;
-   
+    TiXmlElement* map;
+    TiXmlElement* img;
+    TiXmlElement* data;
+    TiXmlElement* layer;
     
-    sf::Sprite****_tilemapSprite;
-    sf::Sprite*_tilesetSprite;
+    std::string* name;
+
+    sf::Sprite**** _tilemapSprite;
+    sf::Sprite* _tilesetSprite;
     
     sf::Texture* _tilesetTexture;
     sf::Texture* m_tileset;

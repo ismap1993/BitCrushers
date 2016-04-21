@@ -29,24 +29,6 @@ Enemigo::Enemigo() : patrullaje(true) {
     
 }
 
-Enemigo::Enemigo(bool valorPatrullaje) : patrullaje(valorPatrullaje) {
- 
-    
-    
-}
-
-
-bool Enemigo::getPatrullaje(){
-    
-    return patrullaje;
-    
-}
-
-void Enemigo::setPatrullaje(bool valorPatrullaje){
-    
-    patrullaje = valorPatrullaje;
-    
-}
 
 Enemigo::~Enemigo() {
 }

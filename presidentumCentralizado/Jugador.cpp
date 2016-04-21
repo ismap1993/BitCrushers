@@ -102,7 +102,7 @@ void Jugador::iniciarJugador(float x, float y, int politic, bool activado){
     posicionJugador.x=x;
     posicionJugador.y=y;
     salto=false;
-    velocidadMovimiento=1;
+    velocidadMovimiento=0.5;
     velocidadSalto=5;
     velocidadJugador.x=0;
     velocidadJugador.y=0;
@@ -229,26 +229,15 @@ void Jugador::handle(){
     //bool salto= false;
     //sprite.setPosition(posicionJugador);
     
-    switch(Juego::Instance()->event.type){
-        case sf::Event::Closed:
-            Juego::Instance()->window->close();
-            break;
-        
-        case sf::Event::KeyPressed:
-            
-            switch(Juego::Instance()->event.key.code){
-                
-            }
- 
-    }
+
     
     /*CAIDAS*/
-    if(Mundo::Instance()->mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)>1){
+    if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y+64)>1){
         velocidadJugador.y = 0;
-        alturaSuelo=this->getSprite().getPosition().y;
+        alturaSuelo=getSprite().getPosition().y;
 
         //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
-    }else if(Mundo::Instance()->mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)==1){
+    }else if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y+64)==1){
             
         //std::cout<<"holaaaaaa"<<std::endl;
         //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
@@ -276,7 +265,7 @@ void Jugador::handle(){
         direccionPro = 1;
         Mundo::Instance()->camara->moveRight();
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
-        if(Mundo::Instance()->mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
+        if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y)>1){
             std::cout<<"ID= choque derecho!"<<std::endl;
             velocidadJugador.x = -5;    
         }else{
@@ -289,7 +278,7 @@ void Jugador::handle(){
         direccionPro = 0;
         Mundo::Instance()->camara->moveLeft();
         
-        if(Mundo::Instance()->mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
+        if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y)>1){
             std::cout<<"ID= choque izquierdo!"<<std::endl;
             velocidadJugador.x = 5;    
         }else{

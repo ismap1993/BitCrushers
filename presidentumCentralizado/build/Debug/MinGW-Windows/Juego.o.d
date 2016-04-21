@@ -65,7 +65,7 @@ build/Debug/MinGW-Windows/Juego.o: Juego.cpp Juego.h \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Escena.h EIntro.h EMenu.h \
  EMenuInGame.h ECinematica.h EInGame.h Mundo.h Mapa.h Camara.h tinystr.h \
- tinyxml.h
+ tinyxml.h Simpatizante.h NPC.h JefeFinal.h Enemigo.h Proyectil.h
 
 Juego.h:
 
@@ -228,3 +228,13 @@ Camara.h:
 tinystr.h:
 
 tinyxml.h:
+
+Simpatizante.h:
+
+NPC.h:
+
+JefeFinal.h:
+
+Enemigo.h:
+
+Proyectil.h:

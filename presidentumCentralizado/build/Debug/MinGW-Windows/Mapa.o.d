@@ -64,7 +64,8 @@ build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Camara.h tinystr.h tinyxml.h \
- Juego.h Escena.h Mundo.h
+ Juego.h Escena.h Mundo.h Simpatizante.h NPC.h JefeFinal.h Enemigo.h \
+ Proyectil.h
 
 Mapa.h:
 
@@ -217,3 +218,13 @@ Juego.h:
 Escena.h:
 
 Mundo.h:
+
+Simpatizante.h:
+
+NPC.h:
+
+JefeFinal.h:
+
+Enemigo.h:
+
+Proyectil.h:

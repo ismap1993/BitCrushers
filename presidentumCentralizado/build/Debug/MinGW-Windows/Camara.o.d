@@ -64,7 +64,8 @@ build/Debug/MinGW-Windows/Camara.o: Camara.cpp Camara.h \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Mapa.h tinystr.h tinyxml.h \
- Jugador.h Proyectil.h Mundo.h Juego.h Escena.h
+ Jugador.h Proyectil.h NPC.h Mundo.h Simpatizante.h JefeFinal.h Enemigo.h \
+ Juego.h Escena.h
 
 Camara.h:
 
@@ -216,7 +217,15 @@ Jugador.h:
 
 Proyectil.h:
 
+NPC.h:
+
 Mundo.h:
+
+Simpatizante.h:
+
+JefeFinal.h:
+
+Enemigo.h:
 
 Juego.h:
 

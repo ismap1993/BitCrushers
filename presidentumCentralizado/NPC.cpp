@@ -34,7 +34,7 @@ int NPC::getHp(){
     
 }
 
-void NPC::atacar(Jugador* jugador){
+void NPC::atacar(){
     
     
 }

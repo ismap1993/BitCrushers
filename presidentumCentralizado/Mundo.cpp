@@ -35,10 +35,10 @@ void Mundo::crearMundo(int l){
     
 
         nivel = l;
-        //Jugador::Instance()->iniciarJugador(200, 340, 2, true);
+        Jugador::Instance()->iniciarJugador(200, 340, 2, true);
         mapa = new Mapa();
         mapa->leerMapa(nivel);
-        //camara = new Camara();
+        camara = new Camara();
         
         //std::cout<<"Jugador: "<<Jugador::Instance()<<std::endl;
         ///std::cout<<"Mapa: "<<&mapa<<std::endl;
@@ -48,10 +48,17 @@ void Mundo::crearMundo(int l){
     
 }
 
+void Mundo::Update(){
+    
+    Jugador::Instance()->handle();
+    
+}
+
 void Mundo::Render(){
     
       mapa->dibuja();
-    //camara->draw();
+      Jugador::Instance()->draw();
+      camara->draw();
     
 }
 

@@ -22,15 +22,11 @@
 class Camara {
 public:
     Camara();
-    Camara(const Camara& orig);
-    virtual ~Camara();
+    ~Camara();
     
     void draw();
     void moveRight();
     void moveLeft();
-    
-    
-private:
     
     int ancho;
     int alto;
@@ -41,6 +37,11 @@ private:
     sf::View *camara;
     
     sf::Sprite background;
+    
+    
+private:
+    
+    
     
 };
 

@@ -14,7 +14,7 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "Jugador.h"
+
 
 
 class NPC {
@@ -24,7 +24,7 @@ public:
     virtual int getY();
     virtual int getAtaque();
     virtual int getHp();
-    virtual void atacar(Jugador* jugador);
+    virtual void atacar();
     //virtual Mundo* getMundo();
     virtual ~NPC();
 private:

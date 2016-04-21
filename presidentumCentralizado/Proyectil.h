@@ -9,7 +9,8 @@
 #define	PROYECTIL_H
 #include <SFML/Graphics.hpp>
 
-class Proyectil {
+#include "NPC.h"
+class Proyectil: public NPC {
 public:
     Proyectil();
     Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int politic); 

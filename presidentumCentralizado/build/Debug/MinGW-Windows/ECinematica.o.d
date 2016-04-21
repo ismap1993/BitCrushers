@@ -65,7 +65,7 @@ build/Debug/MinGW-Windows/ECinematica.o: ECinematica.cpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Juego.h Escena.h EIntro.h EMenu.h \
  EMenuInGame.h ECinematica.h EInGame.h Mundo.h Mapa.h Camara.h tinystr.h \
- tinyxml.h
+ tinyxml.h Simpatizante.h NPC.h JefeFinal.h Enemigo.h Proyectil.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -228,3 +228,13 @@ Camara.h:
 tinystr.h:
 
 tinyxml.h:
+
+Simpatizante.h:
+
+NPC.h:
+
+JefeFinal.h:
+
+Enemigo.h:
+
+Proyectil.h:

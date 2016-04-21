@@ -34,9 +34,6 @@ Camara::Camara(){
     background = *Mundo::Instance()->mapa->fondo;
 }
 
-Camara::Camara(const Camara& orig) {
-}
-
 Camara::~Camara() {
     
     delete camara; //es el objeto sf::view

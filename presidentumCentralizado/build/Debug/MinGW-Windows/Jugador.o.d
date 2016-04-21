@@ -64,7 +64,8 @@ build/Debug/MinGW-Windows/Jugador.o: Jugador.cpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h Camara.h \
- tinystr.h tinyxml.h Proyectil.h Juego.h Escena.h Mundo.h
+ tinystr.h tinyxml.h Proyectil.h NPC.h Juego.h Escena.h Mundo.h \
+ Simpatizante.h JefeFinal.h Enemigo.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -216,8 +217,16 @@ tinyxml.h:
 
 Proyectil.h:
 
+NPC.h:
+
 Juego.h:
 
 Escena.h:
 
 Mundo.h:
+
+Simpatizante.h:
+
+JefeFinal.h:
+
+Enemigo.h:

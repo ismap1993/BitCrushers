@@ -14,6 +14,10 @@
 #ifndef MUNDO_H
 #define MUNDO_H
 #include "Mapa.h"
+#include "Simpatizante.h"
+#include "JefeFinal.h"
+#include "Enemigo.h"
+#include "Proyectil.h"
 
 class Mundo {
 public:
@@ -32,6 +36,14 @@ public:
     int nivel;
     
     const int camaraVel;
+
+    JefeFinal* jefefinal;
+    
+    Enemigo** enemigos;  //array de enemigos
+    
+    Simpatizante** simpatizantes; //array de simpatizantes
+    
+    Proyectil** proyectiles; //array de proyectiles
     
     Mapa* mapa;
     

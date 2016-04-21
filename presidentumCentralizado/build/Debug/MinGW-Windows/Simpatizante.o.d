@@ -1,5 +1,5 @@
-build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp Mundo.h Mapa.h \
- c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
+build/Debug/MinGW-Windows/Simpatizante.o: Simpatizante.cpp Simpatizante.h \
+ NPC.h c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
  c:/SFML/include/SFML/System/Export.hpp \
@@ -63,13 +63,11 @@ build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp Mundo.h Mapa.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Camara.h tinystr.h tinyxml.h \
- Simpatizante.h NPC.h JefeFinal.h Enemigo.h Proyectil.h Juego.h Escena.h \
- jugador.h
+ c:/SFML/include/SFML/Graphics/Text.hpp
 
-Mundo.h:
+Simpatizante.h:
 
-Mapa.h:
+NPC.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -208,25 +206,3 @@ c:/SFML/include/SFML/Graphics/Shader.hpp:
 c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
-
-Camara.h:
-
-tinystr.h:
-
-tinyxml.h:
-
-Simpatizante.h:
-
-NPC.h:
-
-JefeFinal.h:
-
-Enemigo.h:
-
-Proyectil.h:
-
-Juego.h:
-
-Escena.h:
-
-jugador.h:

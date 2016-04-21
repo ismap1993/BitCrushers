@@ -35,7 +35,7 @@ void Mapa::leerMapa(int numMapa){
     m_tileset = new sf::Texture;
     m_vertices = new sf::VertexArray;
     doc = new TiXmlDocument;
-    //map = new TiXmlElement;
+
     //cargo la textura del fondo
     if(!fond->loadFromFile("resources/background.jpg")){
         std::cerr << "Error cargando la imagen background.png";
@@ -47,7 +47,7 @@ void Mapa::leerMapa(int numMapa){
     //creo el objeto xml
 
     doc->LoadFile("resources/CIUDADANOS/nivel1CIUDADANOS.tmx");
-    TiXmlElement* map = doc->FirstChildElement("map");
+    map = doc->FirstChildElement("map");
     
     //leo sus atributos
     map->QueryIntAttribute("width",&_width);
@@ -57,7 +57,7 @@ void Mapa::leerMapa(int numMapa){
     
     
     //Leemos las diferentes imagenes que nos sirven para hacer el rect de las texturas
-    TiXmlElement *img = map->FirstChildElement("tileset");
+    img = map->FirstChildElement("tileset");
     int numTil=0;
     while(img){
         numTil++;
@@ -77,7 +77,7 @@ void Mapa::leerMapa(int numMapa){
     //leemos las diferentes capas
     
     _tilesetTexture->loadFromFile(filename);
-    TiXmlElement *layer = map->FirstChildElement("layer");
+    layer = map->FirstChildElement("layer");
     while(layer){
         _numLayers++;
         layer= layer->NextSiblingElement("layer");
@@ -95,10 +95,10 @@ void Mapa::leerMapa(int numMapa){
         }
     }
 
-    TiXmlElement *data;
+  
     //leemos el atributo imagen
     layer = map->FirstChildElement("layer");
-    string *name=new string[_numLayers];
+    name = new string[_numLayers];
     int j=0;
     int l=0;
     //leo los tiles del xml y avanzo a la siguiente posicion
@@ -143,6 +143,7 @@ void Mapa::leerMapa(int numMapa){
    // cout<<columns<<" "<<rows<<endl; 
     
     _tilesetSprite = new sf::Sprite[columns*rows];     
+    
     int t=0;
     for(int y=0; y<rows; y++){
         for(int x=0; x<columns;x++){
@@ -172,12 +173,12 @@ void Mapa::leerMapa(int numMapa){
             for(int x=0; x<_width;x++){
                 int gid=_tilemap[l][y][x]-1;
                 if(gid>=rows*columns){
-                    /*
-                    cout<<gid<<endl;
-                    cout<<rows<<endl;
-                    cout<<columns<<endl;
+                    
+                    //cout<<gid<<endl;
+                    //cout<<rows<<endl;
+                    //cout<<columns<<endl;
                     cout<<"Error en la asginacion del sprite"<<endl;
-                     * */
+                     
                 }
                 else if(gid>0){   
 
@@ -260,35 +261,30 @@ int Mapa::getTile(int posx, int posy){
 
 Mapa::~Mapa() {
     //metodo que elimina el mapa
-    
-    for(int l=0; l<_numLayers; l++){
-        for(int y=0; y<_height; y++){
-        
-            delete[] _tilemap[l][y];
-        }
-        delete[] _tilemap[l];
-    }
-    delete[] _tilemap;
-    
-    
     for(int t=0; t<_numLayers; t++){
         for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
                 delete _tilemapSprite[t][y][x];
                 }
             delete _tilemapSprite[t][y];
+            delete[] _tilemap[t][y];
             }
         delete _tilemapSprite[t];
+        delete[] _tilemap[t];
     }
-    
+    delete[] _tilemap;
+    delete[] _tilesetSprite;
     delete _tilemapSprite;
-    delete _tilesetSprite;
     delete fond;
     delete fondo;
     delete _tilesetTexture;
     delete  m_tileset;
     delete m_vertices;
     delete doc;
+    delete img;
+    delete name;
+    delete data;
+    delete layer;
     
     
    

@@ -43,12 +43,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/EMenuInGame.o \
 	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Escena.o \
+	${OBJECTDIR}/JefeFinal.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/Proyectil.o \
+	${OBJECTDIR}/Simpatizante.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/pruebasAlfonso.o \
 	${OBJECTDIR}/pruebasCarlos.o \
@@ -122,6 +124,11 @@ ${OBJECTDIR}/Escena.o: Escena.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escena.o Escena.cpp
 
+${OBJECTDIR}/JefeFinal.o: JefeFinal.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/JefeFinal.o JefeFinal.cpp
+
 ${OBJECTDIR}/Juego.o: Juego.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -151,6 +158,11 @@ ${OBJECTDIR}/Proyectil.o: Proyectil.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Proyectil.o Proyectil.cpp
+
+${OBJECTDIR}/Simpatizante.o: Simpatizante.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Simpatizante.o Simpatizante.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

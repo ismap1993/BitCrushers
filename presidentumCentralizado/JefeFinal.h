@@ -5,28 +5,24 @@
  */
 
 /* 
- * File:   Enemigo.h
+ * File:   JefeFinal.h
  * Author: chiri
  *
- * Created on 12 de abril de 2016, 20:25
+ * Created on 21 de abril de 2016, 11:51
  */
 
-#ifndef ENEMIGO_H
-#define ENEMIGO_H
+#ifndef JEFEFINAL_H
+#define JEFEFINAL_H
 
 #include "NPC.h"
-class Enemigo: public NPC {
+class JefeFinal: public NPC {
 public:
-    
-    Enemigo();
-    Enemigo(bool valorPatrullaje);
-    bool patrullaje;
-    ~Enemigo();
-    
+    JefeFinal();
+    JefeFinal(const JefeFinal& orig);
+    virtual ~JefeFinal();
 private:
-    
 
 };
 
-#endif /* ENEMIGO_H */
+#endif /* JEFEFINAL_H */
 
