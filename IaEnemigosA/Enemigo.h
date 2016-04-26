@@ -30,6 +30,8 @@ public:
     void disparar();
     
     std::vector<Proyectil*>* proyectiles;
+    float paso;
+    sf::Clock pasoTime;
 private:
     sf::Clock aparicionProyectil;
     int direccion;//0 derecha. 1 izquierda

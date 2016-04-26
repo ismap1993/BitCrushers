@@ -77,6 +77,7 @@ Enemigo::Enemigo(bool valorPatrullaje, float posx, float posy, int type){
     direccion=1;
     
     proyectiles = new vector<Proyectil*>();
+    paso=0;
     
 }
 
@@ -186,62 +187,139 @@ void Enemigo::handle(Jugador* jugador){
         patrullaje=true;
     }
     
+    spriteSheet.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
+    
+    if(direccion==1){
+        paso= pasoTime.getElapsedTime().asSeconds();
+        if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[12][0], matriz[12][1], matriz[12][2], matriz[12][3]));
+                        std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         //if(paso>0.4){
+                             std::cout<<"ID= adiooooooooooooooooooooooooooooooooooooooos"<<std::endl;
+                             pasoTime.restart();
+                         //}
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+
+                    }
+    }else if(direccion==0){
+        paso= pasoTime.getElapsedTime().asSeconds();
+        if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+                        //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         if(paso>0.4){
+                             pasoTime.restart();
+                         }
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[16][0], matriz[16][1], matriz[16][2], matriz[16][3]));
+
+                    }
+    }
+    
     
     if(patrullaje){
         if(direccion == 1){
-            if(x-150<spriteSheet.getPosition().x){
-                std::cout<<"a la izq"<<std::endl;
-                spriteSheet.move(-2.5, 0);
-            }else{
-                direccion = 0;
-            }
+            //if(tipo==0){
+                if(x-150<spriteSheet.getPosition().x){
+                    //std::cout<<"a la izq"<<std::endl;
+                    spriteSheet.move(-7.5, 0);
+                    /*paso= pasoTime.getElapsedTime().asSeconds();
+                    if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[12][0], matriz[12][1], matriz[12][2], matriz[12][3]));
+                        //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         if(paso>0.4){
+                             pasoTime.restart();
+                         }
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+
+                    }*/
+                }else{
+                    direccion = 0;
+                }
+            //}
+            
+            
+            
         }else{
             if(x+150>spriteSheet.getPosition().x){
                 std::cout<<"a la der"<<std::endl;
-                spriteSheet.move(2.5, 0);
+                spriteSheet.move(7.5, 0);
             }else{
                 direccion = 1;
             }
         }
     }else{
         std::cout<<dif<<std::endl;
+        
         if(abs(dif)<50 && direccion==1 && tipo==0){
+            
             //golpeo a la izquierda cuerpo a cuerpo
-            std::cout<<"te miro y te golpeo izq"<<std::endl;
+            //std::cout<<"te miro y te golpeo izq"<<std::endl;
             spriteSheet.setOrigin(matriz[8][2]/2, matriz[8][3]/2);
             spriteSheet.setTextureRect(sf::IntRect(matriz[16][0], matriz[16][1], matriz[16][2], matriz[16][3]));
+            /*paso= pasoTime.getElapsedTime().asSeconds();
+                    if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[12][0], matriz[12][1], matriz[12][2], matriz[12][3]));
+                        //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         if(paso>0.4){
+                             pasoTime.restart();
+                         }
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+
+                    }
+            */
+            
         }else if(abs(dif)<50 && direccion==0 && tipo == 0){
             //golpero a la derecha cuerpo a cuerpo
-            std::cout<<"te miro y te golpeo dere"<<std::endl;
+            //std::cout<<"te miro y te golpeo dere"<<std::endl;
             spriteSheet.setOrigin(matriz[8][2]/2, matriz[8][3]/2);
             spriteSheet.setTextureRect(sf::IntRect(matriz[17][0], matriz[17][1], matriz[17][2], matriz[17][3]));
         }else if(abs(dif)<150 && direccion==0 && tipo ==1){
             //golpeo a la derecha a distancia
-            std::cout<<"te miro y te golpeo dere a distancia"<<std::endl;
+            //std::cout<<"te miro y te golpeo dere a distancia"<<std::endl;
             spriteSheet.setOrigin(matriz[1][2]/2, matriz[1][3]/2);
-            spriteSheet.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+            spriteSheet.setTextureRect(sf::IntRect(matriz[17][0], matriz[17][1], matriz[17][2], matriz[17][3]));
             disparar();
         }else if(abs(dif)<150 && direccion==1 && tipo ==1){
             //golpeo a la izquierda a distancia
-            std::cout<<"te miro y te golpeo ozq a distancia"<<std::endl;
+            //std::cout<<"te miro y te golpeo izq a distancia"<<std::endl;
             spriteSheet.setOrigin(matriz[1][2]/2, matriz[1][3]/2);
             spriteSheet.setTextureRect(sf::IntRect(matriz[18][0], matriz[18][1], matriz[18][2], matriz[18][3]));
+            
             disparar();
         }
         
         else{
             if(dif<0){
-                std::cout<<"a la izq calmarnooo" <<std::endl;
-                spriteSheet.move(-2.5, 0);
+                //std::cout<<"a la izq calmarnooo" <<std::endl;
+                spriteSheet.move(-7.5, 0);
+                if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[12][0], matriz[12][1], matriz[12][2], matriz[12][3]));
+                        //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         if(paso>0.4){
+                             pasoTime.restart();
+                         }
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+
+                    }
                 direccion = 1;
             }else if(dif>=0){
-                std::cout<<"a la der clamarno"<<std::endl;
-                spriteSheet.move(2.5, 0);
+                //std::cout<<"a la der clamarno"<<std::endl;
+                spriteSheet.move(7.5, 0);
                 direccion = 0;
             }else{
                 spriteSheet.setOrigin(matriz[8][2]/2, matriz[8][3]/2);
                 spriteSheet.setTextureRect(sf::IntRect(matriz[8][0], matriz[8][1], matriz[8][2], matriz[8][3]));
                 patrullaje = true;
+                //std::cout<<"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" <<std::endl;
             }
         }
         
@@ -249,6 +327,35 @@ void Enemigo::handle(Jugador* jugador){
         
         
     }
+    
+    
+    /*if(direccion==1){
+        if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[12][0], matriz[12][1], matriz[12][2], matriz[12][3]));
+                        //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         if(paso>0.4){
+                             pasoTime.restart();
+                         }
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[15][0], matriz[15][1], matriz[15][2], matriz[15][3]));
+
+                    }
+    }else if(direccion==0){
+        if(paso>=0 && paso<=0.2){
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+                        //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
+                    }
+                     if(paso>0.2){
+                         if(paso>0.4){
+                             pasoTime.restart();
+                         }
+                        spriteSheet.setTextureRect(sf::IntRect(matriz[16][0], matriz[16][1], matriz[16][2], matriz[16][3]));
+
+                    }
+    }*/
+    
+    
 }
 
 void Enemigo::disparar(){
