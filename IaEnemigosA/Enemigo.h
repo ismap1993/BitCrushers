@@ -28,10 +28,14 @@ public:
     void draw(sf::RenderWindow &window);
     void handle(Jugador* jugador);
     void disparar();
+    sf::Sprite getSprite();
+    
     
     std::vector<Proyectil*>* proyectiles;
     float paso;
     sf::Clock pasoTime;
+    sf::Clock golpeosSegundo;
+    float golpeoXseg;
 private:
     sf::Clock aparicionProyectil;
     int direccion;//0 derecha. 1 izquierda
@@ -39,7 +43,7 @@ private:
     bool patrullaje;
     int **matriz;
     sf::Texture texturaEnemigo;
-    
+    bool golpeado;
 
 };
 

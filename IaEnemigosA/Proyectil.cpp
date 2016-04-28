@@ -26,10 +26,10 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
     dir=direccion;
     disRecorrida=0;
     if(direccion==1){
-        posx=pospersonaje.x+60;
+        posx=pospersonaje.x+30;
         posy=pospersonaje.y;
     }else{
-        posx=pospersonaje.x-90;
+        posx=pospersonaje.x-60;
         posy=pospersonaje.y;
     }
     matriz=mat;
@@ -181,12 +181,12 @@ void Proyectil::dibuja(sf::RenderWindow& window){
     disparoTime= proyectilClock.getElapsedTime().asSeconds(); //Tiempo que determina la velocidad del proyectil
     if(disparoTime>0.015){ //Cuanto mayor sea, mas lento ira el proyectil
         if(dir==1){//derecha
-            spritePro.move(5,0);
-            disRecorrida+=5;
+            spritePro.move(3.5,0);
+            disRecorrida+=3.5;
         }
         if(dir==0){
-            spritePro.move(-5,0);
-            disRecorrida+=5;
+            spritePro.move(-3.5,0);
+            disRecorrida+=3.5;
         }
         proyectilClock.restart(); 
     }
