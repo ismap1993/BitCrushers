@@ -17,6 +17,7 @@
 #include "Enemigo.h"
 
 #define kVel 10
+#define UPDATE_TICK_TIME 1000/15
 
 #include "Jugador.h"
 #include <fstream>
@@ -44,13 +45,19 @@ int main(){
     Mapa *mapa = new Mapa();
     mapa->leerMapa(1);
     Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
-    Enemigo *enemigo = new Enemigo(true, 530.0, 350, 1);
+    Enemigo *enemigo = new Enemigo(true, 530.0, 362, 1);
+    Enemigo *enemigo2 = new Enemigo(true, 1000.0, 362, 0);
+    
     //le pasamos el alto y el ancho de la ventana
     //el siguiente parametro es la distancia que se mueve la ventana cada vez que se mueve el personaje
     //le pasamos el fondo para poder consultarlo
     //el mapa->fondo nos ayuda a saber hasta donde debemos mover la camara ya que es el ancho del mapa
     //el mapa->_tileWidth nos indica el ancho del tile
    
+    sf::Clock clock;
+   sf::Clock updateClock;
+   sf::Time timeElapsed;
+    
     while(window.isOpen()){
         sf::Event event;
         
@@ -59,8 +66,16 @@ int main(){
         //window.draw(sprite);
         player->draw(window);
         enemigo->draw(window);
+        enemigo2->draw(window);
+        
         player->handle(event, window, mapa, camara);
-       enemigo->handle(player);
+      if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
+           timeElapsed = updateClock.restart();
+           
+           enemigo->handle(player);
+           enemigo2->handle(player);
+           
+       }
 
         
         int i=0;
