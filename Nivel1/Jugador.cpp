@@ -44,31 +44,42 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     for(int i=0; i<99;i++){
         matriz[i]=new int[4];
     }
-    leerXML();
+    pol=politico;
+    
+    
     
     switch(politico){
         case 1:
-            if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
+            pol=1;
+            if(!texturaJugador.loadFromFile("resources/PODEMOS/pablospritesheet.png")){
                 std::cerr<<"Error al cargar la textura de pablospritesheet.png";
             }
             break;
         case 2:
-            if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
+            pol=2;
+            if(!texturaJugador.loadFromFile("resources/CIUDADANOS/albertspritesheet.png")){
                 std::cerr<<"Error al cargar la textura de albertspritesheet.png";
             }
             break;
         case 3:
-            if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
+            pol=3;
+            if(!texturaJugador.loadFromFile("resources/PP/marianospritesheet.png")){
                 std::cerr<<"Error al cargar la textura de marianospritesheet.png";
             }
             break;
         case 4:
-            if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
+            pol=4;
+            if(!texturaJugador.loadFromFile("resources/PSOE/pedrospritesheet.png")){
                 std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
             }
+            
+            
             break;
             
     }
+    leerXML();
+    
+    
     
     
     sprite.setTexture(texturaJugador);
@@ -103,10 +114,29 @@ void Jugador::leerXML(){
     int posX=0;
     int linea=1;
     
-    
+     cout<<"pol"<<pol<<endl;
     /****LECTURA DEL XML PARA EL SPRITE!!****/
     ifstream fin;
-    fin.open("resources/pablospritesheet.xml"); // abrir el xml que se va a leer
+    switch(pol){
+        case 1:
+            fin.open("resources/PODEMOS/pablospritesheet.xml");
+                
+            break;
+        case 2:
+            fin.open("resources/CIUDADANOS/albertspritesheet.xml");
+                
+            break;
+        case 3:
+            fin.open("resources/PP/marianospritesheet.xml");
+                
+            break;
+        case 4:
+            fin.open("resources/PSOE/pedrospritesheet.xml");
+                
+            
+            break;
+            
+    } // abrir el xml que se va a leer
     
 
     // comenzamos a leer cada una de las lineas
@@ -334,6 +364,21 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
             golpeoTime.restart();
            }*/
+    
+    //direccion==1 es derecha
+    if((sf::Keyboard::Space)){
+        if(direccion==1){
+            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+            sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+        }
+        cout<<"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"<<endl;
+        //else if(direccion==0){
+            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+            sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+        //}
+    }
+        
+    
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         

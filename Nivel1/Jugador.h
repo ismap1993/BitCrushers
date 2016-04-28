@@ -37,6 +37,7 @@ public:
     sf::Clock pasoTime;
     float paso;
     int direccion;
+    int pol;
     
     
     

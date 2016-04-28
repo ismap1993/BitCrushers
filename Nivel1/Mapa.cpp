@@ -232,11 +232,11 @@ void Mapa::leerMapa(int numMapa){
                
                 
 
-                cout<<"x: "<<x<<endl;
+                /*cout<<"x: "<<x<<endl;
                 cout<<"y: "<<y<<endl;
                 cout<<"width: "<<width<<endl;
                 cout<<"heigth: "<<height<<endl;
-                cout<<"----"<<endl;
+                cout<<"----"<<endl;*/
                 object = object->NextSiblingElement("object");
                 filas++;
              }   
@@ -266,12 +266,12 @@ void Mapa::leerMapa(int numMapa){
                 colision->setPosition(x,y);
                 arrayParedes.push_back(colision);
                 
-                cout<<"x: "<<x<<endl;
+                /*cout<<"x: "<<x<<endl;
                 cout<<"y: "<<y<<endl;
                 cout<<"width: "<<width<<endl;
                 cout<<"heigth: "<<height<<endl;
                 cout<<"----"<<endl;
-                
+                */
                 object = object->NextSiblingElement("object");
                 filas++;
               }
@@ -300,10 +300,10 @@ void Mapa::leerMapa(int numMapa){
                         Plataforma *plataforma = new Plataforma(x, y);
                         arrayPlataformas.push_back(plataforma);
                         
-                        cout<<"x: "<<x<<endl;
+                        /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
                         cout<<"----"<<endl;
-                        
+                        */
                         object = object->NextSiblingElement("object");
                         filas++;
                     }
@@ -337,10 +337,10 @@ void Mapa::leerMapa(int numMapa){
                         
                         arrayVotos.push_back(spriteVoto);
                         
-                        cout<<"x: "<<x<<endl;
+                        /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
                         cout<<"----"<<endl;
-                        
+                        */
                         object = object->NextSiblingElement("object");
                         filas++;
                     }
@@ -373,10 +373,10 @@ void Mapa::leerMapa(int numMapa){
                         //enemigosC->setPosition(x,y);
                         arrayEnemigosC.push_back(enemigoC);
                         
-                        cout<<"x: "<<x<<endl;
+                        /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
                         cout<<"----"<<endl;
-                        
+                        */
                         object = object->NextSiblingElement("object");
                         filas++;
                     }
@@ -407,10 +407,10 @@ void Mapa::leerMapa(int numMapa){
 //                        enemigosA->setPosition(x,y);
                         arrayEnemigosA.push_back(enemigoA);
                         
-                        cout<<"x: "<<x<<endl;
+                        /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
                         cout<<"----"<<endl;
-                        
+                        */
                         object = object->NextSiblingElement("object");
                         filas++;
                     }
