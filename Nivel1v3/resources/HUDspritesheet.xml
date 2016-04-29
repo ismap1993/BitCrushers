@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:1a4f10fd3ebe596724ab4dc43504378f:956eac30e43d643a1a6b10c7235025d5:d492930695b47b1c59e022df2be4ec4e$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="spriteaitor.png" width="512" height="512">
+    <sprite n="vidaalbert4.png" x="0" y="0" w="132" h="44" pX="0.5" pY="0.5"/>
+    <sprite n="vidamariano1.png" x="132" y="0" w="139" h="45" pX="0.5" pY="0.5"/>
+    <sprite n="vidamariano4.png" x="271" y="0" w="136" h="46" pX="0.5" pY="0.5"/>
+    <sprite n="vidamariano2.png" x="0" y="46" w="139" h="46" pX="0.5" pY="0.5"/>
+    <sprite n="vidapablo3.png" x="139" y="46" w="129" h="46" pX="0.5" pY="0.5"/>
+    <sprite n="vidapedro4.png" x="268" y="46" w="139" h="46" pX="0.5" pY="0.5"/>
+    <sprite n="vidapedro2.png" x="0" y="92" w="140" h="46" pX="0.5" pY="0.5"/>
+    <sprite n="vidapedro3.png" x="140" y="92" w="140" h="47" pX="0.5" pY="0.5"/>
+    <sprite n="vidapablo1.png" x="280" y="92" w="136" h="48" pX="0.5" pY="0.5"/>
+    <sprite n="vidapablo2.png" x="0" y="140" w="133" h="49" pX="0.5" pY="0.5"/>
+    <sprite n="vidapablo4.png" x="133" y="140" w="130" h="49" pX="0.5" pY="0.5"/>
+    <sprite n="vidapedro1.png" x="263" y="140" w="140" h="49" pX="0.5" pY="0.5"/>
+    <sprite n="vidaalbert1.png" x="0" y="189" w="131" h="49" pX="0.5" pY="0.5"/>
+    <sprite n="vidamariano3.png" x="131" y="189" w="136" h="50" pX="0.5" pY="0.5"/>
+    <sprite n="vidaalbert3.png" x="267" y="189" w="132" h="50" pX="0.5" pY="0.5"/>
+    <sprite n="vidaalbert2.png" x="0" y="239" w="131" h="51" pX="0.5" pY="0.5"/>
+    <sprite n="carapablo.png" x="131" y="239" w="92" h="79" pX="0.5" pY="0.5"/>
+    <sprite n="carapedro.png" x="223" y="239" w="108" h="80" pX="0.5" pY="0.5"/>
+    <sprite n="caramariano.png" x="331" y="239" w="75" h="94" pX="0.5" pY="0.5"/>
+    <sprite n="caraalbert.png" x="406" y="239" w="76" h="108" pX="0.5" pY="0.5"/>
+</TextureAtlas>
