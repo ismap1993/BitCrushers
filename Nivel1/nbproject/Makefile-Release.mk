@@ -36,9 +36,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Camara.o \
+	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/Mapa.o \
+	${OBJECTDIR}/NPC.o \
 	${OBJECTDIR}/Plataforma.o \
+	${OBJECTDIR}/Proyectil.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/tinystr.o \
 	${OBJECTDIR}/tinyxml.o \
@@ -75,6 +78,11 @@ ${OBJECTDIR}/Camara.o: Camara.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
 
+${OBJECTDIR}/Enemigo.o: Enemigo.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Enemigo.o Enemigo.cpp
+
 ${OBJECTDIR}/Jugador.o: Jugador.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -85,10 +93,20 @@ ${OBJECTDIR}/Mapa.o: Mapa.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
 
+${OBJECTDIR}/NPC.o: NPC.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NPC.o NPC.cpp
+
 ${OBJECTDIR}/Plataforma.o: Plataforma.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Plataforma.o Plataforma.cpp
+
+${OBJECTDIR}/Proyectil.o: Proyectil.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Proyectil.o Proyectil.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

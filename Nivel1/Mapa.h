@@ -15,7 +15,6 @@
 #define	MAPA_H
 #include <SFML/Graphics.hpp>
 #include "Plataforma.h"
-#include "Enemigo.h"
 
 
 
@@ -43,9 +42,8 @@ public:
     std::vector<sf::Sprite> arrayVotos;
 //    std::vector<sf::RectangleShape*> arrayEnemigosC;
 //    std::vector<sf::RectangleShape*> arrayEnemigosA;
-    std::vector<Enemigo*> arrayEnemigosC;
-    std::vector<Enemigo*> arrayEnemigosA;
-
+    int** matrizEnemigosA;
+    int** matrizEnemigosC;
 
 private:
     

@@ -19,6 +19,9 @@
 #include "Jugador.h"
 #include "Camara.h"
 #include "Mapa.h"
+#include "Proyectil.h"
+
+
 using namespace std;
 using std::cout;
 using std::endl;
@@ -38,48 +41,38 @@ Jugador::Jugador(const Jugador& orig) {
 Jugador::~Jugador() {
 }
 
-Jugador::Jugador(float x, float y, int politico, bool activado){
+Jugador::Jugador(float x, float y, int politic, bool activado){
     
     matriz=new int*[99];
     for(int i=0; i<99;i++){
         matriz[i]=new int[4];
     }
-    pol=politico;
     
-    
-    
+    politico=politic;
+    leerXML();
     switch(politico){
         case 1:
-            pol=1;
-            if(!texturaJugador.loadFromFile("resources/PODEMOS/pablospritesheet.png")){
+            if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
                 std::cerr<<"Error al cargar la textura de pablospritesheet.png";
             }
             break;
         case 2:
-            pol=2;
-            if(!texturaJugador.loadFromFile("resources/CIUDADANOS/albertspritesheet.png")){
+            if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
                 std::cerr<<"Error al cargar la textura de albertspritesheet.png";
             }
             break;
         case 3:
-            pol=3;
-            if(!texturaJugador.loadFromFile("resources/PP/marianospritesheet.png")){
+            if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
                 std::cerr<<"Error al cargar la textura de marianospritesheet.png";
             }
             break;
         case 4:
-            pol=4;
-            if(!texturaJugador.loadFromFile("resources/PSOE/pedrospritesheet.png")){
+            if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
                 std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
             }
-            
-            
             break;
             
     }
-    leerXML();
-    
-    
     
     
     sprite.setTexture(texturaJugador);
@@ -100,48 +93,48 @@ Jugador::Jugador(float x, float y, int politico, bool activado){
     posicionJugador.x=x;
     posicionJugador.y=y;
     salto=false;
-    velocidadMovimiento=5;
-    velocidadSalto=10;
+    velocidadMovimiento=3;
+    velocidadSalto=5;
     velocidadJugador.x=0;
     velocidadJugador.y=0;
     muerto=false;
+    direccionPro=1;//para saber la direccion del proyectil. Derecha: 1. Izquierda 2.
+    
+    proyectiles = new vector<Proyectil*>();
+    golpeado=false;
     col=0;
     paso=0;
-
 }
 
 void Jugador::leerXML(){
     int posX=0;
     int linea=1;
-    
-     cout<<"pol"<<pol<<endl;
     /****LECTURA DEL XML PARA EL SPRITE!!****/
     ifstream fin;
-    switch(pol){
+    switch(politico){
         case 1:
-            fin.open("resources/PODEMOS/pablospritesheet.xml");
+            fin.open("resources/pablospritesheet.xml");
                 
             break;
         case 2:
-            fin.open("resources/CIUDADANOS/albertspritesheet.xml");
+            fin.open("resources/albertspritesheet.xml");
                 
             break;
         case 3:
-            fin.open("resources/PP/marianospritesheet.xml");
+            fin.open("resources/marianospritesheet.xml");
                 
             break;
         case 4:
-            fin.open("resources/PSOE/pedrospritesheet.xml");
+            fin.open("resources/pedrospritesheet.xml");
                 
             
             break;
             
     } // abrir el xml que se va a leer
     
-
+    
     // comenzamos a leer cada una de las lineas
     while (!fin.eof()){
-
         // esto es para controlar el tamanyo maximo de cada linea
         char buf[MAX_CHARS_PER_LINE];
         fin.getline(buf, MAX_CHARS_PER_LINE);
@@ -181,13 +174,13 @@ void Jugador::leerXML(){
                 }        
             }
         }
-
         linea++;
-        if(linea==14){break;}
+        if(linea==15){break;}
     }
     //Esto es para imprimir la matriz obtenida en consola
+    /*
     if(linea>2){
-        for(int i=0; i<11;i++){
+        for(int i=0; i<=11;i++){
             for (int j=0;j<4;j++){
                 cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
             }
@@ -195,14 +188,14 @@ void Jugador::leerXML(){
         }
     }
     cout<<"presidentumClases"<<endl;
+    */
 }
 
 void Jugador::draw(sf::RenderWindow& window){
     if(muerto==false){
         window.draw(sprite);
     }
-    
-     //std::cout<<sprite.getPosition().y<<std::endl;
+    //std::cout<<sprite.getPosition().y<<std::endl;
 }
 
 sf::Sprite Jugador::getSprite(){
@@ -210,6 +203,23 @@ sf::Sprite Jugador::getSprite(){
 }
 
 void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
+  
+    sf::Clock golpeoTime;
+    float golpeo=0;
+    
+    golpeo= golpeoTime.getElapsedTime().asSeconds();
+    if(golpeo>0.5 && direccionPro==1){
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
+        sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
+        golpeoTime.restart();
+    }
+
+    if(golpeo>0.5 && direccionPro==0){
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
+        sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
+        golpeoTime.restart();
+    }
+
     
     /*sf::RectangleShape suelo(sf::Vector2f(1280, 500));
     suelo.setPosition(0,500);
@@ -222,7 +232,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     //sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
     //sf::Vector2f velocidadJugador(0, 0);
-    const float gravedad =0.5;
+    const float gravedad =0.125;
     //int alturaSuelo = suelo.getPosition().y - 65;
     //int alturaSuelo = sprite.getPosition().y+10;
     //float velocidadSalto = 100, velocidadMovimiento = 5;
@@ -365,26 +375,11 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             golpeoTime.restart();
            }*/
     
-    //direccion==1 es derecha
-    if((sf::Keyboard::Space)){
-        if(direccion==1){
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-            sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
-        }
-        cout<<"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"<<endl;
-        //else if(direccion==0){
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-            sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
-        //}
-    }
-        
-    
-    
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         
         
         
-        direccion=1;
+        direccionPro=1;
         camara->moveRight(this);
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
 //        if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
@@ -423,7 +418,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
         
-        direccion=0;
+        direccionPro=0;
         
         camara->moveLeft(this);
                 //velocidadJugador.x = 0;
@@ -475,7 +470,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
     else{
         velocidadJugador.x = 0;
-        if(direccion==1){
+        if(direccionPro==1){
             sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
                 sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
@@ -543,4 +538,43 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     
     sprite.setPosition(posicionJugador);
+    
+    
+}
+
+
+void Jugador::disparar(){
+    float disparoAparicion=0;
+    disparoAparicion=aparicionProyectil.getElapsedTime().asSeconds();
+    if(direccionPro==1){//derecha
+        if(disparoAparicion>0.35){
+            //IMPORTANTE cambiar el centroide a la hora de atacar!
+            sprite.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
+            sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+            if(politico==2 || politico == 3 ){
+                //Al disparar, se genera un proyectil y se inserta en el vector
+                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);
+                pro->crearPro();
+                //std::cout << "posicion X proyectil reciente:" << pro->posx << std::endl;
+                proyectiles->push_back(pro);
+                /****/
+                std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                /****/
+            }
+        }
+    }else{//izquierda
+        if(disparoAparicion>0.35){
+            //IMPORTANTE cambiar el centroide a la hora de atacar!
+            sprite.setOrigin(matriz[1][2]/1.325,matriz[1][3]/2);
+            sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+            if(politico==2 || politico == 3 ){
+                //Al disparar, se genera un proyectil y se inserta en el vector
+                Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);
+                proyectiles->push_back(pro);
+                /****/
+                std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                /****/
+            }
+        }
+    }
 }

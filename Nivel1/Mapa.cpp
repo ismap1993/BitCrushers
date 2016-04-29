@@ -18,6 +18,15 @@ using namespace std;
 
 Mapa::Mapa() {
     //constructor vacio
+    matrizEnemigosA=new int*[99];
+    for(int i=0; i<99;i++){
+        matrizEnemigosA[i]=new int[4];
+    }
+    
+    matrizEnemigosC=new int*[99];
+    for(int i=0; i<99;i++){
+        matrizEnemigosC[i]=new int[4];
+    }
     
 }
 
@@ -36,7 +45,6 @@ Mapa::~Mapa() {
 }
 
 void Mapa::leerMapa(int numMapa){
-
     //cargo la textura del fondo
     if(!fond.loadFromFile("resources/background.jpg")){
         std::cerr << "Error cargando la imagen background.png";
@@ -348,7 +356,7 @@ void Mapa::leerMapa(int numMapa){
              votos = votos->NextSiblingElement("objectgroup");
          }
      
-     
+     int iC=0;
         TiXmlElement *enemigosC = map->FirstChildElement("objectgroup");
         while(enemigosC){
             
@@ -364,14 +372,18 @@ void Mapa::leerMapa(int numMapa){
                         x=atoi(xString.c_str());
                         y=atoi(yString.c_str());
                         
+                        matrizEnemigosC[iC][0]=x;
+                        matrizEnemigosC[iC][1]=y;
                         
-                        Enemigo *enemigoC= new Enemigo(x, y, 0);
-                        
+                        cout<<"-----Pos x enemC:-------- "<<matrizEnemigosC[iC][0]<<endl;
+                        cout<<"-----Pos y enemC:-------- "<<matrizEnemigosC[iC][1]<<endl;
+                        iC++;
+                       
                         
                        // sf::RectangleShape* enemigosC = new sf::RectangleShape(sf::Vector2f(40, 110));
                         //enemigosC->setFillColor(sf::Color::Red);
                         //enemigosC->setPosition(x,y);
-                        arrayEnemigosC.push_back(enemigoC);
+                        //arrayEnemigosC.push_back(enemigoC);
                         
                         /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
@@ -384,7 +396,7 @@ void Mapa::leerMapa(int numMapa){
              enemigosC = enemigosC->NextSiblingElement("objectgroup");
          }
           
-        
+        int iA=0;
         TiXmlElement *enemigosA = map->FirstChildElement("objectgroup");
         while(enemigosA){
             
@@ -400,12 +412,12 @@ void Mapa::leerMapa(int numMapa){
                         x=atoi(xString.c_str());
                         y=atoi(yString.c_str());
                         
+                        matrizEnemigosA[iA][0]=x;
+                        matrizEnemigosA[iA][1]=y;
                         
-                        Enemigo *enemigoA= new Enemigo(x, y, 1);
-//                        sf::RectangleShape* enemigosA = new sf::RectangleShape(sf::Vector2f(40, 110));
-//                        enemigosA->setFillColor(sf::Color::Blue);
-//                        enemigosA->setPosition(x,y);
-                        arrayEnemigosA.push_back(enemigoA);
+//                        cout<<"-----Pos x enemA:-------- "<<matrizEnemigosA[iA][0]<<endl;
+//                        cout<<"-----Pos y enemA:-------- "<<matrizEnemigosA[iA][1]<<endl;
+                        iA++;  
                         
                         /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
@@ -519,15 +531,15 @@ void Mapa::dibujaVotos(sf::RenderWindow& window){
 
 
 void Mapa::dibujaEnemigosC(sf::RenderWindow& window){
-    for(int j=0; j<arrayEnemigosC.size();j++){
-           window.draw(arrayEnemigosC[j]->getSprite());
-    }
+//    for(int j=0; j<arrayEnemigosC.size();j++){
+//           window.draw(arrayEnemigosC[j]->getSprite());
+//    }
 }
 
 void Mapa::dibujaEnemigosA(sf::RenderWindow& window){
-    for(int j=0; j<arrayEnemigosA.size();j++){
-           window.draw(arrayEnemigosA[j]->getSprite());
-    }
+//    for(int j=0; j<arrayEnemigosA.size();j++){
+//           window.draw(arrayEnemigosA[j]->getSprite());
+//    }
 }
 
 void Mapa::dibujaPlataformas(sf::RenderWindow& window){
