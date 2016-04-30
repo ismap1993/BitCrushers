@@ -42,6 +42,9 @@ public:
     float paso;
     sf::Clock pasoTime;
     int col;
+    int direccion;
+    sf::Clock golpeosSegundo;
+    float golpeoXseg;
 private:
     int politico;
     int direccionPro;

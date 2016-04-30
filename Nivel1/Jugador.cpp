@@ -104,6 +104,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     golpeado=false;
     col=0;
     paso=0;
+    golpeoXseg=0;
 }
 
 void Jugador::leerXML(){
@@ -204,7 +205,7 @@ sf::Sprite Jugador::getSprite(){
 
 void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
   
-    sf::Clock golpeoTime;
+    /*sf::Clock golpeoTime;
     float golpeo=0;
     
     golpeo= golpeoTime.getElapsedTime().asSeconds();
@@ -219,7 +220,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
         golpeoTime.restart();
     }
-
+*/
 
     const float gravedad =0.125;
 
@@ -236,7 +237,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
  
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+    /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
 //        if(politico==2 || politico ==3){
 //            disparar();
 //        }else{
@@ -244,7 +245,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             sprite.setOrigin(matriz[2][2]/2,matriz[1][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
             sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
 //        }
-    }
+    }*/
     bool enelsuelo=false;
     int i=0;
     
@@ -311,6 +312,8 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
            }*/
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+        
+        direccion=1;
 
         direccionPro=1;
         camara->moveRight(this);
@@ -331,6 +334,8 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         }
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+        
+        direccion=0;
         
         direccionPro=0;
         
@@ -361,6 +366,39 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         
     }
+    
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+        golpeoXseg=golpeosSegundo.getElapsedTime().asSeconds();
+        
+        
+        if(golpeoXseg>0.5){
+                
+                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                golpeosSegundo.restart();
+            }
+        
+        if(direccion==1){
+            if(golpeoXseg>0.5){
+                
+                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+                golpeosSegundo.restart();
+            }
+            
+            
+        }
+        
+        else if(direccion==0){
+            if(golpeoXseg>0.5){
+                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                golpeosSegundo.restart();
+            }
+            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+        }
+    }
+    
     else{
         velocidadJugador.x = 0;
         if(direccionPro==1){
