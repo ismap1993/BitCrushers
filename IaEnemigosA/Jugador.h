@@ -37,7 +37,7 @@ public:
     float velocidadMovimiento;
     sf::Vector2f velocidadJugador;
     bool muerto;
-    
+    bool golpeado;
     std::vector<Proyectil*>* proyectiles;//para poder acceder desde otras clases
     
 private:

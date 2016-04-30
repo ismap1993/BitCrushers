@@ -68,8 +68,13 @@ void Camara::moveRight(Jugador *personaje){
             (personaje->getSprite().getPosition().x+margen)<(mapa->_tileWidth*mapa->_width)){
         //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(background.getLocalBounds().width*0.79)){
         //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(mapa->_tileWidth*mapa->_width*0.79)){
-            camara->move(kVel,0);
+            if(personaje->getSprite().getPosition().x<=((mapa->_tileWidth*mapa->_width)-2164)){
+                camara->move(kVel,0);
+      
+
             desplazamientoCamara=desplazamientoCamara+kVel;  
+            }
+            
 
         }
     } 

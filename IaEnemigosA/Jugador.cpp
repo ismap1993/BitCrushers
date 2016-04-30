@@ -101,7 +101,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     direccionPro=1;//para saber la direccion del proyectil. Derecha: 1. Izquierda 2.
     
     proyectiles = new vector<Proyectil*>();
-
+    golpeado=false;
 }
 
 void Jugador::leerXML(){
@@ -172,8 +172,7 @@ void Jugador::draw(sf::RenderWindow& window){
     if(muerto==false){
         window.draw(sprite);
     }
-    
-     //std::cout<<sprite.getPosition().y<<std::endl;
+    //std::cout<<sprite.getPosition().y<<std::endl;
 }
 
 sf::Sprite Jugador::getSprite(){
@@ -297,6 +296,7 @@ void Jugador::disparar(){
             //IMPORTANTE cambiar el centroide a la hora de atacar!
             sprite.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
             sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+            std::cout<<"Estoy golpeando y cambiadno el sprite"<<std::endl;
             if(politico==2 || politico == 3 ){
                 //Al disparar, se genera un proyectil y se inserta en el vector
                 Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);
