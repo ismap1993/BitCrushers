@@ -39,7 +39,7 @@ public:
     std::vector<sf::RectangleShape*> arraySuelo;
     std::vector<sf::RectangleShape*> arrayParedes;
     std::vector<Plataforma*> arrayPlataformas;
-    std::vector<sf::Sprite> arrayVotos;
+    std::vector<sf::Sprite*>* arrayVotos;
 //    std::vector<sf::RectangleShape*> arrayEnemigosC;
 //    std::vector<sf::RectangleShape*> arrayEnemigosA;
     int** matrizEnemigosA;
@@ -55,7 +55,7 @@ private:
     sf::Sprite ****_tilemapSprite;
     sf::Sprite *_tilesetSprite;
     sf::Sprite te;
-    sf::Sprite spriteVoto;
+    sf::Sprite *spriteVoto;
     
     sf::Texture _tilesetTexture;
     sf::Texture m_tileset;

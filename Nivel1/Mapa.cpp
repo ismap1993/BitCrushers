@@ -28,6 +28,8 @@ Mapa::Mapa() {
         matrizEnemigosC[i]=new int[4];
     }
     
+    arrayVotos = new vector<sf::Sprite*>();
+    
 }
 
 Mapa::Mapa(const Mapa& orig) {
@@ -341,10 +343,13 @@ void Mapa::leerMapa(int numMapa){
                                 std::cerr << "Error cargando la imagen voto.png";
                                 exit(0);
                         }
-                        spriteVoto.setTexture(texVoto);
-                        spriteVoto.setPosition(x, y);
                         
-                        arrayVotos.push_back(spriteVoto);
+                        spriteVoto = new sf::Sprite(texVoto); 
+                        spriteVoto->setPosition(x, y);
+                        //spriteVoto.setTexture(texVoto);
+                        //spriteVoto.setPosition(x, y);
+                        
+                        arrayVotos->push_back(spriteVoto);
                         
                         /*cout<<"x: "<<x<<endl;
                         cout<<"y: "<<y<<endl;
@@ -525,9 +530,13 @@ int Mapa::getTile(int posx, int posy){
 //}
 
 void Mapa::dibujaVotos(sf::RenderWindow& window){
-    for(int i=0; i<arrayVotos.size();i++){
-          window.draw(arrayVotos[i]);
+    if(arrayVotos!=NULL){
+        for(sf::Sprite* i : *arrayVotos){
+            window.draw(*i);
         }
+    }
+    
+  
 }
 
 
