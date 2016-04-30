@@ -26,10 +26,10 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
     dir=direccion;
     disRecorrida=0;
     if(direccion==1){
-        posx=pospersonaje.x+30;
+        posx=pospersonaje.x+40;
         posy=pospersonaje.y;
     }else{
-        posx=pospersonaje.x-60;
+        posx=pospersonaje.x-70;
         posy=pospersonaje.y;
     }
     matriz=mat;

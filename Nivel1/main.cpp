@@ -24,7 +24,7 @@ int main(){
     //sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
     float posx = 200; //para que sean floats
     float posy = 359;
-    Jugador* player = new Jugador(posx, posy, 1, true);
+    Jugador* player = new Jugador(posx, posy, 4, true);
     //player->leerXML();
         
 
@@ -157,7 +157,41 @@ int main(){
         mapa->dibujaPlataformas(window);
         //dibujo el personaje
         player->draw(window);
-        int y=0, j=0; //AQUI IMPRIMO LOS PROYECTILES DE LOS ENEMIGOS
+        
+       
+        
+        
+        int i=0;
+        //compruebo que los proyectiles del jugador se destruyen ya sea por que recorren una distancia determinadad
+        //o porque golpean a los NPC. 
+        //IMP si el proyectil del jugador colisiona con otro del NPC que ocurre?
+        for(i=0; i<player->proyectiles->size();i++){
+            player->proyectiles->at(i)->dibuja(window);
+            if(player->proyectiles->at(i)->destruir()){
+                delete player->proyectiles->at(i);
+                player->proyectiles->erase(player->proyectiles->begin()+i);
+            }else{
+                for(int j=0; j<distancia->size(); j++){
+                    if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(distancia->at(j)->getSprite().getGlobalBounds())){
+                        delete distancia->at(j);
+                        distancia->erase(distancia->begin()+j);
+                        delete player->proyectiles->at(i);
+                        player->proyectiles->erase(player->proyectiles->begin()+i);
+                    }
+                }
+                for(int j=0; j<cuerpo->size(); j++){
+                    if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(cuerpo->at(j)->getSprite().getGlobalBounds())){
+                        delete cuerpo->at(j);
+                        cuerpo->erase(cuerpo->begin()+j);
+                        delete player->proyectiles->at(i);
+                        player->proyectiles->erase(player->proyectiles->begin()+i);
+                    }
+                }
+            }
+        }
+        
+        //AQUI IMPRIMO LOS PROYECTILES DE LOS ENEMIGOS
+        int y=0, j=0;
         for(y=0; y<distancia->size(); y++){
             //imprimimos los proyectiles
             for(j=0; j<distancia->at(y)->proyectiles->size();j++){

@@ -45,6 +45,7 @@ Mapa::~Mapa() {
 }
 
 void Mapa::leerMapa(int numMapa){
+    _numLayers=0;
     //cargo la textura del fondo
     if(!fond.loadFromFile("resources/background.jpg")){
         std::cerr << "Error cargando la imagen background.png";

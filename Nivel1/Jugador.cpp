@@ -220,30 +220,9 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         golpeoTime.restart();
     }
 
-    
-    /*sf::RectangleShape suelo(sf::Vector2f(1280, 500));
-    suelo.setPosition(0,500);
-    suelo.setOutlineThickness(1.0f);
-    suelo.setFillColor(sf::Color(120,66,0));
-    suelo.setOutlineColor(sf::Color::Black);
-    */
-    
-    
-    
-    //sf::Vector2f posicionJugador(sprite.getPosition().x, sprite.getPosition().y);
-    //sf::Vector2f velocidadJugador(0, 0);
+
     const float gravedad =0.125;
-    //int alturaSuelo = suelo.getPosition().y - 65;
-    //int alturaSuelo = sprite.getPosition().y+10;
-    //float velocidadSalto = 100, velocidadMovimiento = 5;
-    
-    //bool salto= false;
-    //sprite.setPosition(posicionJugador);
-    
-    
-  
-  
-    
+
     switch(event.type){
         case sf::Event::Closed:
             window.close();
@@ -257,30 +236,15 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
  
     }
     
-    /*CAIDAS*/
-//    if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)>1){
-//                                velocidadJugador.y = 0;
-//                                alturaSuelo=this->getSprite().getPosition().y;
-//                                
-//                                 //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
-//    }else if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y+64)==1){
-//            
-//            //std::cout<<"holaaaaaa"<<std::endl;
-//            //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
-//            
-//            alturaSuelo=580;
-//            
-//            if(this->getSprite().getPosition().y>400){ //MUERTE!!
-//                //std::cout<<"ID= "<< personaje->getPosition().y<<std::endl;
-//                
-//                //muerto=true;
-//                alturaSuelo=500;
-//                //velocidadJugador.y = 0;
-//                //personaje->setPosition(personaje->getPosition().x, 690);
-//            }
-//            
-//            //velocidadJugador.y = aux;
-//     }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+//        if(politico==2 || politico ==3){
+//            disparar();
+//        }else{
+            std::cout<<matriz[1][2]<<" "<<matriz[1][3]<<std::endl;
+            sprite.setOrigin(matriz[2][2]/2,matriz[1][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+            sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+//        }
+    }
     bool enelsuelo=false;
     int i=0;
     
@@ -297,27 +261,18 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
              }
          }
      }
-    
-    
-    
+ 
     int choque=-1; //0 der, 1 izq, -1 nada
     int j=0;
     for(j=0; j<mapa->arrayParedes.size(); j++){
         if(this->getSprite().getGlobalBounds().intersects(mapa->arrayParedes[j]->getGlobalBounds())){
             if(this->getSprite().getPosition().x<mapa->arrayParedes[j]->getPosition().x){
-                //cout<<"CHOQUE DERECHO"<<endl;
                 choque=0;
             }else if(this->getSprite().getPosition().x>mapa->arrayParedes[j]->getPosition().x){
-                //cout<<"CHOQUE IZQUIERDO"<<endl;
                 choque=1;
             }
         }
     }
-    
-    //Plataforma *plataforma = new Plataforma(300, 500);
-    //plataforma->spritePlat;
-    //mapa->arrayPlataformas.size();
-    //mapa->arrayPlataformas[2]->spritePlat.getGlobalBounds().intersects();
     
     int choquePlat;
     int k=0;
@@ -327,39 +282,19 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             if(this->getSprite().getPosition().y<mapa->arrayPlataformas[k]->spritePlat.getPosition().y){
                 alturaSuelo=mapa->arrayPlataformas[k]->spritePlat.getPosition().y-90;
                 enelsuelo=true;
-                //this->getSprite().getPosition().x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x;
-                //this->getSprite().setPosition(mapa->arrayPlataformas[k]->spritePlat.getPosition().x,mapa->arrayPlataformas[k]->spritePlat.getPosition().y);
-//                posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x;
                 if(mapa->arrayPlataformas[k]->direccion==1){
                     posicionJugador.x+=0.9;
                 }else{
                     posicionJugador.x-=0.9;
                 }
-                
-//                if(this->getSprite().getPosition().x>mapa->arrayPlataformas[k]->spritePlat.getPosition().x){
-//                    posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x;
-//                    mapa->arrayPlataformas[k]->spritePlat.setOrigin(32, 0);
-//                }
-//                
-//                else if(this->getSprite().getPosition().x<mapa->arrayPlataformas[k]->spritePlat.getPosition().x){
-//                    posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x +5;
-//                }
-                
-                
+
                 
                 choquePlat=0;
-                //velocidadJugador.x=2.2;
             }
-            
-            
-            
-            //posicionJugador.x=mapa->arrayPlataformas[k]->spritePlat.getPosition().x +25;
         }
     }
     
     if(enelsuelo==true){
-        //cout<<"ESTA PISANDO EL SUELO!!"<<endl;
-        //cout<<"Posicion Y del jugador: "<<this->getSprite().getPosition().y<<endl;
         posicionJugador.y=alturaSuelo+36.5;
     }else{
         //cout<<"ESTOY EN EL AIRE!!!"<<endl;
@@ -376,76 +311,34 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
            }*/
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        
-        
-        
+
         direccionPro=1;
         camara->moveRight(this);
-        //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
-//        if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
-//            std::cout<<"ID= choque derecho!"<<std::endl;
-//            velocidadJugador.x = -5;    
-//        }else{
-        
-//        if(this->getSprite().getGlobalBounds().intersects(mapa->arrayParedes[1]->getGlobalBounds())){
-//            velocidadJugador.x=0;
-//        }else{
-            velocidadJugador.x = velocidadMovimiento;
-            //cout<<"velocidad jugador: "<<velocidadJugador.x<<endl;
-//        }
-            
-            //sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
-            
-            paso= pasoTime.getElapsedTime().asSeconds();
-            if(paso>=0 && paso<=0.2){
-                sprite.setTextureRect(sf::IntRect(matriz[4][0], matriz[4][1], matriz[4][2], matriz[4][3]));
-                //std::cout<<"ID= holaaaaaaaaaaaaaaaaaa"<<std::endl;
-            }
-             if(paso>0.2){
-                 if(paso>0.4){
-                     pasoTime.restart();
-                 }
-                sprite.setTextureRect(sf::IntRect(matriz[5][0], matriz[5][1], matriz[5][2], matriz[5][3]));
-                
-            }
-            //std::cout<<"ID= pasos!"<< paso <<std::endl;
-            
-        
-            
-        //}
-        
+
+        velocidadJugador.x = velocidadMovimiento;
+        sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
+
+        paso= pasoTime.getElapsedTime().asSeconds();
+        if(paso>=0 && paso<=0.2){
+            sprite.setTextureRect(sf::IntRect(matriz[4][0], matriz[4][1], matriz[4][2], matriz[4][3]));
+        }
+         if(paso>0.2){
+             if(paso>0.4){
+                 pasoTime.restart();
+             }
+            sprite.setTextureRect(sf::IntRect(matriz[5][0], matriz[5][1], matriz[5][2], matriz[5][3]));
+
+        }
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
         
         direccionPro=0;
         
         camara->moveLeft(this);
-                //velocidadJugador.x = 0;
-       // }else{
-        //}
-//        if(mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)>1){
-//            std::cout<<"ID= choque izquierdo!"<<std::endl;
-//            velocidadJugador.x = 5;    
-//        }else{
-        
-//        if(this->getSprite().getGlobalBounds().intersects(mapa->arrayColisiones[0]->getGlobalBounds())){
-//                cout<<"COLISION IZQUIERDA MADAFAKA!"<<endl;
-//                col++;
-//                cout<<col<<endl;
-//               //velocidadJugador.x= 5;
-//               // this->getSprite().move(50,0);
-//                //this->getSprite().setPosition(this->getSprite().getPosition().x+5, this->getSprite().getPosition().y);
-//        }else{
-//        if(choqueizq==false){
+
             velocidadJugador.x = -velocidadMovimiento;
             
-//        }else{
-//            //velocidadJugador.x=0;
-//            
-//            col++;
-//            cout<<col<<endl;
-//        }
+
             sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
             
              paso= pasoTime.getElapsedTime().asSeconds();
@@ -542,7 +435,6 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
 }
 
-
 void Jugador::disparar(){
     float disparoAparicion=0;
     disparoAparicion=aparicionProyectil.getElapsedTime().asSeconds();
@@ -551,6 +443,7 @@ void Jugador::disparar(){
             //IMPORTANTE cambiar el centroide a la hora de atacar!
             sprite.setOrigin(matriz[1][2]/4,matriz[1][3]/2);
             sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+            std::cout<<"Estoy golpeando y cambiadno el sprite"<<std::endl;
             if(politico==2 || politico == 3 ){
                 //Al disparar, se genera un proyectil y se inserta en el vector
                 Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);

@@ -271,25 +271,31 @@ void Enemigo::handle(Jugador* jugador){
                 //golpeo a la derecha a distancia
                 if(golpeoXseg>1){
                 //std::cout<<"te miro y te golpeo dere a distancia"<<std::endl;
-                    spriteSheet.setOrigin(matriz[17][2]/2, matriz[17][3]/2);
+                    spriteSheet.setOrigin(30, matriz[17][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[17][0], matriz[17][1], matriz[17][2], matriz[17][3]));
                     disparar();
 
                     golpeosSegundo.restart();
+                }else{
+                    spriteSheet.setOrigin(matriz[10][2]/2, matriz[10][3]/2);
+                    spriteSheet.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
                 }
             }else if(abs(dif)<300 && direccion==1 && tipo ==1 && jugador->getSprite().getPosition().y > 310){
                 //golpeo a la izquierda a distancia
                 if(golpeoXseg>1){
-                //std::cout<<"te miro y te golpeo izq a distancia"<<std::endl;
-                    spriteSheet.setOrigin(matriz[18][2]/2, matriz[18][3]/2);
+                    std::cout<<"te miro y te golpeo izq a distancia"<<std::endl;
+                    spriteSheet.setOrigin(50, matriz[18][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[18][0], matriz[18][1], matriz[18][2], matriz[18][3]));
 
                     disparar();
 
                     golpeosSegundo.restart();
+                }else{
+                    spriteSheet.setOrigin(matriz[10][2]/2, matriz[10][3]/2);
+                    spriteSheet.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
                 }
             }
-//
+
 //            else{
 //                if(dif<0 && !golpeado){
 //                    //std::cout<<"a la izq calmarnooo" <<std::endl;
@@ -309,7 +315,7 @@ void Enemigo::handle(Jugador* jugador){
 //                    //std::cout<<"holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" <<std::endl;
 //                }
 //            }
-//        
+        
      
     }
     
