@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="90">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Camara.h</itemPath>
+      <itemPath>Enemigo.h</itemPath>
       <itemPath>Jugador.h</itemPath>
       <itemPath>Mapa.h</itemPath>
+      <itemPath>NPC.h</itemPath>
       <itemPath>Plataforma.h</itemPath>
+      <itemPath>Proyectil.h</itemPath>
       <itemPath>tinystr.h</itemPath>
       <itemPath>tinyxml.h</itemPath>
     </logicalFolder>
@@ -19,9 +22,12 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Camara.cpp</itemPath>
+      <itemPath>Enemigo.cpp</itemPath>
       <itemPath>Jugador.cpp</itemPath>
       <itemPath>Mapa.cpp</itemPath>
+      <itemPath>NPC.cpp</itemPath>
       <itemPath>Plataforma.cpp</itemPath>
+      <itemPath>Proyectil.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>tinystr.cpp</itemPath>
       <itemPath>tinyxml.cpp</itemPath>
@@ -70,6 +76,10 @@
       </item>
       <item path="Camara.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Enemigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemigo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
@@ -78,9 +88,17 @@
       </item>
       <item path="Mapa.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="NPC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="NPC.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Plataforma.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Plataforma.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Proyectil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Proyectil.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -121,6 +139,10 @@
       </item>
       <item path="Camara.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Enemigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemigo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Jugador.h" ex="false" tool="3" flavor2="0">
@@ -129,9 +151,17 @@
       </item>
       <item path="Mapa.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="NPC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="NPC.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Plataforma.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Plataforma.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Proyectil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Proyectil.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

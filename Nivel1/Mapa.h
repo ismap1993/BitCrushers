@@ -15,7 +15,6 @@
 #define	MAPA_H
 #include <SFML/Graphics.hpp>
 #include "Plataforma.h"
-#include "Enemigo.h"
 
 
 
@@ -40,12 +39,11 @@ public:
     std::vector<sf::RectangleShape*> arraySuelo;
     std::vector<sf::RectangleShape*> arrayParedes;
     std::vector<Plataforma*> arrayPlataformas;
-    std::vector<sf::Sprite> arrayVotos;
+    std::vector<sf::Sprite*>* arrayVotos;
 //    std::vector<sf::RectangleShape*> arrayEnemigosC;
 //    std::vector<sf::RectangleShape*> arrayEnemigosA;
-    std::vector<Enemigo*> arrayEnemigosC;
-    std::vector<Enemigo*> arrayEnemigosA;
-
+    int** matrizEnemigosA;
+    int** matrizEnemigosC;
 
 private:
     
@@ -57,7 +55,7 @@ private:
     sf::Sprite ****_tilemapSprite;
     sf::Sprite *_tilesetSprite;
     sf::Sprite te;
-    sf::Sprite spriteVoto;
+    sf::Sprite *spriteVoto;
     
     sf::Texture _tilesetTexture;
     sf::Texture m_tileset;

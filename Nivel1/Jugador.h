@@ -10,22 +10,26 @@
  *
  * Created on 5 de abril de 2016, 19:31
  */
-
+#include "Mapa.h"
+#include "Proyectil.h"
+#include <vector>
 #ifndef JUGADOR_H
 #define JUGADOR_H
-#include "Mapa.h"
+
+
 class Camara;
 
 class Jugador {
 public:
     Jugador();
-    Jugador(float x, float y, int politico, bool activado);//1.Pablo 2.Albert 3.Rajoy 4.Pedro
+    Jugador(float x, float y, int politic, bool activado);//1.Pablo 2.Albert 3.Rajoy 4.Pedro
     Jugador(const Jugador& orig);
     virtual ~Jugador();
     sf::Sprite getSprite();
     void leerXML();
     void draw(sf::RenderWindow &window);
     void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
+    void disparar();
     bool salto;
     int alturaSuelo;
     sf::Vector2f posicionJugador;
@@ -33,22 +37,24 @@ public:
     float velocidadMovimiento;
     sf::Vector2f velocidadJugador;
     bool muerto;
-    int col;
-    sf::Clock pasoTime;
+    bool golpeado;
+    std::vector<Proyectil*>* proyectiles;//para poder acceder desde otras clases
     float paso;
+    sf::Clock pasoTime;
+    int col;
     int direccion;
-    
-    
-    
+    sf::Clock golpeosSegundo;
+    float golpeoXseg;
 private:
-    
+    int politico;
+    int direccionPro;
     sf::Sprite sprite;
     bool tieneLLave;
     bool activo;
     
     int** matriz;
     sf::Texture texturaJugador;
-    
+    sf::Clock aparicionProyectil;
     
 };
 
