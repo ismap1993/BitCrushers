@@ -2,11 +2,13 @@
 #include <vector>
 #include <string> 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <algorithm>
 using namespace std;
 
-#define kVel 25
-#define friction kVel/3
+#define kVel 5
+#define friction kVel/2
+#define maxSpeed 35-kVel
 
 
 
@@ -23,24 +25,26 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Prueba interpolacion");
     //window.setFramerateLimit(60);
     //window.setVerticalSyncEnabled(true);
+    
+    sf::Music musica;
+  
+    if (!musica.openFromFile("resources/PP.flac"))
+    return -1; // error
+    
     sf::RectangleShape rectangulo;
     rectangulo.setPosition(100, 100);
     rectangulo.setSize(sf::Vector2f(150,50));
     rectangulo.setFillColor(sf::Color::Black);
     
+    
+    
     //sf::Clock clock;
     sf::Clock updateClock;
-    sf::Clock accelMainClock;
-    sf::Clock accelClock;
-    sf::Time accelTime;
-    sf::Time countDown;
    
     bool isMovingUp = false;
     bool isMovingDown = false;
     bool isMovingLeft = false;
     bool isMovingRight = false;
-    bool accelOn = false;
-    bool countDowning = false;
     
     int UPDATE_TICK_TIME = 1000/15;
     sf::Vector2i lastPosVec; //Posicion anterior
@@ -53,9 +57,15 @@ int main()
     float percentTick;
     
     bool inter = false;
+    //musica.setBuffer(buffer);
+    //musica.setLoop(true);
+    
+    //musica.setVolume(100);
+    musica.setLoop(true);
+    musica.play();
     
     while (window.isOpen()){  
-        
+        //std::cout<<musica.getStatus().
         if(first){
             
             lastPosVec.x = newPosVec.x = rectangulo.getPosition().x;
@@ -170,10 +180,12 @@ int main()
                 //lastx = rectangulo.getPosition().x;
                 //rectangulo.move(kVel,0);
                 //newx = rectangulo.getPosition().x;
-                velVector.x += kVel;
-                //accVector.x = 
-
-
+                if(velVector.x<maxSpeed)
+                    if(velVector.x>maxSpeed-2)
+                        velVector.x = maxSpeed;
+                    else
+                        velVector.x += kVel;
+                musica.setPitch(musica.getPitch()+0.1);
             }
             
                
@@ -181,23 +193,33 @@ int main()
                 //lastx = rectangulo.getPosition().x;
                 //rectangulo.move(-kVel,0);
                 //newx = rectangulo.getPosition().x;
-                velVector.x += -kVel;
+                if(-velVector.x<maxSpeed)
+                    if(-velVector.x>maxSpeed-2)
+                        velVector.x = -maxSpeed;
+                    else
+                        velVector.x += -kVel;
+                musica.setPitch(musica.getPitch()-0.1);
             }
             
             if(isMovingUp){
                 //lasty = rectangulo.getPosition().y;
                 //rectangulo.move(0,-kVel);
                 //newy = rectangulo.getPosition().y;
-                velVector.y += -kVel;
+                if(-velVector.y<maxSpeed)
+                    if(-velVector.y>maxSpeed-2)
+                        velVector.y = -maxSpeed;
+                    else
+                        velVector.y += -kVel;
 
             }
             
             
             if(isMovingDown){
-                //lasty = rectangulo.getPosition().y;
-                //rectangulo.move(0, kVel);
-                //newy = rectangulo.getPosition().y;
-                velVector.y += kVel;
+                if(velVector.y<maxSpeed)
+                    if(velVector.y>maxSpeed-2)
+                        velVector.y = maxSpeed;
+                    else
+                        velVector.y += kVel;
 
             }
             
