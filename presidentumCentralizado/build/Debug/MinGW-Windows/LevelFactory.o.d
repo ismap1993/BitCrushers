@@ -1,7 +1,7 @@
-build/Debug/MinGW-Windows/Camara.o: Camara.cpp Camara.h \
- c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
- c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
- c:/SFML/include/SFML/System/Clock.hpp \
+build/Debug/MinGW-Windows/LevelFactory.o: LevelFactory.cpp LevelFactory.h \
+ Mundo.h Mapa.h c:/SFML/include/SFML/Graphics.hpp \
+ c:/SFML/include/SFML/Window.hpp c:/SFML/include/SFML/System.hpp \
+ c:/SFML/include/SFML/Config.hpp c:/SFML/include/SFML/System/Clock.hpp \
  c:/SFML/include/SFML/System/Export.hpp \
  c:/SFML/include/SFML/System/Time.hpp c:/SFML/include/SFML/System/Err.hpp \
  c:/SFML/include/SFML/System/FileInputStream.hpp \
@@ -63,11 +63,14 @@ build/Debug/MinGW-Windows/Camara.o: Camara.cpp Camara.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Mapa.h tinystr.h tinyxml.h \
- Jugador.h Proyectil.h NPC.h Mundo.h Simpatizante.h JefeFinal.h Enemigo.h \
- Juego.h Escena.h EInGame.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Camara.h tinystr.h tinyxml.h \
+ Simpatizante.h NPC.h JefeFinal.h Enemigo.h Proyectil.h
 
-Camara.h:
+LevelFactory.h:
+
+Mundo.h:
+
+Mapa.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -207,28 +210,18 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Mapa.h:
+Camara.h:
 
 tinystr.h:
 
 tinyxml.h:
 
-Jugador.h:
-
-Proyectil.h:
+Simpatizante.h:
 
 NPC.h:
-
-Mundo.h:
-
-Simpatizante.h:
 
 JefeFinal.h:
 
 Enemigo.h:
 
-Juego.h:
-
-Escena.h:
-
-EInGame.h:
+Proyectil.h:

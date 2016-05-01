@@ -57,9 +57,9 @@ void EInGame::Handle(){
 
 void EInGame::Init(){
     
-    mundo = Mundo::Instance();
+   // NADA DE MOMENTO
+    mundo = new Mundo();
     mundo->crearMundo(1);
-    std::cout<<"Mundo: "<<Mundo::Instance()<<std::endl;
     
 }
 
@@ -87,6 +87,19 @@ void EInGame::Render(){
 Juego* EInGame::getContext(){
     
     return _context;    //Para recuperar el contexto
+    
+}
+
+
+void EInGame::instanciarMundo(int nivel){
+    
+    //mundo = LevelFactory::Instance()->crearMundo(nivel);
+    
+}
+    
+void EInGame::eliminarMundo(){
+    
+    delete mundo;
     
 }
 

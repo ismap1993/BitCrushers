@@ -103,7 +103,69 @@ void Juego::Init(){
             reloj1.restart();     
         }*/
         ///////////////////////////////////////
-           
+        if(sf::Joystick::isButtonPressed(1,0)){
+             std::cout<<"Mando: A "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,1)){
+             std::cout<<"Mando: B "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,2)){
+             std::cout<<"Mando: X "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,3)){
+             std::cout<<"Mando: Y "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,4)){
+             std::cout<<"Mando: L "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,5)){
+             std::cout<<"Mando: R "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,6)){
+             std::cout<<"Mando: Select "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,7)){
+             std::cout<<"Mando: Start "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,8)){
+             std::cout<<"Mando: JoyClickL "<<std::endl;
+              
+        }
+        if(sf::Joystick::isButtonPressed(1,9)){
+             std::cout<<"Mando: JoyClickR "<<std::endl;
+              
+        }
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovX) ==  100){
+            std::cout<<"Mando: UP "<<std::endl;
+              
+        }
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovX) ==  -100){
+            std::cout<<"Mando: DOWN "<<std::endl;
+              
+        }
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  -100){
+            std::cout<<"Mando: LEFT "<<std::endl;
+              
+        }
+        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  100){
+            std::cout<<"Mando: RIGHT "<<std::endl;
+              
+        }
+        // std::cout<<"Mando: "<<sf::Joystick::getAxisPosition(1, sf::Joystick::PovY)<<std::endl;
+        // std::cout<<"Mando: "<<sf::Joystick::getAxisPosition(1, sf::Joystick::Axis(7))<<std::endl;
+       // std::cout<<sf::Joystick::Axis::R<<std::endl;
+        //std::cout<<sf::Joystick::<<std::endl;
+        //sf::Joystick::
+        //switch()
+        
         //Bucle de obtención de eventos
         while (window->pollEvent(event)){
             
@@ -112,6 +174,18 @@ void Juego::Init(){
                 case sf::Event::Closed:
                     window->close();
                     break;
+                    
+            
+               // case sf::Keyboard::Right:
+                       
+                        
+                            
+                 //   break;
+                    
+                 //default:
+                    //std::cout << event.key.code << std::endl;
+                   // break;
+                              
                       
             }
         }

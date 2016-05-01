@@ -15,16 +15,7 @@
 #include "Juego.h"
 #include "jugador.h"
 #include "Camara.h"
-
-
-
-Mundo* Mundo::pinstance = 0;
-Mundo* Mundo::Instance(){
-    
-    if(pinstance == 0) pinstance = new Mundo();
-
-    return pinstance;
-}
+#include "LevelFactory.h"
 
 Mundo::Mundo() : camaraVel(10) {
     
@@ -62,6 +53,7 @@ void Mundo::Render(){
     
 }
 
+
 Mundo::~Mundo() {
    
     //delete camara;
@@ -70,7 +62,6 @@ Mundo::~Mundo() {
     mapa = 0;
     //camara = 0;
     //delete pinstance;
-    pinstance = 0;
     
     nivel = -1;
     std::cout << "Mundo ha sido eliminado"   << std::endl;

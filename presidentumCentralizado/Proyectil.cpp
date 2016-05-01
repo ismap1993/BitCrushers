@@ -35,6 +35,7 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
     }
     matriz=mat;
     std::cout<<"Imprimiendo la matriz pasada por parametro"<<std::endl;
+    /*
     int i=0, j=0;
     for(int i=0; i<=11;i++){
         for (int j=0;j<4;j++){
@@ -42,7 +43,7 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
         }
         cout << endl;
     }
-    
+    */
     
     //leerSprite();
     //CARGAR LA IMAGEN
@@ -69,12 +70,12 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
     disparoTime=0;
 
    
-    for(int i=0; i<=11;i++){
-        for (int j=0;j<4;j++){
-            cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
-        }
-        cout << endl;
-    }
+    //for(int i=0; i<=11;i++){
+       // for (int j=0;j<4;j++){
+            //cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
+        //}
+        //cout << endl;
+    //}
    
    
    
@@ -110,7 +111,7 @@ void Proyectil::leerSprite(){
   ifstream fin;
   fin.open("resources/albertspritesheet.xml"); // abrir el xml que se va a leer
           if (!fin.good()) 
-            std::cout << "No se ha podido abrir el spritesheet" << std::endl;
+            //std::cout << "No se ha podido abrir el spritesheet" << std::endl;
   
   // comenzamos a leer cada una de las lineas
   while (!fin.eof())
@@ -175,7 +176,7 @@ void Proyectil::leerSprite(){
 
 
 void Proyectil::dibuja(sf::RenderWindow& window){
-    std::cout<<"becuase we are your friends"<<std::endl;
+   // std::cout<<"becuase we are your friends"<<std::endl;
        sf::Texture texvoto;
     if (!texvoto.loadFromFile("resources/sobres.png"))
     {
@@ -193,12 +194,12 @@ void Proyectil::dibuja(sf::RenderWindow& window){
         if(dir==1){//derecha
             spritePro.move(5,0);
             disRecorrida+=5;
-            std::cout<<"Debo ir a la derecha (Facha)"<<std::endl;
+            //std::cout<<"Debo ir a la derecha (Facha)"<<std::endl;
         }
         if(dir==0){
             spritePro.move(-5,0);
             disRecorrida+=5;
-            std::cout<<"Debo ir a la izquierda (Hippie)"<<std::endl;
+            //std::cout<<"Debo ir a la izquierda (Hippie)"<<std::endl;
         }
         proyectilClock.restart(); 
     }
@@ -207,7 +208,7 @@ void Proyectil::dibuja(sf::RenderWindow& window){
 
 bool Proyectil::destruir(){
     if(disRecorrida>450){
-        cout << "Proyectil destruido" << endl;
+       // cout << "Proyectil destruido" << endl;
         return true;
     }else{
         return false;
@@ -220,7 +221,7 @@ sf::Sprite Proyectil::getSprite(){
 
 Proyectil Proyectil::crearPro(){
     
-    std::cout<<"He llegado aqui"<<std::endl;
+    //std::cout<<"He llegado aqui"<<std::endl;
     disparoAparicion=0;
     disparoAparicion=proyectilClock.getElapsedTime().asSeconds();
     //Dependiendo de la direccion hacia donde este mirando, se aplica un sprite u otro

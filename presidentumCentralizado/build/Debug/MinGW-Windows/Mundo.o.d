@@ -65,7 +65,7 @@ build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp Mundo.h Mapa.h \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Camara.h tinystr.h tinyxml.h \
  Simpatizante.h NPC.h JefeFinal.h Enemigo.h Proyectil.h Juego.h Escena.h \
- jugador.h
+ jugador.h LevelFactory.h
 
 Mundo.h:
 
@@ -230,3 +230,5 @@ Juego.h:
 Escena.h:
 
 jugador.h:
+
+LevelFactory.h:

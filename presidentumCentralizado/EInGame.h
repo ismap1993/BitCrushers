@@ -28,6 +28,9 @@ public:
     int** getRecorte();
     int** generarRecorte();
     Juego* getContext();
+    void instanciarMundo(int nivel);
+    void eliminarMundo();
+    Mundo* mundo;
     ~EInGame();
     
 protected:
@@ -39,7 +42,6 @@ private:
     
     int** matrizRecorte;
     static EInGame* pinstance;
-    Mundo* mundo;
     Juego* _context;
     
 };

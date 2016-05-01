@@ -17,6 +17,7 @@
 #include "Jugador.h"
 #include "Mundo.h"
 #include "Juego.h"
+#include "EInGame.h"
 
 Camara::Camara(){
     
@@ -25,13 +26,13 @@ Camara::Camara(){
     camara = new sf::View(sf::FloatRect(0,0, ancho, alto));
     desplazamientoCamara = 0;
     posicionOrigenCamara = camara->getCenter().x;
-    kVel = Mundo::Instance()->camaraVel;
+    //kVel = Mundo::Instance()->camaraVel;
 
     
     //mapa->_tileWidth=map._tileWidth;
     //mapa->_width=map._width;
     //mapa->fondo=map.fondo;
-    background = *Mundo::Instance()->mapa->fondo;
+    //background = *Mundo::Instance()->mapa->fondo;
 }
 
 Camara::~Camara() {
@@ -55,7 +56,7 @@ void Camara::moveRight(){
         //comprobamos que la posicion del personaje sea mayor que la camara y que el centro de la camara sea menor del fondo
         if(Jugador::Instance()->getSprite().getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(background.getLocalBounds().width*0.79)){
         //if(personaje.getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(mapa->_tileWidth*mapa->_width*0.79)){
-            std::cout<<(Mundo::Instance()->mapa->_tileWidth*Mundo::Instance()->mapa->_width*0.79)<<std::endl;
+            std::cout<<(EInGame::Instance(Juego::Instance())->mundo->mapa->_tileWidth*EInGame::Instance(Juego::Instance())->mundo->mapa->_width*0.79)<<std::endl;
             //con background.getLocalBounds().width*0.79 calculo la parte derecha del mapa para fijar la camara
             camara->move(kVel,0);
             desplazamientoCamara=desplazamientoCamara+kVel; 
@@ -70,12 +71,12 @@ void Camara::moveRight(){
         //con esto averiguamos el margen derecho para saber cuando parar la camara al llegar al final del mapa
         int margen= background.getLocalBounds().width-(background.getLocalBounds().width*0.79);
         if(Jugador::Instance()->getSprite().getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(Jugador::Instance()->getSprite().getPosition().x+margen) &&
-            (Jugador::Instance()->getSprite().getPosition().x+margen)<(Mundo::Instance()->mapa->_tileWidth*Mundo::Instance()->mapa->_width)){
+            (Jugador::Instance()->getSprite().getPosition().x+margen)<(EInGame::Instance(Juego::Instance())->mundo->mapa->_tileWidth*EInGame::Instance(Juego::Instance())->mundo->mapa->_width)){
         //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(background.getLocalBounds().width*0.79)){
         //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(mapa->_tileWidth*mapa->_width*0.79)){
             camara->move(kVel,0);
-            desplazamientoCamara=desplazamientoCamara+kVel;  
 
+            desplazamientoCamara=desplazamientoCamara+kVel;  
         }
     } 
 }

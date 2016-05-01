@@ -21,7 +21,6 @@
 
 class Mundo {
 public:
-    static Mundo* Instance();
     
     Mundo();
     
@@ -50,9 +49,10 @@ public:
     Camara* camara;
     
     
+    
 private:
 
-       static Mundo* pinstance;
+
        
     
 };

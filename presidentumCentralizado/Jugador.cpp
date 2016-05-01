@@ -22,6 +22,7 @@
 #include "Proyectil.h"
 #include "Juego.h"
 #include "Mundo.h"
+#include "EInGame.h"
 
 
 using namespace std;
@@ -232,12 +233,12 @@ void Jugador::handle(){
 
     
     /*CAIDAS*/
-    if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y+64)>1){
+    if(EInGame::Instance(Juego::Instance())->mundo->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y+64)>1){
         velocidadJugador.y = 0;
         alturaSuelo=getSprite().getPosition().y;
 
         //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y)<<std::endl;
-    }else if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y+64)==1){
+    }else if(EInGame::Instance(Juego::Instance())->mundo->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y+64)==1){
             
         //std::cout<<"holaaaaaa"<<std::endl;
         //std::cout<<"ID= "<< mapa->getTile(personaje->getPosition().x, personaje->getPosition().y+32)<<std::endl;
@@ -256,16 +257,16 @@ void Jugador::handle(){
         //velocidadJugador.y = aux;
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Joystick::isButtonPressed(1,2)){
         std::cout<<"Estoy presionando el espacio"<<std::endl;
         disparar();
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  100){
         direccionPro = 1;
-        Mundo::Instance()->camara->moveRight();
+        EInGame::Instance(Juego::Instance())->mundo->camara->moveRight();
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
-        if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y)>1){
+        if(EInGame::Instance(Juego::Instance())->mundo->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y)>1){
             std::cout<<"ID= choque derecho!"<<std::endl;
             velocidadJugador.x = -5;    
         }else{
@@ -274,11 +275,11 @@ void Jugador::handle(){
             sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
         }
     }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  -100){
         direccionPro = 0;
-        Mundo::Instance()->camara->moveLeft();
+        EInGame::Instance(Juego::Instance())->mundo->camara->moveLeft();
         
-        if(Mundo::Instance()->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y)>1){
+        if(EInGame::Instance(Juego::Instance())->mundo->mapa->getTile(sprite.getPosition().x, sprite.getPosition().y)>1){
             std::cout<<"ID= choque izquierdo!"<<std::endl;
             velocidadJugador.x = 5;    
         }else{
@@ -290,16 +291,16 @@ void Jugador::handle(){
     else{
         velocidadJugador.x = 0;
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&  sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  100 && sf::Joystick::isButtonPressed(1,0)){
         
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  -100 && sf::Joystick::isButtonPressed(1,0)){
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && salto){
+    if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Joystick::isButtonPressed(1,0)) && salto){
                 velocidadJugador.y = -velocidadSalto;
                 salto = false;
     }
@@ -340,7 +341,7 @@ void Jugador::disparar(){
                 //std::cout << "posicion X proyectil reciente:" << pro->posx << std::endl;
                 proyectiles->push_back(pro);
                 /****/
-                std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                //std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
                 /****/
             }
         }
@@ -354,7 +355,7 @@ void Jugador::disparar(){
                 Proyectil *pro = new Proyectil(direccionPro, sprite.getPosition(), matriz, politico);
                 proyectiles->push_back(pro);
                 /****/
-                std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                //std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
                 /****/
             }
         }

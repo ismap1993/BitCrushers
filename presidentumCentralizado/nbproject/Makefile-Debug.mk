@@ -46,6 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/JefeFinal.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/Jugador.o \
+	${OBJECTDIR}/LevelFactory.o \
 	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/NPC.o \
@@ -149,6 +150,11 @@ ${OBJECTDIR}/Jugador.o: Jugador.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
+
+${OBJECTDIR}/LevelFactory.o: LevelFactory.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/C/SFML/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LevelFactory.o LevelFactory.cpp
 
 ${OBJECTDIR}/Mapa.o: Mapa.cpp 
 	${MKDIR} -p ${OBJECTDIR}
