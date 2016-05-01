@@ -3,6 +3,7 @@
 #include "Camara.h"
 #include <iostream>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <vector>
 #include "Mapa.h"
@@ -20,6 +21,16 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Nivel 1 + colisiones!");
     window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
     window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
+    ///////////////////////////SOUND////////
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("resources/PP/PP.flac"))
+    return -1; // error
+    
+    sf::Sound musica;
+    musica.setBuffer(buffer);
+    musica.setLoop(true);
+    musica.play();
+    ///////////////////////////////////////
     //Creo un personaje para poder moverlo
     //sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
     float posx = 200; //para que sean floats
