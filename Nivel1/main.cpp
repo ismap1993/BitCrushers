@@ -22,6 +22,7 @@ int main(){
     window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
     window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
     ///////////////////////////SOUND////////
+    /*
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile("resources/PP/PP.flac"))
     return -1; // error
@@ -30,6 +31,7 @@ int main(){
     musica.setBuffer(buffer);
     musica.setLoop(true);
     musica.play();
+    */
     ///////////////////////////////////////
     //Creo un personaje para poder moverlo
     //sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));

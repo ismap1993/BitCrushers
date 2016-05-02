@@ -30,6 +30,14 @@ public:
     
 private:
     
+    sf::Clock updateClock;
+    int UPDATE_TICK_TIME = 1000/15;
+    sf::Vector2i lastPosVec; //Posicion anterior
+    sf::Vector2i newPosVec;  //Posicion actual
+    sf::Vector2i velVector;  //Vector de velocidad
+    float percentTick;
+    int acceleration;
+    
     int ancho;
     int alto;
     int desplazamientoCamara;

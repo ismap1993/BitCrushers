@@ -73,6 +73,7 @@ void Camara::moveRight(Jugador *personaje){
 
         }
     } 
+    //std::cout<<"kVel: "<<kVel<<" desplazamientoCamara: "<<desplazamientoCamara<<std::endl;
 }
 
 void Camara::moveLeft(Jugador *personaje){
