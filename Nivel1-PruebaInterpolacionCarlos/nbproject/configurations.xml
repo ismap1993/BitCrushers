@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>Camara.h</itemPath>
+      <itemPath>Enemigo.h</itemPath>
+      <itemPath>Jugador.h</itemPath>
+      <itemPath>Mapa.h</itemPath>
+      <itemPath>NPC.h</itemPath>
+      <itemPath>Plataforma.h</itemPath>
+      <itemPath>Proyectil.h</itemPath>
+      <itemPath>tinystr.h</itemPath>
+      <itemPath>tinyxml.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Camara.cpp</itemPath>
+      <itemPath>Enemigo.cpp</itemPath>
+      <itemPath>Jugador.cpp</itemPath>
+      <itemPath>Mapa.cpp</itemPath>
+      <itemPath>NPC.cpp</itemPath>
+      <itemPath>Plataforma.cpp</itemPath>
+      <itemPath>Proyectil.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>tinystr.cpp</itemPath>
+      <itemPath>tinyxml.cpp</itemPath>
+      <itemPath>tinyxmlerror.cpp</itemPath>
+      <itemPath>tinyxmlparser.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>C:/SFML/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>C:/SFML/lib/libsfml-graphics-d.a</linkerLibFileItem>
+            <linkerLibFileItem>C:/SFML/lib/libsfml-window-d.a</linkerLibFileItem>
+            <linkerLibFileItem>C:/SFML/lib/libsfml-system-d.a</linkerLibFileItem>
+            <linkerLibFileItem>C:/SFML/lib/libsfml-audio-d.a</linkerLibFileItem>
+            <linkerLibFileItem>C:/SFML/lib/libsfml-main-d.a</linkerLibFileItem>
+            <linkerLibFileItem>C:/SFML/lib/libsfml-network-d.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camara.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Enemigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemigo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NPC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="NPC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Plataforma.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Plataforma.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Proyectil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Proyectil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Camara.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Camara.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Enemigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Enemigo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="NPC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="NPC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Plataforma.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Plataforma.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Proyectil.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Proyectil.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinystr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
