@@ -132,7 +132,7 @@ int main(){
         
         /**Render**/
         window.clear();
-        
+         
         //dibujo los fondos
         for(sf::Sprite* q : fondos){
             window.draw(*q); 
@@ -232,11 +232,18 @@ int main(){
 
         window.draw(camara->getVidas());
         window.draw(camara->getVidasPrincipales());
-        
-
-                
+           
         camara->actualizarTiempo();
         camara->actualizarVidas(player->vidas, player->politico);
+        
+        if(player->vidas==0){
+            player->vidas=10;
+            player->vidasPrincipales=player->vidasPrincipales-1;
+            player->posicionJugador.x=200;
+            player->posicionJugador.y=359;
+            camara->desplazamientoCamara=0;
+        }
+       
         
        for(int i=0; i<mapa->arrayVotos->size(); i++){
            if(mapa->arrayVotos->at(i)->getGlobalBounds().intersects(player->getSprite().getGlobalBounds())){

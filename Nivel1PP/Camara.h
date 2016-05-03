@@ -45,15 +45,15 @@ public:
     sf::Sprite getMiniatura2vida();
 //    sf::Clock getClock();
     void actualizarTiempo();
-    
-    
+    int desplazamientoCamara;
+    int posicionOrigenCamara;
     
 private:
     
     int ancho;
     int alto;
-    int desplazamientoCamara;
-    int posicionOrigenCamara;
+    
+   
     int kVel;
     //sf::Time time; //PRUEBA INTERPOLACION
     
