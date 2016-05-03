@@ -42,6 +42,17 @@ void Juego::Init(){
     //VideoMode mode, const String& title, Uint32 style = Style::Default, const ContextSettings& settings = ContextSettings(
     window = new sf::RenderWindow(sf::VideoMode(1066, 600), "Ventana de juego");
     
+    for(int i=0; i<8;i++){
+        
+        if(sf::Joystick::isConnected(i)){
+            
+            controllerIndex = i;
+            std::cout<<"Mando encontrado en puerto: "<<controllerIndex<<std::endl; 
+            break;
+        }
+        
+    }
+    
     sf::Clock reloj;
     
     std::cout << "Instancia de Juego: " << this  << std::endl;
@@ -103,59 +114,59 @@ void Juego::Init(){
             reloj1.restart();     
         }*/
         ///////////////////////////////////////
-        if(sf::Joystick::isButtonPressed(1,0)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,0)){
              std::cout<<"Mando: A "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,1)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,1)){
              std::cout<<"Mando: B "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,2)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,2)){
              std::cout<<"Mando: X "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,3)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,3)){
              std::cout<<"Mando: Y "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,4)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,4)){
              std::cout<<"Mando: L "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,5)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,5)){
              std::cout<<"Mando: R "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,6)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,6)){
              std::cout<<"Mando: Select "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,7)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,7)){
              std::cout<<"Mando: Start "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,8)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,8)){
              std::cout<<"Mando: JoyClickL "<<std::endl;
               
         }
-        if(sf::Joystick::isButtonPressed(1,9)){
+        if(sf::Joystick::isButtonPressed(controllerIndex,9)){
              std::cout<<"Mando: JoyClickR "<<std::endl;
               
         }
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovX) ==  100){
+        if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100){
             std::cout<<"Mando: UP "<<std::endl;
               
         }
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovX) ==  -100){
+        if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  -100){
             std::cout<<"Mando: DOWN "<<std::endl;
               
         }
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  -100){
+        if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovY) ==  -100){
             std::cout<<"Mando: LEFT "<<std::endl;
               
         }
-        if(sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  100){
+        if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovY) ==  100){
             std::cout<<"Mando: RIGHT "<<std::endl;
               
         }

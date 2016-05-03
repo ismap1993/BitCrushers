@@ -32,7 +32,7 @@ public:
     virtual ~Juego();
     
     sf::RenderWindow* window;
-    
+    int controllerIndex;
     sf::Event event;
     
 private:
