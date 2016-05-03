@@ -237,7 +237,7 @@ void Enemigo::handle(Jugador* jugador){
         //
         //std::cout<<"La diferencia entre el sprite y el NPC es de: "<<dif<<std::endl;
             golpeoXseg=golpeosSegundo.getElapsedTime().asSeconds();
-            if(abs(dif)<60 && direccion==1 && tipo==0 && !golpeado && jugador->getSprite().getPosition().y > 280){
+            if(abs(dif)<60 && direccion==1 && tipo==0 && !golpeado && jugador->getSprite().getPosition().y < (spriteSheet.getPosition().y+20) && jugador->getSprite().getPosition().y > (spriteSheet.getPosition().y-20)){
                 //golpeo a la izquierda cuerpo a cuerpo
 
                 if(golpeoXseg>1){
@@ -245,8 +245,8 @@ void Enemigo::handle(Jugador* jugador){
                     spriteSheet.setOrigin(40, matriz[9][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
                     if(spriteSheet.getGlobalBounds().intersects(jugador->getSprite().getGlobalBounds())){
+                        std::cout<<"te miro y te golpeo izq"<<spriteSheet.getPosition().y<<" "<<jugador->getSprite().getPosition().y<<std::endl;
                         golpeado = true;
-                        std::cout<<"Le he golpeado al payaso"<<std::endl;
                         jugador->golpeado=true;
                         jugador->vidas=jugador->vidas-2;
                         if(jugador->vidas<0)jugador->vidas=0;
@@ -256,7 +256,7 @@ void Enemigo::handle(Jugador* jugador){
                     golpeosSegundo.restart();
                 }
                 golpeado = false;
-            }else if(abs(dif)<60 && direccion==0 && tipo == 0 && !golpeado && jugador->getSprite().getPosition().y > 280){
+            }else if(abs(dif)<60 && direccion==0 && tipo == 0 && !golpeado && jugador->getSprite().getPosition().y < (spriteSheet.getPosition().y+20) && jugador->getSprite().getPosition().y > (spriteSheet.getPosition().y-20)){
                 //golpero a la derecha cuerpo a cuerpo
                 if(golpeoXseg>1){
                     //std::cout<<"te miro y te golpeo dere"<<std::endl;
@@ -275,10 +275,10 @@ void Enemigo::handle(Jugador* jugador){
                 }
                 golpeado = false;
             }         
-            else if(abs(dif)<300 && direccion==0 && tipo ==1 && jugador->getSprite().getPosition().y > 310){
+            else if(abs(dif)<300 && direccion==0 && tipo ==1 && jugador->getSprite().getPosition().y < (spriteSheet.getPosition().y+52) && jugador->getSprite().getPosition().y > (spriteSheet.getPosition().y-58)){
                 //golpeo a la derecha a distancia
                 if(golpeoXseg>1){
-                //std::cout<<"te miro y te golpeo dere a distancia"<<std::endl;
+                    //std::cout<<"te miro y te golpeo dere a distancia"<<spriteSheet.getPosition().y<<" "<<jugador->getSprite().getPosition().y<<std::endl;
                     spriteSheet.setOrigin(30, matriz[17][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[17][0], matriz[17][1], matriz[17][2], matriz[17][3]));
                     disparar();
@@ -288,10 +288,12 @@ void Enemigo::handle(Jugador* jugador){
                     spriteSheet.setOrigin(matriz[10][2]/2, matriz[10][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
                 }
-            }else if(abs(dif)<300 && direccion==1 && tipo ==1 && jugador->getSprite().getPosition().y > 310){
+            }else if(abs(dif)<300 && direccion==1 && tipo ==1 && jugador->getSprite().getPosition().y < (spriteSheet.getPosition().y+52) && jugador->getSprite().getPosition().y > (spriteSheet.getPosition().y-58)){
                 //golpeo a la izquierda a distancia
+                //jugador->getSprite().getPosition().y < (spriteSheet.getPosition().y+52) && jugador->getSprite().getPosition().y > (spriteSheet.getPosition().y-58)
+                //con comprobacion para que los el npc dispare si esta en esa zona Y, para que no tire chorizos sin sentido
                 if(golpeoXseg>1){
-                    std::cout<<"te miro y te golpeo izq a distancia"<<std::endl;
+                    //std::cout<<"te miro y te golpeo izq a distancia "<<spriteSheet.getPosition().y<<" "<<jugador->getSprite().getPosition().y<<std::endl;
                     spriteSheet.setOrigin(50, matriz[18][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[18][0], matriz[18][1], matriz[18][2], matriz[18][3]));
 
@@ -542,7 +544,7 @@ void Enemigo::disparar(){
             //Al disparar, se genera un proyectil y se inserta en el vector
             Proyectil *pro = new Proyectil(1, spriteSheet.getPosition(), matriz, 5);
             pro->crearPro();
-            //std::cout << "posicion X proyectil reciente:" << pro->posx << std::endl;
+            std::cout << "posicion X proyectil reciente:" << pro->getSprite().getPosition().y << std::endl;
             proyectiles->push_back(pro);
             /****/
             //std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
