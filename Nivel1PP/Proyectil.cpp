@@ -44,26 +44,27 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
     }
     */
     //CARGAR LA IMAGEN
+    texPro = new sf::Texture();
     if(politic==2){
-        if (!texPro.loadFromFile("resources/albertspritesheet.png")){
+        if (!texPro->loadFromFile("resources/albertspritesheet.png")){
             std::cerr << "Error cargando la imagen";
             exit(0);
         }
-        spritePro.setTexture(texPro);
+        spritePro.setTexture(*texPro);
         spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
     }else if(politic==3){
-        if (!texPro.loadFromFile("resources/marianospritesheet.png")){
+        if (!texPro->loadFromFile("resources/marianospritesheet.png")){
             std::cerr << "Error cargando la imagen";
             exit(0);
         } 
-        spritePro.setTexture(texPro);
+        spritePro.setTexture(*texPro);
         spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
     }else{
-        if (!texPro.loadFromFile("resources/CIUDADANOS/enemigosCIUDADANOS.png")){
+        if (!texPro->loadFromFile("resources/CIUDADANOS/enemigosCIUDADANOS.png")){
             std::cerr << "Error cargando la imagen";
             exit(0);
         } 
-        spritePro.setTexture(texPro);
+        spritePro.setTexture(*texPro);
         spritePro.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
     }
 
