@@ -432,5 +432,7 @@ void Camara::actualizarVidas(int v, int pol){
     if(v==1) barraVida.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
     if(v==0) barraVida.setTextureRect(sf::IntRect(matriz[8][0], matriz[8][1], matriz[8][2], matriz[8][3]));
 
-    
+    if(v==0){
+        
+        }
 }
