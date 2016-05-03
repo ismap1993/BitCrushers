@@ -466,6 +466,30 @@ void Camara::actualizarVidas(int v, int pol){
         }
 }
 
+void Camara::actualizarVidasPrincipales(int vp){
+    if(vp==3)vidasPrincipales.setTextureRect(sf::IntRect(matriz[14][0], matriz[14][1], matriz[14][2], matriz[14][3]));
+    if(vp==2)vidasPrincipales.setTextureRect(sf::IntRect(matriz[13][0], matriz[13][1], matriz[13][2], matriz[13][3]));
+    if(vp==1)vidasPrincipales.setTextureRect(sf::IntRect(matriz[12][0], matriz[12][1], matriz[12][2], matriz[12][3]));
+    if(vp==0)vidasPrincipales.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+}
+
+void Camara::resetearCamara(){
+    desplazamientoCamara=0;
+    camara->setCenter(533, 300);
+    contador.setPosition(490,15);
+    contadorValue.setPosition(505,30);
+
+    vidas.setPosition(700, -20);
+    barraVida.setPosition(787,74);
+    vidasPrincipales.setPosition(785, 25);
+    miniatura1.setPosition(180,20);
+    miniatura1vida.setPosition(204,25);
+    miniatura2.setPosition(270,20);
+    miniatura2vida.setPosition(294,25);
+    hudVotosValue.setPosition(130,30);
+    hudVotos.setPosition(65,15);
+}
+
 void Camara::cartelFinal(sf::RenderWindow& window){
     
     // Texto

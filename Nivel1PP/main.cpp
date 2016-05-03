@@ -250,12 +250,18 @@ int main(){
         camara->actualizarVidas(player->vidas, player->politico);
         
         if(player->vidas==0){
-            player->vidas=10;
+            player->muerto=true;
             player->vidasPrincipales=player->vidasPrincipales-1;
-            player->posicionJugador.x=200;
-            player->posicionJugador.y=359;
-            camara->desplazamientoCamara=0;
+            
+            if(player->vidasPrincipales>0){//resucita con una vida menos
+                player->muerto=false;
+                player->vidas=10;
+                player->posicionJugador.x=200;
+                camara->resetearCamara();
+            }
         }
+        
+        camara->actualizarVidasPrincipales(player->vidasPrincipales);
        
         
        for(int i=0; i<mapa->arrayVotos->size(); i++){

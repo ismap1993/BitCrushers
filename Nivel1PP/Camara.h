@@ -29,6 +29,7 @@ public:
     void moveLeft(Jugador *personaje);
     void sumaVotos(int votos);
     void actualizarVidas(int v, int pol);
+    void actualizarVidasPrincipales(int vp);
     void cartelFinal(sf::RenderWindow& window);
     //void setHudVotosValue(int votoObtenido);
     int getPosx();
@@ -46,6 +47,7 @@ public:
     sf::Sprite getMiniatura2vida();
 //    sf::Clock getClock();
     void actualizarTiempo();
+    void resetearCamara();
     int desplazamientoCamara;
     int posicionOrigenCamara;
     
