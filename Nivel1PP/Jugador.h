@@ -32,8 +32,10 @@ public:
     void draw(sf::RenderWindow &window);
     void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
     void disparar();
+    bool isMoving();
     bool salto;
     int alturaSuelo;
+    sf::Vector2f posicionAnterior;
     sf::Vector2f posicionJugador;
     float velocidadSalto;
     float velocidadMovimiento;

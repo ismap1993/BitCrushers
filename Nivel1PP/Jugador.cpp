@@ -20,6 +20,7 @@
 #include "Camara.h"
 #include "Mapa.h"
 #include "Proyectil.h"
+#include <SFML/Audio.hpp>
 
 
 using namespace std;
@@ -226,6 +227,65 @@ void Jugador::draw(sf::RenderWindow& window){
         window.draw(sprite);
     }
     //std::cout<<sprite.getPosition().y<<std::endl;
+    
+    
+    //    //PRUEBAS DEL MANDO
+//    if(sf::Joystick::isButtonPressed(controllerIndex,0)){
+//        std::cout<<"Mando: A "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,1)){
+//         std::cout<<"Mando: B "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,2)){
+//         std::cout<<"Mando: X "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,3)){
+//         std::cout<<"Mando: Y "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,4)){
+//         std::cout<<"Mando: L "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,5)){
+//         std::cout<<"Mando: R "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,6)){
+//         std::cout<<"Mando: Select "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,7)){
+//         std::cout<<"Mando: Start "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,8)){
+//         std::cout<<"Mando: JoyClickL "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::isButtonPressed(controllerIndex,9)){
+//         std::cout<<"Mando: JoyClickR "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovY) ==  100){
+//        std::cout<<"Mando: UP "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovY) ==  -100){
+//        std::cout<<"Mando: DOWN "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  -100){
+//        std::cout<<"Mando: LEFT "<<std::endl;
+//
+//    }
+//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100){
+//        std::cout<<"Mando: RIGHT "<<std::endl;
+//
+//    }
 }
 
 sf::Sprite Jugador::getSprite(){
@@ -340,7 +400,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         direccion=1;
 
         direccionPro=1;
-        camara->moveRight(this);
+        //camara->moveRight(this);
 
         velocidadJugador.x = velocidadMovimiento;
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
@@ -363,7 +423,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         direccionPro=0;
         
-        camara->moveLeft(this);
+        //camara->moveLeft(this);
 
             velocidadJugador.x = -velocidadMovimiento;
             
@@ -512,6 +572,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
                 velocidadJugador.y = -velocidadSalto;
                 salto = false;
+                soundSalto.play(); 
     }
 
     if(!salto){
@@ -588,4 +649,14 @@ void Jugador::disparar(){
             }
         }
     }
+}
+
+bool Jugador::isMoving(){
+    
+    if((posicionJugador.x-posicionAnterior.x < -3.95 || posicionJugador.x-posicionAnterior.x > 1.95))
+        return true;
+    else if(posicionJugador.x+posicionAnterior.x == -2 || posicionJugador.x+posicionAnterior.x == 0)
+        return false;
+    
+    
 }
