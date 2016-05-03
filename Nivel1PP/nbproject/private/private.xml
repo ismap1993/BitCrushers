@@ -12,12 +12,6 @@
             <file>file:/D:/Documentos/NetBeansProjects/Presidentum/Nivel1/Mapa.cpp</file>
             <file>file:/D:/Documentos/NetBeansProjects/Presidentum/Nivel1/Enemigo.cpp</file>
         </group>
-        <group name="bitcrushers">
-            <file>file:/C:/Users/Aitor/Documents/BitCrushers/Nivel1PP/Jugador.cpp</file>
-            <file>file:/C:/Users/Aitor/Documents/BitCrushers/Nivel1PP/Camara.cpp</file>
-            <file>file:/C:/Users/Aitor/Documents/BitCrushers/Nivel1PP/Camara.h</file>
-            <file>file:/C:/Users/Aitor/Documents/BitCrushers/Nivel1PP/main.cpp</file>
-            <file>file:/C:/Users/Aitor/Documents/BitCrushers/Nivel1PP/Jugador.h</file>
-        </group>
+        <group name="bitcrushers"/>
     </open-files>
 </project-private>

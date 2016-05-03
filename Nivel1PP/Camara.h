@@ -24,7 +24,7 @@ public:
     Camara(const Camara& orig);
     virtual ~Camara();
     
-    void draw(sf::RenderWindow &window);
+    void draw(sf::RenderWindow &window, Jugador* player);
     void moveRight(Jugador *personaje);
     void moveLeft(Jugador *personaje);
     void sumaVotos(int votos);
@@ -78,6 +78,10 @@ private:
     int **matriz; //Para el spritesheet del HUD
     int posX;
     int linea;
+    
+    float aceleracion = 0.0; //Aceleracion del movimiento de la camara
+    float increment = 0.2; //Incrementos de camara
+    bool isMoving;  //Controla si se está moviendo el jugador (de momento no se usa)
     
     sf::Sprite vidas;
     sf::Sprite barraVida;

@@ -3,6 +3,7 @@
 #include "Camara.h"
 #include <iostream>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
 #include <vector>
 #include "Mapa.h"
@@ -27,6 +28,14 @@ int main(){
     Jugador* player = new Jugador(posx, posy, 2, true);
     //player->leerXML();
         
+    ///////////////////////////BUFFER DE SONIDO////////
+    
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("resources/PP/PP.flac"))
+        return -1; // error
+    
+    
+    
 
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
     Mapa *mapa = new Mapa();
@@ -34,7 +43,7 @@ int main(){
            
 
     //Creo la camara con el ancho y el largo de la ventana, ademas le paso la cantidad de pixeles que se mueve el personaje y el mapa
-    Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel, *mapa);
+    Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel/3, *mapa);
     //creacion de vectores de enemigos
     std::vector<Enemigo*>* cuerpo = new std::vector<Enemigo*>();
     std::vector<Enemigo*>* distancia = new std::vector<Enemigo*>();
@@ -74,6 +83,12 @@ int main(){
     sf::Time timeElapsed;
      float tiempo;
      
+    
+    /*********MUSICA****************/
+    sf::Sound musica;
+    musica.setBuffer(buffer);
+    musica.setLoop(true);
+    musica.play(); 
      
     /**********BUCLE PRINCIPAL*************/
     while (window.isOpen()){
@@ -218,7 +233,7 @@ int main(){
         
         
         //setteo la camara
-        camara->draw(window);
+        camara->draw(window, player);
         
         window.draw(camara->getHudVotos());
         window.draw(camara->getHudVotosValue());

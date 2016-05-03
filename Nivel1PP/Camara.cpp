@@ -53,6 +53,10 @@ Camara::Camara(int width, int height, int desp, Mapa &map){
     mapa->fondo=map.fondo;
     background=mapa->fondo;
     
+    /********MOVIMIENTO*********/  
+    bool isMoving = false;
+    float aceleracion = 0.0;
+    
     /********HUD*********/  
      
       /*MATRIZ BIDIMENSIONAL para almacenar los 4 parametros de cada sprite*/
@@ -225,12 +229,35 @@ Camara::Camara(const Camara& orig) {
 Camara::~Camara() {
 }
 
-void Camara::draw(sf::RenderWindow& window){
+void Camara::draw(sf::RenderWindow& window, Jugador* player){
     
     //window.draw(hudVotosValue); //VALOR NUMERICO DE LOS VOTOS
     //window.draw(hudVotos);      //CARTEL DE VOTOS
     
+    moveRight(player);
+    moveLeft(player);
+    
+    //TODO LO QUE ESTÁ COMENTADO, LO DEJO PARA SEGUIR MAS ADELANTE CON LA CAMARA ACELERADA
+    
+//    if(aceleracion > 0.01){
+//      
+//           aceleracion-=increment/kVel;
+//
+//    }
+//    
+//     if(aceleracion < -0.01){
+//      
+//           aceleracion+=increment/kVel;
+//  
+//    }
+      
+    camara->move(aceleracion,0);
+
+   
     window.setView(*camara);
+    
+    
+    //std::cout<<"desplazamientoCamara: "<<desplazamientoCamara<<" kVel: "<< kVel<<" Aceleracion: "<<aceleracion<<" Jugador activo: "<<player->isMoving()<<std::endl;
     
 }
 
@@ -242,24 +269,14 @@ void Camara::moveRight(Jugador *personaje){
         //if(personaje.getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(mapa->_tileWidth*mapa->_width*0.79)){
             std::cout<<(mapa->_tileWidth*mapa->_width*0.79)<<std::endl;
             //con background.getLocalBounds().width*0.79 calculo la parte derecha del mapa para fijar la camara
-            camara->move(kVel,0);
-           hudVotos.move(kVel,0);
-           hudVotosValue.move(kVel,0);
-           contador.move(kVel, 0);
-           contadorValue.move(kVel, 0);
-           vidas.move(kVel, 0);
-           vidasPrincipales.move(kVel, 0);
-           barraVida.move(kVel, 0);
-           miniatura1.move(kVel,0);
-           miniatura1vida.move(kVel,0);
-           miniatura2.move(kVel,0);
-           miniatura2vida.move(kVel,0);
+            //camara->move(kVel,0);
+  
 
            std::cout<<"posicionhud "<<hudVotos.getPosition().x;
             /*PRUEBA INTERPOLACIÓN*/
             //camara->move(1*kVel*time.asSeconds(),0);
             /*PRUEBA INTERPOLACIÓN*/
-            desplazamientoCamara=desplazamientoCamara+kVel; 
+            desplazamientoCamara+=kVel;
         }
         /*if(personaje.getPosition().x >= camara->getSize().x*0.6 && camara->getCenter().x <=(background.getLocalBounds().width*0.79)){
             //con background.getLocalBounds().width*0.79 calculo la parte derecha del mapa para fijar la camara
@@ -289,8 +306,14 @@ void Camara::moveRight(Jugador *personaje){
                 miniatura2.move(kVel,0);
                 miniatura2vida.move(kVel,0);
 
-
-                desplazamientoCamara=desplazamientoCamara+kVel;  
+//            if(aceleracion<kVel)
+//                if(aceleracion>kVel)
+//                    aceleracion = kVel;
+//                else
+//                    aceleracion+=increment;
+                
+                
+                desplazamientoCamara+=kVel;
             }
             
             
@@ -310,6 +333,7 @@ void Camara::moveLeft(Jugador *personaje){
     if(desplazamientoCamara!=0){
         if(personaje->getSprite().getPosition().x<= camara->getSize().x*0.4 + desplazamientoCamara && camara->getCenter().x!=posicionOrigenCamara){
             camara->move(-kVel,0);
+            
             hudVotos.move(-kVel,0);
             hudVotosValue.move(-kVel,0);
             contador.move(-kVel, 0);
@@ -322,12 +346,17 @@ void Camara::moveLeft(Jugador *personaje){
             miniatura2.move(-kVel,0);
             miniatura2vida.move(-kVel,0);
 
-
+//            if(aceleracion > -kVel)
+//                if(aceleracion < -kVel)
+//                    aceleracion = -kVel;
+//                else
+//                    aceleracion-=increment;
+            
            
             /*PRUEBA INTERPOLACIÓN*/
             //camara->move(-1*kVel*time.asSeconds(),0);
             /*PRUEBA INTERPOLACIÓN*/
-            desplazamientoCamara=desplazamientoCamara-kVel;   
+            desplazamientoCamara-=kVel;
         }
     }
     
