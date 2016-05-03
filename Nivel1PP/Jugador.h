@@ -10,13 +10,13 @@
  *
  * Created on 5 de abril de 2016, 19:31
  */
-#include <SFML/Audio.hpp>
-
 #include "Mapa.h"
 #include "Proyectil.h"
 #include <vector>
 #ifndef JUGADOR_H
 #define JUGADOR_H
+
+#include <SFML/Audio.hpp>
 
 
 class Camara;
@@ -32,10 +32,8 @@ public:
     void draw(sf::RenderWindow &window);
     void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
     void disparar();
-    bool isMoving();
     bool salto;
     int alturaSuelo;
-    sf::Vector2f posicionAnterior;
     sf::Vector2f posicionJugador;
     float velocidadSalto;
     float velocidadMovimiento;
@@ -58,6 +56,8 @@ private:
     sf::Sprite sprite;
     bool tieneLLave;
     bool activo;
+    
+    
     int controllerIndex; // identificador de mando
     
     sf::SoundBuffer bufferSalto;

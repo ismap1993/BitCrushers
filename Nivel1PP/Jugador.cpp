@@ -13,7 +13,6 @@
 #include <vector>
 #include <string> 
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -109,6 +108,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     paso=0;
     golpeoXseg=0;
     
+    
     ///////////////////////////BUFFER DE SONIDO////////
     
    
@@ -133,7 +133,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
         }
         
     }
-
+    
 }
 
 void Jugador::leerXML(){
@@ -226,66 +226,6 @@ void Jugador::draw(sf::RenderWindow& window){
         window.draw(sprite);
     }
     //std::cout<<sprite.getPosition().y<<std::endl;
-    
-    
-//    //PRUEBAS DEL MANDO
-//    if(sf::Joystick::isButtonPressed(controllerIndex,0)){
-//        std::cout<<"Mando: A "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,1)){
-//         std::cout<<"Mando: B "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,2)){
-//         std::cout<<"Mando: X "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,3)){
-//         std::cout<<"Mando: Y "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,4)){
-//         std::cout<<"Mando: L "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,5)){
-//         std::cout<<"Mando: R "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,6)){
-//         std::cout<<"Mando: Select "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,7)){
-//         std::cout<<"Mando: Start "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,8)){
-//         std::cout<<"Mando: JoyClickL "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::isButtonPressed(controllerIndex,9)){
-//         std::cout<<"Mando: JoyClickR "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovY) ==  100){
-//        std::cout<<"Mando: UP "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovY) ==  -100){
-//        std::cout<<"Mando: DOWN "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  -100){
-//        std::cout<<"Mando: LEFT "<<std::endl;
-//
-//    }
-//    if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100){
-//        std::cout<<"Mando: RIGHT "<<std::endl;
-//
-//    }
-    
 }
 
 sf::Sprite Jugador::getSprite(){
@@ -391,21 +331,16 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         alturaSuelo=580;
     }
     
-    //Despues de golpear, a los 0,5s, el personaje vuelve a su posicion original (izquierda o derecha)
-        /*golpeo= golpeoTime.getElapsedTime().asSeconds();
-        if(golpeo>0.5 && der==true){
-           if(p==1 || p!=2 || p!=3){ 
-            sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //IMPORTANTE recolocar el centroide
-            sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
-            golpeoTime.restart();
-           }*/
+    
+    
+    
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100){
         
         direccion=1;
 
         direccionPro=1;
-        //camara->moveRight(this);
+        camara->moveRight(this);
 
         velocidadJugador.x = velocidadMovimiento;
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
@@ -428,7 +363,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         direccionPro=0;
         
-        //camara->moveLeft(this);
+        camara->moveLeft(this);
 
             velocidadJugador.x = -velocidadMovimiento;
             
@@ -456,7 +391,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
     }
     
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Joystick::isButtonPressed(controllerIndex,2)){
+    /*else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
         golpeoXseg=golpeosSegundo.getElapsedTime().asSeconds();
         
         
@@ -464,14 +399,16 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 
                 sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
                 sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                velocidadJugador.x = 0;
                 golpeosSegundo.restart();
             }
         
         if(direccion==1){
             if(golpeoXseg>0.5){
                 
-                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                sprite.setOrigin(matriz[0][2]/4,matriz[0][3]/2);
                 sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+                velocidadJugador.x = 0;
                 golpeosSegundo.restart();
             }
             
@@ -480,13 +417,14 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         else if(direccion==0){
             if(golpeoXseg>0.5){
-                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                sprite.setOrigin(-20,matriz[0][3]/2);
                 sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                velocidadJugador.x = 0;
                 golpeosSegundo.restart();
             }
             sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
         }
-    }
+    }*/
     
     else{
         velocidadJugador.x = 0;
@@ -507,13 +445,65 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&  sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100 && sf::Joystick::isButtonPressed(controllerIndex,0)){
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)  || sf::Joystick::isButtonPressed(controllerIndex,2)){
+        golpeoXseg=golpeosSegundo.getElapsedTime().asMilliseconds();
+        
+        
+        if(golpeoXseg>9.1){
+                
+                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                velocidadJugador.x = 0;
+                golpeosSegundo.restart();
+            }
+        
+        if(direccion==1){
+            if(golpeoXseg>9.1){
+                
+                sprite.setOrigin(matriz[0][2]/4,matriz[0][3]/2);
+                sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
+                velocidadJugador.x = 0;
+                golpeosSegundo.restart();
+            }
+            
+            
+        }
+        
+        else if(direccion==0){
+            if(golpeoXseg>9.1){
+                sprite.setOrigin(60,matriz[2][3]/2);
+                sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                velocidadJugador.x = 0;
+                golpeosSegundo.restart();
+                
+                //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+                //sprite.setPosition(sprite.getOrigin().x + 50, 0);
+                if(!(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+                    
+                    sprite.setOrigin(60,matriz[2][3]/2);
+                }
+                
+            }
+            //sprite.setOrigin(1000000,matriz[0][3]/2);
+            //sprite.setPosition(sprite.getOrigin().x + 50, 0);
+        }
+        
+        
+        
+        
+    }
+    
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || (sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100 && sf::Joystick::isButtonPressed(controllerIndex,0))){
         
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
         
+        
+        
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  -100 && sf::Joystick::isButtonPressed(controllerIndex,0)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || (sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  -100 && sf::Joystick::isButtonPressed(controllerIndex,0))){
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
     }
@@ -522,7 +512,6 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
                 velocidadJugador.y = -velocidadSalto;
                 salto = false;
-                soundSalto.play(); 
     }
 
     if(!salto){
@@ -599,14 +588,4 @@ void Jugador::disparar(){
             }
         }
     }
-}
-
-bool Jugador::isMoving(){
-    
-    if((posicionJugador.x-posicionAnterior.x < -3.95 || posicionJugador.x-posicionAnterior.x > 1.95))
-        return true;
-    else if(posicionJugador.x+posicionAnterior.x == -2 || posicionJugador.x+posicionAnterior.x == 0)
-        return false;
-    
-    
 }
