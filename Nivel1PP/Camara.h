@@ -29,6 +29,7 @@ public:
     void moveLeft(Jugador *personaje);
     void sumaVotos(int votos);
     void actualizarVidas(int v, int pol);
+    void cartelFinal(sf::RenderWindow& window);
     //void setHudVotosValue(int votoObtenido);
     int getPosx();
     sf::Sprite getHudVotos();

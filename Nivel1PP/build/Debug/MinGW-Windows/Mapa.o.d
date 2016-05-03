@@ -64,7 +64,23 @@ build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
  c:/SFML/include/SFML/Graphics/Text.hpp Plataforma.h tinystr.h tinyxml.h \
- Enemigo.h NPC.h Jugador.h Proyectil.h
+ Enemigo.h NPC.h Jugador.h Proyectil.h c:/SFML/include/SFML/Audio.hpp \
+ c:/SFML/include/SFML/Audio/InputSoundFile.hpp \
+ c:/SFML/include/SFML/Audio/Export.hpp \
+ c:/SFML/include/SFML/Audio/Listener.hpp \
+ c:/SFML/include/SFML/Audio/Music.hpp \
+ c:/SFML/include/SFML/Audio/SoundStream.hpp \
+ c:/SFML/include/SFML/Audio/SoundSource.hpp \
+ c:/SFML/include/SFML/Audio/AlResource.hpp \
+ c:/SFML/include/SFML/Audio/OutputSoundFile.hpp \
+ c:/SFML/include/SFML/Audio/Sound.hpp \
+ c:/SFML/include/SFML/Audio/SoundBuffer.hpp \
+ c:/SFML/include/SFML/Audio/SoundBufferRecorder.hpp \
+ c:/SFML/include/SFML/Audio/SoundRecorder.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileFactory.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileFactory.inl \
+ c:/SFML/include/SFML/Audio/SoundFileReader.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileWriter.hpp
 
 Mapa.h:
 
@@ -219,3 +235,37 @@ NPC.h:
 Jugador.h:
 
 Proyectil.h:
+
+c:/SFML/include/SFML/Audio.hpp:
+
+c:/SFML/include/SFML/Audio/InputSoundFile.hpp:
+
+c:/SFML/include/SFML/Audio/Export.hpp:
+
+c:/SFML/include/SFML/Audio/Listener.hpp:
+
+c:/SFML/include/SFML/Audio/Music.hpp:
+
+c:/SFML/include/SFML/Audio/SoundStream.hpp:
+
+c:/SFML/include/SFML/Audio/SoundSource.hpp:
+
+c:/SFML/include/SFML/Audio/AlResource.hpp:
+
+c:/SFML/include/SFML/Audio/OutputSoundFile.hpp:
+
+c:/SFML/include/SFML/Audio/Sound.hpp:
+
+c:/SFML/include/SFML/Audio/SoundBuffer.hpp:
+
+c:/SFML/include/SFML/Audio/SoundBufferRecorder.hpp:
+
+c:/SFML/include/SFML/Audio/SoundRecorder.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileFactory.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileFactory.inl:
+
+c:/SFML/include/SFML/Audio/SoundFileReader.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileWriter.hpp:

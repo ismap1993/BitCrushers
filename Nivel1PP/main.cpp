@@ -268,6 +268,9 @@ int main(){
            }
        }
         
+        //camara->cartelFinal(window);
+        
+        
         window.display();
 
     }

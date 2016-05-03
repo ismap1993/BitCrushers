@@ -465,3 +465,40 @@ void Camara::actualizarVidas(int v, int pol){
         
         }
 }
+
+void Camara::cartelFinal(sf::RenderWindow& window){
+    
+    // Texto
+    sf::Font font;  
+    font.loadFromFile("resources/alterebro-pixel-font.ttf");
+  
+    sf::RectangleShape bgCartel;
+    bgCartel.setFillColor(sf::Color(255,255,255,200));
+    bgCartel.setSize(sf::Vector2f((float)window.getSize().x, (float)window.getSize().y));
+    bgCartel.setOrigin((float)bgCartel.getSize().x/2, (float)bgCartel.getSize().y/2);
+    bgCartel.setPosition(window.getSize().x/2,window.getSize().y/2);
+    
+    sf::RectangleShape cartel;
+    cartel.setFillColor(sf::Color(255,255,255,255));
+    cartel.setSize(sf::Vector2f((float)window.getSize().x/1.4, (float)window.getSize().y/1.4));
+    cartel.setOrigin((float)cartel.getSize().x/2, (float)cartel.getSize().y/2);
+    cartel.setPosition(window.getSize().x/2,window.getSize().y/2);
+    cartel.setOutlineColor(sf::Color::Black);
+    cartel.setOutlineThickness(2);
+    
+    sf::Text tituloText("-ENHORABUENA-", font, 30);
+    tituloText.setPosition(cartel.getSize().x/2+20,cartel.getSize().y/2-140);
+    tituloText.setCharacterSize(70);
+    tituloText.setColor(sf::Color::Black);
+    
+    sf::Text cuerpoText("Has superado el nivel \n\nVOTOS CONSEGUIDOS: 28 \nPACTO: NO REALIZADO \nENEMGOS DEROTADOS: 3 \nSIMPATIZANTE LIBERADO: SI \n\nTIEMPO: 2m 30s", font, 30);
+    cuerpoText.setPosition(cartel.getSize().x/2+20,cartel.getSize().y/2-70);
+    cuerpoText.setCharacterSize(50);
+    cuerpoText.setColor(sf::Color::Black);
+    
+    window.draw(bgCartel);
+    window.draw(cartel);
+    window.draw(tituloText);
+    window.draw(cuerpoText);
+    
+}
