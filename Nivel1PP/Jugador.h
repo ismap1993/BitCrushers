@@ -10,6 +10,8 @@
  *
  * Created on 5 de abril de 2016, 19:31
  */
+#include <SFML/Audio.hpp>
+
 #include "Mapa.h"
 #include "Proyectil.h"
 #include <vector>
@@ -57,6 +59,9 @@ private:
     bool tieneLLave;
     bool activo;
     int controllerIndex; // identificador de mando
+    
+    sf::SoundBuffer bufferSalto;
+    sf::Sound soundSalto;
     
     int** matriz;
     sf::Texture texturaJugador;

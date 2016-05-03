@@ -32,9 +32,7 @@ int main(){
     
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile("resources/PP/PP.flac"))
-        return -1; // error
-    
-    
+        return -1; // error  
     
 
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda

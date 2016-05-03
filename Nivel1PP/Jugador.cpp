@@ -13,6 +13,7 @@
 #include <vector>
 #include <string> 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -107,6 +108,17 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     col=0;
     paso=0;
     golpeoXseg=0;
+    
+    ///////////////////////////BUFFER DE SONIDO////////
+    
+   
+    if (!bufferSalto.loadFromFile("resources/FX/Salto.flac"))
+        std::cout<<"Problema al cargar bufferSalto";
+    
+   
+    soundSalto.setBuffer(bufferSalto);
+
+    
     
     ///////////////////////////SETEO DEL CONTROLADOR////////
     
@@ -499,6 +511,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
+        
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  -100 && sf::Joystick::isButtonPressed(controllerIndex,0)){
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
@@ -509,6 +522,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
                 velocidadJugador.y = -velocidadSalto;
                 salto = false;
+                soundSalto.play(); 
     }
 
     if(!salto){
