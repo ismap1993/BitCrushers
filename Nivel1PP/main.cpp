@@ -38,7 +38,6 @@ int main(){
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
     Mapa *mapa = new Mapa();
     mapa->leerMapa(1);
-           
 
     //Creo la camara con el ancho y el largo de la ventana, ademas le paso la cantidad de pixeles que se mueve el personaje y el mapa
     Camara *camara=new Camara(window.getSize().x, window.getSize().y, kVel/3, *mapa);
@@ -196,6 +195,7 @@ int main(){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(cuerpo->at(j)->getSprite().getGlobalBounds())){
                         delete cuerpo->at(j);
                         cuerpo->erase(cuerpo->begin()+j);
+                        player->enemigosEliminados++;
                         delete player->proyectiles->at(i);
                         player->proyectiles->erase(player->proyectiles->begin()+i);
                     }

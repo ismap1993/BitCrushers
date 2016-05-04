@@ -52,6 +52,7 @@ public:
     int vidas;
     int vidasPrincipales;
     int politico;
+    int enemigosEliminados=0;
 private:
     
     int direccionPro;
