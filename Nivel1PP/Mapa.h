@@ -17,7 +17,6 @@
 #include "Plataforma.h"
 
 
-
 class Mapa {
 public:
     Mapa();
@@ -44,6 +43,8 @@ public:
 //    std::vector<sf::RectangleShape*> arrayEnemigosA;
     int** matrizEnemigosA;
     int** matrizEnemigosC;
+    int posxBoss;
+    int posyBoss;
 
 private:
     

@@ -13,6 +13,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include "Enemigo.h"
+#include "BossFinal.h"
 
 using namespace std;
 
@@ -434,6 +435,43 @@ void Mapa::leerMapa(int numMapa){
                     }
                 }
              enemigosA = enemigosA->NextSiblingElement("objectgroup");
+         }
+        
+        TiXmlElement *boss = map->FirstChildElement("objectgroup");
+        while(boss){
+            
+            nombre=(string) boss->Attribute("name");
+           
+            if(nombre=="BOSS FINAL"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = boss->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        
+        /***************************CREACION DEL BOSS FINAL!!**********************************/
+                        posxBoss=x;
+                        posyBoss=y;
+                        
+                        
+                        cout<<"-----Pos x JEFE:-------- "<<posxBoss<<endl;
+                        cout<<"-----Pos y JEFE:-------- "<<posyBoss<<endl;
+                        
+                        
+                        
+                        /*cout<<"x: "<<x<<endl;
+                        cout<<"y: "<<y<<endl;
+                        cout<<"----"<<endl;
+                        */
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             boss = boss->NextSiblingElement("objectgroup");
          }
 //     TiXmlElement *properties = colisiones->FirstChildElement("properties");
 //     string atributo;

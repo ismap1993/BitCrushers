@@ -80,7 +80,8 @@ build/Debug/MinGW-Windows/main.o: main.cpp \
  c:/SFML/include/SFML/Audio/SoundFileFactory.hpp \
  c:/SFML/include/SFML/Audio/SoundFileFactory.inl \
  c:/SFML/include/SFML/Audio/SoundFileReader.hpp \
- c:/SFML/include/SFML/Audio/SoundFileWriter.hpp Enemigo.h NPC.h
+ c:/SFML/include/SFML/Audio/SoundFileWriter.hpp Enemigo.h NPC.h \
+ BossFinal.h
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -271,3 +272,5 @@ c:/SFML/include/SFML/Audio/SoundFileWriter.hpp:
 Enemigo.h:
 
 NPC.h:
+
+BossFinal.h:

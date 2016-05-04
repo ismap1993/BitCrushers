@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
+build/Debug/MinGW-Windows/BossFinal.o: BossFinal.cpp BossFinal.h NPC.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,8 +63,8 @@ build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Plataforma.h tinystr.h tinyxml.h \
- Enemigo.h NPC.h Jugador.h Proyectil.h c:/SFML/include/SFML/Audio.hpp \
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h Mapa.h Plataforma.h \
+ Proyectil.h c:/SFML/include/SFML/Audio.hpp \
  c:/SFML/include/SFML/Audio/InputSoundFile.hpp \
  c:/SFML/include/SFML/Audio/Export.hpp \
  c:/SFML/include/SFML/Audio/Listener.hpp \
@@ -80,9 +80,11 @@ build/Debug/MinGW-Windows/Mapa.o: Mapa.cpp Mapa.h \
  c:/SFML/include/SFML/Audio/SoundFileFactory.hpp \
  c:/SFML/include/SFML/Audio/SoundFileFactory.inl \
  c:/SFML/include/SFML/Audio/SoundFileReader.hpp \
- c:/SFML/include/SFML/Audio/SoundFileWriter.hpp BossFinal.h
+ c:/SFML/include/SFML/Audio/SoundFileWriter.hpp
 
-Mapa.h:
+BossFinal.h:
+
+NPC.h:
 
 c:/SFML/include/SFML/Graphics.hpp:
 
@@ -222,17 +224,11 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Plataforma.h:
-
-tinystr.h:
-
-tinyxml.h:
-
-Enemigo.h:
-
-NPC.h:
-
 Jugador.h:
+
+Mapa.h:
+
+Plataforma.h:
 
 Proyectil.h:
 
@@ -269,5 +265,3 @@ c:/SFML/include/SFML/Audio/SoundFileFactory.inl:
 c:/SFML/include/SFML/Audio/SoundFileReader.hpp:
 
 c:/SFML/include/SFML/Audio/SoundFileWriter.hpp:
-
-BossFinal.h:

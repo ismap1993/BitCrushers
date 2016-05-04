@@ -10,6 +10,7 @@
 #include <math.h> 
 #include "Jugador.h"
 #include "Enemigo.h"
+#include "BossFinal.h"
 //velocidad a la que se mueve el personaje
 #define kVel 10
 #define UPDATE_TICK_TIME 1000/15
@@ -25,6 +26,8 @@ int main(){
     //sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
     float posx = 200; //para que sean floats
     float posy = 359;
+        int modoJefe=0; //si esta en 1, hay pelea
+
     Jugador* player = new Jugador(posx, posy, 3, true);
     //player->leerXML();
         
@@ -38,6 +41,18 @@ int main(){
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
     Mapa *mapa = new Mapa();
     mapa->leerMapa(1);
+    
+    
+    /*CREACION BOSS FINAL!*/
+    BossFinal* boss = new BossFinal(true, mapa->posxBoss, mapa->posyBoss, 1);
+
+    sf::Texture texMuro;
+    if (!texMuro.loadFromFile("resources/PP/MUROPP.png")) {
+                                std::cerr << "Error cargando la imagen voto.png";
+                                exit(0);
+    }
+    sf::Sprite* muroJefe = new sf::Sprite(texMuro);
+    muroJefe->setPosition(mapa->posxBoss-950, mapa->posyBoss-355);
            
 
     //Creo la camara con el ancho y el largo de la ventana, ademas le paso la cantidad de pixeles que se mueve el personaje y el mapa
@@ -174,6 +189,29 @@ int main(){
         for(int j=0; j<distancia->size(); j++){
            distancia->at(j)->draw(window);
         }
+        
+        
+         //dibujo el jefe final
+        boss->draw(window);
+        
+        //muro de bloqueo para pelea con jefe
+        if(player->getSprite().getPosition().x>mapa->posxBoss-400){
+            modoJefe=1; //En cuanto sobrepasa cierta area, empieza el modo jefe
+            if(player->getSprite().getPosition().x>mapa->posxBoss-300){//La camara se bloquea
+                camara->desplazamientoCamara=0;
+            }
+        }
+        
+        if(modoJefe==1){ //Entonces el muro se dibuja tooodo el rato...
+            window.draw((*muroJefe));
+            if(player->getSprite().getGlobalBounds().intersects(muroJefe->getGlobalBounds())){
+                //...y tiene colisiones con el jugador para no dejarle volver atras
+                std::cout<<"CHOQUE!"<<std::endl;
+                player->posicionJugador.x=player->posicionJugador.x+5;
+            }
+        }
+        
+        
         mapa->dibujaPlataformas(window);
         //dibujo el personaje
         player->draw(window);
