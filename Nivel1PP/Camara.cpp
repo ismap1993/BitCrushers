@@ -512,7 +512,9 @@ void Camara::cartelFinal(sf::RenderWindow& window, Jugador* player){
     cartel.setOutlineThickness(2);
     
     sf::Text tituloText("-ENHORABUENA-", font, 30);
-     tituloText.setPosition(camara->getCenter().x-80,camara->getCenter().y-230);
+
+    //tituloText.setPosition(cartel.getOrigin().x+40,cartel.getOrigin().y-140);
+    tituloText.setPosition(camara->getCenter().x-130,camara->getCenter().y-230);
     tituloText.setCharacterSize(70);
     tituloText.setColor(sf::Color::Black);
    
@@ -529,7 +531,9 @@ void Camara::cartelFinal(sf::RenderWindow& window, Jugador* player){
     lines+=to_string(lastTime);
 
     sf::Text cuerpoText(lines, font, 30);
-    cuerpoText.setPosition(cartel.getSize().x/2-10,cartel.getSize().y/2-70);
+    //cuerpoText.setPosition(cartel.getOrigin().x-100,cartel.getOrigin().y-70);
+    cuerpoText.setPosition(camara->getCenter().x-160,camara->getCenter().y-160);
+   
     cuerpoText.setCharacterSize(50);
     cuerpoText.setColor(sf::Color::Black);
     
