@@ -57,6 +57,9 @@ public:
     int politico;
     int eliminadoC;
     int eliminadoA;
+    
+    int enemigosEliminados=0;
+    
 private:
     
     int direccionPro;

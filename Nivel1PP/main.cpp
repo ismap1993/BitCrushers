@@ -151,18 +151,24 @@ int main(){
             }
         }     
         
-        player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux);
-        if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
-            timeElapsed = updateClock.restart();
-            //manejadores de los enemigos
-            for(int i=0; i<cuerpo->size(); i++){
-               cuerpo->at(i)->handle(player);
-            }
-            for(int j=0; j<distancia->size(); j++){
-               distancia->at(j)->handle(player);
-            }
-        }
         
+        if(!player->muerto){
+            
+            player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux);
+            if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
+                timeElapsed = updateClock.restart();
+                //manejadores de los enemigos
+                for(int i=0; i<cuerpo->size(); i++){
+                   cuerpo->at(i)->handle(player);    
+                }
+                for(int j=0; j<distancia->size(); j++){
+                   distancia->at(j)->handle(player);
+                }
+            }
+        
+        }
+        else
+            camara->cartelGameOver(window, player);
         
         
         /**Render**/
@@ -249,6 +255,7 @@ int main(){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(distancia->at(j)->getSprite().getGlobalBounds())){
                         delete distancia->at(j);
                         distancia->erase(distancia->begin()+j);
+                        player->enemigosEliminados++;
                         if(!player->proyectiles->empty()){
                             delete player->proyectiles->at(i);
                             player->proyectiles->erase(player->proyectiles->begin()+i);
@@ -259,6 +266,7 @@ int main(){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(cuerpo->at(j)->getSprite().getGlobalBounds())){
                         delete cuerpo->at(j);
                         cuerpo->erase(cuerpo->begin()+j);
+                        player->enemigosEliminados++;
                         if(!player->proyectiles->empty()){
                             delete player->proyectiles->at(i);
                             player->proyectiles->erase(player->proyectiles->begin()+i);
@@ -330,7 +338,11 @@ int main(){
             }
         }
         
+        
+        
         camara->actualizarVidasPrincipales(player->vidasPrincipales);
+        
+        
        
         
        for(int i=0; i<mapa->arrayVotos->size(); i++){
@@ -343,8 +355,8 @@ int main(){
            }
        }
         
-        //camara->cartelFinal(window);
-        
+        //camara->cartelFinal(window, player);
+        //camara->cartelGameOver(window, player);
         
         window.display();
 

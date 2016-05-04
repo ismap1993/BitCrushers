@@ -30,7 +30,8 @@ public:
     void sumaVotos(int votos);
     void actualizarVidas(int v, int pol);
     void actualizarVidasPrincipales(int vp);
-    void cartelFinal(sf::RenderWindow& window);
+    void cartelFinal(sf::RenderWindow& window, Jugador* player);
+    void cartelGameOver(sf::RenderWindow& window, Jugador* player);
     //void setHudVotosValue(int votoObtenido);
     int getPosx();
     sf::Sprite getHudVotos();
