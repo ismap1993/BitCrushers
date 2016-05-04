@@ -25,7 +25,7 @@ int main(){
     //sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
     float posx = 200; //para que sean floats
     float posy = 359;
-    Jugador* player = new Jugador(posx, posy, 2, true);
+    Jugador* player = new Jugador(posx, posy, 3, true);
     //player->leerXML();
         
     ///////////////////////////BUFFER DE SONIDO////////
@@ -45,7 +45,11 @@ int main(){
     //creacion de vectores de enemigos
     std::vector<Enemigo*>* cuerpo = new std::vector<Enemigo*>();
     std::vector<Enemigo*>* distancia = new std::vector<Enemigo*>();
-
+    
+    //vectores auxiliares para que colisione el jugador con los sprites
+    std::vector<sf::Sprite>* cuerpoAux = new std::vector<sf::Sprite>();
+    std::vector<sf::Sprite>* distanciaAux = new std::vector<sf::Sprite>();
+    
     //creo un vector de fondos para ponerlo detras del mapa
     std::vector<sf::Sprite*> fondos;
     //variable para saber cuantas veces he de pintar el fondo ya que el mapa tiene mas pixeles que el fondo
@@ -69,9 +73,12 @@ int main(){
     //lleno los vectores
     for(int i=0; i<4; i++){
         cuerpo->push_back(new Enemigo(true, mapa->matrizEnemigosC[i][0],mapa->matrizEnemigosC[i][1], 0));
+        cuerpoAux->push_back(cuerpo->at(i)->getSprite());
     }
     for(int i=0; i<4; i++){
         distancia->push_back(new Enemigo(true, mapa->matrizEnemigosA[i][0],mapa->matrizEnemigosA[i][1], 1));
+        distanciaAux->push_back(distancia->at(i)->getSprite());
+
     }
     
     /********RELOJES Y TIEMPO*********/
@@ -129,7 +136,7 @@ int main(){
             }
         }     
         
-        player->handle(event, window, mapa, camara);
+        player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux);
         if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
             timeElapsed = updateClock.restart();
             //manejadores de los enemigos
@@ -171,7 +178,19 @@ int main(){
         //dibujo el personaje
         player->draw(window);
         
-       
+        //Para eliminar los enemigos de los vectores
+        if(player->politico==1 || player->politico == 4){
+            if(player->eliminadoC!=-1){
+                delete cuerpo->at(player->eliminadoC);
+                cuerpo->erase(cuerpo->begin()+player->eliminadoC);
+                player->eliminadoC=-1;
+            }
+            if(player->eliminadoA!=-1){
+                delete distancia->at(player->eliminadoA);
+                distancia->erase(distancia->begin()+player->eliminadoA);
+                player->eliminadoA=-1;
+            }
+        }
         
         
         int i=0;
@@ -181,23 +200,31 @@ int main(){
         for(i=0; i<player->proyectiles->size();i++){
             player->proyectiles->at(i)->dibuja(window);
             if(player->proyectiles->at(i)->destruir()){
-                delete player->proyectiles->at(i);
-                player->proyectiles->erase(player->proyectiles->begin()+i);
+                if(!player->proyectiles->empty()){
+                    //Hay que comprobar que el vector no este vacio cuando quiera eliminar un objeto
+                    delete player->proyectiles->at(i);
+                    player->proyectiles->erase(player->proyectiles->begin()+i);
+                }
+                
             }else{
                 for(int j=0; j<distancia->size(); j++){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(distancia->at(j)->getSprite().getGlobalBounds())){
                         delete distancia->at(j);
                         distancia->erase(distancia->begin()+j);
-                        delete player->proyectiles->at(i);
-                        player->proyectiles->erase(player->proyectiles->begin()+i);
+                        if(!player->proyectiles->empty()){
+                            delete player->proyectiles->at(i);
+                            player->proyectiles->erase(player->proyectiles->begin()+i);
+                        }
                     }
                 }
                 for(int j=0; j<cuerpo->size(); j++){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(cuerpo->at(j)->getSprite().getGlobalBounds())){
                         delete cuerpo->at(j);
                         cuerpo->erase(cuerpo->begin()+j);
-                        delete player->proyectiles->at(i);
-                        player->proyectiles->erase(player->proyectiles->begin()+i);
+                        if(!player->proyectiles->empty()){
+                            delete player->proyectiles->at(i);
+                            player->proyectiles->erase(player->proyectiles->begin()+i);
+                        }
                     }
                 }
             }
@@ -210,14 +237,18 @@ int main(){
             for(j=0; j<distancia->at(y)->proyectiles->size();j++){
                 distancia->at(y)->proyectiles->at(j)->dibuja(window);
                 if(distancia->at(y)->proyectiles->at(j)->destruir()){
-                    delete distancia->at(y)->proyectiles->at(j);
-                    distancia->at(y)->proyectiles->erase(distancia->at(y)->proyectiles->begin()+j);
+                    if(!distancia->at(y)->proyectiles->empty()){
+                        delete distancia->at(y)->proyectiles->at(j);
+                        distancia->at(y)->proyectiles->erase(distancia->at(y)->proyectiles->begin()+j);
+                    }
+                    
                 }else{
                     if(distancia->at(y)->proyectiles->at(j)->getSprite().getGlobalBounds().intersects(player->getSprite().getGlobalBounds())){
                         std::cout<<"El proyectil ha danyado al juagdor"<<std::endl;
-                        delete distancia->at(y)->proyectiles->at(j);
-                        distancia->at(y)->proyectiles->erase(distancia->at(y)->proyectiles->begin()+j);
-                        
+                        if(!distancia->at(y)->proyectiles->empty()){
+                            delete distancia->at(y)->proyectiles->at(j);
+                            distancia->at(y)->proyectiles->erase(distancia->at(y)->proyectiles->begin()+j);
+                        }
                         tiempo= relojGolpe.getElapsedTime().asSeconds();
                         player->golpeado=true;
                         player->vidas=player->vidas-1;
