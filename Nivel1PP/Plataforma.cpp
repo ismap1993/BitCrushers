@@ -15,18 +15,44 @@ using std::cout;
 using std::endl;
 using std::ifstream;
 
-Plataforma::Plataforma(int x, int y) {
+Plataforma::Plataforma(int x, int y, int numMapa) {
     posx=x;
     posy=y;
     tiempo=0;
     recorrido=0;
     direccion=1; //1 derecha, 0 izquierda
     
-    if (!texPlat.loadFromFile("resources/PP/PlataformaHorizontal.png"))
-    {
-        std::cerr << "Error cargando la imagen sprites.png";
-        exit(0);
+    if(numMapa==1){
+       if (!texPlat.loadFromFile("resources/PP/PlataformaHorizontal.png"))
+        {
+            std::cerr << "Error cargando la imagen sprites.png";
+            exit(0);
+        }
     }
+    
+    if(numMapa==2){
+       if (!texPlat.loadFromFile("resources/PSOE/PlataformaHorizontalPSOE.png"))
+        {
+            std::cerr << "Error cargando la imagen sprites.png";
+            exit(0);
+        }
+    }
+    if(numMapa==3){
+       if (!texPlat.loadFromFile("resources/CIUDADANOS/PlataformaHorizontal.png"))
+        {
+            std::cerr << "Error cargando la imagen sprites.png";
+            exit(0);
+        }
+    }
+    if(numMapa==4){
+       if (!texPlat.loadFromFile("resources/PODEMOS/PlataformaHorizontalPodemos.png"))
+        {
+            std::cerr << "Error cargando la imagen sprites.png";
+            exit(0);
+        }
+    }
+    
+    
     
     spritePlat.setTexture(texPlat);
     spritePlat.setPosition(x, y);

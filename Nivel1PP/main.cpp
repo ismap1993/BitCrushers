@@ -18,6 +18,7 @@
 
 
 int main(){
+    int numMapa=1;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
     
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Nivel 1 + colisiones!");
     window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
@@ -34,22 +35,48 @@ int main(){
     ///////////////////////////BUFFER DE SONIDO////////
     
     sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile("resources/PP/PP.flac"))
+    if(numMapa==1){
+        if (!buffer.loadFromFile("resources/PP/PP.flac"))
         return -1; // error  
+    } ///FALTA METER EL RESTO DE MUSICAS!!!
+    
     
 
     //declaro el mapa y lo cargo con la funcion leerMapa(). Esto lee el tmx y lo guarda
     Mapa *mapa = new Mapa();
-    mapa->leerMapa(1);
+    mapa->leerMapa(numMapa);
     
     
     /*CREACION BOSS FINAL!*/
     BossFinal* boss = new BossFinal(true, mapa->posxBoss, mapa->posyBoss, 1);
 
     sf::Texture texMuro;
-    if (!texMuro.loadFromFile("resources/PP/MUROPP.png")) {
+    if(numMapa==1){
+        if (!texMuro.loadFromFile("resources/PP/MUROPP.png")) {
                                 std::cerr << "Error cargando la imagen voto.png";
                                 exit(0);
+        }
+    }
+    
+    if(numMapa==2){
+        if (!texMuro.loadFromFile("resources/PSOE/MUROPSOE.png")) {
+                                std::cerr << "Error cargando la imagen voto.png";
+                                exit(0);
+        }
+    }
+    
+     if(numMapa==3){
+        if (!texMuro.loadFromFile("resources/CIUDADANOS/MUROCIUDADANOS.png")) {
+                                std::cerr << "Error cargando la imagen voto.png";
+                                exit(0);
+        }
+    }
+    
+     if(numMapa==4){
+        if (!texMuro.loadFromFile("resources/PODEMOS/MUROPODEMOS.png")) {
+                                std::cerr << "Error cargando la imagen voto.png";
+                                exit(0);
+        }
     }
     sf::Sprite* muroJefe = new sf::Sprite(texMuro);
     muroJefe->setPosition(mapa->posxBoss-950, mapa->posyBoss-355);
@@ -73,12 +100,37 @@ int main(){
     
     //cargo la textura del fondo
     sf::Texture tex;
-    if (!tex.loadFromFile("resources/background.jpg"))
-    {
-        std::cerr << "Error cargando la imagen background.jpg";
-        exit(0);
+    if(numMapa==1){
+           if (!tex.loadFromFile("resources/background.jpg"))
+        {
+          std::cerr << "Error cargando la imagen background.jpg";
+           exit(0);
+        }
     }
     
+    if(numMapa==2){
+           if (!tex.loadFromFile("resources/backgroundPSOE.jpg"))
+        {
+          std::cerr << "Error cargando la imagen background.jpg";
+           exit(0);
+        }
+    }
+    
+    if(numMapa==3){
+           if (!tex.loadFromFile("resources/backgroundCS.jpg"))
+        {
+          std::cerr << "Error cargando la imagen background.jpg";
+           exit(0);
+        }
+    }
+    
+    if(numMapa==4){
+           if (!tex.loadFromFile("resources/backgroundPODEMOS.jpg"))
+        {
+          std::cerr << "Error cargando la imagen background.jpg";
+           exit(0);
+        }
+    }
     //relleno el vector de fondos con el valor cuantasVecesDeboPintarElFondo
     for(int i=0; i<cuantasVecesDeboPintarElFondo; i++){
         fondos.push_back(new sf::Sprite());
