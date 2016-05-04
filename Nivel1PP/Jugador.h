@@ -72,6 +72,8 @@ private:
     
     sf::SoundBuffer bufferSalto;
     sf::Sound soundSalto;
+    sf::SoundBuffer bufferAtaque;
+    sf::Sound soundAtaque;
     
     int** matriz;
     sf::Texture texturaJugador;

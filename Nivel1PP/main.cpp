@@ -33,12 +33,37 @@ int main(){
     //player->leerXML();
         
     ///////////////////////////BUFFER DE SONIDO////////
+    sf::SoundBuffer bufferSobre;
+    sf::Sound soundSobre;
+    if (!bufferSobre.loadFromFile("resources/FX/SOBRE.flac"))
+        std::cout<<"Problema al cargar bufferSalto";
+    soundSobre.setBuffer(bufferSobre);
+    
+    sf::SoundBuffer bufferHurt;
+    sf::Sound soundHurt;
+    if (!bufferHurt.loadFromFile("resources/FX/HURT.flac"))
+        std::cout<<"Problema al cargar bufferSalto";
+    soundHurt.setBuffer(bufferHurt);
+    
+    
     
     sf::SoundBuffer buffer;
     if(numMapa==1){
         if (!buffer.loadFromFile("resources/PP/PP.flac"))
         return -1; // error  
-    } ///FALTA METER EL RESTO DE MUSICAS!!!
+    } 
+    if(numMapa==2){
+        if (!buffer.loadFromFile("resources/PSOE/PSOE.flac"))
+        return -1; // error  
+    } 
+    if(numMapa==3){
+        if (!buffer.loadFromFile("resources/CIUDADANOS/CIUDADANOS.flac"))
+        return -1; // error  
+    } 
+    if(numMapa==4){
+        if (!buffer.loadFromFile("resources/PODEMOS/PODEMOS.flac"))
+        return -1; // error  
+    } 
     
     
 
@@ -340,6 +365,7 @@ int main(){
                     if(!distancia->at(y)->proyectiles->empty()){
                         delete distancia->at(y)->proyectiles->at(j);
                         distancia->at(y)->proyectiles->erase(distancia->at(y)->proyectiles->begin()+j);
+                        soundHurt.play();
                     }
                     
                 }else{
@@ -348,6 +374,7 @@ int main(){
                         if(!distancia->at(y)->proyectiles->empty()){
                             delete distancia->at(y)->proyectiles->at(j);
                             distancia->at(y)->proyectiles->erase(distancia->at(y)->proyectiles->begin()+j);
+                            soundHurt.play();
                         }
                         tiempo= relojGolpe.getElapsedTime().asSeconds();
                         player->golpeado=true;
@@ -406,13 +433,16 @@ int main(){
                mapa->arrayVotos->erase(mapa->arrayVotos->begin()+i);
                //Aitor, aqui tienes que hacer una variable que incremente, asi te mostrara los votos que llevas
                camara->sumaVotos(1);
+               soundSobre.play();
            }
        }
         
         //camara->cartelFinal(window, player);
         //camara->cartelGameOver(window, player);
-        if(player->muerto)     //CONTORLA QUE APAREZCA EL CARTEL DE GAME OVER
+        if(player->muerto){     //CONTORLA QUE APAREZCA EL CARTEL DE GAME OVER
             camara->cartelGameOver(window, player);
+            musica.stop();
+        }
         
         window.display();
 

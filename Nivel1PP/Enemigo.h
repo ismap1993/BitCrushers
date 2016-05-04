@@ -46,6 +46,8 @@ private:
     int **matriz;
     sf::Texture texturaEnemigo;
     bool golpeado;
+    sf::SoundBuffer bufferHurt;
+    sf::Sound soundHurt;
 
 };
 

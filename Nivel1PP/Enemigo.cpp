@@ -81,6 +81,12 @@ Enemigo::Enemigo(bool valorPatrullaje, float posx, float posy, int type){
     golpeosSegundo;
     golpeoXseg=0;
     golpeado=false;
+    
+  
+    if (!bufferHurt.loadFromFile("resources/FX/HURT.flac"))
+        std::cout<<"Problema al cargar bufferHurt";
+    soundHurt.setBuffer(bufferHurt);
+    
 }
 
 
@@ -246,6 +252,7 @@ void Enemigo::handle(Jugador* jugador){
                     spriteSheet.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
                     if(spriteSheet.getGlobalBounds().intersects(jugador->getSprite().getGlobalBounds())){
                         std::cout<<"te miro y te golpeo izq"<<spriteSheet.getPosition().y<<" "<<jugador->getSprite().getPosition().y<<std::endl;
+                        soundHurt.play();
                         golpeado = true;
                         jugador->golpeado=true;
                         jugador->vidas=jugador->vidas-2;
@@ -260,6 +267,7 @@ void Enemigo::handle(Jugador* jugador){
                 //golpero a la derecha cuerpo a cuerpo
                 if(golpeoXseg>1){
                     //std::cout<<"te miro y te golpeo dere"<<std::endl;
+                    soundHurt.play();
                     spriteSheet.setOrigin(40, matriz[8][3]/2);
                     spriteSheet.setTextureRect(sf::IntRect(matriz[8][0], matriz[8][1], matriz[8][2], matriz[8][3]));
                     if(spriteSheet.getGlobalBounds().intersects(jugador->getSprite().getGlobalBounds())){

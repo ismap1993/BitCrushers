@@ -119,6 +119,12 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     
    
     soundSalto.setBuffer(bufferSalto);
+    
+    if (!bufferAtaque.loadFromFile("resources/FX/ATAQUE.flac"))
+        std::cout<<"Problema al cargar bufferSalto";
+    
+   
+    soundAtaque.setBuffer(bufferAtaque);
 
     
     
@@ -580,7 +586,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)  || sf::Joystick::isButtonPressed(controllerIndex,2)){
         golpeoXseg=golpeosSegundo.getElapsedTime().asMilliseconds();
-        
+        soundAtaque.play();
         
 //        if(golpeoXseg>9.1){
 //                
