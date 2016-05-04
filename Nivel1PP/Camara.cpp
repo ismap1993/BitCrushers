@@ -492,26 +492,27 @@ void Camara::resetearCamara(){
 
 void Camara::cartelFinal(sf::RenderWindow& window, Jugador* player){
     
+    setLastTime(countdown);
     // Texto
     sf::Font font;  
     font.loadFromFile("resources/alterebro-pixel-font.ttf");
   
     sf::RectangleShape bgCartel;
-    bgCartel.setFillColor(sf::Color(255,255,255,200));
+    bgCartel.setFillColor(sf::Color(180,255,180,200));
     bgCartel.setSize(sf::Vector2f((float)window.getSize().x, (float)window.getSize().y));
     bgCartel.setOrigin((float)bgCartel.getSize().x/2, (float)bgCartel.getSize().y/2);
-    bgCartel.setPosition(window.getSize().x/2,window.getSize().y/2);
+    bgCartel.setPosition(camara->getCenter().x,camara->getCenter().y);
     
     sf::RectangleShape cartel;
     cartel.setFillColor(sf::Color(255,255,255,255));
     cartel.setSize(sf::Vector2f((float)window.getSize().x/1.4, (float)window.getSize().y/1.4));
     cartel.setOrigin((float)cartel.getSize().x/2, (float)cartel.getSize().y/2);
-    cartel.setPosition(window.getSize().x/2,window.getSize().y/2);
+    cartel.setPosition(camara->getCenter().x,camara->getCenter().y);
     cartel.setOutlineColor(sf::Color::Black);
     cartel.setOutlineThickness(2);
     
     sf::Text tituloText("-ENHORABUENA-", font, 30);
-    tituloText.setPosition(cartel.getSize().x/2+10,cartel.getSize().y/2-140);
+     tituloText.setPosition(camara->getCenter().x-80,camara->getCenter().y-230);
     tituloText.setCharacterSize(70);
     tituloText.setColor(sf::Color::Black);
    
@@ -525,7 +526,7 @@ void Camara::cartelFinal(sf::RenderWindow& window, Jugador* player){
     lines+="\nSIMPATIZANTE LIBERADO: ";
     lines+=to_string("NO");
     lines+="\n\nTIEMPO: ";
-    lines+=to_string(countdown);
+    lines+=to_string(lastTime);
 
     sf::Text cuerpoText(lines, font, 30);
     cuerpoText.setPosition(cartel.getSize().x/2-10,cartel.getSize().y/2-70);
@@ -541,26 +542,28 @@ void Camara::cartelFinal(sf::RenderWindow& window, Jugador* player){
 
 void Camara::cartelGameOver(sf::RenderWindow& window, Jugador* player){
     
+    setLastTime(countdown);
     // Texto
     sf::Font font;  
     font.loadFromFile("resources/alterebro-pixel-font.ttf");
   
     sf::RectangleShape bgCartel;
-    bgCartel.setFillColor(sf::Color(255,255,255,200));
+    bgCartel.setFillColor(sf::Color(255,180,180,200));
     bgCartel.setSize(sf::Vector2f((float)window.getSize().x, (float)window.getSize().y));
     bgCartel.setOrigin((float)bgCartel.getSize().x/2, (float)bgCartel.getSize().y/2);
-    bgCartel.setPosition(window.getSize().x/2,window.getSize().y/2);
+    bgCartel.setPosition(camara->getCenter().x,camara->getCenter().y);
     
     sf::RectangleShape cartel;
     cartel.setFillColor(sf::Color(255,255,255,255));
     cartel.setSize(sf::Vector2f((float)window.getSize().x/1.4, (float)window.getSize().y/1.4));
     cartel.setOrigin((float)cartel.getSize().x/2, (float)cartel.getSize().y/2);
-    cartel.setPosition(window.getSize().x/2,window.getSize().y/2);
+    cartel.setPosition(camara->getCenter().x,camara->getCenter().y);
     cartel.setOutlineColor(sf::Color::Black);
     cartel.setOutlineThickness(2);
     
     sf::Text tituloText("-GAME OVER-", font, 30);
-    tituloText.setPosition(cartel.getSize().x/2+40,cartel.getSize().y/2-140);
+    //tituloText.setPosition(cartel.getOrigin().x+40,cartel.getOrigin().y-140);
+    tituloText.setPosition(camara->getCenter().x-80,camara->getCenter().y-230);
     tituloText.setCharacterSize(70);
     tituloText.setColor(sf::Color::Black);
    
@@ -574,10 +577,12 @@ void Camara::cartelGameOver(sf::RenderWindow& window, Jugador* player){
     lines+="\nSIMPATIZANTE LIBERADO: ";
     lines+=to_string("NO");
     lines+="\n\nTIEMPO: ";
-    lines+=to_string(countdown);
+    lines+=to_string(lastTime);
 
     sf::Text cuerpoText(lines, font, 30);
-    cuerpoText.setPosition(cartel.getSize().x/2-100,cartel.getSize().y/2-70);
+    //cuerpoText.setPosition(cartel.getOrigin().x-100,cartel.getOrigin().y-70);
+    cuerpoText.setPosition(camara->getCenter().x-240,camara->getCenter().y-160);
+   
     cuerpoText.setCharacterSize(50);
     cuerpoText.setColor(sf::Color::Black);
     
@@ -585,5 +590,12 @@ void Camara::cartelGameOver(sf::RenderWindow& window, Jugador* player){
     window.draw(cartel);
     window.draw(tituloText);
     window.draw(cuerpoText);
+    
+}
+
+void Camara::setLastTime(int c){
+    
+    if(lastTime==0)
+        lastTime = c;
     
 }

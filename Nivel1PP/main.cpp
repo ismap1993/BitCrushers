@@ -204,9 +204,13 @@ int main(){
         }     
         
         
-        if(!player->muerto){
-            
+        if(!player->muerto)     //CONTORLA QUE EL HANDLE SE BLOQUEE
             player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux);
+             
+        else
+            camara->cartelGameOver(window, player);
+        
+        
             if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
                 timeElapsed = updateClock.restart();
                 //manejadores de los enemigos
@@ -218,9 +222,7 @@ int main(){
                 }
             }
         
-        }
-        else
-            camara->cartelGameOver(window, player);
+       
         
         
         /**Render**/
@@ -409,6 +411,8 @@ int main(){
         
         //camara->cartelFinal(window, player);
         //camara->cartelGameOver(window, player);
+        if(player->muerto)     //CONTORLA QUE APAREZCA EL CARTEL DE GAME OVER
+            camara->cartelGameOver(window, player);
         
         window.display();
 

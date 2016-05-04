@@ -32,6 +32,7 @@ public:
     void actualizarVidasPrincipales(int vp);
     void cartelFinal(sf::RenderWindow& window, Jugador* player);
     void cartelGameOver(sf::RenderWindow& window, Jugador* player);
+    void setLastTime(int c);
     //void setHudVotosValue(int votoObtenido);
     int getPosx();
     sf::Sprite getHudVotos();
@@ -51,6 +52,7 @@ public:
     void resetearCamara();
     int desplazamientoCamara;
     int posicionOrigenCamara;
+    int lastTime = 0;
     
 private:
     
