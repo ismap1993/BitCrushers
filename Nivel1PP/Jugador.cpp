@@ -396,7 +396,74 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
     
     
+    if(vidasPrincipales!=0){
     
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) || sf::Joystick::isButtonPressed(controllerIndex,3)){
+        politico=1;
+        switch(politico){
+        case 1:
+            if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
+                std::cerr<<"Error al cargar la textura de pablospritesheet.png";
+            }
+            break;
+        case 2:
+            if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
+                std::cerr<<"Error al cargar la textura de albertspritesheet.png";
+            }
+            break;
+        case 3:
+            if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
+                std::cerr<<"Error al cargar la textura de marianospritesheet.png";
+            }
+            break;
+        case 4:
+            if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
+                std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
+            }
+            break;
+            
+    }
+    }
+    
+    }
+    
+    if(vidasPrincipales!=0){
+            
+        
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) || sf::Joystick::isButtonPressed(controllerIndex,1)){
+        politico=2;
+        Camara *cam;
+        
+        switch(politico){
+            case 1:
+                if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
+                    std::cerr<<"Error al cargar la textura de pablospritesheet.png";
+                }
+                break;
+            case 2:
+                if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
+                    std::cerr<<"Error al cargar la textura de albertspritesheet.png";
+                }
+                break;
+            case 3:
+                if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
+                    std::cerr<<"Error al cargar la textura de marianospritesheet.png";
+                }
+                break;
+            case 4:
+                if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
+                    std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
+                }
+                break;
+
+        }
+    }
+    }
+    
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){
+        
+    }
     
     
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::PovX) ==  100){

@@ -28,7 +28,7 @@ int main(){
     float posy = 359;
         int modoJefe=0; //si esta en 1, hay pelea
 
-    Jugador* player = new Jugador(posx, posy, 3, true);
+    Jugador* player = new Jugador(posx, posy, 2, true);
     //player->leerXML();
         
     ///////////////////////////BUFFER DE SONIDO////////

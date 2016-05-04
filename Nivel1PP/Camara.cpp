@@ -186,11 +186,11 @@ Camara::Camara(int width, int height, int desp, Mapa &map){
     hudVotos.setTexture(texturaHUD);
     vidasPrincipales.setTexture(texturaHUD);
     barraVida.setTexture(texturaHUD);
-    miniatura1.setTexture(texturaHUD);
+    /*miniatura1.setTexture(texturaHUD);
     miniatura1vida.setTexture(texturaHUD);
     miniatura2.setTexture(texturaHUD);
     miniatura2vida.setTexture(texturaHUD);
-
+*/
     
 
     //Cojo el sprite que me interesa por defecto del sheet
