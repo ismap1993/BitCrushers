@@ -1346,8 +1346,8 @@
    <tile gid="1"/>
    <tile gid="1"/>
    <tile gid="1"/>
-   <tile gid="1"/>
-   <tile gid="1"/>
+   <tile gid="18"/>
+   <tile gid="17"/>
    <tile gid="1"/>
    <tile gid="1"/>
    <tile gid="1"/>
@@ -8113,13 +8113,13 @@
   <object id="2" name="Enemigo C" x="545" y="320" width="66" height="92"/>
   <object id="4" name="Enemigo C" x="1950" y="163" width="66" height="92"/>
   <object id="6" name="Enemigo C" x="3136" y="357" width="66" height="92"/>
-  <object id="10" name="Enemigo C" x="3904" y="357" width="66" height="92"/>
+  <object id="10" name="Enemigo C" x="3647" y="356" width="66" height="92"/>
  </objectgroup>
  <objectgroup color="#00007f" name="Enemigos A">
   <object id="3" name="Enemigo A" x="1599" y="318" width="65" height="96"/>
   <object id="5" name="Enemigo A" x="2048.5" y="318" width="65" height="96"/>
   <object id="8" name="Enemigo A" x="2911.5" y="353" width="65" height="96"/>
-  <object id="9" name="Enemigo A" x="4129.5" y="352" width="65" height="96"/>
+  <object id="9" name="Enemigo A" x="3806.5" y="353" width="65" height="96"/>
  </objectgroup>
  <objectgroup color="#00ffff" name="Plataforma">
   <object id="12" name="P. horizontal" x="2224" y="349.667" width="32" height="32"/>
@@ -9428,8 +9428,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="18"/>
-   <tile gid="17"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -12157,7 +12157,7 @@
   </data>
  </layer>
  <objectgroup color="#55007f" name="BOSS FINAL">
-  <object id="13" name="BOSS FINAL" x="4765" y="292" width="159" height="156"/>
+  <object id="13" name="BOSS FINAL" x="4927" y="355" width="61" height="99"/>
  </objectgroup>
  <objectgroup draworder="index" name="Suelo">
   <properties>
