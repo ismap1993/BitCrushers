@@ -466,7 +466,7 @@ void Camara::actualizarVidas(int v, int pol){
         }
 }
 
-void Camara::cartelFinal(sf::RenderWindow& window, Jugador& player){
+void Camara::cartelFinal(sf::RenderWindow& window){
     
     // Texto
     sf::Font font;  
@@ -487,24 +487,12 @@ void Camara::cartelFinal(sf::RenderWindow& window, Jugador& player){
     cartel.setOutlineThickness(2);
     
     sf::Text tituloText("-ENHORABUENA-", font, 30);
-    tituloText.setPosition(cartel.getSize().x/2+10,cartel.getSize().y/2-140);
+    tituloText.setPosition(cartel.getSize().x/2+20,cartel.getSize().y/2-140);
     tituloText.setCharacterSize(70);
     tituloText.setColor(sf::Color::Black);
-   
-    std::string lines = std::string("Has superado el nivel");
-    lines+="\n\nVOTOS CONSEGUIDOS: ";
-    lines+=to_string(votosConseguidos);
-    lines+="\nPACTO REALIZADO: ";
-    lines+=to_string("NO");
-    lines+="\nENEMIGOS DERROTADOS: ";
-    lines+=to_string(player->enemigosEliminados);
-    lines+="\nSIMPATIZANTE LIBERADO: ";
-    lines+=to_string("NO");
-    lines+="\n\nTIEMPO: ";
-    lines+=to_string(countdown);
-
-    sf::Text cuerpoText(lines, font, 30);
-    cuerpoText.setPosition(cartel.getSize().x/2-10,cartel.getSize().y/2-70);
+    
+    sf::Text cuerpoText("Has superado el nivel \n\nVOTOS CONSEGUIDOS: 28 \nPACTO: NO REALIZADO \nENEMGOS DEROTADOS: 3 \nSIMPATIZANTE LIBERADO: SI \n\nTIEMPO: 2m 30s", font, 30);
+    cuerpoText.setPosition(cartel.getSize().x/2+20,cartel.getSize().y/2-70);
     cuerpoText.setCharacterSize(50);
     cuerpoText.setColor(sf::Color::Black);
     
