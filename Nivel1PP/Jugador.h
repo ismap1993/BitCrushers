@@ -30,9 +30,12 @@ public:
     sf::Sprite getSprite();
     void leerXML();
     void draw(sf::RenderWindow &window);
-    void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara);
+    void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara, std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a);
     void disparar();
     bool isMoving();
+    void golpeando(std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a);
+    
+ 
     bool salto;
     int alturaSuelo;
     sf::Vector2f posicionAnterior;
@@ -52,6 +55,8 @@ public:
     int vidas;
     int vidasPrincipales;
     int politico;
+    int eliminadoC;
+    int eliminadoA;
 private:
     
     int direccionPro;

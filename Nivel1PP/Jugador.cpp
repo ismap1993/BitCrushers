@@ -108,7 +108,8 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     col=0;
     paso=0;
     golpeoXseg=0;
-    
+    eliminadoA=-1;
+    eliminadoC=-1;
     
     ///////////////////////////BUFFER DE SONIDO////////
     
@@ -225,6 +226,7 @@ void Jugador::leerXML(){
 void Jugador::draw(sf::RenderWindow& window){
     if(muerto==false){
         window.draw(sprite);
+        //std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
     }
     //std::cout<<sprite.getPosition().y<<std::endl;
     
@@ -292,7 +294,9 @@ sf::Sprite Jugador::getSprite(){
     return sprite;
 }
 
-void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara){
+//estoy pasando por parametro los vectores de sprites por el handle (que es una guarrada) porque no puedo hacerlo en el main
+//una vez con la maquina de estado podremos accedera ellos sin pasarlo por parametro
+void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara, std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a){
   
     /*sf::Clock golpeoTime;
     float golpeo=0;
@@ -495,6 +499,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             }
         }
         else{ 
+            sprite.setOrigin(matriz[6][2]/2,matriz[6][3]/2);
             sprite.setTextureRect(sf::IntRect(matriz[6][0], matriz[6][1], matriz[6][2], matriz[6][3]));
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
                 sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
@@ -510,13 +515,13 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         golpeoXseg=golpeosSegundo.getElapsedTime().asMilliseconds();
         
         
-        if(golpeoXseg>9.1){
-                
-                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
-                sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
-                velocidadJugador.x = 0;
-                golpeosSegundo.restart();
-            }
+//        if(golpeoXseg>9.1){
+//                
+//                sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
+//                sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+//                velocidadJugador.x = 0;
+//                golpeosSegundo.restart();
+//            }
         
         if(direccion==1){
             if(golpeoXseg>9.1){
@@ -524,7 +529,14 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 sprite.setOrigin(matriz[0][2]/4,matriz[0][3]/2);
                 sprite.setTextureRect(sf::IntRect(matriz[1][0], matriz[1][1], matriz[1][2], matriz[1][3]));
                 velocidadJugador.x = 0;
+                
                 golpeosSegundo.restart();
+                if(politico == 1 || politico == 4){
+                    golpeando(c, a);
+                }else{
+                    disparar();
+                }
+                
             }
             
             
@@ -532,17 +544,24 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         else if(direccion==0){
             if(golpeoXseg>9.1){
+                std::cout<<"Barros "<<sprite.getOrigin().x<<" "<<sprite.getOrigin().y<<std::endl;
                 sprite.setOrigin(60,matriz[2][3]/2);
                 sprite.setTextureRect(sf::IntRect(matriz[2][0], matriz[2][1], matriz[2][2], matriz[2][3]));
+                std::cout<<"de vulgaridad"<<sprite.getOrigin().x<<" "<<sprite.getOrigin().y<<std::endl;
                 velocidadJugador.x = 0;
+                std::cout<<"soy el mas gyuay"<<std::endl;
                 golpeosSegundo.restart();
-                
+                if(politico == 1 || politico == 4){
+                    golpeando(c, a);
+                }else{
+                    disparar();
+                }
                 //sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2);
                 //sprite.setPosition(sprite.getOrigin().x + 50, 0);
-                if(!(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
-                    
-                    sprite.setOrigin(60,matriz[2][3]/2);
-                }
+//                if(!(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))){
+//                    
+//                    sprite.setOrigin(60,matriz[2][3]/2);
+//                }
                 
             }
             //sprite.setOrigin(1000000,matriz[0][3]/2);
@@ -631,6 +650,7 @@ void Jugador::disparar(){
                 proyectiles->push_back(pro);
                 /****/
                 std::cout << "Hay: "<< proyectiles->size() << " proyectiles" << std::endl;
+                
                 /****/
             }
         }
@@ -658,5 +678,26 @@ bool Jugador::isMoving(){
     else if(posicionJugador.x+posicionAnterior.x == -2 || posicionJugador.x+posicionAnterior.x == 0)
         return false;
     
+}
+
+void Jugador::golpeando(vector<sf::Sprite>& c, std::vector<sf::Sprite>& a) {
+    
+    std::cout<<"le estoy pasando los enemigos correctamente"<<c.size()<<" "<<a.size()<<std::endl;
+    for(int i=0; i<c.size(); i++){
+        if(sprite.getGlobalBounds().intersects(c.at(i).getGlobalBounds())){
+            c.erase(c.begin()+i);
+            eliminadoC=i;
+        }
+    }
+    for(int i=0; i<a.size(); i++){
+        if(sprite.getGlobalBounds().intersects(a.at(i).getGlobalBounds())){
+            a.erase(a.begin()+i);
+            eliminadoA=i;
+        }
+    }
     
 }
+
+    
+    
+    
