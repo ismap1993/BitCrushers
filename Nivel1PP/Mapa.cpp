@@ -58,7 +58,10 @@ void Mapa::leerMapa(int numMapa){
 
     //creo el objeto xml
     TiXmlDocument doc;
-    doc.LoadFile("resources/PP/nivel1PP.tmx");
+    if(numMapa==1)doc.LoadFile("resources/PP/nivel1PP.tmx");
+    if(numMapa==2)doc.LoadFile("resources/PSOE/nivel1PSOE.tmx");
+    if(numMapa==3)doc.LoadFile("resources/CIUDADANOS/nivel1CIUDADANOS.tmx");
+    if(numMapa==4)doc.LoadFile("resources/PSOE/nivel1PODEMOS.tmx");
     TiXmlElement* map = doc.FirstChildElement("map");
     
     //leo sus atributos
@@ -309,7 +312,7 @@ void Mapa::leerMapa(int numMapa){
                         x=atoi(xString.c_str());
                         y=atoi(yString.c_str());
                         
-                        Plataforma *plataforma = new Plataforma(x, y);
+                        Plataforma *plataforma = new Plataforma(x, y, numMapa);
                         arrayPlataformas.push_back(plataforma);
                         
                         /*cout<<"x: "<<x<<endl;

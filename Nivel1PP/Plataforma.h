@@ -11,7 +11,7 @@
 
 class Plataforma {
 public:
-    Plataforma(int x, int y);
+    Plataforma(int x, int y, int numMapa);
     Plataforma(const Plataforma& orig);
     virtual ~Plataforma();
     
