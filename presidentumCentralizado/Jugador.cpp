@@ -112,8 +112,6 @@ void Jugador::iniciarJugador(float x, float y, int politic, bool activado){
     
     proyectiles = new vector<Proyectil*>();
 
-  
-    
 }
 
 void Jugador::leerXML(){
@@ -192,11 +190,6 @@ sf::Sprite Jugador::getSprite(){
 
 void Jugador::handle(){
     
-      
-    
-
-     //std::cout<<"Mando encontrado en puerto: "<<controllerIndex<<std::endl;   
-    
     sf::Clock golpeoTime;
     float golpeo=0;
     
@@ -264,12 +257,12 @@ void Jugador::handle(){
         //velocidadJugador.y = aux;
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Joystick::isButtonPressed(Juego::Instance()->controllerIndex,2)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Joystick::isButtonPressed(1,2)){
         std::cout<<"Estoy presionando el espacio"<<std::endl;
         disparar();
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Joystick::getAxisPosition(Juego::Instance()->controllerIndex, sf::Joystick::PovY) ==  100){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  100){
         direccionPro = 1;
         EInGame::Instance(Juego::Instance())->mundo->camara->moveRight();
         //std::cout<<"ID= "<< mapa->getTile(this->getSprite().getPosition().x, this->getSprite().getPosition().y)<<std::endl;
@@ -282,7 +275,7 @@ void Jugador::handle(){
             sprite.setTextureRect(sf::IntRect(matriz[3][0], matriz[3][1], matriz[3][2], matriz[3][3]));
         }
     }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Joystick::getAxisPosition(Juego::Instance()->controllerIndex, sf::Joystick::PovY) ==  -100){
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  -100){
         direccionPro = 0;
         EInGame::Instance(Juego::Instance())->mundo->camara->moveLeft();
         
@@ -298,16 +291,16 @@ void Jugador::handle(){
     else{
         velocidadJugador.x = 0;
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&  sf::Joystick::getAxisPosition(Juego::Instance()->controllerIndex, sf::Joystick::PovY) ==  100 && sf::Joystick::isButtonPressed(Juego::Instance()->controllerIndex,0)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&  sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  100 && sf::Joystick::isButtonPressed(1,0)){
         
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[9][0], matriz[9][1], matriz[9][2], matriz[9][3]));
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && sf::Joystick::getAxisPosition(Juego::Instance()->controllerIndex, sf::Joystick::PovY) ==  -100 && sf::Joystick::isButtonPressed(Juego::Instance()->controllerIndex,0)){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && sf::Joystick::getAxisPosition(1, sf::Joystick::PovY) ==  -100 && sf::Joystick::isButtonPressed(1,0)){
         sprite.setOrigin(matriz[0][2]/2,matriz[0][3]/2); //Si el jugador cambia de direccion MIENTRAS golpea/dispara, recoloca el centroide (se evita un bug visual)
         sprite.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
     }
-    if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Joystick::isButtonPressed(Juego::Instance()->controllerIndex,0)) && salto){
+    if((sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Joystick::isButtonPressed(1,0)) && salto){
                 velocidadJugador.y = -velocidadSalto;
                 salto = false;
     }

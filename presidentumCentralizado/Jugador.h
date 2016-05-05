@@ -35,7 +35,6 @@ public:
     float velocidadMovimiento;
     sf::Vector2f velocidadJugador;
     bool muerto;
-    int controllerIndex;
     
     std::vector<Proyectil*>* proyectiles;//para poder acceder desde otras clases
     
