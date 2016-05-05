@@ -286,12 +286,12 @@ void Camara::moveRight(Jugador *personaje){
 
     }else{
         //con esto averiguamos el margen derecho para saber cuando parar la camara al llegar al final del mapa
-        int margen= background.getLocalBounds().width-(background.getLocalBounds().width*0.79);
+        int margen= background.getLocalBounds().width-(background.getLocalBounds().width*0.83);
         if(personaje->getSprite().getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(personaje->getSprite().getPosition().x+margen) &&
             (personaje->getSprite().getPosition().x+margen)<(mapa->_tileWidth*mapa->_width)){
         //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(background.getLocalBounds().width*0.79)){
         //if(personaje.getPosition().x>= camara->getSize().x*0.6 + desplazamientoCamara && camara->getCenter().x<=(mapa->_tileWidth*mapa->_width*0.79)){
-            if(personaje->getSprite().getPosition().x<=((mapa->_tileWidth*mapa->_width)-2164)){
+            //if(personaje->getSprite().getPosition().x<=((mapa->_tileWidth*mapa->_width)-2164)){
                 camara->move(kVel,0);
                 
                 hudVotos.move(kVel,0);
@@ -314,7 +314,7 @@ void Camara::moveRight(Jugador *personaje){
                 
                 
                 desplazamientoCamara+=kVel;
-            }
+            //}
             
             
 
