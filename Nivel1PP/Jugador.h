@@ -54,6 +54,9 @@ public:
     float golpeoXseg;
     int vidas;
     int vidasPrincipales;
+    int seleccionJugador;
+    int vidasMiniaturas1;
+    int vidasMiniaturas2;
     int politico;
     int eliminadoC;
     int eliminadoA;

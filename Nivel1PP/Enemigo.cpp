@@ -18,7 +18,7 @@
     //IA* ia;
     sf::Texture* spriteSheet; // spritesheet que usará el sprite
 */
-
+#include <SFML/OpenGl.hpp>
 #include "Enemigo.h"
 #include <iostream>
 #include <vector>
@@ -255,8 +255,28 @@ void Enemigo::handle(Jugador* jugador){
                         soundHurt.play();
                         golpeado = true;
                         jugador->golpeado=true;
-                        jugador->vidas=jugador->vidas-2;
+                        if(jugador->seleccionJugador==1){
+                            jugador->vidas=jugador->vidas-2;
+                        }
+                        
+                        if(jugador->seleccionJugador==2){
+                            jugador->vidasMiniaturas1=jugador->vidasMiniaturas1-2;
+                            if(jugador->vidasMiniaturas1<0){
+                                jugador->vidasMiniaturas1=0;
+                            }
+                            std::cout<<"El aliado tiene: "<<jugador->vidasMiniaturas1<<"vidasMiniaturas"<<std::endl;
+                        }
+                        
+                        if(jugador->seleccionJugador==3){
+                            jugador->vidasMiniaturas2=jugador->vidasMiniaturas2-2;
+                            if(jugador->vidasMiniaturas2<0){
+                                jugador->vidasMiniaturas2=0;
+                            }
+                            
+                        }
+                        
                         if(jugador->vidas<0)jugador->vidas=0;
+                        if(jugador->vidasPrincipales<0)jugador->vidasPrincipales=0;
                         std::cout<<"El jugador ahora tiene: "<<jugador->vidas<<"vidas"<<std::endl;
 
                     }
@@ -274,8 +294,30 @@ void Enemigo::handle(Jugador* jugador){
                         golpeado = true;
                         jugador->golpeado=true;
                         //std::cout<<"Le he golpeado al payaso ejeje"<<std::endl;
-                        jugador->vidas=jugador->vidas-2;
+                        
+                        
+                        if(jugador->seleccionJugador==1){
+                            jugador->vidas=jugador->vidas-2;
+                        }
+                        
+                        if(jugador->seleccionJugador==2){
+                            jugador->vidasMiniaturas1=jugador->vidasMiniaturas1-2;
+                            if(jugador->vidasMiniaturas1<0){
+                                jugador->vidasMiniaturas1=0;
+                            }
+                            std::cout<<"El aliado tiene: "<<jugador->vidasMiniaturas1<<"vidasMiniaturas"<<std::endl;
+                        }
+                        
+                        if(jugador->seleccionJugador==3){
+                            jugador->vidasMiniaturas2=jugador->vidasMiniaturas2-2;
+                            if(jugador->vidasMiniaturas2<0){
+                                jugador->vidasMiniaturas2=0;
+                            }
+                            
+                        }
                         if(jugador->vidas<0)jugador->vidas=0;
+                        if(jugador->vidasPrincipales<0)jugador->vidasPrincipales=0;
+                        
                         std::cout<<"El jugador ahora tiene: "<<jugador->vidas<<"vidas"<<std::endl;
 
                     }

@@ -1,3 +1,4 @@
+#include <SFML/OpenGl.hpp>
 #include <SFML/Graphics.hpp>
 #include "tinyxml.h"
 #include "Camara.h"
@@ -20,7 +21,16 @@
 int main(){
     int numMapa=1;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
     
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    
+    int width=1066;
+    int height=600;
     sf::RenderWindow window(sf::VideoMode(1066, 600), "Entregable: Nivel 1 + colisiones!");
+    //sf::RenderWindow window(window = new RenderWindow(new VideoMode(800, 600), "GLTEST", Styles.Default, settings));
+    /*sf::RenderWindow window(sf::VideoMode(width, height), "title", sf::Style::Default, settings);
+    std::cout <<"pruebaaaaaaaaa"<< window.getSettings().antialiasingLevel << std::endl;
+    */
     window.setVerticalSyncEnabled(true); //Para evitar cortes en los refrescos
     window.setFramerateLimit(60);	//Establecemos maximo real de procesamiento (aunque trabajamos con 60)
     //Creo un personaje para poder moverlo
@@ -228,9 +238,11 @@ int main(){
             }
         }     
         
-        
-        if(!player->muerto)     //CONTORLA QUE EL HANDLE SE BLOQUEE
+/****************************************************************************/        
+        if(!player->muerto){     //CONTORLA QUE EL HANDLE SE BLOQUEE
             player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux);
+            //int a;
+        }
              
         else
             camara->cartelGameOver(window, player);
@@ -254,9 +266,9 @@ int main(){
         window.clear();
          
         //dibujo los fondos
-        for(sf::Sprite* q : fondos){
+        /*for(sf::Sprite* q : fondos){
             window.draw(*q); 
-        }
+        }*/
         
         
         //dibujo el mapa con su metodo
@@ -378,8 +390,31 @@ int main(){
                         }
                         tiempo= relojGolpe.getElapsedTime().asSeconds();
                         player->golpeado=true;
-                        player->vidas=player->vidas-1;
+                        
+                        //player->vidas=player->vidas-1;
+                        
+                        if(player->seleccionJugador==1){
+                            player->vidas=player->vidas-2;
+                        }
+                        
+                        if(player->seleccionJugador==2){
+                            player->vidasMiniaturas1=player->vidasMiniaturas1-2;
+                            if(player->vidasMiniaturas1<0){
+                                player->vidasMiniaturas1=0;
+                            }
+                            
+                        }
+                        
+                        if(player->seleccionJugador==3){
+                            player->vidasMiniaturas2=player->vidasMiniaturas2-2;
+                            if(player->vidasMiniaturas2<0){
+                                player->vidasMiniaturas2=0;
+                            }
+                            
+                        }
+                        
                         if(player->vidas<0)player->vidas=0;
+                        if(player->vidasPrincipales<0)player->vidasPrincipales=0;
                         std::cout<<"El jugador ahora tiene: "<<player->vidas<<"vidas"<<std::endl;
                     }
                 }
@@ -395,33 +430,123 @@ int main(){
         window.draw(camara->getHudVotosValue());
         window.draw(camara->getContador());
         window.draw(camara->getContadorValue());
+        
+        if(player->seleccionJugador==2){
+            window.draw(camara->getMiniatura1());
+            window.draw(camara->getMiniatura1vida());
+            camara->actualizarVidasMiniaturas(player->vidasMiniaturas1, player->politico, player->seleccionJugador);
+            if(player->vidasMiniaturas1>0){
+                //player->draw(window);
+                //delete *player->seleccionJugador=2;
+            }
+            /*if(player->vidasMiniaturas1==0){
+                if(player->vidasMiniaturas2>0){
+                    player->seleccionJugador=3;
+                }
+                if(player->vidasPrincipales!=0){
+                    player->seleccionJugador=1;
+                }
+            }*/
+            if(player->vidasMiniaturas1==0){
+                //player->getSprite().getPosition().x;
+                //player->velocidadMovimiento=0;
+                //player->getSprite().setScale(100,100);
+                player->getSprite().scale(50,50);
+                 
+            }
+            
+        }
+        
+        if(player->seleccionJugador==3){
+            window.draw(camara->getMiniatura2());
+            window.draw(camara->getMiniatura2vida());
+            camara->actualizarVidasMiniaturas(player->vidasMiniaturas2, player->politico, player->seleccionJugador);
+            if(player->vidasMiniaturas2>0){
+                //player->draw(window);
+                //delete *player->seleccionJugador=3; 
+            }
+            
+        }
+        
         window.draw(camara->getBarraVida());
-        window.draw(camara->getMiniatura1());
-        window.draw(camara->getMiniatura1vida());
-        window.draw(camara->getMiniatura2());
-        window.draw(camara->getMiniatura2vida());
-
         window.draw(camara->getVidas());
         window.draw(camara->getVidasPrincipales());
-           
-        camara->actualizarTiempo();
-        camara->actualizarVidas(player->vidas, player->politico);
         
-        if(player->vidas==0){
-            player->muerto=true;
-            player->vidasPrincipales=player->vidasPrincipales-1;
-            
-            if(player->vidasPrincipales>0){//resucita con una vida menos
-                player->muerto=false;
-                player->vidas=10;
-                player->posicionJugador.x=200;
-                camara->resetearCamara();
+        if(player->seleccionJugador==1){
+            window.draw(camara->getBarraVida());
+            window.draw(camara->getVidas());
+            window.draw(camara->getVidasPrincipales());
+            camara->actualizarVidas(player->vidas, player->politico, player->seleccionJugador);
+            camara->actualizarVidasPrincipales(player->vidasPrincipales, player->seleccionJugador);
+            if(player->vidasPrincipales>0){
+                //player->draw(window);
+                //delete *player->seleccionJugador=1;
             }
         }
         
+           
+        camara->actualizarTiempo();
+        //camara->actualizarVidas(player->vidas, player->politico, player->seleccionJugador);
+        
+        /*if(player->vidasPrincipales==0){
+            player->vidasMiniaturas1=player->vidasMiniaturas1;
+            if(player->vidasMiniaturas1==0){
+                std::cout<<"MUERTOS TODOSSSSSSSSSS"<<std::endl;
+                player->vidasMiniaturas2=player->vidasMiniaturas2;
+                if(player->vidasMiniaturas2==0){
+                    player->muerto=true;
+                    std::cout<<"MUERTOS TODOSSSSSSSSSS"<<std::endl;
+                }
+            }
+            //player->muerto=true;
+            std::cout<<"MUERTOS TODOSSSSSSSSSS"<<std::endl;
+        }*/
+        
+        //if(player->seleccionJugador==1){
+            if(player->vidas==0){
+                /*if(player->vidasPrincipales==0){
+                    player->muerto=true;
+                }*/
+                
+                /*if(player->vidasMiniaturas1==0){
+                    player->muerto=true;
+                }
+                
+                if(player->vidasMiniaturas2==0){
+                    player->muerto=true;
+                }
+                 */
+                //player->muerto=true;
+                player->vidasPrincipales=player->vidasPrincipales-1;
+
+                if(player->vidasPrincipales>0){//resucita con una vida menos
+                    //player->muerto=false;
+                    player->vidas=10;
+                    player->posicionJugador.x=200;
+                    camara->resetearCamara();
+                }
+            }
+        
+        /*if(player->vidasMiniaturas1==0){
+            player->muerto=true;
+        }
+        
+        if(player->vidasMiniaturas2==0){
+            player->muerto=true;
+        }
+        */
         
         
-        camara->actualizarVidasPrincipales(player->vidasPrincipales);
+        
+        
+        
+        //camara->actualizarVidasPrincipales(player->vidasPrincipales, player->seleccionJugador);
+        
+        //}
+        
+        /*if(player->seleccionJugador==2 || player->seleccionJugador==3){
+            player->vidasPrincipales=0;
+        }*/
         
         
        
@@ -442,6 +567,7 @@ int main(){
         if(player->muerto){     //CONTORLA QUE APAREZCA EL CARTEL DE GAME OVER
             camara->cartelGameOver(window, player);
             musica.stop();
+            std::cout<<"HA MUEEEEERTO!!!"<<std::endl;
         }
         
         window.display();

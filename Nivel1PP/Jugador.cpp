@@ -10,6 +10,7 @@
  * 
  * Created on 5 de abril de 2016, 19:31
  */
+#include <SFML/OpenGl.hpp>
 #include <vector>
 #include <string> 
 #include <SFML/Graphics.hpp>
@@ -45,6 +46,9 @@ Jugador::~Jugador() {
 Jugador::Jugador(float x, float y, int politic, bool activado){
     vidas=10;
     vidasPrincipales=3;
+    seleccionJugador=1;
+    vidasMiniaturas1=10;
+    vidasMiniaturas2=10;
     
     matriz=new int*[99];
     for(int i=0; i<99;i++){
@@ -231,8 +235,15 @@ void Jugador::leerXML(){
 
 void Jugador::draw(sf::RenderWindow& window){
     if(muerto==false){
-        window.draw(sprite);
+        if(vidasPrincipales>0 || vidasMiniaturas1>0 || vidasMiniaturas2>0)
+            //muerto=true;
+            window.draw(sprite);
         //std::cout<<sprite.getPosition().x<<" "<<sprite.getPosition().y<<std::endl;
+        if(vidasPrincipales==0 && vidasMiniaturas1==0 && vidasMiniaturas2==0){
+            //AQUI ES DONDE SE MUERE EL JUGADOR, CUALQUIERA DE LOS ALIADOS
+            muerto=true;
+            cout<<"HA MUEEEEERTO!!!"<<endl;
+        }
     }
     //std::cout<<sprite.getPosition().y<<std::endl;
     
@@ -402,46 +413,17 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     }
     
     
-    if(vidasPrincipales!=0){
-    
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) || sf::Joystick::isButtonPressed(controllerIndex,3)){
-        politico=1;
-        switch(politico){
-        case 1:
-            if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
-                std::cerr<<"Error al cargar la textura de pablospritesheet.png";
-            }
-            break;
-        case 2:
-            if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
-                std::cerr<<"Error al cargar la textura de albertspritesheet.png";
-            }
-            break;
-        case 3:
-            if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
-                std::cerr<<"Error al cargar la textura de marianospritesheet.png";
-            }
-            break;
-        case 4:
-            if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
-                std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
-            }
-            break;
-            
-    }
-    }
-    
-    }
-    
-    if(vidasPrincipales!=0){
-            
+    if((vidasPrincipales>0) && vidasMiniaturas1>=0 && vidasMiniaturas2>=0){
         
+        //velocidadMovimiento=3;
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) || sf::Joystick::isButtonPressed(controllerIndex,1)){
-        politico=2;
-        Camara *cam;
-        
-        switch(politico){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) || sf::Joystick::isButtonPressed(controllerIndex,3)){
+            politico=2;
+            seleccionJugador=1;
+            vidas=vidas;
+            vidasPrincipales=vidasPrincipales;
+            
+            switch(politico){
             case 1:
                 if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
                     std::cerr<<"Error al cargar la textura de pablospritesheet.png";
@@ -463,12 +445,104 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 }
                 break;
 
+            }
         }
-    }
+    
     }
     
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){
+    else if(vidasPrincipales==0 && vidasMiniaturas1==0 && vidasMiniaturas2==0){
+        muerto=true;
+        cout<<"HA MUEEEEERTO!!!"<<endl;
+    }
+    
+    if((vidasPrincipales>=0 || vidasPrincipales!=0) && vidasMiniaturas1>0 && vidasMiniaturas2>=0){
+            
+        //velocidadMovimiento=3;
+    
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) || sf::Joystick::isButtonPressed(controllerIndex,1)){
+            politico=4;
+            seleccionJugador=2;
+            //vidasMiniaturas1=vidasMiniaturas1;
+
+            switch(politico){
+                case 1:
+                    if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de pablospritesheet.png";
+                    }
+                    break;
+                case 2:
+                    if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de albertspritesheet.png";
+                    }
+                    break;
+                case 3:
+                    if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de marianospritesheet.png";
+                    }
+                    break;
+                case 4:
+                    if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
+                    }
+                    break;
+
+            }
+        }
+    }
+    
+    else if(vidasPrincipales==0 && vidasMiniaturas1==0 && vidasMiniaturas2==0){
+        muerto=true;
+        cout<<"HA MUEEEEERTO!!!"<<endl;
+    }
+    
+    
+    if((vidasPrincipales>=0 || vidasPrincipales!=0) && vidasMiniaturas1>=0 && vidasMiniaturas2>0){
+        if(vidasMiniaturas1==0){
+            //posicionJugador.x=200;
+            //velocidadMovimiento=0;
+            
+        }
         
+        //velocidadMovimiento=3;
+    
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){
+            politico=3;
+            seleccionJugador=3;
+            //vidasMiniaturas2=vidasMiniaturas2;
+
+            switch(politico){
+                case 1:
+                    if(!texturaJugador.loadFromFile("resources/pablospritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de pablospritesheet.png";
+                    }
+                    break;
+                case 2:
+                    if(!texturaJugador.loadFromFile("resources/albertspritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de albertspritesheet.png";
+                    }
+                    break;
+                case 3:
+                    if(!texturaJugador.loadFromFile("resources/marianospritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de marianospritesheet.png";
+                    }
+                    break;
+                case 4:
+                    if(!texturaJugador.loadFromFile("resources/pedrospritesheet.png")){
+                        std::cerr<<"Error al cargar la textura de pedrospritesheet.png";
+                    }
+                    break;
+
+            }
+        }
+    }
+    
+    else if(vidasPrincipales==0 && vidasMiniaturas1==0 && vidasMiniaturas2==0){
+        muerto=true;
+        cout<<"HA MUEEEEERTO!!!"<<endl;
+    }
+    
+    if(vidasPrincipales==0 && vidasMiniaturas1==0 && vidasMiniaturas2==0){
+            muerto=true;
     }
     
     

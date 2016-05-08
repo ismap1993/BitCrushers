@@ -28,8 +28,9 @@ public:
     void moveRight(Jugador *personaje);
     void moveLeft(Jugador *personaje);
     void sumaVotos(int votos);
-    void actualizarVidas(int v, int pol);
-    void actualizarVidasPrincipales(int vp);
+    void actualizarVidas(int v, int pol, int seleccionJugador);
+    void actualizarVidasPrincipales(int vp, int seleccionJugador);
+    void actualizarVidasMiniaturas(int vm, int pol, int seleccionJugador);
     void cartelFinal(sf::RenderWindow& window, Jugador* player);
     void cartelGameOver(sf::RenderWindow& window, Jugador* player);
     void setLastTime(int c);
