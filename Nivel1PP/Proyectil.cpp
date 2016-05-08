@@ -60,12 +60,12 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
         spritePro.setTexture(*texPro);
         spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
     }else{
-        if (!texPro->loadFromFile("resources/CIUDADANOS/enemigosCIUDADANOS.png")){
-            std::cerr << "Error cargando la imagen";
+        if (!texPro->loadFromFile("resources/NPC-PROYECTIL.png")){
+            std::cerr << "Error cargando la imagen de los rpoyectiles";
             exit(0);
         } 
         spritePro.setTexture(*texPro);
-        spritePro.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
+        //spritePro.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
     }
 
     

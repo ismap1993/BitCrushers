@@ -30,10 +30,10 @@ public:
     sf::Sprite getSprite();
     void leerXML();
     void draw(sf::RenderWindow &window);
-    void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara, std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a);
+    void handle(sf::Event event, sf::RenderWindow& window, Mapa *mapa, Camara *camara, std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a, sf::Sprite& spriteBoss);
     void disparar();
     bool isMoving();
-    void golpeando(std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a);
+    void golpeando(std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a, sf::Sprite& spriteBoss);
     
  
     bool salto;
@@ -60,7 +60,7 @@ public:
     int politico;
     int eliminadoC;
     int eliminadoA;
-    
+    bool bossTocado;
     int enemigosEliminados=0;
     
 private:

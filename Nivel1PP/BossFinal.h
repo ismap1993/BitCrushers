@@ -41,11 +41,12 @@ public:
 private:
     sf::Clock aparicionProyectil;
     int direccion;//0 derecha. 1 izquierda
-    int tipo;//0 cuerpo. 1 distancia
+    int tipo;//1.Pablo 2.Albert 3.Rajoy 4.Pedro
     bool patrullaje;
     int **matriz;
     sf::Texture texturaEnemigo;
     bool golpeado;
+    bool activado;
 
 };
 
