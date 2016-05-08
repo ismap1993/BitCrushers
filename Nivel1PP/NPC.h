@@ -25,12 +25,13 @@ public:
 
     //virtual Mundo* getMundo();
     virtual ~NPC();
+     int hp; // vida que tiene el NPC
 protected:
 
     int x; //posicion del personaje en x
     int y; //posicion del personaje en y
     int ataque; // daño que el NPC inflinje al jugador
-    int hp; // vida que tiene el NPC
+   
     //Mundo* mundo;
     //IA* ia;
     sf::Sprite spriteSheet; // spritesheet que usará el sprite

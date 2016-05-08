@@ -19,7 +19,7 @@
 
 
 int main(){
-    int numMapa=2;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
+    int numMapa=1;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
     
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
@@ -84,7 +84,7 @@ int main(){
     
     /*CREACION BOSS FINAL!*/
     BossFinal* boss = new BossFinal(true, mapa->posxBoss, mapa->posyBoss, numMapa);// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
-
+    sf::Sprite*  spriteBoos = new sf::Sprite(boss->getSprite());
     sf::Texture texMuro;
     if(numMapa==1){
         if (!texMuro.loadFromFile("resources/PP/MUROPP.png")) {
@@ -182,7 +182,7 @@ int main(){
         distanciaAux->push_back(distancia->at(i)->getSprite());
 
     }
-    std::cout<<"probadno"<<std::endl;
+    
     /********RELOJES Y TIEMPO*********/
     sf::Clock relojGolpe;
     sf::Clock clock;
@@ -196,7 +196,7 @@ int main(){
     musica.setBuffer(buffer);
     musica.setLoop(true);
     musica.play(); 
-     
+    
     /**********BUCLE PRINCIPAL*************/
     while (window.isOpen()){
         //Bucle de obtención de eventos
@@ -242,7 +242,7 @@ int main(){
         
 /****************************************************************************/        
         if(!player->muerto){     //CONTORLA QUE EL HANDLE SE BLOQUEE
-            player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux);
+            player->handle(event, window, mapa, camara, *cuerpoAux, *distanciaAux, *spriteBoos);
             //int a;
         }
              
@@ -264,7 +264,6 @@ int main(){
         
        
         
-        
         /**Render**/
         window.clear();
          
@@ -273,7 +272,8 @@ int main(){
             window.draw(*q); 
         }
         
-        
+                
+
         //dibujo el mapa con su metodo
         mapa->dibuja(window);
         
@@ -328,6 +328,10 @@ int main(){
                 distancia->erase(distancia->begin()+player->eliminadoA);
                 player->eliminadoA=-1;
             }
+            if(player->bossTocado){
+                boss->hp-=2;
+                player->bossTocado = false;
+            }
         }
         
         
@@ -365,6 +369,13 @@ int main(){
                             delete player->proyectiles->at(i);
                             player->proyectiles->erase(player->proyectiles->begin()+i);
                         }
+                    }
+                }
+                if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(boss->getSprite().getGlobalBounds())){
+                    boss->hp-=1;
+                    if(!player->proyectiles->empty()){
+                        delete player->proyectiles->at(i);
+                        player->proyectiles->erase(player->proyectiles->begin()+i);
                     }
                 }
             }
@@ -424,6 +435,55 @@ int main(){
             }
             
         }
+        j=0;
+            for(j=0; j<boss->proyectiles->size();j++){
+                boss->proyectiles->at(j)->dibuja(window);
+                if(boss->proyectiles->at(j)->destruir()){
+                    if(!boss->proyectiles->empty()){
+                        delete boss->proyectiles->at(j);
+                        boss->proyectiles->erase(boss->proyectiles->begin()+j);
+                        soundHurt.play();
+                    }
+                    
+                }else{
+                    if(boss->proyectiles->at(j)->getSprite().getGlobalBounds().intersects(player->getSprite().getGlobalBounds())){
+                        std::cout<<"El proyectil ha danyado al juagdor"<<std::endl;
+                        if(!boss->proyectiles->empty()){
+                            delete boss->proyectiles->at(j);
+                            boss->proyectiles->erase(boss->proyectiles->begin()+j);
+                            soundHurt.play();
+                        }
+                        tiempo= relojGolpe.getElapsedTime().asSeconds();
+                        player->golpeado=true;
+                        
+                        //player->vidas=player->vidas-1;
+                        
+                        if(player->seleccionJugador==1){
+                            player->vidas=player->vidas-2;
+                        }
+                        
+                        if(player->seleccionJugador==2){
+                            player->vidasMiniaturas1=player->vidasMiniaturas1-2;
+                            if(player->vidasMiniaturas1<0){
+                                player->vidasMiniaturas1=0;
+                            }
+                            
+                        }
+                        
+                        if(player->seleccionJugador==3){
+                            player->vidasMiniaturas2=player->vidasMiniaturas2-2;
+                            if(player->vidasMiniaturas2<0){
+                                player->vidasMiniaturas2=0;
+                            }
+                            
+                        }
+                        
+                        if(player->vidas<0)player->vidas=0;
+                        if(player->vidasPrincipales<0)player->vidasPrincipales=0;
+                        std::cout<<"El jugador ahora tiene: "<<player->vidas<<"vidas"<<std::endl;
+                    }
+                }
+            }
         
         
         //setteo la camara
@@ -553,18 +613,20 @@ int main(){
         
         
        
-        
-       for(int i=0; i<mapa->arrayVotos->size(); i++){
-           if(mapa->arrayVotos->at(i)->getGlobalBounds().intersects(player->getSprite().getGlobalBounds())){
-               std::cout<<"El personaje ha tocado un voto"<<std::endl;
-               delete mapa->arrayVotos->at(i);
-               mapa->arrayVotos->erase(mapa->arrayVotos->begin()+i);
-               //Aitor, aqui tienes que hacer una variable que incremente, asi te mostrara los votos que llevas
-               camara->sumaVotos(1);
-               soundSobre.play();
-           }
-       }
-        
+        std::cout<<"Cout para saber en que linea a veces me peta (Alfonso)"<<std::endl; 
+        for(int i=0; i<mapa->arrayVotos->size(); i++){
+            if(mapa->arrayVotos->at(i)->getGlobalBounds().intersects(player->getSprite().getGlobalBounds())){
+                std::cout<<"El personaje ha tocado un voto"<<std::endl;
+                delete mapa->arrayVotos->at(i);
+                mapa->arrayVotos->erase(mapa->arrayVotos->begin()+i);
+                //Aitor, aqui tienes que hacer una variable que incremente, asi te mostrara los votos que llevas
+                camara->sumaVotos(1);
+                soundSobre.play();
+            }
+        }
+        if(boss->hp < 1){
+            camara->cartelFinal(window, player);
+        }
         //camara->cartelFinal(window, player);
         //camara->cartelGameOver(window, player);
         if(player->muerto){     //CONTORLA QUE APAREZCA EL CARTEL DE GAME OVER
@@ -574,8 +636,8 @@ int main(){
         }
         
         window.display();
-
     }
-    
+    std::cout<<"Cout para saber en que linea a veces me peta (Alfonso)2"<<std::endl;
+
     return 0;
 }

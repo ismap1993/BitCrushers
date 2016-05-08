@@ -114,7 +114,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     golpeoXseg=0;
     eliminadoA=-1;
     eliminadoC=-1;
-    
+    bossTocado = false;
     ///////////////////////////BUFFER DE SONIDO////////
     
    
@@ -313,7 +313,7 @@ sf::Sprite Jugador::getSprite(){
 
 //estoy pasando por parametro los vectores de sprites por el handle (que es una guarrada) porque no puedo hacerlo en el main
 //una vez con la maquina de estado podremos accedera ellos sin pasarlo por parametro
-void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara, std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a){
+void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Camara *camara, std::vector<sf::Sprite>& c, std::vector<sf::Sprite>& a, sf::Sprite& spriteBoss){
   
     /*sf::Clock golpeoTime;
     float golpeo=0;
@@ -679,7 +679,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 
                 golpeosSegundo.restart();
                 if(politico == 1 || politico == 4){
-                    golpeando(c, a);
+                    golpeando(c, a, spriteBoss);
                 }else{
                     disparar();
                 }
@@ -699,7 +699,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
                 std::cout<<"soy el mas gyuay"<<std::endl;
                 golpeosSegundo.restart();
                 if(politico == 1 || politico == 4){
-                    golpeando(c, a);
+                    golpeando(c, a, spriteBoss);
                 }else{
                     disparar();
                 }
@@ -827,7 +827,7 @@ bool Jugador::isMoving(){
     
 }
 
-void Jugador::golpeando(vector<sf::Sprite>& c, std::vector<sf::Sprite>& a) {
+void Jugador::golpeando(vector<sf::Sprite>& c, std::vector<sf::Sprite>& a, sf::Sprite& spriteBoss) {
     
     std::cout<<"le estoy pasando los enemigos correctamente"<<c.size()<<" "<<a.size()<<std::endl;
     for(int i=0; i<c.size(); i++){
@@ -842,6 +842,10 @@ void Jugador::golpeando(vector<sf::Sprite>& c, std::vector<sf::Sprite>& a) {
             eliminadoA=i;
         }
     }
+    if(sprite.getGlobalBounds().intersects(spriteBoss.getGlobalBounds())){
+        bossTocado = true;
+    }
+    
     
 }
 
