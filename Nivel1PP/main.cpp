@@ -408,11 +408,11 @@ int main(){
                         //player->vidas=player->vidas-1;
                         
                         if(player->seleccionJugador==1){
-                            player->vidas=player->vidas-2;
+                            player->vidas=player->vidas-1;
                         }
                         
                         if(player->seleccionJugador==2){
-                            player->vidasMiniaturas1=player->vidasMiniaturas1-2;
+                            player->vidasMiniaturas1=player->vidasMiniaturas1-1;
                             if(player->vidasMiniaturas1<0){
                                 player->vidasMiniaturas1=0;
                             }
@@ -420,7 +420,7 @@ int main(){
                         }
                         
                         if(player->seleccionJugador==3){
-                            player->vidasMiniaturas2=player->vidasMiniaturas2-2;
+                            player->vidasMiniaturas2=player->vidasMiniaturas2-1;
                             if(player->vidasMiniaturas2<0){
                                 player->vidasMiniaturas2=0;
                             }
