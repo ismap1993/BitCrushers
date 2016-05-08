@@ -19,7 +19,7 @@
 
 
 int main(){
-    int numMapa=1;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
+    int numMapa=2;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
     
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
@@ -83,7 +83,7 @@ int main(){
     
     
     /*CREACION BOSS FINAL!*/
-    BossFinal* boss = new BossFinal(true, mapa->posxBoss, mapa->posyBoss, 1);
+    BossFinal* boss = new BossFinal(true, mapa->posxBoss, mapa->posyBoss, numMapa);// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
 
     sf::Texture texMuro;
     if(numMapa==1){
@@ -172,17 +172,17 @@ int main(){
         fondos[i]->setTexture(tex);
         fondos[i]->setPosition(mapa->fondo.getGlobalBounds().width*i, 0);
     }
-    //lleno los vectores
+    //lleno los vectores. 
     for(int i=0; i<4; i++){
-        cuerpo->push_back(new Enemigo(true, mapa->matrizEnemigosC[i][0],mapa->matrizEnemigosC[i][1], 0));
+        cuerpo->push_back(new Enemigo(true, mapa->matrizEnemigosC[i][0],mapa->matrizEnemigosC[i][1], 0, numMapa));
         cuerpoAux->push_back(cuerpo->at(i)->getSprite());
     }
     for(int i=0; i<4; i++){
-        distancia->push_back(new Enemigo(true, mapa->matrizEnemigosA[i][0],mapa->matrizEnemigosA[i][1], 1));
+        distancia->push_back(new Enemigo(true, mapa->matrizEnemigosA[i][0],mapa->matrizEnemigosA[i][1], 1, numMapa));
         distanciaAux->push_back(distancia->at(i)->getSprite());
 
     }
-    
+    std::cout<<"probadno"<<std::endl;
     /********RELOJES Y TIEMPO*********/
     sf::Clock relojGolpe;
     sf::Clock clock;
@@ -223,7 +223,9 @@ int main(){
                                 personaje->move(-kVel, 0);
                             }
                         break;*/
-
+                        case sf::Keyboard::Z:
+                            musica.stop();
+                        break;
                         //Tecla ESC para salir
                         case sf::Keyboard::Escape:
                             window.close();
@@ -257,6 +259,7 @@ int main(){
                 for(int j=0; j<distancia->size(); j++){
                    distancia->at(j)->handle(player);
                 }
+                boss->handle(player);
             }
         
        
@@ -266,9 +269,9 @@ int main(){
         window.clear();
          
         //dibujo los fondos
-        /*for(sf::Sprite* q : fondos){
+        for(sf::Sprite* q : fondos){
             window.draw(*q); 
-        }*/
+        }
         
         
         //dibujo el mapa con su metodo
