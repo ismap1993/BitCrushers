@@ -43,7 +43,7 @@ Enemigo::Enemigo() : patrullaje(true) {
     
 }
 
-Enemigo::Enemigo(bool valorPatrullaje, float posx, float posy, int type){
+Enemigo::Enemigo(bool valorPatrullaje, float posx, float posy, int type, int partido){
     
     //std::cout<<"Enemigo creado"<<std::endl;
     
@@ -56,15 +56,38 @@ Enemigo::Enemigo(bool valorPatrullaje, float posx, float posy, int type){
         matriz[i]=new int[4];
     }
     leerXML();
-    if(!texturaEnemigo.loadFromFile("resources/PP/enemigosPP.png")){
-        std::cerr<<"Error al cargar la textura de enemigosCIUDADANOS.png";
+    // 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
+    switch(partido){
+        case 1:
+            if(!texturaEnemigo.loadFromFile("resources/PP/enemigosPP.png")){
+                std::cerr<<"Error al cargar la textura de enemigosPP.png";
+            }
+            break;
+        case 2:
+            if(!texturaEnemigo.loadFromFile("resources/PSOE/enemigosPSOE.png")){
+                std::cerr<<"Error al cargar la textura de enemigosPSOE.png";
+            }
+            break;
+        case 3:
+            if(!texturaEnemigo.loadFromFile("resources/CIUDADANOS/enemigosCIUDADANOS.png")){
+                std::cerr<<"Error al cargar la textura de enemigosCIUDADANOS.png";
+            }
+            
+            break;
+        case 4:
+            if(!texturaEnemigo.loadFromFile("resources/PODEMOS/EnemigosPODEMOS.png")){
+                std::cerr<<"Error al cargar la textura de EnemigosPODEMOS.png";
+            }
+            break;
     }
     
+    
+    
     tipo=type;
-    std::cout<<posx<<" "<<posy<<" "<<tipo<<std::endl;
     spriteSheet.setTexture(texturaEnemigo);
+    
+
     if(tipo == 1){
-        std::cout<<matriz[10][0]<<" "<<matriz[10][1]<<" "<<matriz[10][2]<<" "<<matriz[10][3]<<std::endl;
         spriteSheet.setOrigin(matriz[10][2]/2, matriz[10][3]/2);
         spriteSheet.setTextureRect(sf::IntRect(matriz[10][0], matriz[10][1], matriz[10][2], matriz[10][3]));
     }else{

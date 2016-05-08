@@ -22,7 +22,7 @@
 class Enemigo: public NPC {
 public:
     Enemigo();
-    Enemigo(bool valorPatrullaje, float posx, float posy, int type);
+    Enemigo(bool valorPatrullaje, float posx, float posy, int type, int partido);
     bool getPatrullaje();
     void setPatrullaje(bool valorPatrullaje);
     void leerXML();
