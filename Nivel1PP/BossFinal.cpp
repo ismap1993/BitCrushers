@@ -187,20 +187,19 @@ void BossFinal::handle(Jugador* jugador){
         activado = true; 
     }
     if(activado && !jugador->muerto){
-        std::cout<<"Soy el jefe y me estoy moviendo porque molo mucho"<<std::endl;
         int posInicioX=jugador->getSprite().getPosition().x;
         float dif=posInicioX-spriteSheet.getPosition().x;
         //Para que el personaje se mueva
         if(direccion == 1){
             if(x-400<spriteSheet.getPosition().x){
-                std::cout<<"a la izq"<<std::endl;
+                //std::cout<<"a la izq"<<std::endl;
                 spriteSheet.move(-10, 0);
             }else{
                 direccion = 0;
             }
         }else{
             if(x+50>spriteSheet.getPosition().x){
-                std::cout<<"a la der"<<std::endl;
+                //std::cout<<"a la der"<<std::endl;
                 spriteSheet.move(10, 0);
             }else{
                 direccion = 1;

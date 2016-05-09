@@ -330,6 +330,7 @@ int main(){
             }
             if(player->bossTocado){
                 boss->hp-=2;
+                std::cout<<"el boss tiene: "<<boss->hp<<std::endl;
                 player->bossTocado = false;
             }
         }
@@ -353,6 +354,7 @@ int main(){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(distancia->at(j)->getSprite().getGlobalBounds())){
                         delete distancia->at(j);
                         distancia->erase(distancia->begin()+j);
+                        distanciaAux->erase(distanciaAux->begin()+j);
                         player->enemigosEliminados++;
                         if(!player->proyectiles->empty()){
                             delete player->proyectiles->at(i);
@@ -364,6 +366,7 @@ int main(){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(cuerpo->at(j)->getSprite().getGlobalBounds())){
                         delete cuerpo->at(j);
                         cuerpo->erase(cuerpo->begin()+j);
+                        cuerpoAux->erase(cuerpoAux->begin()+j);
                         player->enemigosEliminados++;
                         if(!player->proyectiles->empty()){
                             delete player->proyectiles->at(i);
@@ -373,6 +376,7 @@ int main(){
                 }
                 if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(boss->getSprite().getGlobalBounds())){
                     boss->hp-=1;
+                    std::cout<<"el boss tiene: "<<boss->hp<<std::endl;
                     if(!player->proyectiles->empty()){
                         delete player->proyectiles->at(i);
                         player->proyectiles->erase(player->proyectiles->begin()+i);
@@ -614,7 +618,7 @@ int main(){
         
         
        
-        std::cout<<"Cout para saber en que linea a veces me peta (Alfonso)"<<std::endl; 
+        //std::cout<<"Cout para saber en que linea a veces me peta (Alfonso)"<<std::endl; 
         for(int i=0; i<mapa->arrayVotos->size(); i++){
             if(mapa->arrayVotos->at(i)->getGlobalBounds().intersects(player->getSprite().getGlobalBounds())){
                 std::cout<<"El personaje ha tocado un voto"<<std::endl;
