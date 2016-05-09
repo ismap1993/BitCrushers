@@ -634,6 +634,51 @@ void Camara::actualizarVidasMiniaturas(int vm, int pol, int seleccionJugador){
         
         if(pol==1){
             miniatura2.setTextureRect(sf::IntRect(matriz[35][0], matriz[35][1], matriz[35][2], matriz[35][3]));
+            
+        }
+
+        if(pol==2){
+            miniatura2.setTextureRect(sf::IntRect(matriz[32][0], matriz[32][1], matriz[32][2], matriz[32][3]));
+           
+        }
+
+        if(pol==3){
+            miniatura2.setTextureRect(sf::IntRect(matriz[34][0], matriz[34][1], matriz[34][2], matriz[34][3]));
+           
+        }
+
+        if(pol==4){
+            miniatura2.setTextureRect(sf::IntRect(matriz[33][0], matriz[33][1], matriz[33][2], matriz[33][3]));
+            
+        }
+    }
+    
+    
+}
+
+void Camara::actualizarVidasMiniaturas2(int vm, int pol, int seleccionJugador){
+    if(seleccionJugador==3){
+        
+        if(vm==10){ 
+            
+                miniatura2vida.setTextureRect(sf::IntRect(matriz[28][0], matriz[28][1], matriz[28][2], matriz[28][3]));
+            }
+            if(vm==9) miniatura2vida.setTextureRect(sf::IntRect(matriz[21][0], matriz[21][1], matriz[21][2], matriz[21][3]));
+            if(vm==8) {
+                miniatura2vida.setTextureRect(sf::IntRect(matriz[31][0], matriz[31][1], matriz[31][2], matriz[31][3])); 
+            }
+            if(vm==7) miniatura2vida.setTextureRect(sf::IntRect(matriz[29][0], matriz[29][1], matriz[29][2], matriz[29][3]));
+            if(vm==6) miniatura2vida.setTextureRect(sf::IntRect(matriz[23][0], matriz[23][1], matriz[23][2], matriz[23][3]));
+            if(vm==5) miniatura2vida.setTextureRect(sf::IntRect(matriz[22][0], matriz[22][1], matriz[22][2], matriz[22][3]));
+            if(vm==4) miniatura2vida.setTextureRect(sf::IntRect(matriz[24][0], matriz[24][1], matriz[24][2], matriz[24][3]));
+            if(vm==3) miniatura2vida.setTextureRect(sf::IntRect(matriz[27][0], matriz[27][1], matriz[27][2], matriz[27][3]));
+            if(vm==2) miniatura2vida.setTextureRect(sf::IntRect(matriz[25][0], matriz[25][1], matriz[25][2], matriz[25][3]));
+            if(vm==1) miniatura2vida.setTextureRect(sf::IntRect(matriz[26][0], matriz[26][1], matriz[26][2], matriz[26][3]));
+            if(vm==0) miniatura2vida.setTextureRect(sf::IntRect(matriz[30][0], matriz[30][1], matriz[30][2], matriz[30][3]));
+        
+        
+        if(pol==1){
+            miniatura2.setTextureRect(sf::IntRect(matriz[35][0], matriz[35][1], matriz[35][2], matriz[35][3]));
             /*if(vm==10){ 
                 miniatura1vida.setTextureRect(sf::IntRect(matriz[28][0], matriz[28][1], matriz[28][2], matriz[28][3]));
             }
@@ -700,7 +745,6 @@ void Camara::actualizarVidasMiniaturas(int vm, int pol, int seleccionJugador){
             if(vm==0) miniatura1vida.setTextureRect(sf::IntRect(matriz[30][0], matriz[30][1], matriz[30][2], matriz[30][3]));*/
         }
     }
-    
     
 }
 

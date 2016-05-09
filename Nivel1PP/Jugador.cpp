@@ -49,6 +49,7 @@ Jugador::Jugador(float x, float y, int politic, bool activado){
     seleccionJugador=1;
     vidasMiniaturas1=10;
     vidasMiniaturas2=10;
+    ultimo=1;
     
     matriz=new int*[99];
     for(int i=0; i<99;i++){
@@ -416,6 +417,11 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     if((vidasPrincipales>0) && vidasMiniaturas1>=0 && vidasMiniaturas2>=0){
         
         //velocidadMovimiento=3;
+        if(vidasMiniaturas1==0 && vidasMiniaturas2==0){
+            //posicionJugador.x=200;
+            //velocidadMovimiento=0;
+            ultimo=1;
+        }
     
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) || sf::Joystick::isButtonPressed(controllerIndex,3)){
             politico=2;
@@ -457,6 +463,11 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     if((vidasPrincipales>=0 || vidasPrincipales!=0) && vidasMiniaturas1>0 && vidasMiniaturas2>=0){
             
+        if(vidasMiniaturas2==0 && vidasPrincipales<=0){
+            //posicionJugador.x=200;
+            //velocidadMovimiento=0;
+            ultimo=2;
+        }
         //velocidadMovimiento=3;
     
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) || sf::Joystick::isButtonPressed(controllerIndex,1)){
@@ -497,10 +508,10 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
     
     
     if((vidasPrincipales>=0 || vidasPrincipales!=0) && vidasMiniaturas1>=0 && vidasMiniaturas2>0){
-        if(vidasMiniaturas1==0){
+        if(vidasMiniaturas1==0 && vidasPrincipales<=0){
             //posicionJugador.x=200;
             //velocidadMovimiento=0;
-            
+            ultimo=3;
         }
         
         //velocidadMovimiento=3;

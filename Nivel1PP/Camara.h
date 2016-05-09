@@ -31,6 +31,7 @@ public:
     void actualizarVidas(int v, int pol, int seleccionJugador);
     void actualizarVidasPrincipales(int vp, int seleccionJugador);
     void actualizarVidasMiniaturas(int vm, int pol, int seleccionJugador);
+    void actualizarVidasMiniaturas2(int vm, int pol, int seleccionJugador);
     void cartelFinal(sf::RenderWindow& window, Jugador* player);
     void cartelGameOver(sf::RenderWindow& window, Jugador* player);
     void setLastTime(int c);
@@ -54,6 +55,7 @@ public:
     int desplazamientoCamara;
     int posicionOrigenCamara;
     int lastTime = 0;
+    int countdown; //Cuenta atras HUD
     
 private:
     
@@ -75,7 +77,7 @@ private:
     sf::Sprite background;
     
     sf::Clock clock; //Tiempo HUD
-    int countdown; //Cuenta atras HUD
+    //int countdown; //Cuenta atras HUD
     sf::Sprite contador; //Reloj
     sf::Text contadorValue; //Valor cuenta atras
     std::string convertTime;  //Para convertir de int a String el tiempo

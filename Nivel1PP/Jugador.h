@@ -57,6 +57,7 @@ public:
     int seleccionJugador;
     int vidasMiniaturas1;
     int vidasMiniaturas2;
+    int ultimo;
     int politico;
     int eliminadoC;
     int eliminadoA;

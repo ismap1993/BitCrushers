@@ -314,7 +314,7 @@ int main(){
         
         mapa->dibujaPlataformas(window);
         //dibujo el personaje
-        player->draw(window);
+        //player->draw(window);
         
         //Para eliminar los enemigos de los vectores
         if(player->politico==1 || player->politico == 4){
@@ -498,8 +498,8 @@ int main(){
             window.draw(camara->getMiniatura1());
             window.draw(camara->getMiniatura1vida());
             camara->actualizarVidasMiniaturas(player->vidasMiniaturas1, player->politico, player->seleccionJugador);
-            if(player->vidasMiniaturas1>0){
-                //player->draw(window);
+            if(player->vidasMiniaturas1>0 || player->ultimo==2){
+                player->draw(window);
                 //delete *player->seleccionJugador=2;
             }
             /*if(player->vidasMiniaturas1==0){
@@ -524,8 +524,8 @@ int main(){
             window.draw(camara->getMiniatura2());
             window.draw(camara->getMiniatura2vida());
             camara->actualizarVidasMiniaturas(player->vidasMiniaturas2, player->politico, player->seleccionJugador);
-            if(player->vidasMiniaturas2>0){
-                //player->draw(window);
+            if(player->vidasMiniaturas2>0 || player->ultimo==3){
+                player->draw(window);
                 //delete *player->seleccionJugador=3; 
             }
             
@@ -541,8 +541,9 @@ int main(){
             window.draw(camara->getVidasPrincipales());
             camara->actualizarVidas(player->vidas, player->politico, player->seleccionJugador);
             camara->actualizarVidasPrincipales(player->vidasPrincipales, player->seleccionJugador);
-            if(player->vidasPrincipales>0){
-                //player->draw(window);
+            if(player->vidasPrincipales>0 && player->ultimo==1){
+                //std::cout<<"MUERTOOOOOOOOO EL 11111111::::"<<player->vidasPrincipales<<std::endl;
+                player->draw(window);
                 //delete *player->seleccionJugador=1;
             }
         }
