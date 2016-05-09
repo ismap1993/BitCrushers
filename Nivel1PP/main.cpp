@@ -268,9 +268,9 @@ int main(){
         window.clear();
          
         //dibujo los fondos
-        for(sf::Sprite* q : fondos){
+        /*for(sf::Sprite* q : fondos){
             window.draw(*q); 
-        }
+        }*/
         
                 
 
@@ -330,7 +330,7 @@ int main(){
             }
             if(player->bossTocado){
                 boss->hp-=2;
-                std::cout<<"el boss tiene: "<<boss->hp<<std::endl;
+                std::cout<<"el boss tiene"<<boss->hp<<std::endl;
                 player->bossTocado = false;
             }
         }
@@ -376,7 +376,7 @@ int main(){
                 }
                 if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(boss->getSprite().getGlobalBounds())){
                     boss->hp-=1;
-                    std::cout<<"el boss tiene: "<<boss->hp<<std::endl;
+                    std::cout<<"el boss tiene"<<boss->hp<<std::endl;
                     if(!player->proyectiles->empty()){
                         delete player->proyectiles->at(i);
                         player->proyectiles->erase(player->proyectiles->begin()+i);
@@ -518,7 +518,14 @@ int main(){
                 //player->getSprite().getPosition().x;
                 //player->velocidadMovimiento=0;
                 //player->getSprite().setScale(100,100);
-                player->getSprite().scale(50,50);
+                player->posicionJugador.x=200;
+                if(player->vidasMiniaturas2>0){
+                    player->seleccionJugador=3;
+                }
+                
+                if(player->vidasPrincipales>0){
+                    player->seleccionJugador=1;
+                }
                  
             }
             
@@ -531,6 +538,20 @@ int main(){
             if(player->vidasMiniaturas2>0 || player->ultimo==3){
                 player->draw(window);
                 //delete *player->seleccionJugador=3; 
+            }
+            
+            if(player->vidasMiniaturas2==0){
+                //player->getSprite().getPosition().x;
+                //player->velocidadMovimiento=0;
+                //player->getSprite().setScale(100,100);
+                player->posicionJugador.x=200;
+                if(player->vidasMiniaturas1>0){
+                    player->seleccionJugador=2;
+                }
+                
+                if(player->vidasPrincipales>0){
+                    player->seleccionJugador=1;
+                } 
             }
             
         }
@@ -549,6 +570,20 @@ int main(){
                 //std::cout<<"MUERTOOOOOOOOO EL 11111111::::"<<player->vidasPrincipales<<std::endl;
                 player->draw(window);
                 //delete *player->seleccionJugador=1;
+            }
+            
+            if(player->vidasPrincipales==0){
+                //player->getSprite().getPosition().x;
+                //player->velocidadMovimiento=0;
+                //player->getSprite().setScale(100,100);
+                player->posicionJugador.x=200;
+                if(player->vidasMiniaturas1>0){
+                    player->seleccionJugador=2;
+                }
+                
+                if(player->vidasMiniaturas2>0){
+                    player->seleccionJugador=3;
+                } 
             }
         }
         

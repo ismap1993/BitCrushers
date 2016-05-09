@@ -423,7 +423,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
             ultimo=1;
         }
     
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) || sf::Joystick::isButtonPressed(controllerIndex,3)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1) || sf::Joystick::isButtonPressed(controllerIndex,3) || seleccionJugador==1){
             politico=2;
             seleccionJugador=1;
             vidas=vidas;
@@ -470,7 +470,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         }
         //velocidadMovimiento=3;
     
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) || sf::Joystick::isButtonPressed(controllerIndex,1)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2) || sf::Joystick::isButtonPressed(controllerIndex,1)  || seleccionJugador==2){
             politico=4;
             seleccionJugador=2;
             //vidasMiniaturas1=vidasMiniaturas1;
@@ -516,7 +516,7 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
         
         //velocidadMovimiento=3;
     
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)  || seleccionJugador==3){
             politico=3;
             seleccionJugador=3;
             //vidasMiniaturas2=vidasMiniaturas2;
