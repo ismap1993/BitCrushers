@@ -30,9 +30,7 @@ public:
     void dibujaEnemigosA(sf::RenderWindow& window);
     void dibujaVotos(sf::RenderWindow& window);
     void dibujaPlataformas(sf::RenderWindow& window);
-    void dibujaSimpatizante(sf::RenderWindow& window);
-    void dibujaCarcelCerrada(sf::RenderWindow& window);
-    void dibujaCarcelAbierta(sf::RenderWindow& window);
+
     
     sf::Sprite  fondo;
     int _width;
@@ -47,8 +45,6 @@ public:
     int** matrizEnemigosC;
     int posxBoss;
     int posyBoss;
-    int numEnemigosC;
-    int numEnemigosA;
 
 private:
     
@@ -61,17 +57,11 @@ private:
     sf::Sprite *_tilesetSprite;
     sf::Sprite te;
     sf::Sprite *spriteVoto;
-    sf::Sprite *spriteSimpa;
-    sf::Sprite *spriteCarcelCerrada;
-    sf::Sprite *spriteCarcelAbierta;
     
     sf::Texture _tilesetTexture;
     sf::Texture m_tileset;
     sf::Texture fond;
     sf::Texture texVoto;
-    sf::Texture texSimpa;
-    sf::Texture texCarcelCerrada;
-    sf::Texture texCarcelAbierta;
    
      
     sf::VertexArray m_vertices;
