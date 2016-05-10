@@ -10322,7 +10322,6 @@
   <object id="606" x="2144" y="320.5" width="64" height="97"/>
   <object id="610" x="5008" y="319.5" width="64" height="97"/>
   <object id="627" x="8220" y="229.5" width="64" height="97"/>
-  <object id="628" x="6530" y="451.5" width="64" height="97"/>
  </objectgroup>
  <objectgroup color="#00007f" name="Enemigos A">
   <object id="598" x="806" y="320" width="64" height="98"/>

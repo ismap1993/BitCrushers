@@ -12,7 +12,6 @@
 #include "Jugador.h"
 #include "Enemigo.h"
 #include "BossFinal.h"
-#include <stdlib.h> 
 //velocidad a la que se mueve el personaje
 #define kVel 10
 #define UPDATE_TICK_TIME 1000/15
@@ -21,7 +20,7 @@
 
 
 int main(){
-    int numMapa=2;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
+    int numMapa=1;// 1 PP. 2 PSOE. 3 CS. 4 PODEMOS
     
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
@@ -187,12 +186,7 @@ int main(){
         distanciaAux->push_back(distancia->at(i)->getSprite());
 
     }
-   
-    /********Para crear un numero aleatorio*********/
-    srand (time(NULL));
-    int iSecret = rand() % cuerpo->size() + 1;
-    cuerpo->at(iSecret)->tieneLlave = true;
-    std::cout<<"random ="<<iSecret<<std::endl;
+    
     /********RELOJES Y TIEMPO*********/
     sf::Clock relojGolpe;
     sf::Clock clock;
@@ -305,8 +299,6 @@ int main(){
          //dibujo el jefe final
         boss->draw(window);
         
-        
-        
         //muro de bloqueo para pelea con jefe
         if(player->getSprite().getPosition().x>mapa->posxBoss-400){
             modoJefe=1; //En cuanto sobrepasa cierta area, empieza el modo jefe
@@ -332,9 +324,6 @@ int main(){
         //Para eliminar los enemigos de los vectores
         if(player->politico==1 || player->politico == 4){
             if(player->eliminadoC!=-1){
-                if(cuerpo->at(player->eliminadoC)->tieneLlave){
-                    std::cout<<"he dropeado la puta llave"<<std::endl;
-                }
                 delete cuerpo->at(player->eliminadoC);
                 cuerpo->erase(cuerpo->begin()+player->eliminadoC);
                 player->eliminadoC=-1;
@@ -380,9 +369,6 @@ int main(){
                 }
                 for(int j=0; j<cuerpo->size(); j++){
                     if(player->proyectiles->at(i)->getSprite().getGlobalBounds().intersects(cuerpo->at(j)->getSprite().getGlobalBounds())){
-                        if(cuerpo->at(j)->tieneLlave){
-                            std::cout<<"he dropeado la puta llave cuando me han matado con proyectiles"<<std::endl;
-                        }
                         delete cuerpo->at(j);
                         cuerpo->erase(cuerpo->begin()+j);
                         cuerpoAux->erase(cuerpoAux->begin()+j);
@@ -684,7 +670,6 @@ int main(){
             }
         }
         if(boss->hp < 1){
-            boss->muerto = true;
             camara->cartelFinal(window, player);
         }
         //camara->cartelFinal(window, player);
