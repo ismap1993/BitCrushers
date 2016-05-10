@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="242" height="19" tilewidth="32" tileheight="32" nextobjectid="381">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="242" height="19" tilewidth="32" tileheight="32" nextobjectid="383">
  <tileset firstgid="1" name="nivelC'Sv1" tilewidth="32" tileheight="32" tilecount="64" columns="8">
   <image source="nivelPPv1.png" width="256" height="256"/>
   <tile id="0">
@@ -4644,7 +4644,12 @@
    <tile gid="31"/>
   </data>
  </layer>
- <objectgroup color="#00ff00" name="Simpatizante"/>
+ <objectgroup name="Carcel">
+  <object id="381" x="1730" y="66" width="126" height="127"/>
+ </objectgroup>
+ <objectgroup color="#00ff00" name="Simpatizante">
+  <object id="382" x="1806" y="85" width="62" height="92"/>
+ </objectgroup>
  <layer name="Objetos y carcel" width="242" height="19">
   <data>
    <tile gid="0"/>
