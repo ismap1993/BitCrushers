@@ -58,10 +58,10 @@ void Mapa::leerMapa(int numMapa){
 
     //creo el objeto xml
     TiXmlDocument doc;
-    if(numMapa==1)doc.LoadFile("resources/PP/nivel1PP.tmx");
+    if(numMapa==1)doc.LoadFile("resources/PP/nivel3PP.tmx");
     if(numMapa==2)doc.LoadFile("resources/PSOE/nivel1PSOE.tmx");
     if(numMapa==3)doc.LoadFile("resources/CIUDADANOS/nivel1CIUDADANOS.tmx");
-    if(numMapa==4)doc.LoadFile("resources/PSOE/nivel1PODEMOS.tmx");
+    if(numMapa==4)doc.LoadFile("resources/PODEMOS/nivel1PODEMOS.tmx");
     TiXmlElement* map = doc.FirstChildElement("map");
     
     //leo sus atributos
@@ -405,6 +405,7 @@ void Mapa::leerMapa(int numMapa){
                 }
              enemigosC = enemigosC->NextSiblingElement("objectgroup");
          }
+        numEnemigosC=iC;
           
         int iA=0;
         TiXmlElement *enemigosA = map->FirstChildElement("objectgroup");
@@ -439,6 +440,7 @@ void Mapa::leerMapa(int numMapa){
                 }
              enemigosA = enemigosA->NextSiblingElement("objectgroup");
          }
+        numEnemigosA=iA;
         
         TiXmlElement *boss = map->FirstChildElement("objectgroup");
         while(boss){
@@ -475,6 +477,79 @@ void Mapa::leerMapa(int numMapa){
                     }
                 }
              boss = boss->NextSiblingElement("objectgroup");
+         }
+        
+        TiXmlElement *simpa = map->FirstChildElement("objectgroup");
+        while(simpa){
+            
+            nombre=(string) simpa->Attribute("name");
+           
+            if(nombre=="Simpatizante"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = simpa->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        
+        /***************************SIMPATIZANTE**********************************/
+                        if (!texSimpa.loadFromFile("resources/RITA.png")) {
+                                std::cerr << "Error cargando la imagen voto.png";
+                                exit(0);
+                        }
+                        
+                        spriteSimpa = new sf::Sprite(texSimpa); 
+                        spriteSimpa->setPosition(x, y);
+                        
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             simpa = simpa->NextSiblingElement("objectgroup");
+         }
+        
+        
+        TiXmlElement *carcel = map->FirstChildElement("objectgroup");
+        while(carcel){
+            
+            nombre=(string) carcel->Attribute("name");
+           
+            if(nombre=="Carcel"){
+                    cout<<"nombre: "<<nombre<<endl;
+                    TiXmlElement *object = carcel->FirstChildElement("object");
+                    while(object){
+                        xString = (string) object->Attribute("x");
+                        yString = (string) object->Attribute("y");
+                        
+                        x=atoi(xString.c_str());
+                        y=atoi(yString.c_str());
+                        
+                        
+        /***************************CARCEL**********************************/
+                        if (!texCarcelCerrada.loadFromFile("resources/CarcelCerrada.png")) {
+                                std::cerr << "Error cargando la imagen CarcelCerrada.png";
+                                exit(0);
+                        }
+                        
+                        spriteCarcelCerrada = new sf::Sprite(texCarcelCerrada); 
+                        spriteCarcelCerrada->setPosition(x, y);
+                        
+                         if (!texCarcelAbierta.loadFromFile("resources/CarcelAbierta.png")) {
+                                std::cerr << "Error cargando la imagen CarcelAbierta.png";
+                                exit(0);
+                        }
+                        
+                        spriteCarcelAbierta = new sf::Sprite(texCarcelAbierta); 
+                        spriteCarcelAbierta->setPosition(x, y);
+
+                        object = object->NextSiblingElement("object");
+                        filas++;
+                    }
+                }
+             carcel = carcel->NextSiblingElement("objectgroup");
          }
 //     TiXmlElement *properties = colisiones->FirstChildElement("properties");
 //     string atributo;
@@ -518,32 +593,7 @@ void Mapa::dibuja(sf::RenderWindow& window){
     for(int t=0; t<_numLayers; t++){
         for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
-                if(_tilemapSprite[t][y][x]!=NULL){
-//                    if(_tilemap[0][y][x]==40){
-//                        //dibuja enemigo (por debajo) en el reloj
-//                        sf::RectangleShape *personaje = new sf::RectangleShape(sf::Vector2f(20, 20));
-//                        
-//                        personaje->setFillColor(sf::Color::Red);
-//                        personaje->setOutlineColor(sf::Color::Blue);
-//                        personaje->setOutlineThickness(10);
-//                        personaje->setPosition(x*32, y*32);
-//                        window.draw(*personaje);
-//                    }
-//                    arrayPlataformas[0]->move();
-//                    window.draw(arrayPlataformas[0]->spritePlat);
-                    
-//                    for(int i=0; i<arrayVotos.size();i++){
-//                        window.draw(arrayVotos[i]);
-//                    }
-//                    
-//                    for(int j=0; j<arrayEnemigosC.size();j++){
-//                        window.draw(*arrayEnemigosC[j]);
-//                    }
-//                    
-//                    for(int k=0; k<arrayEnemigosA.size();k++){
-//                        window.draw(*arrayEnemigosA[k]);
-//                    }
-                    
+                if(_tilemapSprite[t][y][x]!=NULL){                    
                     window.draw(*(_tilemapSprite[t][y][x]));
                 }
             }
@@ -576,6 +626,18 @@ void Mapa::dibujaVotos(sf::RenderWindow& window){
             window.draw(*i);
         }
     }
+}
+
+void Mapa::dibujaSimpatizante(sf::RenderWindow& window){
+    window.draw((*spriteSimpa));
+}
+
+void Mapa::dibujaCarcelCerrada(sf::RenderWindow& window){
+    window.draw((*spriteCarcelCerrada));
+}
+
+void Mapa::dibujaCarcelAbierta(sf::RenderWindow& window){
+    window.draw((*spriteCarcelAbierta));
 }
 
 

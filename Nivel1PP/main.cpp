@@ -16,6 +16,7 @@
 //velocidad a la que se mueve el personaje
 #define kVel 10
 #define UPDATE_TICK_TIME 1000/15
+#define maxEnem 20
 
 
 
@@ -174,11 +175,14 @@ int main(){
         fondos[i]->setPosition(mapa->fondo.getGlobalBounds().width*i, 0);
     }
     //lleno los vectores. 
-    for(int i=0; i<4; i++){
+    std::cout<<"numero enemC: "<<mapa->numEnemigosC<<std::endl;
+    std::cout<<"numero enemA: "<<mapa->numEnemigosA<<std::endl;
+
+    for(int i=0; i<mapa->numEnemigosC; i++){
         cuerpo->push_back(new Enemigo(true, mapa->matrizEnemigosC[i][0],mapa->matrizEnemigosC[i][1], 0, numMapa));
         cuerpoAux->push_back(cuerpo->at(i)->getSprite());
     }
-    for(int i=0; i<4; i++){
+    for(int i=0; i<mapa->numEnemigosA; i++){
         distancia->push_back(new Enemigo(true, mapa->matrizEnemigosA[i][0],mapa->matrizEnemigosA[i][1], 1, numMapa));
         distanciaAux->push_back(distancia->at(i)->getSprite());
 
@@ -282,7 +286,8 @@ int main(){
 
         //dibujo el mapa con su metodo
         mapa->dibuja(window);
-        
+        mapa->dibujaSimpatizante(window);
+        mapa->dibujaCarcelCerrada(window);
         //window.draw(suelo);
 //        for(int i=0; i<mapa->arrayVotos.size();i++){
 //          window.draw(mapa->arrayVotos[i]);
