@@ -335,7 +335,19 @@ void Jugador::handle(sf::Event event, sf::RenderWindow &window, Mapa *mapa, Cama
 
     const float gravedad =0.5;
 
-
+    switch(event.type){
+        case sf::Event::Closed:
+            window.close();
+            break;
+        
+        case sf::Event::KeyPressed:
+            
+            switch(event.key.code){
+                
+            }
+ 
+    }
+    
     /*if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
 //        if(politico==2 || politico ==3){
 //            disparar();
