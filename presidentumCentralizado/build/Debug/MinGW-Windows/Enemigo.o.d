@@ -1,4 +1,4 @@
-build/Debug/MinGW-Windows/Enemigo.o: Enemigo.cpp NPC.h \
+build/Debug/MinGW-Windows/Enemigo.o: Enemigo.cpp Enemigo.h NPC.h \
  c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
@@ -63,7 +63,27 @@ build/Debug/MinGW-Windows/Enemigo.o: Enemigo.cpp NPC.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Enemigo.h
+ c:/SFML/include/SFML/Graphics/Text.hpp Jugador.h \
+ c:/SFML/include/SFML/Audio.hpp \
+ c:/SFML/include/SFML/Audio/InputSoundFile.hpp \
+ c:/SFML/include/SFML/Audio/Export.hpp \
+ c:/SFML/include/SFML/Audio/Listener.hpp \
+ c:/SFML/include/SFML/Audio/Music.hpp \
+ c:/SFML/include/SFML/Audio/SoundStream.hpp \
+ c:/SFML/include/SFML/Audio/SoundSource.hpp \
+ c:/SFML/include/SFML/Audio/AlResource.hpp \
+ c:/SFML/include/SFML/Audio/OutputSoundFile.hpp \
+ c:/SFML/include/SFML/Audio/Sound.hpp \
+ c:/SFML/include/SFML/Audio/SoundBuffer.hpp \
+ c:/SFML/include/SFML/Audio/SoundBufferRecorder.hpp \
+ c:/SFML/include/SFML/Audio/SoundRecorder.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileFactory.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileFactory.inl \
+ c:/SFML/include/SFML/Audio/SoundFileReader.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileWriter.hpp Mapa.h Plataforma.h \
+ Proyectil.h Juego.h Escena.h
+
+Enemigo.h:
 
 NPC.h:
 
@@ -205,4 +225,48 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Enemigo.h:
+Jugador.h:
+
+c:/SFML/include/SFML/Audio.hpp:
+
+c:/SFML/include/SFML/Audio/InputSoundFile.hpp:
+
+c:/SFML/include/SFML/Audio/Export.hpp:
+
+c:/SFML/include/SFML/Audio/Listener.hpp:
+
+c:/SFML/include/SFML/Audio/Music.hpp:
+
+c:/SFML/include/SFML/Audio/SoundStream.hpp:
+
+c:/SFML/include/SFML/Audio/SoundSource.hpp:
+
+c:/SFML/include/SFML/Audio/AlResource.hpp:
+
+c:/SFML/include/SFML/Audio/OutputSoundFile.hpp:
+
+c:/SFML/include/SFML/Audio/Sound.hpp:
+
+c:/SFML/include/SFML/Audio/SoundBuffer.hpp:
+
+c:/SFML/include/SFML/Audio/SoundBufferRecorder.hpp:
+
+c:/SFML/include/SFML/Audio/SoundRecorder.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileFactory.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileFactory.inl:
+
+c:/SFML/include/SFML/Audio/SoundFileReader.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileWriter.hpp:
+
+Mapa.h:
+
+Plataforma.h:
+
+Proyectil.h:
+
+Juego.h:
+
+Escena.h:

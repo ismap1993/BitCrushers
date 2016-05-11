@@ -30,7 +30,6 @@ public:
     Juego* getContext();
     void instanciarMundo(int nivel);
     void eliminarMundo();
-    Mundo* mundo;
     ~EInGame();
     
 protected:

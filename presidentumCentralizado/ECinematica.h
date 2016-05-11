@@ -37,6 +37,7 @@ protected:
 
 private:
     
+    bool  initState;
     static ECinematica* pinstance;
     Juego* _context;
     

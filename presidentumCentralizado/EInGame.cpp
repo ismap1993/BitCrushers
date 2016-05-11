@@ -58,8 +58,7 @@ void EInGame::Handle(){
 void EInGame::Init(){
     
    // NADA DE MOMENTO
-    mundo = new Mundo();
-    mundo->crearMundo(1);
+    
     
 }
 
@@ -70,7 +69,7 @@ void EInGame::Update(){
         initState = true;
     }
     
-    mundo->Update();
+    Mundo::Instance()->Update();
     
     Render();
 
@@ -79,7 +78,7 @@ void EInGame::Update(){
 void EInGame::Render(){
     
     _context->window->clear(sf::Color::White); //COLOR DE FONDO BLANCO    
-    mundo->Render();
+    Mundo::Instance()->Render();
     _context->window->display();
     
 }
@@ -99,7 +98,7 @@ void EInGame::instanciarMundo(int nivel){
     
 void EInGame::eliminarMundo(){
     
-    delete mundo;
+    Mundo::Instance()->eliminarMundo();
     
 }
 
@@ -107,8 +106,7 @@ EInGame::~EInGame(){
                             //Destruccion de la instancia 
     
     
-    delete mundo;
-    mundo = 0;
+    
     //delete Jugador::Instance();
     _context = 0;
     pinstance = 0;

@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.1.0</string>
         <key>fileName</key>
-        <string>C:/Users/Aitor/Documents/NetBeansProjects/Nivel1/resources/CIUDADANOS/nivelC'Sv1.tps</string>
+        <string>C:/Users/Aitor/Documents/BitCrushers/Nivel1/resources/CIUDADANOS/nivelC'Sv1.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -234,10 +234,6 @@
             <key type="filename">lider4.png</key>
             <key type="filename">relojC'S.png</key>
             <key type="filename">../Ventana.png</key>
-            <key type="filename">../voto.png</key>
-            <key type="filename">../zcarcel1.png</key>
-            <key type="filename">../zcarcel2.png</key>
-            <key type="filename">../zkeyCS.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -285,10 +281,6 @@
             <filename>MesaGuayC'S4.png</filename>
             <filename>MesaGuayC'S3.png</filename>
             <filename>../Ventana.png</filename>
-            <filename>../zcarcel2.png</filename>
-            <filename>../zkeyCS.png</filename>
-            <filename>../voto.png</filename>
-            <filename>../zcarcel1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

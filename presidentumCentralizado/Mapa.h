@@ -15,27 +15,43 @@
 #define	MAPA_H
 
 #include <SFML/Graphics.hpp>
-#include "Mapa.h"
-#include "Camara.h"
-#include "tinystr.h"
-#include "tinyxml.h"
+#include "Plataforma.h"
 
 
 class Mapa {
 public:
-   
     Mapa();
-    ~Mapa();
+    Mapa(const Mapa& orig);
+    virtual ~Mapa();
     
     void leerMapa(int numMapa);
     int getTile(int x, int y);
     void dibuja();
+    void dibujaEnemigosC();
+    void dibujaEnemigosA();
+    void dibujaVotos();
+    void dibujaPlataformas();
+
+    //FONDO///////////////
+    int cuantasVecesDeboPintarElFondo;
+    sf::Texture tex;
+    std::vector<sf::Sprite*> fondos; //FONDO
+    ////////////////////////
     
-    sf::Sprite*  fondo;
+    sf::Sprite  fondo;
     int _width;
     int _tileWidth;
-    
- 
+    std::vector<sf::RectangleShape*> arraySuelo;
+    std::vector<sf::RectangleShape*> arrayParedes;
+    std::vector<Plataforma*> arrayPlataformas;
+    std::vector<sf::Sprite*>* arrayVotos;
+//    std::vector<sf::RectangleShape*> arrayEnemigosC;
+//    std::vector<sf::RectangleShape*> arrayEnemigosA;
+    int** matrizEnemigosA;
+    int** matrizEnemigosC;
+    int posxBoss;
+    int posyBoss;
+
 private:
     
     int ***_tilemap;
@@ -43,22 +59,18 @@ private:
     int _height;
     int _tileHeigth;
     
-    TiXmlDocument* doc;
-    TiXmlElement* map;
-    TiXmlElement* img;
-    TiXmlElement* data;
-    TiXmlElement* layer;
+    sf::Sprite ****_tilemapSprite;
+    sf::Sprite *_tilesetSprite;
+    sf::Sprite te;
+    sf::Sprite *spriteVoto;
     
-    std::string* name;
-
-    sf::Sprite**** _tilemapSprite;
-    sf::Sprite* _tilesetSprite;
-    
-    sf::Texture* _tilesetTexture;
-    sf::Texture* m_tileset;
-    sf::Texture* fond;
+    sf::Texture _tilesetTexture;
+    sf::Texture m_tileset;
+    sf::Texture fond;
+    sf::Texture texVoto;
+   
      
-    sf::VertexArray* m_vertices;
+    sf::VertexArray m_vertices;
     
 };
 

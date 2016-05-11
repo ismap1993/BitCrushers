@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/BossFinal.o \
 	${OBJECTDIR}/Camara.o \
+	${OBJECTDIR}/ECargando.o \
 	${OBJECTDIR}/ECinematica.o \
 	${OBJECTDIR}/EInGame.o \
 	${OBJECTDIR}/EIntro.o \
@@ -43,13 +45,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/EMenuInGame.o \
 	${OBJECTDIR}/Enemigo.o \
 	${OBJECTDIR}/Escena.o \
-	${OBJECTDIR}/JefeFinal.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/LevelFactory.o \
 	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/NPC.o \
+	${OBJECTDIR}/Plataforma.o \
 	${OBJECTDIR}/Proyectil.o \
 	${OBJECTDIR}/Simpatizante.o \
 	${OBJECTDIR}/main.o \
@@ -85,10 +87,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/presidentumcentralizado.exe: ${OBJECT
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/presidentumcentralizado ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/BossFinal.o: BossFinal.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BossFinal.o BossFinal.cpp
+
 ${OBJECTDIR}/Camara.o: Camara.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Camara.o Camara.cpp
+
+${OBJECTDIR}/ECargando.o: ECargando.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ECargando.o ECargando.cpp
 
 ${OBJECTDIR}/ECinematica.o: ECinematica.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -125,11 +137,6 @@ ${OBJECTDIR}/Escena.o: Escena.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Escena.o Escena.cpp
 
-${OBJECTDIR}/JefeFinal.o: JefeFinal.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/JefeFinal.o JefeFinal.cpp
-
 ${OBJECTDIR}/Juego.o: Juego.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -159,6 +166,11 @@ ${OBJECTDIR}/NPC.o: NPC.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NPC.o NPC.cpp
+
+${OBJECTDIR}/Plataforma.o: Plataforma.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Plataforma.o Plataforma.cpp
 
 ${OBJECTDIR}/Proyectil.o: Proyectil.cpp 
 	${MKDIR} -p ${OBJECTDIR}

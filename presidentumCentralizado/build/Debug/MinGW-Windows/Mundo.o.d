@@ -1,5 +1,4 @@
-build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp Mundo.h Mapa.h \
- c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
+build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp \
  c:/SFML/include/SFML/System.hpp c:/SFML/include/SFML/Config.hpp \
  c:/SFML/include/SFML/System/Clock.hpp \
  c:/SFML/include/SFML/System/Export.hpp \
@@ -22,7 +21,8 @@ build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp Mundo.h Mapa.h \
  c:/SFML/include/SFML/System/Vector2.hpp \
  c:/SFML/include/SFML/System/Vector2.inl \
  c:/SFML/include/SFML/System/Vector3.hpp \
- c:/SFML/include/SFML/System/Vector3.inl \
+ c:/SFML/include/SFML/System/Vector3.inl Mundo.h Mapa.h \
+ c:/SFML/include/SFML/Graphics.hpp c:/SFML/include/SFML/Window.hpp \
  c:/SFML/include/SFML/Window/Context.hpp \
  c:/SFML/include/SFML/Window/Export.hpp \
  c:/SFML/include/SFML/Window/GlResource.hpp \
@@ -63,17 +63,25 @@ build/Debug/MinGW-Windows/Mundo.o: Mundo.cpp Mundo.h Mapa.h \
  c:/SFML/include/SFML/Graphics/RenderWindow.hpp \
  c:/SFML/include/SFML/Graphics/Shader.hpp \
  c:/SFML/include/SFML/Graphics/Sprite.hpp \
- c:/SFML/include/SFML/Graphics/Text.hpp Camara.h tinystr.h tinyxml.h \
- Simpatizante.h NPC.h JefeFinal.h Enemigo.h Proyectil.h Juego.h Escena.h \
- jugador.h LevelFactory.h
-
-Mundo.h:
-
-Mapa.h:
-
-c:/SFML/include/SFML/Graphics.hpp:
-
-c:/SFML/include/SFML/Window.hpp:
+ c:/SFML/include/SFML/Graphics/Text.hpp Plataforma.h Simpatizante.h NPC.h \
+ BossFinal.h Jugador.h c:/SFML/include/SFML/Audio.hpp \
+ c:/SFML/include/SFML/Audio/InputSoundFile.hpp \
+ c:/SFML/include/SFML/Audio/Export.hpp \
+ c:/SFML/include/SFML/Audio/Listener.hpp \
+ c:/SFML/include/SFML/Audio/Music.hpp \
+ c:/SFML/include/SFML/Audio/SoundStream.hpp \
+ c:/SFML/include/SFML/Audio/SoundSource.hpp \
+ c:/SFML/include/SFML/Audio/AlResource.hpp \
+ c:/SFML/include/SFML/Audio/OutputSoundFile.hpp \
+ c:/SFML/include/SFML/Audio/Sound.hpp \
+ c:/SFML/include/SFML/Audio/SoundBuffer.hpp \
+ c:/SFML/include/SFML/Audio/SoundBufferRecorder.hpp \
+ c:/SFML/include/SFML/Audio/SoundRecorder.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileFactory.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileFactory.inl \
+ c:/SFML/include/SFML/Audio/SoundFileReader.hpp \
+ c:/SFML/include/SFML/Audio/SoundFileWriter.hpp Proyectil.h Enemigo.h \
+ Juego.h Escena.h jugador.h Camara.h LevelFactory.h
 
 c:/SFML/include/SFML/System.hpp:
 
@@ -126,6 +134,14 @@ c:/SFML/include/SFML/System/Vector2.inl:
 c:/SFML/include/SFML/System/Vector3.hpp:
 
 c:/SFML/include/SFML/System/Vector3.inl:
+
+Mundo.h:
+
+Mapa.h:
+
+c:/SFML/include/SFML/Graphics.hpp:
+
+c:/SFML/include/SFML/Window.hpp:
 
 c:/SFML/include/SFML/Window/Context.hpp:
 
@@ -209,26 +225,60 @@ c:/SFML/include/SFML/Graphics/Sprite.hpp:
 
 c:/SFML/include/SFML/Graphics/Text.hpp:
 
-Camara.h:
-
-tinystr.h:
-
-tinyxml.h:
+Plataforma.h:
 
 Simpatizante.h:
 
 NPC.h:
 
-JefeFinal.h:
+BossFinal.h:
 
-Enemigo.h:
+Jugador.h:
+
+c:/SFML/include/SFML/Audio.hpp:
+
+c:/SFML/include/SFML/Audio/InputSoundFile.hpp:
+
+c:/SFML/include/SFML/Audio/Export.hpp:
+
+c:/SFML/include/SFML/Audio/Listener.hpp:
+
+c:/SFML/include/SFML/Audio/Music.hpp:
+
+c:/SFML/include/SFML/Audio/SoundStream.hpp:
+
+c:/SFML/include/SFML/Audio/SoundSource.hpp:
+
+c:/SFML/include/SFML/Audio/AlResource.hpp:
+
+c:/SFML/include/SFML/Audio/OutputSoundFile.hpp:
+
+c:/SFML/include/SFML/Audio/Sound.hpp:
+
+c:/SFML/include/SFML/Audio/SoundBuffer.hpp:
+
+c:/SFML/include/SFML/Audio/SoundBufferRecorder.hpp:
+
+c:/SFML/include/SFML/Audio/SoundRecorder.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileFactory.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileFactory.inl:
+
+c:/SFML/include/SFML/Audio/SoundFileReader.hpp:
+
+c:/SFML/include/SFML/Audio/SoundFileWriter.hpp:
 
 Proyectil.h:
+
+Enemigo.h:
 
 Juego.h:
 
 Escena.h:
 
 jugador.h:
+
+Camara.h:
 
 LevelFactory.h:

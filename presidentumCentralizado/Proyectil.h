@@ -9,8 +9,7 @@
 #define	PROYECTIL_H
 #include <SFML/Graphics.hpp>
 
-#include "NPC.h"
-class Proyectil: public NPC {
+class Proyectil {
 public:
     Proyectil();
     Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int politic); 
@@ -20,7 +19,7 @@ public:
     bool destruir();
     void leerSprite();
     sf::Sprite getSprite();
-    void dibuja(sf::RenderWindow &window);
+    void dibuja();
     Proyectil crearPro();
  
 
@@ -31,8 +30,8 @@ private:
     int **matriz; //Para leer spritesheet
     int disRecorrida; //Destruir el proyectil al haber recorrido 450 de distancia
     sf::Sprite spritePro;
-    sf::Texture texPro;
-    
+    sf::Texture* texPro;
+    int politico;
     
     //Tiempo en el que se van desplazando los proyectiles
     sf::Clock proyectilClock;

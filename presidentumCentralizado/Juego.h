@@ -35,6 +35,10 @@ public:
     
     sf::Event event;
     
+    int windowWidth = 1066; //Width de la window
+    
+    int windowHeight = 600; //Height de la window
+    
 private:
 	Escena* _state;
         static Juego* pinstance;

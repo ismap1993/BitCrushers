@@ -6,6 +6,7 @@
  */
 
 #include "Proyectil.h"
+#include "Juego.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -23,20 +24,19 @@ Proyectil::Proyectil(){
     
 }
 Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int politic) {
-    std::cout<<"Estoy aqui, en el constructor de proyectil"<<std::endl;
     dir=direccion;
     disRecorrida=0;
     if(direccion==1){
-        posx=pospersonaje.x+60;
+        posx=pospersonaje.x+40;
         posy=pospersonaje.y;
     }else{
-        posx=pospersonaje.x-90;
+        posx=pospersonaje.x-70;
         posy=pospersonaje.y;
     }
     matriz=mat;
-    std::cout<<"Imprimiendo la matriz pasada por parametro"<<std::endl;
+    politico=politic;
     /*
-    int i=0, j=0;
+    //para imprimir la matriz
     for(int i=0; i<=11;i++){
         for (int j=0;j<4;j++){
             cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
@@ -44,45 +44,42 @@ Proyectil::Proyectil(int direccion, sf::Vector2f pospersonaje, int **mat, int po
         cout << endl;
     }
     */
-    
-    //leerSprite();
     //CARGAR LA IMAGEN
+    texPro = new sf::Texture();
     if(politic==2){
-        if (!texPro.loadFromFile("resources/albertspritesheet.png")){
+        if (!texPro->loadFromFile("resources/albertspritesheet.png")){
             std::cerr << "Error cargando la imagen";
             exit(0);
         }
-    }else{
-        if (!texPro.loadFromFile("resources/marianospritesheet.png")){
+        spritePro.setTexture(*texPro);
+        spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    }else if(politic==3){
+        if (!texPro->loadFromFile("resources/marianospritesheet.png")){
             std::cerr << "Error cargando la imagen";
             exit(0);
-        }        
+        } 
+        spritePro.setTexture(*texPro);
+        spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    }else{
+        if (!texPro->loadFromFile("resources/CIUDADANOS/enemigosCIUDADANOS.png")){
+            std::cerr << "Error cargando la imagen";
+            exit(0);
+        } 
+        spritePro.setTexture(*texPro);
+        spritePro.setTextureRect(sf::IntRect(matriz[0][0], matriz[0][1], matriz[0][2], matriz[0][3]));
     }
 
-    spritePro.setTexture(texPro);
-    spritePro.setTextureRect(sf::IntRect(matriz[11][0], matriz[11][1], matriz[11][2], matriz[11][3]));
+    
     spritePro.setPosition(posx, posy);
     
-    std::cout << "proyectil creado!" << std::endl;
-    std::cout << "posicion X proyectil:" << posx << " posicion Y proyectil:" << posy << std::endl;
+    //std::cout << "proyectil creado!" << std::endl;
+    //std::cout << "posicion X proyectil:" << posx << " posicion Y proyectil:" << posy << std::endl;
 
     disparoAparicion=0;
     disparoTime=0;
 
-   
-    //for(int i=0; i<=11;i++){
-       // for (int j=0;j<4;j++){
-            //cout << "Matriz["<< i <<"]["<< j << "] =" << matriz[i][j] << endl;
-        //}
-        //cout << endl;
-    //}
-   
-   
-   
-   
-   
-   
-   
+
+
 }
 
 Proyectil::Proyectil(const Proyectil& orig) {
@@ -109,9 +106,13 @@ void Proyectil::leerSprite(){
     
 
   ifstream fin;
+  if(politico!=5){
   fin.open("resources/albertspritesheet.xml"); // abrir el xml que se va a leer
+  }else{
+      fin.open("resources/CIUDADANOS/enemigosCIUDADANOS.xml");
+  }
           if (!fin.good()) 
-            //std::cout << "No se ha podido abrir el spritesheet" << std::endl;
+            std::cout << "No se ha podido abrir el spritesheet" << std::endl;
   
   // comenzamos a leer cada una de las lineas
   while (!fin.eof())
@@ -175,31 +176,19 @@ void Proyectil::leerSprite(){
 }
 
 
-void Proyectil::dibuja(sf::RenderWindow& window){
-   // std::cout<<"becuase we are your friends"<<std::endl;
-       sf::Texture texvoto;
-    if (!texvoto.loadFromFile("resources/sobres.png"))
-    {
-        std::cerr << "Error cargando la imagen sobres.png";
-        exit(0);
-    }
-       
-       sf::Sprite sprite(texvoto);
-    
-       sprite.setPosition(533, 300);
-    window.draw(spritePro);
+void Proyectil::dibuja(){
+
+    Juego::Instance()->window->draw(spritePro);
     
     disparoTime= proyectilClock.getElapsedTime().asSeconds(); //Tiempo que determina la velocidad del proyectil
     if(disparoTime>0.015){ //Cuanto mayor sea, mas lento ira el proyectil
         if(dir==1){//derecha
-            spritePro.move(5,0);
-            disRecorrida+=5;
-            //std::cout<<"Debo ir a la derecha (Facha)"<<std::endl;
+            spritePro.move(3.5,0);
+            disRecorrida+=3.5;
         }
         if(dir==0){
-            spritePro.move(-5,0);
-            disRecorrida+=5;
-            //std::cout<<"Debo ir a la izquierda (Hippie)"<<std::endl;
+            spritePro.move(-3.5,0);
+            disRecorrida+=3.5;
         }
         proyectilClock.restart(); 
     }
@@ -207,8 +196,8 @@ void Proyectil::dibuja(sf::RenderWindow& window){
 }
 
 bool Proyectil::destruir(){
-    if(disRecorrida>450){
-       // cout << "Proyectil destruido" << endl;
+    if(disRecorrida>300){
+        //cout << "Proyectil destruido" << endl;
         return true;
     }else{
         return false;
@@ -221,7 +210,6 @@ sf::Sprite Proyectil::getSprite(){
 
 Proyectil Proyectil::crearPro(){
     
-    //std::cout<<"He llegado aqui"<<std::endl;
     disparoAparicion=0;
     disparoAparicion=proyectilClock.getElapsedTime().asSeconds();
     //Dependiendo de la direccion hacia donde este mirando, se aplica un sprite u otro
